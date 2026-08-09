@@ -38,4 +38,4 @@ class Cube_board {
         std::array<std::array<std::array<int, 3>, 3>, 6> get_board() {
             return cube_board_positions;
         };
-}
+};
