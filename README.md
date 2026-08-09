@@ -16,4 +16,8 @@ Live demo link will go here
 
 ## How it works
 
+## AI Usage disclosure
+I don't know if this is a person skill issue or something, but I can't seem to find any good resources on what I needed to know. So when, for example, I didn't know how to return an array correctly, I had to ask AI. Also, AI was used for debugging when I didn't know what the heck I did wrong.
+
 ## Credits
+- [GeeksForGeeks](https://www.geeksforgeeks.org) helped a lot, if I were to included every single link on there, it would be longer than the entire rest of the readme.
