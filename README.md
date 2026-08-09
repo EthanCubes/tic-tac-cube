@@ -8,6 +8,9 @@ Live demo link will go here
 ## Quick Start
 
 ## Features
+- Basic tic-tac-toe game
+- Turn the cube to rearrange the x's and o's
+- Rotate the cube to start fresh on a new board - unless the "new" board already have marks on it from previous rotations or turns
 
 ## How to run locally
 
