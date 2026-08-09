@@ -1,6 +1,6 @@
 #include <array>
 
-std::array<std::array<std::array<int, 3>, 3>, 6> cube = {
+std::array<std::array<std::array<int, 3>, 3>, 6> cube = {{
     {{
         {0, 0, 0},
         {0, 0, 0},
@@ -31,12 +31,8 @@ std::array<std::array<std::array<int, 3>, 3>, 6> cube = {
         {0, 0, 0},
         {0, 0, 0}
     }}
-}
+}};
 
 std::array<std::array<std::array<int, 3>, 3>, 6> get_board() {
     return cube;
 };
-
-int main() {
-    return 0;
-}
