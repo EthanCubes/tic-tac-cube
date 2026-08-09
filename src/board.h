@@ -1,4 +1,4 @@
 #pragma once
 #include <array>
 
-class cube_board;
+class Cube_board;

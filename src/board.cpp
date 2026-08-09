@@ -33,7 +33,7 @@ std::array<std::array<std::array<int, 3>, 3>, 6> cube_board_positions = {{
     }}
 }};
 
-class cube_board {
+class Cube_board {
     public:
         std::array<std::array<std::array<int, 3>, 3>, 6> get_board() {
             return cube_board_positions;
