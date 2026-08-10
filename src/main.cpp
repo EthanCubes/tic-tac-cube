@@ -7,9 +7,7 @@ class Cube_board {
         std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
             {{
                 {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
-            }},
+                {0, 0, 0}, {0, 0, 0} }},
             {{
                 {0, 0, 0},
                 {0, 0, 0},
@@ -154,7 +152,7 @@ class Cube_board {
             positions[4][1][0] = temporary_array[1][1][0];
             positions[4][1][1] = temporary_array[1][1][1];
             positions[4][1][2] = temporary_array[1][1][2];
-            positions[4][2][0] = temporary_array[1][2][0];
+            positions[4][2][0] = temporary_array[1][2][0]; 
             positions[4][2][1] = temporary_array[1][2][1];
             positions[4][2][2] = temporary_array[1][2][2];
             // Yellow
@@ -317,6 +315,12 @@ class Cube_board {
             z_move();
             z_move();
         };
+
+        void u_prime() {
+            u_move();
+            u_move();
+            u_move();
+        };
         
         void l_move() {
             z_move();
@@ -422,6 +426,84 @@ class Cube_board {
             };
             std::cout << "\n";
         };
+
+        void move_cube(std::string move) {
+            if (move == "U") {
+                u_move();
+                turn = 3 - turn;
+            }
+            else if (move == "U'") {
+                u_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "L") {
+                l_move();
+                turn = 3 - turn;
+            }
+            else if (move == "L'") {
+                l_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "F") {
+                f_move();
+                turn = 3 - turn;
+            }
+            else if (move == "F'") {
+                f_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "R") {
+                r_move();
+                turn = 3 - turn;
+            }
+            else if (move == "R'") {
+                r_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "B") {
+                b_move();
+                turn = 3 - turn;
+            } 
+            else if (move == "B'") {
+                b_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "D") {
+                d_move();
+                turn = 3 - turn;
+            }
+            else if (move == "D'") {
+                d_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "X") {
+                x_move();
+                turn = 3 - turn;
+            }
+            else if (move == "X'") {
+                x_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "Y") {
+                y_move();
+                turn = 3 - turn;
+            }
+            else if (move == "Y'") {
+                y_prime();
+                turn = 3 - turn;
+            }
+            else if (move == "Z") {
+                z_move();
+                turn = 3 - turn;
+            }
+            else if (move == "Z'") {
+                z_prime();
+                turn = 3 - turn;
+            }
+            else {
+                std::cout << "Invalid notation\n";
+            }
+        };
 };
 
 Cube_board cube;
@@ -464,35 +546,65 @@ int main() {
     std::string y_pos_string;
     int y_pos;
     bool running = true;
+    std::string mode_string = "0";
+    int mode = 0;
+    std::string notation = "";
     while (running) {
         switch(cube.turn) {
             case 1:
-                std::cout << "\n----------\nX's Turn\n";
-                std::cout << "Enter the X position";
-                std::cin >> x_pos_string;
-                std::cout << "Enter the Y position";
-                std::cin >> y_pos_string;
-                x_pos = std::stoi(x_pos_string);
-                y_pos = std::stoi(y_pos_string);
-                if (cube.mark_x(x_pos, y_pos) != 0) {
-                    break;
+                std::cout << "Enter mode";
+                std::cin >> mode_string;
+                mode = std::stoi(mode_string);
+                switch(mode) {
+                    case 1:
+                        std::cout << "\n----------\nX's Turn\n";
+                        std::cout << "Enter the X position";
+                        std::cin >> x_pos_string;
+                        std::cout << "Enter the Y position";
+                        std::cin >> y_pos_string;
+                        x_pos = std::stoi(x_pos_string);
+                        y_pos = std::stoi(y_pos_string);
+                        if (cube.mark_x(x_pos, y_pos) != 0) {
+                            break;
+                        };
+                        render_board();
+                        cube.turn = 2;
+                        break;
+                    case 2:
+                        std::cout << "\n----------\nX's Turn\nEnter notation";
+                        std::cin >> notation;
+                        cube.move_cube(notation);
+                        render_board();
+                        std::cout << cube.turn;
+                        break;
                 };
-                render_board();
-                cube.turn = 2;
                 break;
             case 2:
-                std::cout << "\n----------\nO's Turn\n";
-                std::cout << "Enter the X position";
-                std::cin >> x_pos_string;
-                std::cout << "Enter the Y position";
-                std::cin >> y_pos_string;
-                x_pos = std::stoi(x_pos_string);
-                y_pos = std::stoi(y_pos_string);
-                if (cube.mark_o(x_pos, y_pos) != 0) {
-                    break;
+                std::cout << "Enter mode";
+                std::cin >> mode_string;
+                mode = std::stoi(mode_string);
+                switch(mode) {
+                    case 1:
+                        std::cout << "\n----------\nO's Turn\n";
+                        std::cout << "Enter the X position";
+                        std::cin >> x_pos_string;
+                        std::cout << "Enter the Y position";
+                        std::cin >> y_pos_string;
+                        x_pos = std::stoi(x_pos_string);
+                        y_pos = std::stoi(y_pos_string);
+                        if (cube.mark_o(x_pos, y_pos) != 0) {
+                            break;
+                        };
+                        render_board();
+                        cube.turn = 1;
+                        break;
+                    case 2:
+                        std::cout << "\n---------\nO's Turn\nEnter notation";
+                        std::cin >> notation;
+                        cube.move_cube(notation);
+                        render_board();
+                        break;
                 };
-                render_board();
-                cube.turn = 1;
                 break;
         };
     };
