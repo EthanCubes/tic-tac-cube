@@ -297,6 +297,8 @@ class Cube_board {
             positions[5][2][2] = temporary_array[5][2][2];
         };
 
+        int turn = 1; // 1 is x, -1 is o
+
         // These are are the moved made out of the basic moves
         void x_prime() {
             x_move();
