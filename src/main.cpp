@@ -1,13 +1,48 @@
 #include <iostream>
 #include <array>
-#include "board.h"
+
+class Cube_board {
+    public:
+        std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }},
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }},
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }},
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }},
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }},
+            {{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+            }}
+        }};
+};
 
 int main() {
-    std::array<std::array<std::array<int, 3>, 3>, 6> cube_pos = get_board();
+    Cube_board cube;
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                std::cout << cube_pos[face][row][column];
+                std::cout << cube.positions[face][row][column];
             }
             std::cout << "\n";
         }
