@@ -556,12 +556,12 @@ int main() {
         cube.print_full_board();
         switch(cube.turn) {
             case 1:
+                std::cout << "\n----------\nX's Turn\n";
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
                 mode = std::stoi(mode_string);
                 switch(mode) {
                     case 1:
-                        std::cout << "\n----------\nX's Turn\n";
                         std::cout << "Enter the X position";
                         std::cin >> x_pos_string;
                         std::cout << "Enter the Y position";
@@ -575,7 +575,7 @@ int main() {
                         cube.turn = 2;
                         break;
                     case 2:
-                        std::cout << "\n----------\nX's Turn\nEnter notation";
+                        std::cout << "Enter notation";
                         std::cin >> notation;
                         cube.move_cube(notation);
                         render_board();
@@ -584,12 +584,12 @@ int main() {
                 };
                 break;
             case 2:
+                std::cout << "\n----------\nO's Turn\n";
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
                 mode = std::stoi(mode_string);
                 switch(mode) {
                     case 1:
-                        std::cout << "\n----------\nO's Turn\n";
                         std::cout << "Enter the X position";
                         std::cin >> x_pos_string;
                         std::cout << "Enter the Y position";
@@ -603,7 +603,7 @@ int main() {
                         cube.turn = 1;
                         break;
                     case 2:
-                        std::cout << "\n---------\nO's Turn\nEnter notation";
+                        std::cout << "Enter notation";
                         std::cin >> notation;
                         cube.move_cube(notation);
                         render_board();
