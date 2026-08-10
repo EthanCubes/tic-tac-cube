@@ -392,8 +392,8 @@ class Cube_board {
         
         void print_full_board() {
             for (int face = 0; face < 6; face++) {
-                for (int row = 0; row < 3, row++) {
-                    for (int column = 0; column < 3, column++) {
+                for (int row = 0; row < 3; row++) {
+                    for (int column = 0; column < 3; column++) {
                         std::cout << positions[face][row][column];
                     };
                 };
@@ -402,8 +402,8 @@ class Cube_board {
 
         void print_current_side() {
             // 0 is going to be the default side
-            for (int row = 0; row < 3, row++) {
-                for (int column = 0; column < 3, column++) {
+            for (int row = 0; row < 3; row++) {
+                for (int column = 0; column < 3; column++) {
                     std::cout << positions[0][row][column];
                 };
             };
