@@ -541,9 +541,6 @@ void render_board() {
 };
 
 int main() {
-    cube.print_current_side();
-    cube.print_full_board();
-
     std::string x_pos_string;
     int x_pos;
     std::string y_pos_string;
@@ -553,7 +550,6 @@ int main() {
     int mode = 0;
     std::string notation = "";
     while (running) {
-        cube.print_full_board();
         switch(cube.turn) {
             case 1:
                 std::cout << "\n----------\nX's Turn\n";
@@ -579,7 +575,6 @@ int main() {
                         std::cin >> notation;
                         cube.move_cube(notation);
                         render_board();
-                        std::cout << cube.turn;
                         break;
                 };
                 break;
