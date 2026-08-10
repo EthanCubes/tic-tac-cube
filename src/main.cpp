@@ -424,8 +424,38 @@ class Cube_board {
         };
 };
 
+Cube_board cube;
+
+void render_board() {
+    std::array<std::array<std::string, 5>, 5> rendered_board_position = {{
+        {" ", "|", " ", "|", " "},
+        {"-", "+", "-", "+", "-"},
+        {" ", "|", " ", "|", " "},
+        {"-", "+", "-", "+", "-"},
+        {" ", "|", " ", "|", " "}
+    }};
+    for (int row = 0; row < 3; row++) {
+        for (int column = 0; column < 3; column++) {
+            int position_status = cube.positions[0][row][column];
+            switch(position_status) {
+                case 1:
+                    rendered_board_position[row*2][column*2] = "X";
+                    break;
+                case 2:
+                    rendered_board_position[row*2][column*2] = "O";
+                    break;
+            };
+        };
+    };
+    for (int row = 0; row < 5; row++) {
+        for (int column = 0; column < 5; column++) {
+            std::cout << rendered_board_position[row][column];
+        };
+        std::cout << "\n";
+    };
+};
+
 int main() {
-    Cube_board cube;
     cube.print_current_side();
     cube.print_full_board();
 
@@ -437,6 +467,7 @@ int main() {
     while (running) {
         switch(cube.turn) {
             case 1:
+                std::cout << "\n----------\nX's Turn\n";
                 std::cout << "Enter the X position";
                 std::cin >> x_pos_string;
                 std::cout << "Enter the Y position";
@@ -446,10 +477,11 @@ int main() {
                 if (cube.mark_x(x_pos, y_pos) != 0) {
                     break;
                 };
-                cube.print_current_side();
+                render_board();
                 cube.turn = 2;
                 break;
             case 2:
+                std::cout << "\n----------\nO's Turn\n";
                 std::cout << "Enter the X position";
                 std::cin >> x_pos_string;
                 std::cout << "Enter the Y position";
@@ -459,7 +491,7 @@ int main() {
                 if (cube.mark_o(x_pos, y_pos) != 0) {
                     break;
                 };
-                cube.print_current_side();
+                render_board();
                 cube.turn = 1;
                 break;
         };
