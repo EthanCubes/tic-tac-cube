@@ -389,18 +389,30 @@ class Cube_board {
                 positions[0][y][x] = -1;
             };
         };
+        
+        void print_full_board() {
+            for (int face = 0; face < 6; face++) {
+                for (int row = 0; row < 3, row++) {
+                    for (int column = 0; column < 3, column++) {
+                        std::cout << positions[face][row][column];
+                    };
+                };
+            }; 
+        };
+
+        void print_current_side() {
+            // 0 is going to be the default side
+            for (int row = 0; row < 3, row++) {
+                for (int column = 0; column < 3, column++) {
+                    std::cout << positions[0][row][column];
+                };
+            };
+        };
 };
 
 int main() {
     Cube_board cube;
-    for (int face = 0; face < 6; face++) {
-        for (int row = 0; row < 3; row++) {
-            for (int column = 0; column < 3; column++) {
-                std::cout << cube.positions[face][row][column];
-            }
-            std::cout << "\n";
-        }
-        std::cout << "\n";
-    }
+    cube.print_current_side();
+    cube.print_fulle_board();
     return 0;
 }
