@@ -297,7 +297,7 @@ class Cube_board {
             positions[5][2][2] = temporary_array[5][2][2];
         };
 
-        int turn = 1; // 1 is x, -1 is o
+        int turn = 1; // 1 is x, 2 is o
 
         // These are are the moved made out of the basic moves
         void x_prime() {
@@ -380,16 +380,24 @@ class Cube_board {
             d_move();
         };
 
-        void mark_x(int x, int y) {
-            if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2)) {
+        int mark_x(int x, int y) {
+            if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2) && (positions[0][y][x] == 0)) {
                 positions[0][y][x] = 1;
-            };
+                return 0;
+            }
+            else {
+                return 1;
+            }
         };
 
-        void mark_o(int x, int y) {
-            if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2)) {
-                positions[0][y][x] = -1;
-            };
+        int mark_o(int x, int y) {
+            if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2) && (positions[0][y][x] == 0)) {
+                positions[0][y][x] = 2;
+                return 0;
+            }
+            else {
+                return 1;
+            }
         };
         
         void print_full_board() {
@@ -435,23 +443,27 @@ int main() {
                 std::cin >> y_pos_string;
                 x_pos = std::stoi(x_pos_string);
                 y_pos = std::stoi(y_pos_string);
-                cube.mark_x(x_pos, y_pos);
+                if (cube.mark_x(x_pos, y_pos) != 0) {
+                    break;
+                };
                 cube.print_current_side();
-                cube.turn *= -1;
+                cube.turn = 2;
                 break;
-            case -1:
+            case 2:
                 std::cout << "Enter the X position";
                 std::cin >> x_pos_string;
                 std::cout << "Enter the Y position";
                 std::cin >> y_pos_string;
                 x_pos = std::stoi(x_pos_string);
                 y_pos = std::stoi(y_pos_string);
-                cube.mark_o(x_pos, y_pos);
+                if (cube.mark_o(x_pos, y_pos) != 0) {
+                    break;
+                };
                 cube.print_current_side();
-                cube.turn *= -1;
+                cube.turn = 1;
                 break;
         };
     };
 
     return 0;
-}
+};
