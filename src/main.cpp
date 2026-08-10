@@ -413,6 +413,6 @@ class Cube_board {
 int main() {
     Cube_board cube;
     cube.print_current_side();
-    cube.print_fulle_board();
+    cube.print_full_board();
     return 0;
 }
