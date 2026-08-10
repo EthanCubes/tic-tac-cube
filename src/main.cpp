@@ -396,7 +396,9 @@ class Cube_board {
                     for (int column = 0; column < 3; column++) {
                         std::cout << positions[face][row][column];
                     };
+                std::cout << "\n";
                 };
+            std::cout << "\n";
             }; 
         };
 
@@ -406,6 +408,7 @@ class Cube_board {
                 for (int column = 0; column < 3; column++) {
                     std::cout << positions[0][row][column];
                 };
+                std::cout << "\n";
             };
         };
 };
