@@ -7,7 +7,9 @@ class Cube_board {
         std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
             {{
                 {0, 0, 0},
-                {0, 0, 0}, {0, 0, 0} }},
+                {0, 0, 0}, 
+                {0, 0, 0} 
+            }},
             {{
                 {0, 0, 0},
                 {0, 0, 0},
@@ -189,7 +191,7 @@ class Cube_board {
             positions[1][2][0] = temporary_array[5][2][2];
             positions[1][2][1] = temporary_array[5][1][2];
             positions[1][2][2] = temporary_array[5][0][2];
-            // Green
+            // Green 
             positions[2][0][0] = temporary_array[2][2][0];
             positions[2][0][1] = temporary_array[2][1][0];
             positions[2][0][2] = temporary_array[2][0][0];
@@ -209,26 +211,26 @@ class Cube_board {
             positions[3][2][0] = temporary_array[0][2][2];
             positions[3][2][1] = temporary_array[0][1][2];
             positions[3][2][2] = temporary_array[0][0][2];
-            // Blue
-            positions[4][0][0] = temporary_array[4][2][0];
-            positions[4][0][1] = temporary_array[4][1][0];
-            positions[4][0][2] = temporary_array[4][0][0];
-            positions[4][1][0] = temporary_array[4][2][1];
+            // Blue 
+            positions[4][0][0] = temporary_array[4][0][2];
+            positions[4][0][1] = temporary_array[4][1][2];
+            positions[4][0][2] = temporary_array[4][2][2];
+            positions[4][1][0] = temporary_array[4][0][1];
             positions[4][1][1] = temporary_array[4][1][1];
-            positions[4][1][2] = temporary_array[4][0][1];
-            positions[4][2][0] = temporary_array[4][2][2];
-            positions[4][2][1] = temporary_array[4][1][2];
-            positions[4][2][2] = temporary_array[4][0][2];
-            // Yellow
-            positions[5][0][0] = temporary_array[3][0][0];
-            positions[5][0][1] = temporary_array[3][0][1];
-            positions[5][0][2] = temporary_array[3][0][2];
+            positions[4][1][2] = temporary_array[4][2][1];
+            positions[4][2][0] = temporary_array[4][0][0];
+            positions[4][2][1] = temporary_array[4][1][0];
+            positions[4][2][2] = temporary_array[4][2][0];
+            // Yellow (uncleared)
+            positions[5][0][0] = temporary_array[3][2][0];
+            positions[5][0][1] = temporary_array[3][2][1];
+            positions[5][0][2] = temporary_array[3][2][2];
             positions[5][1][0] = temporary_array[3][1][0];
             positions[5][1][1] = temporary_array[3][1][1];
             positions[5][1][2] = temporary_array[3][1][2];
-            positions[5][2][0] = temporary_array[3][2][0];
-            positions[5][2][1] = temporary_array[3][2][1];
-            positions[5][2][2] = temporary_array[3][2][2];
+            positions[5][2][0] = temporary_array[3][0][0];
+            positions[5][2][1] = temporary_array[3][0][1];
+            positions[5][2][2] = temporary_array[3][0][2];
         };
 
         void u_move() {
@@ -412,8 +414,8 @@ class Cube_board {
                     };
                 std::cout << "\n";
                 };
+            };
             std::cout << "\n";
-            }; 
         };
 
         void print_current_side() {
@@ -509,6 +511,7 @@ class Cube_board {
 Cube_board cube;
 
 void render_board() {
+    std::cout << "\n";
     std::array<std::array<std::string, 5>, 5> rendered_board_position = {{
         {" ", "|", " ", "|", " "},
         {"-", "+", "-", "+", "-"},
@@ -555,11 +558,7 @@ int main() {
             case 1:
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
-                try {
-                    mode = std::stoi(mode_string);
-                catch {
-                    break;
-                }
+                mode = std::stoi(mode_string);
                 switch(mode) {
                     case 1:
                         std::cout << "\n----------\nX's Turn\n";
@@ -587,12 +586,7 @@ int main() {
             case 2:
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
-                try {
-                    mode = std::stoi(mode_string);
-                }
-                catch {
-                    break;
-                }
+                mode = std::stoi(mode_string);
                 switch(mode) {
                     case 1:
                         std::cout << "\n----------\nO's Turn\n";
