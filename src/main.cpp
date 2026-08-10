@@ -35,6 +35,18 @@ class Cube_board {
                 {0, 0, 0}
             }}
         }};
+
+        // These are named after the actual moves in Rubik's cube notation. X, Y, and Z are all rotations
+        // These are the basic moves that I will use to render the rest of the moves
+        void x_move {
+        };
+        void y_move {
+        };
+        void z_move {
+        };
+        void u_move {
+        };
+        // These are are the moved made out of the basic moves
 };
 
 int main() {
