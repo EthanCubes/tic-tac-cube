@@ -296,7 +296,87 @@ class Cube_board {
             positions[5][2][1] = temporary_array[5][2][1];
             positions[5][2][2] = temporary_array[5][2][2];
         };
+
         // These are are the moved made out of the basic moves
+        void x_prime() {
+            x_move();
+            x_move();
+            x_move();
+        };
+
+        void y_prime() {
+            y_move();
+            y_move();
+            y_move();
+        };
+
+        void z_prime() {
+            z_move();
+            z_move();
+            z_move();
+        };
+        
+        void l_move() {
+            z_move();
+            u_move();
+            z_prime();
+        };
+
+        void l_prime() {
+            l_move();
+            l_move();
+            l_move();
+        };
+
+        void f_move() {
+            x_move();
+            u_move();
+            x_prime();
+        };
+
+        void f_prime() {
+            f_move();
+            f_move();
+            f_move();
+        };
+
+        void r_move() {
+            z_prime();
+            u_move();
+            z_move();
+        };
+
+        void r_prime() {
+            r_move();
+            r_move();
+            r_move();
+        };
+
+        void b_move() {
+            x_prime();
+            u_move();
+            x_move();
+        };
+
+        void b_prime() {
+            b_move();
+            b_move();
+            b_move();
+        };
+
+        void d_move() {
+            x_move();
+            x_move();
+            u_move();
+            x_move();
+            x_move();
+        };
+
+        void d_prime() {
+            d_move();
+            d_move();
+            d_move();
+        };
 };
 
 int main() {
