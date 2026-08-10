@@ -420,5 +420,38 @@ int main() {
     Cube_board cube;
     cube.print_current_side();
     cube.print_full_board();
+
+    std::string x_pos_string;
+    int x_pos;
+    std::string y_pos_string;
+    int y_pos;
+    bool running = true;
+    while (running) {
+        switch(cube.turn) {
+            case 1:
+                std::cout << "Enter the X position";
+                std::cin >> x_pos_string;
+                std::cout << "Enter the Y position";
+                std::cin >> y_pos_string;
+                x_pos = std::stoi(x_pos_string);
+                y_pos = std::stoi(y_pos_string);
+                cube.mark_x(x_pos, y_pos);
+                cube.print_current_side();
+                cube.turn *= -1;
+                break;
+            case -1:
+                std::cout << "Enter the X position";
+                std::cin >> x_pos_string;
+                std::cout << "Enter the Y position";
+                std::cin >> y_pos_string;
+                x_pos = std::stoi(x_pos_string);
+                y_pos = std::stoi(y_pos_string);
+                cube.mark_o(x_pos, y_pos);
+                cube.print_current_side();
+                cube.turn *= -1;
+                break;
+        };
+    };
+
     return 0;
 }
