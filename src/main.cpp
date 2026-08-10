@@ -410,6 +410,7 @@ class Cube_board {
                 };
                 std::cout << "\n";
             };
+            std::cout << "\n";
         };
 };
 
