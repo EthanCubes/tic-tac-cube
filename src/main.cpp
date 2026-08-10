@@ -378,13 +378,13 @@ class Cube_board {
             d_move();
         };
 
-        void mark_x(x, y) {
+        void mark_x(int x, int y) {
             if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2)) {
                 positions[0][y][x] = 1;
             };
         };
 
-        void mark_o(x, y) {
+        void mark_o(int x, int y) {
             if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2)) {
                 positions[0][y][x] = -1;
             };
