@@ -550,11 +550,16 @@ int main() {
     int mode = 0;
     std::string notation = "";
     while (running) {
+        cube.print_full_board();
         switch(cube.turn) {
             case 1:
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
-                mode = std::stoi(mode_string);
+                try {
+                    mode = std::stoi(mode_string);
+                catch {
+                    break;
+                }
                 switch(mode) {
                     case 1:
                         std::cout << "\n----------\nX's Turn\n";
@@ -582,7 +587,12 @@ int main() {
             case 2:
                 std::cout << "Enter mode";
                 std::cin >> mode_string;
-                mode = std::stoi(mode_string);
+                try {
+                    mode = std::stoi(mode_string);
+                }
+                catch {
+                    break;
+                }
                 switch(mode) {
                     case 1:
                         std::cout << "\n----------\nO's Turn\n";
