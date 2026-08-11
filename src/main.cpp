@@ -386,6 +386,42 @@ class Cube_board {
             d_move();
         };
 
+        void m_move() {
+            x_prime();
+            l_prime();
+            r_move();
+        };
+
+        void m_prime() {
+            m_move();
+            m_move();
+            m_move();
+        };
+
+        void e_move() {
+            y_prime();
+            u_move();
+            d_prime();
+        };
+        
+        void e_prime() {
+            e_move();
+            e_move();
+            e_move();
+        };
+
+        void s_move() {
+            z_move();
+            f_prime();
+            b_move();
+        };
+
+        void s_prime() {
+            s_move();
+            s_move();
+            s_move();
+        };
+
         int mark_x(int x, int y) {
             if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2) && (positions[0][y][x] == 0)) {
                 positions[0][y][x] = 1;
