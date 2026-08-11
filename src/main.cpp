@@ -586,7 +586,6 @@ int main() {
     int mode = 0;
     std::string notation = "";
     while (running) {
-        cube.print_full_board();
         switch(cube.turn) {
             case 1:
                 std::cout << "\n----------\nX's Turn\n";
