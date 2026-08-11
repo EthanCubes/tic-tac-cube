@@ -11,29 +11,29 @@ class Cube_board {
                 {0, 0, 0} 
             }},
             {{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {1, 1, 1},
+                {1, 1, 1},
+                {1, 1, 1}
             }},
             {{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {2, 2, 2},
+                {2, 2, 2},
+                {2, 2, 2}
             }},
             {{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {3, 3, 3},
+                {3, 3, 3},
+                {3, 3, 3}
             }},
             {{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {4, 4, 4},
+                {4, 4, 4},
+                {4, 4, 4}
             }},
             {{
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+                {5, 5, 5},
+                {5, 5, 5},
+                {5, 5, 5}
             }}
         }};
 
@@ -221,15 +221,15 @@ class Cube_board {
             positions[4][2][0] = temporary_array[4][0][0];
             positions[4][2][1] = temporary_array[4][1][0];
             positions[4][2][2] = temporary_array[4][2][0];
-            // Yellow (uncleared)
+            // Yellow
             positions[5][0][0] = temporary_array[3][2][0];
-            positions[5][0][1] = temporary_array[3][2][1];
-            positions[5][0][2] = temporary_array[3][2][2];
-            positions[5][1][0] = temporary_array[3][1][0];
+            positions[5][0][1] = temporary_array[3][1][0];
+            positions[5][0][2] = temporary_array[3][0][0];
+            positions[5][1][0] = temporary_array[3][2][1];
             positions[5][1][1] = temporary_array[3][1][1];
-            positions[5][1][2] = temporary_array[3][1][2];
-            positions[5][2][0] = temporary_array[3][0][0];
-            positions[5][2][1] = temporary_array[3][0][1];
+            positions[5][1][2] = temporary_array[3][0][1];
+            positions[5][2][0] = temporary_array[3][2][2];
+            positions[5][2][1] = temporary_array[3][1][2];
             positions[5][2][2] = temporary_array[3][0][2];
         };
 
@@ -550,6 +550,7 @@ int main() {
     int mode = 0;
     std::string notation = "";
     while (running) {
+        cube.print_full_board();
         switch(cube.turn) {
             case 1:
                 std::cout << "\n----------\nX's Turn\n";
