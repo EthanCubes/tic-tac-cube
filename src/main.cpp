@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <string>
+#include <tuple>
 
 class Cube_board {
     public:
@@ -542,6 +543,44 @@ class Cube_board {
                 std::cout << "Invalid notation\n";
             }
         };
+
+        std::tuple<int, std::array<std::array<int, 2>, 3>> scan_for_wins() {
+            for (int i = 0; i < 6; i++) {
+                // Horizontal 1
+                if (positions[i][0][0] == positions[i][0][1] && positions[i][0][0] == positions[i][0][2] && positions[i][0][0] != 0) {
+                    return {positions[i][0][0], {{{0, 0}, {0, 1}, {0, 2}}}};
+                };
+                // Horizontal 2
+                if (positions[i][1][0] == positions[i][1][1] && positions[i][1][0] == positions[i][1][2] && positions[i][1][0] != 0) {
+                    return {positions[i][1][0], {{{1, 0}, {1, 1}, {1, 2}}}};
+                };
+                // Horizontal 3
+                if (positions[i][2][0] == positions[i][2][1] && positions[i][2][0] == positions[i][2][2] && positions[i][2][0] != 0) {
+                    return {positions[i][2][0], {{{2, 0}, {2, 1}, {2, 2}}}};
+                };
+                // Vertical 1
+                if (positions[i][0][0] == positions[i][1][0] && positions[i][0][0] == positions[i][2][0] && positions[i][0][0] != 0) {
+                    return {positions[i][0][0], {{{0, 0}, {1, 0}, {2, 0}}}};
+                };
+                // Vertical 2
+                if (positions[i][0][1] == positions[i][1][1] && positions[i][0][1] == positions[i][2][1] && positions[i][0][1] != 0) {
+                    return {positions[i][0][1], {{{0, 1}, {1, 1}, {2, 1}}}};
+                };
+                // Vertical 3
+                if (positions[i][0][2] == positions[i][1][2] && positions[i][0][2] == positions[i][2][2] && positions[i][0][2] != 0) {
+                    return {positions[i][0][2], {{{0, 2}, {1, 2}, {2, 2}}}};
+                };
+                // Diagonal 1
+                if (positions[i][0][0] == positions[i][1][1] && positions[i][0][0] == positions[i][2][2] && positions[i][0][0] != 0) {
+                    return {positions[i][0][0], {{{0, 0}, {1, 1}, {2, 2}}}};
+                };
+                // Diagonal 2
+                if (positions[i][0][2] == positions[i][1][1] && positions[i][0][2] == positions[i][2][0] && positions[i][0][2] != 0) {
+                    return {positions[i][0][2], {{{0, 2}, {1, 1}, {2, 0}}}};
+                };
+            };
+            return {0, {{{0, 0}, {0, 0}, {0, 0}}}};
+        };
 };
 
 Cube_board cube;
@@ -642,6 +681,8 @@ int main() {
                 };
                 break;
         };
+        std::tuple<int, std::array<std::array<int, 2>, 3>> wins = cube.scan_for_wins();
+        std::cout << std::get<0>(wins);
     };
 
     return 0;
