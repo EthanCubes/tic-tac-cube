@@ -682,7 +682,14 @@ int main() {
                 break;
         };
         std::tuple<int, std::array<std::array<int, 2>, 3>> wins = cube.scan_for_wins();
-        std::cout << std::get<0>(wins);
+        if (std::get<0>(wins) == 1) {
+            std::cout  << "X Wins!\n";
+            running = false;
+        }
+        else if (std::get<0>(wins) == 2) {
+            std::cout << "O Wins!\n";
+            running = false;
+        };
     };
 
     return 0;
