@@ -573,7 +573,7 @@ void Cube_board::render_board() {
     };
 };
 
-void Cube_board::gameloop() {
+int Cube_board::gameloop() {
     std::string x_pos_string;
     int x_pos;
     std::string y_pos_string;
@@ -582,71 +582,70 @@ void Cube_board::gameloop() {
     std::string mode_string = "0";
     int mode = 0;
     std::string notation = "";
-    while (running) {
-        switch(turn) {
-            case 1:
-                std::cout << "\n----------\nX's Turn\n";
-                std::cout << "Enter mode";
-                std::cin >> mode_string;
-                mode = std::stoi(mode_string);
-                switch(mode) {
-                    case 1:
-                        std::cout << "Enter the X position";
-                        std::cin >> x_pos_string;
-                        std::cout << "Enter the Y position";
-                        std::cin >> y_pos_string;
-                        x_pos = std::stoi(x_pos_string);
-                        y_pos = std::stoi(y_pos_string);
-                        if (mark_x(x_pos, y_pos) != 0) {
-                            break;
-                        };
-                        render_board();
-                        turn = 2;
+    switch(turn) {
+        case 1:
+            std::cout << "\n----------\nX's Turn\n";
+            std::cout << "Enter mode";
+            std::cin >> mode_string;
+            mode = std::stoi(mode_string);
+            switch(mode) {
+                case 1:
+                    std::cout << "Enter the X position";
+                    std::cin >> x_pos_string;
+                    std::cout << "Enter the Y position";
+                    std::cin >> y_pos_string;
+                    x_pos = std::stoi(x_pos_string);
+                    y_pos = std::stoi(y_pos_string);
+                    if (mark_x(x_pos, y_pos) != 0) {
                         break;
-                    case 2:
-                        std::cout << "Enter notation";
-                        std::cin >> notation;
-                        move_cube(notation);
-                        render_board();
+                    };
+                    render_board();
+                    turn = 2;
+                    break;
+                case 2:
+                    std::cout << "Enter notation";
+                    std::cin >> notation;
+                    move_cube(notation);
+                    render_board();
+                    break;
+            };
+            break;
+        case 2:
+            std::cout << "\n----------\nO's Turn\n";
+            std::cout << "Enter mode";
+            std::cin >> mode_string;
+            mode = std::stoi(mode_string);
+            switch(mode) {
+                case 1:
+                    std::cout << "Enter the X position";
+                    std::cin >> x_pos_string;
+                    std::cout << "Enter the Y position";
+                    std::cin >> y_pos_string;
+                    x_pos = std::stoi(x_pos_string);
+                    y_pos = std::stoi(y_pos_string);
+                    if (mark_o(x_pos, y_pos) != 0) {
                         break;
-                };
-                break;
-            case 2:
-                std::cout << "\n----------\nO's Turn\n";
-                std::cout << "Enter mode";
-                std::cin >> mode_string;
-                mode = std::stoi(mode_string);
-                switch(mode) {
-                    case 1:
-                        std::cout << "Enter the X position";
-                        std::cin >> x_pos_string;
-                        std::cout << "Enter the Y position";
-                        std::cin >> y_pos_string;
-                        x_pos = std::stoi(x_pos_string);
-                        y_pos = std::stoi(y_pos_string);
-                        if (mark_o(x_pos, y_pos) != 0) {
-                            break;
-                        };
-                        render_board();
-                        turn = 1;
-                        break;
-                    case 2:
-                        std::cout << "Enter notation";
-                        std::cin >> notation;
-                        move_cube(notation);
-                        render_board();
-                        break;
-                };
-                break;
-        };
+                    };
+                    render_board();
+                    turn = 1;
+                    break;
+                case 2:
+                    std::cout << "Enter notation";
+                    std::cin >> notation;
+                    move_cube(notation);
+                    render_board();
+                    break;
+            };
+            break;
         std::tuple<int, std::array<std::array<int, 2>, 3>> wins = scan_for_wins();
         if (std::get<0>(wins) == 1) {
             std::cout  << "X Wins!\n";
-            running = false;
+            return 1;
         }
         else if (std::get<0>(wins) == 2) {
             std::cout << "O Wins!\n";
-            running = false;
+            return 1;
         };
     };
+    return 2;
 };

@@ -32,11 +32,11 @@ int main() {
                 running = false;
                 break;
             case 2:
-                cube.gameloop();
-                mode = 0;
+                mode = cube.gameloop();
                 break;
             default:
                 std::cout << "Invalid command";
+                mode = 0;
         };
     };
     return 0;
