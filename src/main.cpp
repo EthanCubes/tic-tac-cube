@@ -23,7 +23,7 @@ Cube_board cube;
 int main() {
     int mode = 0;
     bool running = true;
-    while (running && !WindowShouldClose()) {
+    while (running) {
         switch(mode) {
             case 0:
                 mode = main_menu();
@@ -39,6 +39,5 @@ int main() {
                 std::cout << "Invalid command";
         };
     };
-    CloseWindow();
     return 0;
 };
