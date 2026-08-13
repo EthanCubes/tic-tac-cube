@@ -660,16 +660,16 @@ int Cube_board::gameloop() {
                     render_board();
                     break;
             };
-            break;
-        std::tuple<int, std::array<std::array<int, 2>, 3>> wins = scan_for_wins();
-        if (std::get<0>(wins) == 1) {
-            std::cout  << "X Wins!\n";
-            return 1;
-        }
-        else if (std::get<0>(wins) == 2) {
-            std::cout << "O Wins!\n";
-            return 1;
-        };
+        break;
+    };
+    std::tuple<int, std::array<std::array<int, 2>, 3>> wins = scan_for_wins();
+    if (std::get<0>(wins) == 1) {
+        std::cout  << "X Wins!\n";
+        return 0;
+    }
+    else if (std::get<0>(wins) == 2) {
+        std::cout << "O Wins!\n";
+        return 0;
     };
     return 2;
 };
