@@ -25,7 +25,7 @@ Or from GitHub [here]()
 ## How to run locally
 I'm assuming this means running the source code instead of the precompiled binaries. If you do want the precompiled binaries, use the [Quick Start](#quick-start). This requires some basic terminal knowledge of commands such as "ls", "cd", etc.
 1. Clone the git repo with `git clone https://github.com/EthanCubes/tic-tac-cube`
-2. Enter the git repo and run `g++ -std=c++17 -o build/tic-tac-cube src/main.cpp`. This will compile the code to that your device can run it, and the binary will be located inside the build directory.
+2. Enter the git repo and run `g++ -std=c++17 -lraylib -o build/tic-tac-cube src/main.cpp`. This will compile the code to that your device can run it, and the binary will be located inside the build directory.
 3. Run `build/tic-tac-cube` to run the program
 
 ## How it works
@@ -37,5 +37,6 @@ AI was used for debugging and learning. I never used it to tell me what code I s
 ## Credits
 - [Mosh Hamedani's C++ Course]() helped  this is one of my first C++ projects, although a some of my previous knowledge from JavaScript carried over.
 - [GeeksForGeeks](https://www.geeksforgeeks.org) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be longer than the entire rest of the readme.
+- This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c) helped with getting raylib to work (it's technically a C tutorial but like whatever)
 - The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer). Somehow I still managed to get one of the four quintessential moves wrong and spent like 2 hours trying to fix it.
 - This project was entirely coded with [Vim](https://www.vim.org). It's probably a better idea to use CLion or something, but I'm kinda addicted to using Vim now and will repeated bash the hjkl keys even in places that aren't Vim (like Discord or the devlog window in Stardance).
