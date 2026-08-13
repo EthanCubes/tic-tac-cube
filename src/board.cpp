@@ -597,6 +597,17 @@ void Cube_board::render_board() {
     };
 };
 
+void Cube_board::reset() {
+    turn = 1;
+    for (int face = 0; face < 6; face++) {
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                positions[face][row][column] = 0;
+            };
+        };
+    };
+};
+
 int Cube_board::gameloop() {
     std::string x_pos_string;
     int x_pos;
@@ -665,10 +676,12 @@ int Cube_board::gameloop() {
     std::tuple<int, std::array<std::array<int, 2>, 3>> wins = scan_for_wins();
     if (std::get<0>(wins) == 1) {
         std::cout  << "X Wins!\n";
+        reset();
         return 0;
     }
     else if (std::get<0>(wins) == 2) {
         std::cout << "O Wins!\n";
+        reset();
         return 0;
     };
     return 2;
