@@ -501,6 +501,30 @@ void Cube_board::move_cube(std::string move) {
         z_prime();
         turn = 3 - turn;
     }
+    else if (move == "M") {
+        m_move();
+        turn = 3 - turn;
+    }
+    else if (move == "M'") {
+        m_prime();
+        turn = 3 - turn;
+    }
+    else if (move == "E") {
+        e_move();
+        turn = 3 - turn;
+    }
+    else if (move == "E'") {
+        e_prime();
+        turn = 3 - turn;
+    }
+    else if (move == "S") {
+        s_move();
+        turn = 3 - turn;
+    }
+    else if (move == "S'") {
+        s_prime();
+        turn = 3 - turn;
+    }
     else {
         std::cout << "Invalid notation\n";
     }
