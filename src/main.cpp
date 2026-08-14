@@ -14,6 +14,44 @@
 - [ ] Uh make the GUI look nice
 */
 
+// Buttons are always pretty difficult
+class button {
+    private:
+        int start_x;
+        int start_y;
+        int width;
+        int height;
+
+        bool setup = false;
+    public:
+        void setup_button(int start_x_setup, int start_y_setup, int width_setup, int height_setup) {
+            if (setup) {
+                std::cout << "Button already declared!";
+                return;
+            };
+            start_x = start_x_setup;
+            start_y = start_y_setup;
+            width = width_setup;
+            height = height_setup;
+            setup = true;
+        };
+
+        int check_button_clicked {
+            if (!setup) {
+                return 0;
+            };
+            mouse_pos = GetMousePosition();
+            mouse_x = mouse_pos.x;
+            mouse_y = mouse_pos.y;
+            if (IsMouseButtonDown()) {
+                if (mouse_x > start_x && mouse_x < start_x+width && mouse_y > start_y && mouse_y < start_y+height) {
+                    return 1;
+                };
+            };
+            return 0;
+        };
+};
+
 int main_menu(float mouse_x, float mouse_y, int screen_width, int screen_height) {
     if (IsMouseButtonDown(0)) {
         // Check for buttons
