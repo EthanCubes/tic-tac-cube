@@ -39,4 +39,5 @@ AI was used for debugging and learning. I never used it to tell me what code I s
 - [GeeksForGeeks](https://www.geeksforgeeks.org) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be longer than the entire rest of the readme.
 - This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c) helped with getting raylib to work (it's technically a C tutorial but like whatever)
 - The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer). Somehow I still managed to get one of the four quintessential moves wrong and spent like 2 hours trying to fix it.
+- The GUI of this code was made in [Raylib](https://www.raylib.com/). It seems much easier than using SDL2 so far.
 - This project was entirely coded with [Vim](https://www.vim.org). It's probably a better idea to use CLion or something, but I'm kinda addicted to using Vim now and will repeated bash the hjkl keys even in places that aren't Vim (like Discord or the devlog window in Stardance).
