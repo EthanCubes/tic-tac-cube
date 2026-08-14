@@ -9,13 +9,13 @@
 
 /*
 - [x] Make a GUI for the main menu
-- [ ] Make a GUI for the game
+- [x] Make a graphics for the game
+- [ ] Make the interactivity with the game
 - [ ] Make a Bot for the game
-- [ ] Uh make the GUI look nice
 */
 
 // Buttons are always pretty difficult
-class button {
+class Button {
     private:
         int start_x;
         int start_y;
@@ -34,6 +34,14 @@ class button {
             width = width_setup;
             height = height_setup;
             setup = true;
+        };
+
+        void draw_button(color) {
+            if (!setup) {
+                std::cout << "Button not declared!";
+                return;
+            };
+            DrawRectangle(start_x, start_y, width, height, color);
         };
 
         int check_button_clicked() {
@@ -83,6 +91,9 @@ int main() {
     Vector2 mouse_pos;
     float mouse_x;
     float mouse_y;
+
+    Button play;
+    Button exit;
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
