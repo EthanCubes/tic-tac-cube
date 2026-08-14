@@ -36,12 +36,13 @@ class Button {
             setup = true;
         };
 
-        void draw_button(Color color) {
+        void draw_button(Color color, const char* text) {
             if (!setup) {
                 std::cout << "Button not declared!";
                 return;
             };
             DrawRectangle(start_x, start_y, width, height, color);
+            DrawText(text, start_x, start_y, 40, BLACK);
         };
 
         int check_button_clicked() {
@@ -67,8 +68,6 @@ Button play_button;
 Button exit_button;
 
 int main_menu(int screen_width, int screen_height) {
-    play_button.draw_button(RED);
-    exit_button.draw_button(RED);
     if (play_button.check_button_clicked() == 1) {
         return 2;
     }
@@ -127,10 +126,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play_button.draw_button(RED);
-                exit_button.draw_button(RED);
-                DrawText("Play", screen_width/10*4.7, screen_height/10*4.4, 30, WHITE);
-                DrawText("Exit", screen_width/10*4.7, screen_height/10*6.4, 30, WHITE);
+                play_button.draw_button(RED, "PLAY");
+                exit_button.draw_button(RED, "EXIT");
                 EndDrawing();
                 break;
             case 2:
