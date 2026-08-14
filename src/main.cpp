@@ -36,14 +36,14 @@ class button {
             setup = true;
         };
 
-        int check_button_clicked {
+        int check_button_clicked() {
             if (!setup) {
                 return 0;
             };
-            mouse_pos = GetMousePosition();
-            mouse_x = mouse_pos.x;
-            mouse_y = mouse_pos.y;
-            if (IsMouseButtonDown()) {
+            Vector2 mouse_pos = GetMousePosition();
+            int mouse_x = mouse_pos.x;
+            int mouse_y = mouse_pos.y;
+            if (IsMouseButtonDown(0)) {
                 if (mouse_x > start_x && mouse_x < start_x+width && mouse_y > start_y && mouse_y < start_y+height) {
                     return 1;
                 };
@@ -81,8 +81,8 @@ int main() {
     Image logo_image = LoadImage("assets/bitmap.png");
     SetWindowIcon(logo_image);
     Vector2 mouse_pos;
-    float mouse_x = mouse_pos.x;
-    float mouse_y = mouse_pos.y;
+    float mouse_x;
+    float mouse_y;
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
