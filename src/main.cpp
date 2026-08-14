@@ -36,12 +36,14 @@ class Button {
             setup = true;
         };
 
-        void draw_button(color) {
+        void draw_button(Color color) {
             if (!setup) {
                 std::cout << "Button not declared!";
                 return;
             };
+            BeginDrawing();
             DrawRectangle(start_x, start_y, width, height, color);
+            EndDrawing();
         };
 
         int check_button_clicked() {
@@ -60,15 +62,16 @@ class Button {
         };
 };
 
-int main_menu(float mouse_x, float mouse_y, int screen_width, int screen_height) {
-    if (IsMouseButtonDown(0)) {
-        // Check for buttons
-        if (mouse_x > screen_width/10*4 && mouse_x < screen_width/10*4+screen_width/5 && mouse_y > screen_height/10*4 && mouse_y < screen_height/10*4+screen_height/10) {
-            return 2;
-        }
-        else if (mouse_x > screen_width/10*4 && mouse_x < screen_width/10*4+screen_width/5 && mouse_y > screen_height/10*6 && mouse_y < screen_height/10*6+screen_height/10) {
-            return 1;
-        };
+int main_menu(int screen_width, int screen_height) {
+    Button play;
+    Button exit;
+    play.setup_button(screen_width/10*4.7, screen_height/10*4.4, screen_width/5, screen_height/10);
+    exit.setup_button(screen_width/10*4.7, screen_height/10*6.4, screen_width/5, screen_height/10);
+    if (play.check_button_clicked() == 1) {
+        return 2;
+    }
+    else if (exit.check_button_clicked() == 1) {
+        return 1;
     };
     return 0;
 };
@@ -104,7 +107,7 @@ int main() {
         // Simulate
         switch(mode) {
             case 0:
-                mode = main_menu(mouse_x, mouse_y, screen_width, screen_height);
+                mode = main_menu(screen_width, screen_height);
                 if (mode != 0) {
                     std::cout << "thing";
                 };
