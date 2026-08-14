@@ -7,14 +7,16 @@
 
 #include "raylib.h"
 
-// List of stuff I need to do: make a gui for main menu, make gui for game, add bot to play with. Uh not really sure how to do any of that.
+/*
+- [x] Make a GUI for the main menu
+- [ ] Make a GUI for the game
+- [ ] Make a Bot for the game
+- [ ] Uh make the GUI look nice
+*/
 
 int main_menu(float mouse_x, float mouse_y, int screen_width, int screen_height) {
-    std::string input;
-    // I need to add a button
     if (IsMouseButtonDown(0)) {
         // Check for buttons
-        // There's no reasn this shouldn't work, so why isn't it working? Like this has worked before I think
         if (mouse_x > screen_width/10*4 && mouse_x < screen_width/10*4+screen_width/5 && mouse_y > screen_height/10*4 && mouse_y < screen_height/10*4+screen_height/10) {
             return 2;
         }
@@ -69,15 +71,57 @@ int main() {
                 mode = 0;
         };
         // Render
-        BeginDrawing();
-        ClearBackground({25, 25, 25, 255});
-        DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
-        // Drawing the buttons
-        DrawRectangle(screen_width/10*4, screen_height/10*4, screen_width/5, screen_height/10, RED); // X, Y, Width, Heigh, Color
-        DrawText("Play", screen_width/10*4.7, screen_height/10*4.4, 30, WHITE);
-        DrawRectangle(screen_width/10*4, screen_height/10*6, screen_width/5, screen_height/10, RED); 
-        DrawText("Exit", screen_width/10*4.7, screen_height/10*6.4, 30, WHITE);
-        EndDrawing();
+        switch(mode) {
+            case 0:
+                BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+                DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
+                // Drawing the buttons
+                DrawRectangle(screen_width/10*4, screen_height/10*4, screen_width/5, screen_height/10, RED); // X, Y, Width, Heigh, Color
+                DrawText("Play", screen_width/10*4.7, screen_height/10*4.4, 30, WHITE);
+                DrawRectangle(screen_width/10*4, screen_height/10*6, screen_width/5, screen_height/10, RED); 
+                DrawText("Exit", screen_width/10*4.7, screen_height/10*6.4, 30, WHITE);
+                EndDrawing();
+                break;
+            case 2:
+                // Uh like render the game idk how to do it
+                // Essentially: 3x3 square, rendered somehow, with x's and o's drawn onto it
+                BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+
+                // Row 1
+                DrawRectangle(screen_width/2-200, screen_height/2-200, 100, 100, RED);
+                DrawRectangle(screen_width/2-50, screen_height/2-200, 100, 100, RED);
+                DrawRectangle(screen_width/2+100, screen_height/2-200, 100, 100, RED);
+                // Row 2
+                DrawRectangle(screen_width/2-200, screen_height/2-50, 100, 100, RED);
+                DrawRectangle(screen_width/2-50, screen_height/2-50, 100, 100, RED);
+                DrawRectangle(screen_width/2+100, screen_height/2-50, 100, 100, RED);
+                // Row 3
+                DrawRectangle(screen_width/2-200, screen_height/2+100, 100, 100, RED);
+                DrawRectangle(screen_width/2-50, screen_height/2+100, 100, 100, RED);
+                DrawRectangle(screen_width/2+100, screen_height/2+100, 100, 100, RED);
+
+                // Rendering the positions on the board
+                int temp_x_pos = screen_width/2-175;
+                int temp_y_pos = screen_height/2-175;
+                for (int row = 0; row < 3; row++) {
+                    for (int column = 0; column < 3; column++) {
+                        if (cube.positions[0][row][column] == 1) {
+                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
+                        }
+                        else if (cube.positions[0][row][column] == 2) {
+                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
+                        };
+                        temp_x_pos += 150;
+                    };
+                    temp_x_pos = screen_width/2-175;
+                    temp_y_pos += 150;
+                };
+
+                EndDrawing();
+                break;
+        };
     };
     CloseWindow();
     return 0;
