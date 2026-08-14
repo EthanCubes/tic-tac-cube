@@ -29,8 +29,8 @@ class Button {
                 std::cout << "Button already declared!";
                 return;
             };
-            start_x = start_x_setup;
-            start_y = start_y_setup;
+            start_x = start_x_setup-width_setup/2;
+            start_y = start_y_setup-height_setup/2;
             width = width_setup;
             height = height_setup;
             setup = true;
@@ -60,24 +60,23 @@ class Button {
         };
 };
 
+// Class is created inside of the main function, which makes the board consistent.
+Cube_board cube;
+
+Button play_button;
+Button exit_button;
+
 int main_menu(int screen_width, int screen_height) {
-    Button play;
-    Button exit;
-    play.setup_button(screen_width/10*4.7, screen_height/10*4.4, screen_width/5, screen_height/10);
-    exit.setup_button(screen_width/10*4.7, screen_height/10*6.4, screen_width/5, screen_height/10);
-    play.draw_button(RED);
-    exit.draw_button(RED);
-    if (play.check_button_clicked() == 1) {
+    play_button.draw_button(RED);
+    exit_button.draw_button(RED);
+    if (play_button.check_button_clicked() == 1) {
         return 2;
     }
-    else if (exit.check_button_clicked() == 1) {
+    else if (exit_button.check_button_clicked() == 1) {
         return 1;
     };
     return 0;
 };
-
-// Class is created inside of the main function, which makes the board consistent.
-Cube_board cube;
 
 int main() {
     int mode = 0;
@@ -94,8 +93,8 @@ int main() {
     float mouse_x;
     float mouse_y;
 
-    Button play;
-    Button exit;
+    play_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5, screen_height/10);
+    exit_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
@@ -128,8 +127,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play.draw_button(RED);
-                exit.draw_button(RED);
+                play_button.draw_button(RED);
+                exit_button.draw_button(RED);
                 DrawText("Play", screen_width/10*4.7, screen_height/10*4.4, 30, WHITE);
                 DrawText("Exit", screen_width/10*4.7, screen_height/10*6.4, 30, WHITE);
                 EndDrawing();
