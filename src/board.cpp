@@ -602,7 +602,7 @@ void Cube_board::reset() {
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                positions[face][row][column] = 0;
+                positions[face][row][column] = 1;
             };
         };
     };
@@ -621,14 +621,14 @@ int Cube_board::gameloop() {
         case 1:
             std::cout << "\n----------\nX's Turn\n";
             std::cout << "Enter mode";
-            std::cin >> mode_string;
+            //std::cin >> mode_string;
             mode = std::stoi(mode_string);
             switch(mode) {
                 case 1:
                     std::cout << "Enter the X position";
-                    std::cin >> x_pos_string;
+                    //std::cin >> x_pos_string;
                     std::cout << "Enter the Y position";
-                    std::cin >> y_pos_string;
+                    //std::cin >> y_pos_string;
                     x_pos = std::stoi(x_pos_string);
                     y_pos = std::stoi(y_pos_string);
                     if (mark_x(x_pos, y_pos) != 0) {
@@ -639,7 +639,7 @@ int Cube_board::gameloop() {
                     break;
                 case 2:
                     std::cout << "Enter notation";
-                    std::cin >> notation;
+                    //std::cin >> notation;
                     move_cube(notation);
                     render_board();
                     break;
@@ -648,14 +648,14 @@ int Cube_board::gameloop() {
         case 2:
             std::cout << "\n----------\nO's Turn\n";
             std::cout << "Enter mode";
-            std::cin >> mode_string;
+            //std::cin >> mode_string;
             mode = std::stoi(mode_string);
             switch(mode) {
                 case 1:
                     std::cout << "Enter the X position";
-                    std::cin >> x_pos_string;
+                    // std::cin >> x_pos_string;
                     std::cout << "Enter the Y position";
-                    std::cin >> y_pos_string;
+                    // std::cin >> y_pos_string;
                     x_pos = std::stoi(x_pos_string);
                     y_pos = std::stoi(y_pos_string);
                     if (mark_o(x_pos, y_pos) != 0) {
@@ -666,7 +666,7 @@ int Cube_board::gameloop() {
                     break;
                 case 2:
                     std::cout << "Enter notation";
-                    std::cin >> notation;
+                    //std::cin >> notation;
                     move_cube(notation);
                     render_board();
                     break;
