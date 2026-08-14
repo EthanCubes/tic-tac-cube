@@ -41,9 +41,7 @@ class Button {
                 std::cout << "Button not declared!";
                 return;
             };
-            BeginDrawing();
             DrawRectangle(start_x, start_y, width, height, color);
-            EndDrawing();
         };
 
         int check_button_clicked() {
@@ -67,6 +65,8 @@ int main_menu(int screen_width, int screen_height) {
     Button exit;
     play.setup_button(screen_width/10*4.7, screen_height/10*4.4, screen_width/5, screen_height/10);
     exit.setup_button(screen_width/10*4.7, screen_height/10*6.4, screen_width/5, screen_height/10);
+    play.draw_button(RED);
+    exit.draw_button(RED);
     if (play.check_button_clicked() == 1) {
         return 2;
     }
@@ -78,7 +78,6 @@ int main_menu(int screen_width, int screen_height) {
 
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
-
 
 int main() {
     int mode = 0;
@@ -129,9 +128,9 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                DrawRectangle(screen_width/10*4, screen_height/10*4, screen_width/5, screen_height/10, RED); // X, Y, Width, Heigh, Color
+                play.draw_button(RED);
+                exit.draw_button(RED);
                 DrawText("Play", screen_width/10*4.7, screen_height/10*4.4, 30, WHITE);
-                DrawRectangle(screen_width/10*4, screen_height/10*6, screen_width/5, screen_height/10, RED); 
                 DrawText("Exit", screen_width/10*4.7, screen_height/10*6.4, 30, WHITE);
                 EndDrawing();
                 break;
