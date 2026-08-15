@@ -207,19 +207,19 @@ int main() {
                     cube.user_input("mX");
                 }
                 else if (z_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mZ'");
+                    cube.user_input("mZp");
                 }
                 else if (z_move_button.check_button_clicked() == 1) {
                     cube.user_input("mZ");
                 }
                 else if (x_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mX'");
+                    cube.user_input("mXp");
                 }
                 else if (l_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mL'");
+                    cube.user_input("mLp");
                 }
                 else if (m_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mM'");
+                    cube.user_input("mMp");
                 }
                 else if (r_move_button.check_button_clicked() == 1) {
                     cube.user_input("mR");
@@ -228,16 +228,16 @@ int main() {
                     cube.user_input("mB");
                 }
                 else if (b_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mB'");
+                    cube.user_input("mBp");
                 }
                 else if (s_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mS'");
+                    cube.user_input("mSp");
                 }
                 else if (s_move_button.check_button_clicked() == 1) {
                     cube.user_input("mS");
                 }
                 else if (f_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mF'");
+                    cube.user_input("mFp");
                 }
                 else if (f_move_button.check_button_clicked() == 1) {
                     cube.user_input("mF");
@@ -249,7 +249,7 @@ int main() {
                     cube.user_input("mM");
                 }
                 else if (r_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mR'");
+                    cube.user_input("mRp");
                 };
                 mode = cube.gameloop();
                 break;

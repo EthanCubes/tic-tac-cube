@@ -684,7 +684,7 @@ void Cube_board::user_input(std::string input) {
                 move_cube(std::string("")+input[1]);
                 break;
             case 3:
-                move_cube(std::string("") + input[1]+input[2]);
+                move_cube(input[1]+std::string("'"));
                 break;
         };
     }
