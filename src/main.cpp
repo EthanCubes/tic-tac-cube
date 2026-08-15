@@ -134,6 +134,35 @@ int main() {
                 running = false;
                 break;
             case 2:
+                // Check for user input of the grid spaces (P and M)
+                if (grid1.check_button_clicked() == 1) {
+                    cube.user_input("p1");
+                }
+                else if (grid2.check_button_clicked() == 1) {
+                    cube.user_input("p2");
+                }
+                else if (grid3.check_button_clicked() == 1) {
+                    cube.user_input("p3");
+                }
+                else if (grid4.check_button_clicked() == 1) {
+                    cube.user_input("p4");
+                }
+                else if (grid5.check_button_clicked() == 1) {
+                    cube.user_input("p5");
+                }
+                else if (grid6.check_button_clicked() == 1) {
+                    cube.user_input("p6");
+                }
+                else if (grid7.check_button_clicked() == 1) {
+                    cube.user_input("p7");
+                }
+                else if (grid8.check_button_clicked() == 1) {
+                    cube.user_input("p8");
+                }
+                else if (grid9.check_button_clicked() == 1) {
+                    cube.user_input("p9");
+                };
+
                 mode = cube.gameloop();
                 break;
             default:

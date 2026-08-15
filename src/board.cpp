@@ -602,7 +602,7 @@ void Cube_board::reset() {
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                positions[face][row][column] = 1;
+                positions[face][row][column] = 0;
             };
         };
     };
@@ -664,7 +664,7 @@ void Cube_board::user_input(std::string input) {
         }
         else if (input[1] == '8') {
             if (positions[0][2][1] == 0) {
-                positions[0][2][0] = turn;
+                positions[0][2][1] = turn;
                 turn = 3 - turn;
             };
         }
@@ -694,10 +694,13 @@ void Cube_board::user_input(std::string input) {
 };
 
 int Cube_board::gameloop() {
+    // Check for wins so that there's a way to exit the gameloop without exiting the game
     if (std::get<0>(scan_for_wins()) == 1) {
+        reset();
         return 0;
     }
     else if (std::get<0>(scan_for_wins()) == 2) {
+        reset();
         return 0;
     };
     return 2;
