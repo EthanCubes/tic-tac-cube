@@ -618,6 +618,7 @@ void Cube_board::user_input(std::string input) {
          * 9 - 2, 2 
          * 1 - 0, 0
         */
+        // What do I do....
         // So apparently characters and strings are actually different in this language?
         if (input[1] == '1') {
             if (positions[0][0][0] == 0) {
@@ -693,5 +694,11 @@ void Cube_board::user_input(std::string input) {
 };
 
 int Cube_board::gameloop() {
-    return 0;
+    if (std::get<0>(scan_for_wins()) == 1) {
+        return 0;
+    }
+    else if (std::get<0>(scan_for_wins()) == 2) {
+        return 0;
+    };
+    return 2;
 };
