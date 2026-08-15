@@ -11,8 +11,8 @@ class Cube_board {
         Cube_board() {}
         std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
             {{
-                {2, 0, 0},
-                {0, 1, 0}, 
+                {0, 0, 0},
+                {0, 0, 0}, 
                 {0, 0, 0} 
             }},
             {{
