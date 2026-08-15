@@ -77,6 +77,29 @@ Button grid7;
 Button grid8;
 Button grid9;
 
+Button x_move_button;
+Button z_prime_button;
+Button z_move_button;
+Button x_prime_button;
+
+// Organized by uh the position on the board instead of like the order of the move
+Button l_prime_button;
+Button m_prime_button;
+Button r_move_button;
+
+Button b_move_button;
+Button b_prime_button;
+
+Button s_prime_button;
+Button s_move_button;
+
+Button f_prime_button;
+Button f_move_button;
+
+Button l_move_button;
+Button m_move_button;
+Button r_prime_button;
+
 int main_menu(int screen_width, int screen_height) {
     if (play_button.check_button_clicked() == 1) {
         return 2;
@@ -115,6 +138,24 @@ int main() {
     grid7.setup_button(screen_width/2-150, screen_height/2+150, 100, 100);
     grid8.setup_button(screen_width/2, screen_height/2+150, 100, 100);
     grid9.setup_button(screen_width/2+150, screen_height/2+150, 100, 100);
+
+    x_move_button.setup_button(screen_width/2, screen_height/2-320, 100, 50);
+    z_prime_button.setup_button(screen_width/2-320, screen_height/2, 50, 100);
+    z_move_button.setup_button(screen_width/2+320, screen_height/2, 50, 100);
+    x_prime_button.setup_button(screen_width/2, screen_height/2+320, 100, 50);
+
+    l_prime_button.setup_button(screen_width/2-150, screen_height/2-250, 50, 50);
+    m_prime_button.setup_button(screen_width/2, screen_height/2-250, 50, 50);
+    r_move_button.setup_button(screen_width/2+150, screen_height/2-250, 50, 50);
+    b_move_button.setup_button(screen_width/2-250, screen_height/2-150, 50, 50);
+    b_prime_button.setup_button(screen_width/2+250, screen_height/2-150, 50, 50);
+    s_prime_button.setup_button(screen_width/2-250, screen_height/2, 50, 50);
+    s_move_button.setup_button(screen_width/2+250, screen_height/2, 50, 50);
+    f_prime_button.setup_button(screen_width/2-250, screen_height/2+150, 50, 50);
+    f_move_button.setup_button(screen_width/2+250, screen_height/2+150, 50, 50);
+    l_move_button.setup_button(screen_width/2-150, screen_height/2+250, 50, 50);
+    m_move_button.setup_button(screen_width/2, screen_height/2+250, 50, 50);
+    r_prime_button.setup_button(screen_width/2+150, screen_height/2+250, 50, 50);
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
@@ -161,8 +202,55 @@ int main() {
                 }
                 else if (grid9.check_button_clicked() == 1) {
                     cube.user_input("p9");
+                }
+                else if (x_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mX");
+                }
+                else if (z_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mZ'");
+                }
+                else if (z_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mZ");
+                }
+                else if (x_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mX'");
+                }
+                else if (l_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mL'");
+                }
+                else if (m_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mM'");
+                }
+                else if (r_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mR");
+                }
+                else if (b_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mB");
+                }
+                else if (b_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mB'");
+                }
+                else if (s_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mS'");
+                }
+                else if (s_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mS");
+                }
+                else if (f_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mF'");
+                }
+                else if (f_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mF");
+                }
+                else if (l_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mL");
+                }
+                else if (m_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mM");
+                }
+                else if (r_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mR'");
                 };
-
                 mode = cube.gameloop();
                 break;
             default:
@@ -196,6 +284,24 @@ int main() {
                 grid7.draw_button(RED, WHITE, 0, 0, "");
                 grid8.draw_button(RED, WHITE, 0, 0, "");
                 grid9.draw_button(RED, WHITE, 0, 0, "");
+
+                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+
+                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
 
                 // Rendering the positions on the board
                 int temp_x_pos = screen_width/2-175;
