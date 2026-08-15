@@ -608,81 +608,87 @@ void Cube_board::reset() {
     };
 };
 
-int Cube_board::gameloop() {
-    std::string x_pos_string;
-    int x_pos;
-    std::string y_pos_string;
-    int y_pos;
-    bool running = true;
-    std::string mode_string = "0";
-    int mode = 0;
-    std::string notation = "";
-    switch(turn) {
-        case 1:
-            std::cout << "\n----------\nX's Turn\n";
-            std::cout << "Enter mode";
-            //std::cin >> mode_string;
-            mode = std::stoi(mode_string);
-            switch(mode) {
-                case 1:
-                    std::cout << "Enter the X position";
-                    //std::cin >> x_pos_string;
-                    std::cout << "Enter the Y position";
-                    //std::cin >> y_pos_string;
-                    x_pos = std::stoi(x_pos_string);
-                    y_pos = std::stoi(y_pos_string);
-                    if (mark_x(x_pos, y_pos) != 0) {
-                        break;
-                    };
-                    render_board();
-                    turn = 2;
-                    break;
-                case 2:
-                    std::cout << "Enter notation";
-                    //std::cin >> notation;
-                    move_cube(notation);
-                    render_board();
-                    break;
+void Cube_board::user_input(input) {
+    /*
+     * p1, p2, etc
+     * mR, mU, etc
+    */
+    if (input[0] == "p") /* Place */{
+        /*
+         * 9 - 2, 2 
+         * 1 - 0, 0
+        */
+        if (input[1] == "1") {
+            if (positions[i][0][0] == 0) {
+                positions[i][0][0] = turn;
+                turn = 3 - turn;
             };
-            break;
-        case 2:
-            std::cout << "\n----------\nO's Turn\n";
-            std::cout << "Enter mode";
-            //std::cin >> mode_string;
-            mode = std::stoi(mode_string);
-            switch(mode) {
-                case 1:
-                    std::cout << "Enter the X position";
-                    // std::cin >> x_pos_string;
-                    std::cout << "Enter the Y position";
-                    // std::cin >> y_pos_string;
-                    x_pos = std::stoi(x_pos_string);
-                    y_pos = std::stoi(y_pos_string);
-                    if (mark_o(x_pos, y_pos) != 0) {
-                        break;
-                    };
-                    render_board();
-                    turn = 1;
-                    break;
-                case 2:
-                    std::cout << "Enter notation";
-                    //std::cin >> notation;
-                    move_cube(notation);
-                    render_board();
-                    break;
+        }
+        else if (input[1] == "2") {
+            if (positions[i][0][1] == 0) {
+                positions[i][0][1] = turn;
+                turn = 3 - turn;
             };
-        break;
-    };
-    std::tuple<int, std::array<std::array<int, 2>, 3>> wins = scan_for_wins();
-    if (std::get<0>(wins) == 1) {
-        std::cout  << "X Wins!\n";
-        reset();
-        return 0;
+        }
+        else if (input[1] == "3") {
+            if (positions[i][0][2] == 0) {
+                positions[i][0][2] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else if (input[1] == "4") {
+            if (positions[i][1][0] == 0) {
+                positions[i][1][0] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else if (input[1] == "5") {
+            if (positions[i][1][1] == 0) {
+                positions[i][1][1] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else if (input[1] == "6") {
+            if (positions[i][1][2] == 0) {
+                positions[i][1][2] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else if (input[1] == "7") {
+            if (positions[i][2][0] == 0) {
+                positions[i][2][0] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else if (input[1] == "8") {
+            if (positions[i][2][1] == 0) {
+                positions[i][2][0] = turn;
+                turn = 3 - turn;
+        }
+        else if (input[1] == "9") {
+            if (positions[i][2][2] == 0) {
+                positions[i][2][2] = turn;
+                turn = 3 - turn;
+            };
+        }
+        else {
+            std::cout << "Invalid position";
+        };
     }
-    else if (std::get<0>(wins) == 2) {
-        std::cout << "O Wins!\n";
-        reset();
-        return 0;
+    else if (input[0] == "m") {
+        switch(input.length()) {
+            case 2:
+                move_cube(input[1]);
+                break;
+            case 3:
+                move_cube(input[1]+input[2]);
+                break;
+        };
+    }
+    else {
+        std::cout << "invalid move format: correct format is movetypeMove. MoveType can be m (move) and p (place). Move can be either the type of cube more or the spot to mark a spot with x or o";
     };
-    return 2;
+};
+
+int Cube_board::gameloop() {
 };

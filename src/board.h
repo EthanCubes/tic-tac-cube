@@ -11,7 +11,7 @@ class Cube_board {
         Cube_board() {}
         std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
             {{
-                {0, 0, 0},
+                {2, 0, 0},
                 {0, 1, 0}, 
                 {0, 0, 0} 
             }},
@@ -75,6 +75,7 @@ class Cube_board {
         std::tuple<int, std::array<std::array<int, 2>, 3>> scan_for_wins();
         void render_board();
         void reset();
+        void user_input();
         int gameloop();
 };
 
