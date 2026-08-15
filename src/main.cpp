@@ -36,13 +36,13 @@ class Button {
             setup = true;
         };
 
-        void draw_button(Color color, const char* text) {
+        void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, const char* text) {
             if (!setup) {
                 std::cout << "Button not declared!";
                 return;
             };
-            DrawRectangle(start_x, start_y, width, height, color);
-            DrawText(text, start_x, start_y, 40, BLACK);
+            DrawRectangle(start_x, start_y, width, height, button_color);
+            DrawText(text, start_x+text_x_offset, start_y+text_y_offset, 40, text_color);
         };
 
         int check_button_clicked() {
@@ -66,6 +66,16 @@ Cube_board cube;
 
 Button play_button;
 Button exit_button;
+
+Button grid1;
+Button grid2;
+Button grid3;
+Button grid4;
+Button grid5;
+Button grid6;
+Button grid7;
+Button grid8;
+Button grid9;
 
 int main_menu(int screen_width, int screen_height) {
     if (play_button.check_button_clicked() == 1) {
@@ -94,6 +104,17 @@ int main() {
 
     play_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5, screen_height/10);
     exit_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
+
+    // I'm actually so happy that this worked, I did not thing it would
+    grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
+    grid2.setup_button(screen_width/2, screen_height/2-150, 100, 100);
+    grid3.setup_button(screen_width/2+150, screen_height/2-150, 100, 100);
+    grid4.setup_button(screen_width/2-150, screen_height/2, 100, 100);
+    grid5.setup_button(screen_width/2, screen_height/2, 100, 100);
+    grid6.setup_button(screen_width/2+150, screen_height/2, 100, 100);
+    grid7.setup_button(screen_width/2-150, screen_height/2+150, 100, 100);
+    grid8.setup_button(screen_width/2, screen_height/2+150, 100, 100);
+    grid9.setup_button(screen_width/2+150, screen_height/2+150, 100, 100);
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
@@ -126,28 +147,26 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play_button.draw_button(RED, "PLAY");
-                exit_button.draw_button(RED, "EXIT");
+                play_button.draw_button(RED, WHITE, 70, 20, "PLAY");
+                exit_button.draw_button(RED, WHITE, 70, 20, "EXIT");
                 EndDrawing();
                 break;
             case 2:
-                // Uh like render the game idk how to do it
-                // Essentially: 3x3 square, rendered somehow, with x's and o's drawn onto it
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
 
                 // Row 1
-                DrawRectangle(screen_width/2-200, screen_height/2-200, 100, 100, RED);
-                DrawRectangle(screen_width/2-50, screen_height/2-200, 100, 100, RED);
-                DrawRectangle(screen_width/2+100, screen_height/2-200, 100, 100, RED);
+                grid1.draw_button(RED, WHITE, 0, 0, "");
+                grid2.draw_button(RED, WHITE, 0, 0, "");
+                grid3.draw_button(RED, WHITE, 0, 0, "");
                 // Row 2
-                DrawRectangle(screen_width/2-200, screen_height/2-50, 100, 100, RED);
-                DrawRectangle(screen_width/2-50, screen_height/2-50, 100, 100, RED);
-                DrawRectangle(screen_width/2+100, screen_height/2-50, 100, 100, RED);
+                grid4.draw_button(RED, WHITE, 0, 0, "");
+                grid5.draw_button(RED, WHITE, 0, 0, "");
+                grid6.draw_button(RED, WHITE, 0, 0, "");
                 // Row 3
-                DrawRectangle(screen_width/2-200, screen_height/2+100, 100, 100, RED);
-                DrawRectangle(screen_width/2-50, screen_height/2+100, 100, 100, RED);
-                DrawRectangle(screen_width/2+100, screen_height/2+100, 100, 100, RED);
+                grid7.draw_button(RED, WHITE, 0, 0, "");
+                grid8.draw_button(RED, WHITE, 0, 0, "");
+                grid9.draw_button(RED, WHITE, 0, 0, "");
 
                 // Rendering the positions on the board
                 int temp_x_pos = screen_width/2-175;

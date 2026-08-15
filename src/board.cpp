@@ -608,66 +608,68 @@ void Cube_board::reset() {
     };
 };
 
-void Cube_board::user_input(input) {
+void Cube_board::user_input(std::string input) {
     /*
      * p1, p2, etc
      * mR, mU, etc
     */
-    if (input[0] == "p") /* Place */{
+    if (input[0] == 'p') /* Place */{
         /*
          * 9 - 2, 2 
          * 1 - 0, 0
         */
-        if (input[1] == "1") {
-            if (positions[i][0][0] == 0) {
-                positions[i][0][0] = turn;
+        // So apparently characters and strings are actually different in this language?
+        if (input[1] == '1') {
+            if (positions[0][0][0] == 0) {
+                positions[0][0][0] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "2") {
-            if (positions[i][0][1] == 0) {
-                positions[i][0][1] = turn;
+        else if (input[1] == '2') {
+            if (positions[0][0][1] == 0) {
+                positions[0][0][1] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "3") {
-            if (positions[i][0][2] == 0) {
-                positions[i][0][2] = turn;
+        else if (input[1] == '3') {
+            if (positions[0][0][2] == 0) {
+                positions[0][0][2] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "4") {
-            if (positions[i][1][0] == 0) {
-                positions[i][1][0] = turn;
+        else if (input[1] == '4') {
+            if (positions[0][1][0] == 0) {
+                positions[0][1][0] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "5") {
-            if (positions[i][1][1] == 0) {
-                positions[i][1][1] = turn;
+        else if (input[1] == '5') {
+            if (positions[0][1][1] == 0) {
+                positions[0][1][1] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "6") {
-            if (positions[i][1][2] == 0) {
-                positions[i][1][2] = turn;
+        else if (input[1] == '6') {
+            if (positions[0][1][2] == 0) {
+                positions[0][1][2] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "7") {
-            if (positions[i][2][0] == 0) {
-                positions[i][2][0] = turn;
+        else if (input[1] == '7') {
+            if (positions[0][2][0] == 0) {
+                positions[0][2][0] = turn;
                 turn = 3 - turn;
             };
         }
-        else if (input[1] == "8") {
-            if (positions[i][2][1] == 0) {
-                positions[i][2][0] = turn;
+        else if (input[1] == '8') {
+            if (positions[0][2][1] == 0) {
+                positions[0][2][0] = turn;
                 turn = 3 - turn;
+            };
         }
-        else if (input[1] == "9") {
-            if (positions[i][2][2] == 0) {
-                positions[i][2][2] = turn;
+        else if (input[1] == '9') {
+            if (positions[0][2][2] == 0) {
+                positions[0][2][2] = turn;
                 turn = 3 - turn;
             };
         }
@@ -675,13 +677,13 @@ void Cube_board::user_input(input) {
             std::cout << "Invalid position";
         };
     }
-    else if (input[0] == "m") {
+    else if (input[0] == 'm') {
         switch(input.length()) {
             case 2:
-                move_cube(input[1]);
+                move_cube(std::string("")+input[1]);
                 break;
             case 3:
-                move_cube(input[1]+input[2]);
+                move_cube(std::string("") + input[1]+input[2]);
                 break;
         };
     }
@@ -691,4 +693,5 @@ void Cube_board::user_input(input) {
 };
 
 int Cube_board::gameloop() {
+    return 0;
 };

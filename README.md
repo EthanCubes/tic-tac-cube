@@ -25,7 +25,7 @@ Or from GitHub [here]()
 ## How to run locally
 I'm assuming this means running the source code instead of the precompiled binaries. If you do want the precompiled binaries, use the [Quick Start](#quick-start). This requires some basic terminal knowledge of commands such as "ls", "cd", etc.
 1. Clone the git repo with `git clone https://github.com/EthanCubes/tic-tac-cube`
-2. Enter the git repo and run `g++ -std=c++17 -lraylib -o build/tic-tac-cube src/main.cpp`. This will compile the code to that your device can run it, and the binary will be located inside the build directory.
+2. Enter the git repo and run `g++ -std=c++17 -lraylib -o build/tic-tac-cube src/main.cpp src/board.cpp`. This will compile the code to that your device can run it, and the binary will be located inside the build directory.
 3. Run `build/tic-tac-cube` to run the program
 
 ## How it works

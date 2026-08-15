@@ -75,7 +75,7 @@ class Cube_board {
         std::tuple<int, std::array<std::array<int, 2>, 3>> scan_for_wins();
         void render_board();
         void reset();
-        void user_input();
+        void user_input(std::string input);
         int gameloop();
 };
 
