@@ -2,6 +2,8 @@
 #include <array>
 #include <string>
 #include <tuple>
+#include <chrono>
+#include <thread>
 #include "board.h"
 
 // These are named after the actual moves in Rubik's cube notation. X, Y, and Z are all rotations
@@ -691,6 +693,7 @@ void Cube_board::user_input(std::string input) {
     else {
         std::cout << "invalid move format: correct format is movetypeMove. MoveType can be m (move) and p (place). Move can be either the type of cube more or the spot to mark a spot with x or o";
     };
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));
 };
 
 int Cube_board::gameloop() {

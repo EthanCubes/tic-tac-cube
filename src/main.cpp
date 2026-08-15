@@ -2,6 +2,8 @@
 #include <array>
 #include <string>
 #include <tuple>
+#include <chrono>
+#include <thread>
 
 #include "board.h"
 
@@ -168,7 +170,7 @@ int main() {
             case 0:
                 mode = main_menu(screen_width, screen_height);
                 if (mode != 0) {
-                    std::cout << "thing";
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 };
                 break;
             case 1:
