@@ -262,7 +262,7 @@ void Cube_board::y_move() {
 
 void Cube_board::z_move() {
     temporary_array = positions;
-    temporary_color_array = positions;
+    temporary_color_array = colors;
     // White
     positions[0][0][0] = temporary_array[1][2][0];
     positions[0][0][1] = temporary_array[1][1][0];
@@ -388,7 +388,7 @@ void Cube_board::z_move() {
 
 void Cube_board::u_move() {
     temporary_array = positions;
-    temporary_color_array = color;
+    temporary_color_array = colors;
     // White
     positions[0][0][0] = temporary_array[0][2][0];
     positions[0][0][1] = temporary_array[0][1][0];
@@ -857,7 +857,7 @@ void Cube_board::reset() {
         };
     };
     int color = 0;
-    for (int face = 0; face < 6, face++) {
+    for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
                 positions[face][row][column] = color;

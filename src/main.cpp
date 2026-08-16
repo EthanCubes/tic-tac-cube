@@ -274,18 +274,200 @@ int main() {
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
 
+                // Draw the entire board according to the position of the cube currently
+                std::array<Color, 9> color_array;
+                switch(cube.colors[0][0][0]) {
+                    case 0:
+                        color_array[0] = WHITE;
+                        break;
+                    case 1:
+                        color_array[0] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[0] = GREEN;
+                        break;
+                    case 3:
+                        color_array[0] = RED;
+                        break;
+                    case 4:
+                        color_array[0] = BLUE;
+                        break;
+                    case 5:
+                        color_array[0] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][0][1]) {
+                    case 0:
+                        color_array[1] = WHITE;
+                        break;
+                    case 1:
+                        color_array[1] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[1] = GREEN;
+                        break;
+                    case 3:
+                        color_array[1] = RED;
+                        break;
+                    case 4:
+                        color_array[1] = BLUE;
+                        break;
+                    case 5:
+                        color_array[1] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][0][2]) {
+                    case 0:
+                        color_array[2] = WHITE;
+                        break;
+                    case 1:
+                        color_array[2] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[2] = GREEN;
+                        break;
+                    case 3:
+                        color_array[2] = RED;
+                        break;
+                    case 4:
+                        color_array[2] = BLUE;
+                        break;
+                    case 5:
+                        color_array[2] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][0]) {
+                    case 0:
+                        color_array[3] = WHITE;
+                        break;
+                    case 1:
+                        color_array[3] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[3] = GREEN;
+                        break;
+                    case 3:
+                        color_array[3] = RED;
+                        break;
+                    case 4:
+                        color_array[3] = BLUE;
+                        break;
+                    case 5:
+                        color_array[3] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][1]) {
+                    case 0:
+                        color_array[4] = WHITE;
+                        break;
+                    case 1:
+                        color_array[4] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[4] = GREEN;
+                        break;
+                    case 3:
+                        color_array[4] = RED;
+                        break;
+                    case 4:
+                        color_array[4] = BLUE;
+                        break;
+                    case 5:
+                        color_array[4] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][2]) {
+                    case 0:
+                        color_array[5] = WHITE;
+                        break;
+                    case 1:
+                        color_array[5] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[5] = GREEN;
+                        break;
+                    case 3:
+                        color_array[5] = RED;
+                        break;
+                    case 4:
+                        color_array[5] = BLUE;
+                        break;
+                    case 5:
+                        color_array[5] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][0]) {
+                    case 0:
+                        color_array[6] = WHITE;
+                        break;
+                    case 1:
+                        color_array[6] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[6] = GREEN;
+                        break;
+                    case 3:
+                        color_array[6] = RED;
+                        break;
+                    case 4:
+                        color_array[6] = BLUE;
+                        break;
+                    case 5:
+                        color_array[6] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][1]) {
+                    case 0:
+                        color_array[7] = WHITE;
+                        break;
+                    case 1:
+                        color_array[7] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[7] = GREEN;
+                        break;
+                    case 3:
+                        color_array[7] = RED;
+                        break;
+                    case 4:
+                        color_array[7] = BLUE;
+                        break;
+                    case 5:
+                        color_array[7] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][2]) {
+                    case 0:
+                        color_array[8] = WHITE;
+                        break;
+                    case 1:
+                        color_array[8] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[8] = GREEN;
+                        break;
+                    case 3:
+                        color_array[8] = RED;
+                        break;
+                    case 4:
+                        color_array[8] = BLUE;
+                        break;
+                    case 5:
+                        color_array[8] = YELLOW;
+                        break;
+                };
                 // Row 1
-                grid1.draw_button(RED, WHITE, 0, 0, "");
-                grid2.draw_button(RED, WHITE, 0, 0, "");
-                grid3.draw_button(RED, WHITE, 0, 0, "");
+                grid1.draw_button(color_array[0], WHITE, 0, 0, "");
+                grid2.draw_button(color_array[1], WHITE, 0, 0, "");
+                grid3.draw_button(color_array[2], WHITE, 0, 0, "");
                 // Row 2
-                grid4.draw_button(RED, WHITE, 0, 0, "");
-                grid5.draw_button(RED, WHITE, 0, 0, "");
-                grid6.draw_button(RED, WHITE, 0, 0, "");
+                grid4.draw_button(color_array[3], WHITE, 0, 0, "");
+                grid5.draw_button(color_array[4], WHITE, 0, 0, "");
+                grid6.draw_button(color_array[5], WHITE, 0, 0, "");
                 // Row 3
-                grid7.draw_button(RED, WHITE, 0, 0, "");
-                grid8.draw_button(RED, WHITE, 0, 0, "");
-                grid9.draw_button(RED, WHITE, 0, 0, "");
+                grid7.draw_button(color_array[6], WHITE, 0, 0, "");
+                grid8.draw_button(color_array[7], WHITE, 0, 0, "");
+                grid9.draw_button(color_array[8], WHITE, 0, 0, "");
 
                 x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
                 z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");

@@ -41,7 +41,40 @@ class Cube_board {
                 {0, 0, 0}
             }}
         }}; 
+        std::array<std::array<std::array<int, 3>, 3>, 6> colors = {{
+            {{
+                 {0, 0, 0},
+                 {0, 0, 0},
+                 {0, 0, 0}
+            }},
+            {{
+                 {1, 1, 1},
+                 {1, 1, 1},
+                 {1, 1, 1}
+            }},
+            {{
+                 {2, 2, 2},
+                 {2, 2, 2},
+                 {2, 2, 2}
+            }},
+            {{
+                 {3, 3, 3},
+                 {3, 3, 3},
+                 {3, 3, 3}
+            }},
+            {{
+                 {4, 4, 4},
+                 {4, 4, 4},
+                 {4, 4, 4}
+            }},
+            {{
+                 {5, 5, 5},
+                 {5, 5, 5},
+                 {5, 5, 5}
+            }}
+        }};
         std::array<std::array<std::array<int, 3>, 3>, 6> temporary_array;
+        std::array<std::array<std::array<int, 3>, 3>, 6> temporary_color_array;
         void x_move();
         void y_move();
         void z_move();
