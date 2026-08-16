@@ -10,6 +10,7 @@
 // These are the basic moves that I will use to render the rest of the moves
 void Cube_board::x_move() {
     temporary_array = positions;
+    temporary_color_array = colors;
     // White
     positions[0][0][0] = temporary_array[2][0][0];
     positions[0][0][1] = temporary_array[2][0][1];
@@ -70,10 +71,72 @@ void Cube_board::x_move() {
     positions[5][2][0] = temporary_array[4][0][2];
     positions[5][2][1] = temporary_array[4][0][1];
     positions[5][2][2] = temporary_array[4][0][0];
+
+    // White
+    colors[0][0][0] = temporary_color_array[2][0][0];
+    colors[0][0][1] = temporary_color_array[2][0][1];
+    colors[0][0][2] = temporary_color_array[2][0][2];
+    colors[0][1][0] = temporary_color_array[2][1][0];
+    colors[0][1][1] = temporary_color_array[2][1][1];
+    colors[0][1][2] = temporary_color_array[2][1][2];
+    colors[0][2][0] = temporary_color_array[2][2][0];
+    colors[0][2][1] = temporary_color_array[2][2][1];
+    colors[0][2][2] = temporary_color_array[2][2][2];
+    // Orange
+    colors[1][0][0] = temporary_color_array[1][0][2];
+    colors[1][0][1] = temporary_color_array[1][1][2];
+    colors[1][0][2] = temporary_color_array[1][2][2];
+    colors[1][1][0] = temporary_color_array[1][0][1];
+    colors[1][1][1] = temporary_color_array[1][1][1];
+    colors[1][1][2] = temporary_color_array[1][2][1];
+    colors[1][2][0] = temporary_color_array[1][0][0];
+    colors[1][2][1] = temporary_color_array[1][1][0];
+    colors[1][2][2] = temporary_color_array[1][2][0];
+    // Green
+    colors[2][0][0] = temporary_color_array[5][0][0];
+    colors[2][0][1] = temporary_color_array[5][0][1];
+    colors[2][0][2] = temporary_color_array[5][0][2];
+    colors[2][1][0] = temporary_color_array[5][1][0];
+    colors[2][1][1] = temporary_color_array[5][1][1];
+    colors[2][1][2] = temporary_color_array[5][1][2];
+    colors[2][2][0] = temporary_color_array[5][2][0];
+    colors[2][2][1] = temporary_color_array[5][2][1];
+    colors[2][2][2] = temporary_color_array[5][2][2];
+    // Red
+    colors[3][0][0] = temporary_color_array[3][2][0];
+    colors[3][0][1] = temporary_color_array[3][1][0];
+    colors[3][0][2] = temporary_color_array[3][0][0];
+    colors[3][1][0] = temporary_color_array[3][2][1];
+    colors[3][1][1] = temporary_color_array[3][1][1];
+    colors[3][1][2] = temporary_color_array[3][0][1];
+    colors[3][2][0] = temporary_color_array[3][2][2];
+    colors[3][2][1] = temporary_color_array[3][1][2];
+    colors[3][2][2] = temporary_color_array[3][0][2];
+    // Blue
+    colors[4][0][0] = temporary_color_array[0][2][2];
+    colors[4][0][1] = temporary_color_array[0][2][1];
+    colors[4][0][2] = temporary_color_array[0][2][0];
+    colors[4][1][0] = temporary_color_array[0][1][2];
+    colors[4][1][1] = temporary_color_array[0][1][1];
+    colors[4][1][2] = temporary_color_array[0][1][0];
+    colors[4][2][0] = temporary_color_array[0][0][2];
+    colors[4][2][1] = temporary_color_array[0][0][1];
+    colors[4][2][2] = temporary_color_array[0][0][0];
+    // Yellow
+    colors[5][0][0] = temporary_color_array[4][2][2];
+    colors[5][0][1] = temporary_color_array[4][2][1];
+    colors[5][0][2] = temporary_color_array[4][2][0];
+    colors[5][1][0] = temporary_color_array[4][1][2];
+    colors[5][1][1] = temporary_color_array[4][1][1];
+    colors[5][1][2] = temporary_color_array[4][1][0];
+    colors[5][2][0] = temporary_color_array[4][0][2];
+    colors[5][2][1] = temporary_color_array[4][0][1];
+    colors[5][2][2] = temporary_color_array[4][0][0];
 };
 
 void Cube_board::y_move() {
     temporary_array = positions;
+    temporary_color_array = colors;
     // White
     positions[0][0][0] = temporary_array[0][2][0];
     positions[0][0][1] = temporary_array[0][1][0];
@@ -134,10 +197,72 @@ void Cube_board::y_move() {
     positions[5][2][0] = temporary_array[5][0][0];
     positions[5][2][1] = temporary_array[5][1][0];
     positions[5][2][2] = temporary_array[5][2][0];
+
+    // White
+    colors[0][0][0] = temporary_color_array[0][2][0];
+    colors[0][0][1] = temporary_color_array[0][1][0];
+    colors[0][0][2] = temporary_color_array[0][0][0];
+    colors[0][1][0] = temporary_color_array[0][2][1];
+    colors[0][1][1] = temporary_color_array[0][1][1];
+    colors[0][1][2] = temporary_color_array[0][0][1];
+    colors[0][2][0] = temporary_color_array[0][2][2];
+    colors[0][2][1] = temporary_color_array[0][1][2];
+    colors[0][2][2] = temporary_color_array[0][0][2];
+    // Orange
+    colors[1][0][0] = temporary_color_array[2][0][0];
+    colors[1][0][1] = temporary_color_array[2][0][1];
+    colors[1][0][2] = temporary_color_array[2][0][2];
+    colors[1][1][0] = temporary_color_array[2][1][0];
+    colors[1][1][1] = temporary_color_array[2][1][1];
+    colors[1][1][2] = temporary_color_array[2][1][2];
+    colors[1][2][0] = temporary_color_array[2][2][0];
+    colors[1][2][1] = temporary_color_array[2][2][1];
+    colors[1][2][2] = temporary_color_array[2][2][2];
+    // Green
+    colors[2][0][0] = temporary_color_array[3][0][0];
+    colors[2][0][1] = temporary_color_array[3][0][1];
+    colors[2][0][2] = temporary_color_array[3][0][2];
+    colors[2][1][0] = temporary_color_array[3][1][0];
+    colors[2][1][1] = temporary_color_array[3][1][1];
+    colors[2][1][2] = temporary_color_array[3][1][2];
+    colors[2][2][0] = temporary_color_array[3][2][0];
+    colors[2][2][1] = temporary_color_array[3][2][1];
+    colors[2][2][2] = temporary_color_array[3][2][2];
+    // Red
+    colors[3][0][0] = temporary_color_array[4][0][0];
+    colors[3][0][1] = temporary_color_array[4][0][1];
+    colors[3][0][2] = temporary_color_array[4][0][2];
+    colors[3][1][0] = temporary_color_array[4][1][0];
+    colors[3][1][1] = temporary_color_array[4][1][1];
+    colors[3][1][2] = temporary_color_array[4][1][2];
+    colors[3][2][0] = temporary_color_array[4][2][0];
+    colors[3][2][1] = temporary_color_array[4][2][1];
+    colors[3][2][2] = temporary_color_array[4][2][2];
+    // Blue
+    colors[4][0][0] = temporary_color_array[1][0][0];
+    colors[4][0][1] = temporary_color_array[1][0][1];
+    colors[4][0][2] = temporary_color_array[1][0][2];
+    colors[4][1][0] = temporary_color_array[1][1][0];
+    colors[4][1][1] = temporary_color_array[1][1][1];
+    colors[4][1][2] = temporary_color_array[1][1][2];
+    colors[4][2][0] = temporary_color_array[1][2][0]; 
+    colors[4][2][1] = temporary_color_array[1][2][1];
+    colors[4][2][2] = temporary_color_array[1][2][2];
+    // Yellow
+    colors[5][0][0] = temporary_color_array[5][0][2];
+    colors[5][0][1] = temporary_color_array[5][1][2];
+    colors[5][0][2] = temporary_color_array[5][2][2];
+    colors[5][1][0] = temporary_color_array[5][0][1];
+    colors[5][1][1] = temporary_color_array[5][1][1];
+    colors[5][1][2] = temporary_color_array[5][2][1];
+    colors[5][2][0] = temporary_color_array[5][0][0];
+    colors[5][2][1] = temporary_color_array[5][1][0];
+    colors[5][2][2] = temporary_color_array[5][2][0];
 };
 
 void Cube_board::z_move() {
     temporary_array = positions;
+    temporary_color_array = positions;
     // White
     positions[0][0][0] = temporary_array[1][2][0];
     positions[0][0][1] = temporary_array[1][1][0];
@@ -198,10 +323,72 @@ void Cube_board::z_move() {
     positions[5][2][0] = temporary_array[3][2][2];
     positions[5][2][1] = temporary_array[3][1][2];
     positions[5][2][2] = temporary_array[3][0][2];
+
+    // White
+    colors[0][0][0] = temporary_color_array[1][2][0];
+    colors[0][0][1] = temporary_color_array[1][1][0];
+    colors[0][0][2] = temporary_color_array[1][0][0];
+    colors[0][1][0] = temporary_color_array[1][2][1];
+    colors[0][1][1] = temporary_color_array[1][1][1];
+    colors[0][1][2] = temporary_color_array[1][0][1];
+    colors[0][2][0] = temporary_color_array[1][2][2];
+    colors[0][2][1] = temporary_color_array[1][1][2];
+    colors[0][2][2] = temporary_color_array[1][0][2];
+    // Orange
+    colors[1][0][0] = temporary_color_array[5][2][0];
+    colors[1][0][1] = temporary_color_array[5][1][0];
+    colors[1][0][2] = temporary_color_array[5][0][0];
+    colors[1][1][0] = temporary_color_array[5][2][1];
+    colors[1][1][1] = temporary_color_array[5][1][1];
+    colors[1][1][2] = temporary_color_array[5][0][1];
+    colors[1][2][0] = temporary_color_array[5][2][2];
+    colors[1][2][1] = temporary_color_array[5][1][2];
+    colors[1][2][2] = temporary_color_array[5][0][2];
+    // Green 
+    colors[2][0][0] = temporary_color_array[2][2][0];
+    colors[2][0][1] = temporary_color_array[2][1][0];
+    colors[2][0][2] = temporary_color_array[2][0][0];
+    colors[2][1][0] = temporary_color_array[2][2][1];
+    colors[2][1][1] = temporary_color_array[2][1][1];
+    colors[2][1][2] = temporary_color_array[2][0][1];
+    colors[2][2][0] = temporary_color_array[2][2][2];
+    colors[2][2][1] = temporary_color_array[2][1][2];
+    colors[2][2][2] = temporary_color_array[2][0][2];
+    // Red
+    colors[3][0][0] = temporary_color_array[0][2][0];
+    colors[3][0][1] = temporary_color_array[0][1][0];
+    colors[3][0][2] = temporary_color_array[0][0][0];
+    colors[3][1][0] = temporary_color_array[0][2][1];
+    colors[3][1][1] = temporary_color_array[0][1][1];
+    colors[3][1][2] = temporary_color_array[0][0][1];
+    colors[3][2][0] = temporary_color_array[0][2][2];
+    colors[3][2][1] = temporary_color_array[0][1][2];
+    colors[3][2][2] = temporary_color_array[0][0][2];
+    // Blue 
+    colors[4][0][0] = temporary_color_array[4][0][2];
+    colors[4][0][1] = temporary_color_array[4][1][2];
+    colors[4][0][2] = temporary_color_array[4][2][2];
+    colors[4][1][0] = temporary_color_array[4][0][1];
+    colors[4][1][1] = temporary_color_array[4][1][1];
+    colors[4][1][2] = temporary_color_array[4][2][1];
+    colors[4][2][0] = temporary_color_array[4][0][0];
+    colors[4][2][1] = temporary_color_array[4][1][0];
+    colors[4][2][2] = temporary_color_array[4][2][0];
+    // Yellow
+    colors[5][0][0] = temporary_color_array[3][2][0];
+    colors[5][0][1] = temporary_color_array[3][1][0];
+    colors[5][0][2] = temporary_color_array[3][0][0];
+    colors[5][1][0] = temporary_color_array[3][2][1];
+    colors[5][1][1] = temporary_color_array[3][1][1];
+    colors[5][1][2] = temporary_color_array[3][0][1];
+    colors[5][2][0] = temporary_color_array[3][2][2];
+    colors[5][2][1] = temporary_color_array[3][1][2];
+    colors[5][2][2] = temporary_color_array[3][0][2];
 };
 
 void Cube_board::u_move() {
     temporary_array = positions;
+    temporary_color_array = color;
     // White
     positions[0][0][0] = temporary_array[0][2][0];
     positions[0][0][1] = temporary_array[0][1][0];
@@ -262,6 +449,67 @@ void Cube_board::u_move() {
     positions[5][2][0] = temporary_array[5][2][0];
     positions[5][2][1] = temporary_array[5][2][1];
     positions[5][2][2] = temporary_array[5][2][2];
+
+    // White
+    colors[0][0][0] = temporary_color_array[0][2][0];
+    colors[0][0][1] = temporary_color_array[0][1][0];
+    colors[0][0][2] = temporary_color_array[0][0][0];
+    colors[0][1][0] = temporary_color_array[0][2][1];
+    colors[0][1][1] = temporary_color_array[0][1][1];
+    colors[0][1][2] = temporary_color_array[0][0][1];
+    colors[0][2][0] = temporary_color_array[0][2][2];
+    colors[0][2][1] = temporary_color_array[0][1][2];
+    colors[0][2][2] = temporary_color_array[0][0][2];
+    // Orange
+    colors[1][0][0] = temporary_color_array[2][0][0];
+    colors[1][0][1] = temporary_color_array[2][0][1];
+    colors[1][0][2] = temporary_color_array[2][0][2];
+    colors[1][1][0] = temporary_color_array[1][1][0];
+    colors[1][1][1] = temporary_color_array[1][1][1];
+    colors[1][1][2] = temporary_color_array[1][1][2];
+    colors[1][2][0] = temporary_color_array[1][2][0];
+    colors[1][2][1] = temporary_color_array[1][2][1];
+    colors[1][2][2] = temporary_color_array[1][2][2];
+    // Green
+    colors[2][0][0] = temporary_color_array[3][0][0];
+    colors[2][0][1] = temporary_color_array[3][0][1];
+    colors[2][0][2] = temporary_color_array[3][0][2];
+    colors[2][1][0] = temporary_color_array[2][1][0];
+    colors[2][1][1] = temporary_color_array[2][1][1];
+    colors[2][1][2] = temporary_color_array[2][1][2];
+    colors[2][2][0] = temporary_color_array[2][2][0];
+    colors[2][2][1] = temporary_color_array[2][2][1];
+    colors[2][2][2] = temporary_color_array[2][2][2];
+    // Red
+    colors[3][0][0] = temporary_color_array[4][0][0];
+    colors[3][0][1] = temporary_color_array[4][0][1];
+    colors[3][0][2] = temporary_color_array[4][0][2];
+    colors[3][1][0] = temporary_color_array[3][1][0];
+    colors[3][1][1] = temporary_color_array[3][1][1];
+    colors[3][1][2] = temporary_color_array[3][1][2];
+    colors[3][2][0] = temporary_color_array[3][2][0];
+    colors[3][2][1] = temporary_color_array[3][2][1];
+    colors[3][2][2] = temporary_color_array[3][2][2];
+    // Blue
+    colors[4][0][0] = temporary_color_array[1][0][0];
+    colors[4][0][1] = temporary_color_array[1][0][1];
+    colors[4][0][2] = temporary_color_array[1][0][2];
+    colors[4][1][0] = temporary_color_array[4][1][0];
+    colors[4][1][1] = temporary_color_array[4][1][1];
+    colors[4][1][2] = temporary_color_array[4][1][2];
+    colors[4][2][0] = temporary_color_array[4][2][0];
+    colors[4][2][1] = temporary_color_array[4][2][1];
+    colors[4][2][2] = temporary_color_array[4][2][2];
+    // Yellow
+    colors[5][0][0] = temporary_color_array[5][0][0];
+    colors[5][0][1] = temporary_color_array[5][0][1];
+    colors[5][0][2] = temporary_color_array[5][0][2];
+    colors[5][1][0] = temporary_color_array[5][1][0];
+    colors[5][1][1] = temporary_color_array[5][1][1];
+    colors[5][1][2] = temporary_color_array[5][1][2];
+    colors[5][2][0] = temporary_color_array[5][2][0];
+    colors[5][2][1] = temporary_color_array[5][2][1];
+    colors[5][2][2] = temporary_color_array[5][2][2];
 };
 
 // These are are the moved made out of the basic moves
