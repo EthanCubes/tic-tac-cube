@@ -860,7 +860,7 @@ void Cube_board::reset() {
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                positions[face][row][column] = color;
+                colors[face][row][column] = color;
             };
         };
         color += 1;
