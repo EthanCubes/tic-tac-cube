@@ -38,13 +38,13 @@ class Button {
             setup = true;
         };
 
-        void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, const char* text) {
+        void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, int font_size, const char* text) {
             if (!setup) {
                 std::cout << "Button not declared!";
                 return;
             };
             DrawRectangle(start_x, start_y, width, height, button_color);
-            DrawText(text, start_x+text_x_offset, start_y+text_y_offset, 40, text_color);
+            DrawText(text, start_x+text_x_offset, start_y+text_y_offset, font_size, text_color);
         };
 
         int check_button_clicked() {
@@ -101,6 +101,8 @@ Button f_move_button;
 Button l_move_button;
 Button m_move_button;
 Button r_prime_button;
+
+Button exit_game_button;
 
 int main_menu(int screen_width, int screen_height) {
     if (play_button.check_button_clicked() == 1) {
@@ -159,6 +161,8 @@ int main() {
     m_move_button.setup_button(screen_width/2, screen_height/2+250, 50, 50);
     r_prime_button.setup_button(screen_width/2+150, screen_height/2+250, 50, 50);
 
+    exit_game_button.setup_button(25, 12, 50, 25);
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
@@ -177,6 +181,12 @@ int main() {
                 running = false;
                 break;
             case 2:
+                if (exit_game_button.check_button_clicked() == 1) {
+                    mode = 0;
+                    cube.reset();
+                    break;
+                };
+                
                 // Check for user input of the grid spaces (P and M)
                 if (grid1.check_button_clicked() == 1) {
                     cube.user_input("p1");
@@ -252,7 +262,7 @@ int main() {
                 }
                 else if (r_prime_button.check_button_clicked() == 1) {
                     cube.user_input("mRp");
-                };
+                }
                 mode = cube.gameloop();
                 break;
             case 3:
@@ -275,8 +285,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play_button.draw_button(RED, WHITE, 70, 20, "PLAY");
-                exit_button.draw_button(RED, WHITE, 70, 20, "EXIT");
+                play_button.draw_button(RED, WHITE, 70, 20, 40, "PLAY");
+                exit_button.draw_button(RED, WHITE, 70, 20, 40, "EXIT");
                 EndDrawing();
                 break;
             case 2:
@@ -465,35 +475,35 @@ int main() {
                         break;
                 };
                 // Row 1
-                grid1.draw_button(color_array[0], WHITE, 0, 0, "");
-                grid2.draw_button(color_array[1], WHITE, 0, 0, "");
-                grid3.draw_button(color_array[2], WHITE, 0, 0, "");
+                grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
+                grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
+                grid3.draw_button(color_array[2], WHITE, 0, 0, 0, "");
                 // Row 2
-                grid4.draw_button(color_array[3], WHITE, 0, 0, "");
-                grid5.draw_button(color_array[4], WHITE, 0, 0, "");
-                grid6.draw_button(color_array[5], WHITE, 0, 0, "");
+                grid4.draw_button(color_array[3], WHITE, 0, 0, 0, "");
+                grid5.draw_button(color_array[4], WHITE, 0, 0, 0, "");
+                grid6.draw_button(color_array[5], WHITE, 0, 0, 0, "");
                 // Row 3
-                grid7.draw_button(color_array[6], WHITE, 0, 0, "");
-                grid8.draw_button(color_array[7], WHITE, 0, 0, "");
-                grid9.draw_button(color_array[8], WHITE, 0, 0, "");
+                grid7.draw_button(color_array[6], WHITE, 0, 0, 0, "");
+                grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
+                grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
 
-                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
 
-                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
-                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
+                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
 
                 // Rendering the positions on the board
                 for (int row = 0; row < 3; row++) {
@@ -509,6 +519,8 @@ int main() {
                     temp_x_pos = screen_width/2-175;
                     temp_y_pos += 150;
                 };
+
+                exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
 
                 EndDrawing();
                 break;
