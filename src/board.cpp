@@ -956,12 +956,10 @@ void Cube_board::user_input(std::string input) {
 int Cube_board::gameloop() {
     // Check for wins so that there's a way to exit the gameloop without exiting the game
     if (std::get<0>(scan_for_wins()) == 1) {
-        reset();
-        return 0;
+        return 3;
     }
     else if (std::get<0>(scan_for_wins()) == 2) {
-        reset();
-        return 0;
+        return 4;
     };
     return 2;
 };

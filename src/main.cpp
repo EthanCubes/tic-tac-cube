@@ -255,11 +255,20 @@ int main() {
                 };
                 mode = cube.gameloop();
                 break;
+            case 3:
+                // There's no rendering to be done, I just need it to not reset back to mode 0
+                break;
+            case 4:
+                // There's no rendering to be done, I just need it to not reset back to mode 0
+                break;
             default:
                 std::cout << "Invalid command";
                 mode = 0;
         };
         // Render
+        std::array<Color, 9> color_array;
+        int temp_x_pos = screen_width/2-175;
+        int temp_y_pos = screen_height/2-175;
         switch(mode) {
             case 0:
                 BeginDrawing();
@@ -275,7 +284,6 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
 
                 // Draw the entire board according to the position of the cube currently
-                std::array<Color, 9> color_array;
                 switch(cube.colors[0][0][0]) {
                     case 0:
                         color_array[0] = WHITE;
@@ -488,8 +496,6 @@ int main() {
                 r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, "");
 
                 // Rendering the positions on the board
-                int temp_x_pos = screen_width/2-175;
-                int temp_y_pos = screen_height/2-175;
                 for (int row = 0; row < 3; row++) {
                     for (int column = 0; column < 3; column++) {
                         if (cube.positions[0][row][column] == 1) {
@@ -505,6 +511,48 @@ int main() {
                 };
 
                 EndDrawing();
+                break;
+            case 3:
+                BeginDrawing();
+                for (int row = 0; row < 3; row++) {
+                    for (int column = 0; column < 3; column++) {
+                        if (cube.positions[0][row][column] == 1) {
+                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
+                        }
+                        else if (cube.positions[0][row][column] == 2) {
+                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
+                        };
+                        temp_x_pos += 150;
+                    };
+                    temp_x_pos = screen_width/2-175;
+                    temp_y_pos += 150;
+                };
+                DrawText("X Wins!", 0, 0, 30, WHITE);
+                EndDrawing();
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                cube.reset();
+                mode = 0;
+                break;
+            case 4:
+                BeginDrawing();
+                for (int row = 0; row < 3; row++) {
+                    for (int column = 0; column < 3; column++) {
+                        if (cube.positions[0][row][column] == 1) {
+                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
+                        }
+                        else if (cube.positions[0][row][column] == 2) {
+                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
+                        };
+                        temp_x_pos += 150;
+                    };
+                    temp_x_pos = screen_width/2-175;
+                    temp_y_pos += 150;
+                }
+                DrawText("O Wins!", 0, 0, 30, WHITE);
+                EndDrawing();
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                cube.reset();
+                mode = 0;
                 break;
         };
     };
