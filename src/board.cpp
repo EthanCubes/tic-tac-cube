@@ -856,6 +856,15 @@ void Cube_board::reset() {
             };
         };
     };
+    int color = 0;
+    for (int face = 0; face < 6, face++) {
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                positions[face][row][column] = color;
+            };
+        };
+        color += 1;
+    };
 };
 
 void Cube_board::user_input(std::string input) {
