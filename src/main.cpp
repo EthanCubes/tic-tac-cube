@@ -4,6 +4,7 @@
 #include <tuple>
 #include <chrono>
 #include <thread>
+#include <random>
 
 #include "board.h"
 
@@ -170,6 +171,8 @@ int main() {
 
     exit_game_button.setup_button(25, 12, 50, 25);
 
+    bool bot_setup = false;
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
@@ -282,87 +285,100 @@ int main() {
                 // O Wins
                 break;
             case 5:
+                // Code to setup, like which side the player is on, and stuff like that I dont really know
+                if (!bot_setup) {
+                    // setup the game
+                    int bot  = std::rand() % 2 + 1; // 1 means that the bot starts first and is X, 2 means that the player starts first and the bot is O
+                    int user = 3 - bot;
+                    // actually, I think that's all the setup I need to do.
+                    bot_setup = true;
+                }; 
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
                     cube.reset();
                     break;
                 };
-                // Check for user input of the grid spaces (P and M)
-                if (grid1.check_button_clicked() == 1) {
-                    cube.user_input("p1");
+                // Check for user input of the grid spaces (P and M) since this is the singleplayer one, only activate when it is the user's turn and not the bot's turn.
+                if (cube.turn = user) {
+                    if (grid1.check_button_clicked() == 1) {
+                        cube.user_input("p1");
+                    }
+                    else if (grid2.check_button_clicked() == 1) {
+                        cube.user_input("p2");
+                    }
+                    else if (grid3.check_button_clicked() == 1) {
+                        cube.user_input("p3");
+                    }
+                    else if (grid4.check_button_clicked() == 1) {
+                        cube.user_input("p4");
+                    }
+                    else if (grid5.check_button_clicked() == 1) {
+                        cube.user_input("p5");
+                    }
+                    else if (grid6.check_button_clicked() == 1) {
+                        cube.user_input("p6");
+                    }
+                    else if (grid7.check_button_clicked() == 1) {
+                        cube.user_input("p7");
+                    }
+                    else if (grid8.check_button_clicked() == 1) {
+                        cube.user_input("p8");
+                    }
+                    else if (grid9.check_button_clicked() == 1) {
+                        cube.user_input("p9");
+                    }
+                    else if (x_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mX");
+                    }
+                    else if (z_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mZp");
+                    }
+                    else if (z_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mZ");
+                    }
+                    else if (x_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mXp");
+                    }
+                    else if (l_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mLp");
+                    }
+                    else if (m_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mMp");
+                    }
+                    else if (r_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mR");
+                    }
+                    else if (b_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mB");
+                    }
+                    else if (b_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mBp");
+                    }
+                    else if (s_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mSp");
+                    }
+                    else if (s_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mS");
+                    }
+                    else if (f_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mFp");
+                    }
+                    else if (f_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mF");
+                    }
+                    else if (l_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mL");
+                    }
+                    else if (m_move_button.check_button_clicked() == 1) {
+                        cube.user_input("mM");
+                    }
+                    else if (r_prime_button.check_button_clicked() == 1) {
+                        cube.user_input("mRp");
+                    };
                 }
-                else if (grid2.check_button_clicked() == 1) {
-                    cube.user_input("p2");
-                }
-                else if (grid3.check_button_clicked() == 1) {
-                    cube.user_input("p3");
-                }
-                else if (grid4.check_button_clicked() == 1) {
-                    cube.user_input("p4");
-                }
-                else if (grid5.check_button_clicked() == 1) {
-                    cube.user_input("p5");
-                }
-                else if (grid6.check_button_clicked() == 1) {
-                    cube.user_input("p6");
-                }
-                else if (grid7.check_button_clicked() == 1) {
-                    cube.user_input("p7");
-                }
-                else if (grid8.check_button_clicked() == 1) {
-                    cube.user_input("p8");
-                }
-                else if (grid9.check_button_clicked() == 1) {
-                    cube.user_input("p9");
-                }
-                else if (x_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mX");
-                }
-                else if (z_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mZp");
-                }
-                else if (z_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mZ");
-                }
-                else if (x_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mXp");
-                }
-                else if (l_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mLp");
-                }
-                else if (m_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mMp");
-                }
-                else if (r_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mR");
-                }
-                else if (b_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mB");
-                }
-                else if (b_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mBp");
-                }
-                else if (s_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mSp");
-                }
-                else if (s_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mS");
-                }
-                else if (f_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mFp");
-                }
-                else if (f_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mF");
-                }
-                else if (l_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mL");
-                }
-                else if (m_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mM");
-                }
-                else if (r_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mRp");
-                }
+                else {
+                    // the bot moves something idk
+                };
                 mode = cube.gameloop();
                 break;
             default:
@@ -582,23 +598,25 @@ int main() {
                 grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
                 grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
 
-                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                if (cube.turn = user) {
+                    x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
 
-                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                    r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                };
 
                 // Rendering the positions on the board
                 for (int row = 0; row < 3; row++) {
