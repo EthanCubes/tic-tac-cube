@@ -12,7 +12,7 @@
 /*
 - [x] Make a GUI for the main menu
 - [x] Make a graphics for the game
-- [ ] Make the interactivity with the game
+- [x] Make the interactivity with the game
 - [ ] Make a Bot for the game
 */
 
@@ -66,7 +66,9 @@ class Button {
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
-Button play_button;
+// 12 billion buttons
+Button singleplayer_button;
+Button multiplayer_button;
 Button exit_button;
 
 Button grid1;
@@ -105,8 +107,11 @@ Button r_prime_button;
 Button exit_game_button;
 
 int main_menu(int screen_width, int screen_height) {
-    if (play_button.check_button_clicked() == 1) {
+    if (singleplayer_button.check_button_clicked() == 1) {
         return 2;
+    }
+    else if (multiplayer_button.check_button_clicked() == 1) {
+        return 5;
     }
     else if (exit_button.check_button_clicked() == 1) {
         return 1;
@@ -129,8 +134,10 @@ int main() {
     float mouse_x;
     float mouse_y;
 
-    play_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5, screen_height/10);
-    exit_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
+    // Main menu buttons
+    singleplayer_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5, screen_height/10);
+    multiplayer_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
+    exit_button.setup_button(screen_width/2, screen_height/10*8, screen_width/5, screen_height/10);
 
     // I'm actually so happy that this worked, I did not thing it would
     grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
@@ -169,6 +176,8 @@ int main() {
         mouse_x = mouse_pos.x;
         mouse_y = mouse_pos.y;
 
+        // 0 is idle and menu. 1 is quiting, 2 is local multiplayer game, 3 is X victory, 4 is Y victory, 5 is offline singleplayer
+
         // Simulate
         switch(mode) {
             case 0:
@@ -186,7 +195,6 @@ int main() {
                     cube.reset();
                     break;
                 };
-                
                 // Check for user input of the grid spaces (P and M)
                 if (grid1.check_button_clicked() == 1) {
                     cube.user_input("p1");
@@ -267,9 +275,95 @@ int main() {
                 break;
             case 3:
                 // There's no rendering to be done, I just need it to not reset back to mode 0
+                // X wins
                 break;
             case 4:
                 // There's no rendering to be done, I just need it to not reset back to mode 0
+                // O Wins
+                break;
+            case 5:
+                if (exit_game_button.check_button_clicked() == 1) {
+                    mode = 0;
+                    cube.reset();
+                    break;
+                };
+                // Check for user input of the grid spaces (P and M)
+                if (grid1.check_button_clicked() == 1) {
+                    cube.user_input("p1");
+                }
+                else if (grid2.check_button_clicked() == 1) {
+                    cube.user_input("p2");
+                }
+                else if (grid3.check_button_clicked() == 1) {
+                    cube.user_input("p3");
+                }
+                else if (grid4.check_button_clicked() == 1) {
+                    cube.user_input("p4");
+                }
+                else if (grid5.check_button_clicked() == 1) {
+                    cube.user_input("p5");
+                }
+                else if (grid6.check_button_clicked() == 1) {
+                    cube.user_input("p6");
+                }
+                else if (grid7.check_button_clicked() == 1) {
+                    cube.user_input("p7");
+                }
+                else if (grid8.check_button_clicked() == 1) {
+                    cube.user_input("p8");
+                }
+                else if (grid9.check_button_clicked() == 1) {
+                    cube.user_input("p9");
+                }
+                else if (x_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mX");
+                }
+                else if (z_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mZp");
+                }
+                else if (z_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mZ");
+                }
+                else if (x_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mXp");
+                }
+                else if (l_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mLp");
+                }
+                else if (m_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mMp");
+                }
+                else if (r_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mR");
+                }
+                else if (b_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mB");
+                }
+                else if (b_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mBp");
+                }
+                else if (s_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mSp");
+                }
+                else if (s_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mS");
+                }
+                else if (f_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mFp");
+                }
+                else if (f_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mF");
+                }
+                else if (l_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mL");
+                }
+                else if (m_move_button.check_button_clicked() == 1) {
+                    cube.user_input("mM");
+                }
+                else if (r_prime_button.check_button_clicked() == 1) {
+                    cube.user_input("mRp");
+                }
+                mode = cube.gameloop();
                 break;
             default:
                 std::cout << "Invalid command";
@@ -285,7 +379,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play_button.draw_button(RED, WHITE, 70, 20, 40, "PLAY");
+                singleplayer_button.draw_button(RED, WHITE, 70, 20, 40, "SINGLEPLAYER");
+                multiplayer_button.draw_button(RED, WHITE, 70, 20, 40, "MULTIPLAYER");
                 exit_button.draw_button(RED, WHITE, 70, 20, 40, "EXIT");
                 EndDrawing();
                 break;
@@ -539,6 +634,7 @@ int main() {
                     temp_x_pos = screen_width/2-175;
                     temp_y_pos += 150;
                 };
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("X Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -560,12 +656,248 @@ int main() {
                     temp_x_pos = screen_width/2-175;
                     temp_y_pos += 150;
                 }
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("O Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
                 mode = 0;
                 break;
+            case 5:
+                BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+
+                // Draw the entire board according to the position of the cube currently
+                switch(cube.colors[0][0][0]) {
+                    case 0:
+                        color_array[0] = WHITE;
+                        break;
+                    case 1:
+                        color_array[0] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[0] = GREEN;
+                        break;
+                    case 3:
+                        color_array[0] = RED;
+                        break;
+                    case 4:
+                        color_array[0] = BLUE;
+                        break;
+                    case 5:
+                        color_array[0] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][0][1]) {
+                    case 0:
+                        color_array[1] = WHITE;
+                        break;
+                    case 1:
+                        color_array[1] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[1] = GREEN;
+                        break;
+                    case 3:
+                        color_array[1] = RED;
+                        break;
+                    case 4:
+                        color_array[1] = BLUE;
+                        break;
+                    case 5:
+                        color_array[1] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][0][2]) {
+                    case 0:
+                        color_array[2] = WHITE;
+                        break;
+                    case 1:
+                        color_array[2] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[2] = GREEN;
+                        break;
+                    case 3:
+                        color_array[2] = RED;
+                        break;
+                    case 4:
+                        color_array[2] = BLUE;
+                        break;
+                    case 5:
+                        color_array[2] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][0]) {
+                    case 0:
+                        color_array[3] = WHITE;
+                        break;
+                    case 1:
+                        color_array[3] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[3] = GREEN;
+                        break;
+                    case 3:
+                        color_array[3] = RED;
+                        break;
+                    case 4:
+                        color_array[3] = BLUE;
+                        break;
+                    case 5:
+                        color_array[3] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][1]) {
+                    case 0:
+                        color_array[4] = WHITE;
+                        break;
+                    case 1:
+                        color_array[4] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[4] = GREEN;
+                        break;
+                    case 3:
+                        color_array[4] = RED;
+                        break;
+                    case 4:
+                        color_array[4] = BLUE;
+                        break;
+                    case 5:
+                        color_array[4] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][1][2]) {
+                    case 0:
+                        color_array[5] = WHITE;
+                        break;
+                    case 1:
+                        color_array[5] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[5] = GREEN;
+                        break;
+                    case 3:
+                        color_array[5] = RED;
+                        break;
+                    case 4:
+                        color_array[5] = BLUE;
+                        break;
+                    case 5:
+                        color_array[5] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][0]) {
+                    case 0:
+                        color_array[6] = WHITE;
+                        break;
+                    case 1:
+                        color_array[6] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[6] = GREEN;
+                        break;
+                    case 3:
+                        color_array[6] = RED;
+                        break;
+                    case 4:
+                        color_array[6] = BLUE;
+                        break;
+                    case 5:
+                        color_array[6] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][1]) {
+                    case 0:
+                        color_array[7] = WHITE;
+                        break;
+                    case 1:
+                        color_array[7] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[7] = GREEN;
+                        break;
+                    case 3:
+                        color_array[7] = RED;
+                        break;
+                    case 4:
+                        color_array[7] = BLUE;
+                        break;
+                    case 5:
+                        color_array[7] = YELLOW;
+                        break;
+                };
+                switch(cube.colors[0][2][2]) {
+                    case 0:
+                        color_array[8] = WHITE;
+                        break;
+                    case 1:
+                        color_array[8] = ORANGE;
+                        break;
+                    case 2:
+                        color_array[8] = GREEN;
+                        break;
+                    case 3:
+                        color_array[8] = RED;
+                        break;
+                    case 4:
+                        color_array[8] = BLUE;
+                        break;
+                    case 5:
+                        color_array[8] = YELLOW;
+                        break;
+                };
+                // Row 1
+                grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
+                grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
+                grid3.draw_button(color_array[2], WHITE, 0, 0, 0, "");
+                // Row 2
+                grid4.draw_button(color_array[3], WHITE, 0, 0, 0, "");
+                grid5.draw_button(color_array[4], WHITE, 0, 0, 0, "");
+                grid6.draw_button(color_array[5], WHITE, 0, 0, 0, "");
+                // Row 3
+                grid7.draw_button(color_array[6], WHITE, 0, 0, 0, "");
+                grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
+                grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
+
+                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+
+                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+
+                // Rendering the positions on the board
+                for (int row = 0; row < 3; row++) {
+                    for (int column = 0; column < 3; column++) {
+                        if (cube.positions[0][row][column] == 1) {
+                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
+                        }
+                        else if (cube.positions[0][row][column] == 2) {
+                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
+                        };
+                        temp_x_pos += 150;
+                    };
+                    temp_x_pos = screen_width/2-175;
+                    temp_y_pos += 150;
+                };
+
+                exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
+
+                EndDrawing();
+                // ISTG Vim yanking is ragebaiting me SO much
         };
     };
     CloseWindow();
