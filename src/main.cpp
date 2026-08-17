@@ -374,7 +374,8 @@ std::array<Color, 9> generate_colors() {
             color_array[8] = YELLOW;
             break;
         };
-}
+    return color_array;
+};  
 
 int main() {
     int mode = 0;
