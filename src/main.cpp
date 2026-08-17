@@ -114,6 +114,268 @@ int main_menu(int screen_width, int screen_height) {
     return 0;
 };
 
+void get_user_input() {
+    if (grid1.check_button_clicked() == 1) {
+        cube.user_input("p1");
+    }
+    else if (grid2.check_button_clicked() == 1) {
+        cube.user_input("p2");
+    }
+    else if (grid3.check_button_clicked() == 1) {
+        cube.user_input("p3");
+    }
+    else if (grid4.check_button_clicked() == 1) {
+        cube.user_input("p4");
+    }
+    else if (grid5.check_button_clicked() == 1) {
+        cube.user_input("p5");
+    }
+    else if (grid6.check_button_clicked() == 1) {
+        cube.user_input("p6");
+    }
+    else if (grid7.check_button_clicked() == 1) {
+        cube.user_input("p7");
+    }
+    else if (grid8.check_button_clicked() == 1) {
+        cube.user_input("p8");
+    }
+    else if (grid9.check_button_clicked() == 1) {
+        cube.user_input("p9");
+    }
+    else if (x_move_button.check_button_clicked() == 1) {
+        cube.user_input("mX");
+    }
+    else if (z_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mZp");
+    }
+    else if (z_move_button.check_button_clicked() == 1) {
+        cube.user_input("mZ");
+    }
+    else if (x_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mXp");
+    }
+    else if (l_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mLp");
+    }
+    else if (m_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mMp");
+    }
+    else if (r_move_button.check_button_clicked() == 1) {
+        cube.user_input("mR");
+    }
+    else if (b_move_button.check_button_clicked() == 1) {
+        cube.user_input("mB");
+    }
+    else if (b_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mBp");
+    }
+    else if (s_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mSp");
+    }
+    else if (s_move_button.check_button_clicked() == 1) {
+        cube.user_input("mS");
+    }
+    else if (f_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mFp");
+    }
+    else if (f_move_button.check_button_clicked() == 1) {
+        cube.user_input("mF");
+    }
+    else if (l_move_button.check_button_clicked() == 1) {
+        cube.user_input("mL");
+    }
+    else if (m_move_button.check_button_clicked() == 1) {
+        cube.user_input("mM");
+    }
+    else if (r_prime_button.check_button_clicked() == 1) {
+        cube.user_input("mRp");
+    };
+}
+
+std::array<Color, 9> generate_colors() {
+    std::array<Color, 9> color_array;
+    switch(cube.colors[0][0][0]) {
+        case 0:
+            color_array[0] = WHITE;
+            break;
+        case 1:
+            color_array[0] = ORANGE;
+            break;
+        case 2:
+            color_array[0] = GREEN;
+            break;
+        case 3:
+            color_array[0] = RED;
+            break;
+        case 4:
+            color_array[0] = BLUE;
+            break;
+        case 5:
+            color_array[0] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][0][1]) {
+        case 0:
+            color_array[1] = WHITE;
+            break;
+        case 1:
+            color_array[1] = ORANGE;
+            break;
+        case 2:
+            color_array[1] = GREEN;
+            break;
+        case 3:
+            color_array[1] = RED;
+            break;
+        case 4:
+            color_array[1] = BLUE;
+            break;
+        case 5:
+            color_array[1] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][0][2]) {
+        case 0:
+            color_array[2] = WHITE;
+            break;
+        case 1:
+            color_array[2] = ORANGE;
+            break;
+        case 2:
+            color_array[2] = GREEN;
+            break;
+        case 3:
+            color_array[2] = RED;
+            break;
+        case 4:
+            color_array[2] = BLUE;
+            break;
+        case 5:
+            color_array[2] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][1][0]) {
+        case 0:
+            color_array[3] = WHITE;
+            break;
+        case 1:
+            color_array[3] = ORANGE;
+            break;
+        case 2:
+            color_array[3] = GREEN;
+            break;
+        case 3:
+            color_array[3] = RED;
+            break;
+        case 4:
+            color_array[3] = BLUE;
+            break;
+        case 5:
+            color_array[3] = YELLOW;
+            break;
+        };
+    switch(cube.colors[0][1][1]) {
+        case 0:
+            color_array[4] = WHITE;
+            break;
+        case 1:
+            color_array[4] = ORANGE;
+            break;
+        case 2:
+            color_array[4] = GREEN;
+            break;
+        case 3:
+            color_array[4] = RED;
+            break;
+        case 4:
+            color_array[4] = BLUE;
+            break;
+        case 5:
+            color_array[4] = YELLOW;
+            break;
+        };
+    switch(cube.colors[0][1][2]) {
+        case 0:
+            color_array[5] = WHITE;
+            break;
+        case 1:
+            color_array[5] = ORANGE;
+            break;
+        case 2:
+            color_array[5] = GREEN;
+            break;
+        case 3:
+            color_array[5] = RED;
+            break;
+        case 4:
+            color_array[5] = BLUE;
+            break;
+        case 5:
+            color_array[5] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][2][0]) {
+        case 0:
+            color_array[6] = WHITE;
+            break;
+        case 1:
+            color_array[6] = ORANGE;
+            break;
+        case 2:
+            color_array[6] = GREEN;
+            break;
+            color_array[6] = RED;
+        case 3:
+            break;
+        case 4:
+            color_array[6] = BLUE;
+            break;
+        case 5:
+            color_array[6] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][2][1]) {
+        case 0:
+            color_array[7] = WHITE;
+            break;
+        case 1:
+            color_array[7] = ORANGE;
+            break;
+        case 2:
+            color_array[7] = GREEN;
+            break;
+        case 3:
+            color_array[7] = RED;
+            break;
+        case 4:
+            color_array[7] = BLUE;
+            break;
+        case 5:
+            color_array[7] = YELLOW;
+            break;
+    };
+    switch(cube.colors[0][2][2]) {
+        case 0:
+            color_array[8] = WHITE;
+            break;
+        case 1:
+            color_array[8] = ORANGE;
+            break;
+        case 2:
+            color_array[8] = GREEN;
+            break;
+        case 3:
+            color_array[8] = RED;
+            break;
+        case 4:
+            color_array[8] = BLUE;
+            break;
+        case 5:
+            color_array[8] = YELLOW;
+            break;
+        };
+}
+
 int main() {
     int mode = 0;
     bool running = true;
@@ -188,81 +450,7 @@ int main() {
                 };
                 
                 // Check for user input of the grid spaces (P and M)
-                if (grid1.check_button_clicked() == 1) {
-                    cube.user_input("p1");
-                }
-                else if (grid2.check_button_clicked() == 1) {
-                    cube.user_input("p2");
-                }
-                else if (grid3.check_button_clicked() == 1) {
-                    cube.user_input("p3");
-                }
-                else if (grid4.check_button_clicked() == 1) {
-                    cube.user_input("p4");
-                }
-                else if (grid5.check_button_clicked() == 1) {
-                    cube.user_input("p5");
-                }
-                else if (grid6.check_button_clicked() == 1) {
-                    cube.user_input("p6");
-                }
-                else if (grid7.check_button_clicked() == 1) {
-                    cube.user_input("p7");
-                }
-                else if (grid8.check_button_clicked() == 1) {
-                    cube.user_input("p8");
-                }
-                else if (grid9.check_button_clicked() == 1) {
-                    cube.user_input("p9");
-                }
-                else if (x_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mX");
-                }
-                else if (z_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mZp");
-                }
-                else if (z_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mZ");
-                }
-                else if (x_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mXp");
-                }
-                else if (l_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mLp");
-                }
-                else if (m_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mMp");
-                }
-                else if (r_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mR");
-                }
-                else if (b_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mB");
-                }
-                else if (b_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mBp");
-                }
-                else if (s_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mSp");
-                }
-                else if (s_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mS");
-                }
-                else if (f_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mFp");
-                }
-                else if (f_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mF");
-                }
-                else if (l_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mL");
-                }
-                else if (m_move_button.check_button_clicked() == 1) {
-                    cube.user_input("mM");
-                }
-                else if (r_prime_button.check_button_clicked() == 1) {
-                    cube.user_input("mRp");
-                }
+                get_user_input();
                 mode = cube.gameloop();
                 break;
             case 3:
@@ -293,187 +481,7 @@ int main() {
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
 
-                // Draw the entire board according to the position of the cube currently
-                switch(cube.colors[0][0][0]) {
-                    case 0:
-                        color_array[0] = WHITE;
-                        break;
-                    case 1:
-                        color_array[0] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[0] = GREEN;
-                        break;
-                    case 3:
-                        color_array[0] = RED;
-                        break;
-                    case 4:
-                        color_array[0] = BLUE;
-                        break;
-                    case 5:
-                        color_array[0] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][0][1]) {
-                    case 0:
-                        color_array[1] = WHITE;
-                        break;
-                    case 1:
-                        color_array[1] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[1] = GREEN;
-                        break;
-                    case 3:
-                        color_array[1] = RED;
-                        break;
-                    case 4:
-                        color_array[1] = BLUE;
-                        break;
-                    case 5:
-                        color_array[1] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][0][2]) {
-                    case 0:
-                        color_array[2] = WHITE;
-                        break;
-                    case 1:
-                        color_array[2] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[2] = GREEN;
-                        break;
-                    case 3:
-                        color_array[2] = RED;
-                        break;
-                    case 4:
-                        color_array[2] = BLUE;
-                        break;
-                    case 5:
-                        color_array[2] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][1][0]) {
-                    case 0:
-                        color_array[3] = WHITE;
-                        break;
-                    case 1:
-                        color_array[3] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[3] = GREEN;
-                        break;
-                    case 3:
-                        color_array[3] = RED;
-                        break;
-                    case 4:
-                        color_array[3] = BLUE;
-                        break;
-                    case 5:
-                        color_array[3] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][1][1]) {
-                    case 0:
-                        color_array[4] = WHITE;
-                        break;
-                    case 1:
-                        color_array[4] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[4] = GREEN;
-                        break;
-                    case 3:
-                        color_array[4] = RED;
-                        break;
-                    case 4:
-                        color_array[4] = BLUE;
-                        break;
-                    case 5:
-                        color_array[4] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][1][2]) {
-                    case 0:
-                        color_array[5] = WHITE;
-                        break;
-                    case 1:
-                        color_array[5] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[5] = GREEN;
-                        break;
-                    case 3:
-                        color_array[5] = RED;
-                        break;
-                    case 4:
-                        color_array[5] = BLUE;
-                        break;
-                    case 5:
-                        color_array[5] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][2][0]) {
-                    case 0:
-                        color_array[6] = WHITE;
-                        break;
-                    case 1:
-                        color_array[6] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[6] = GREEN;
-                        break;
-                    case 3:
-                        color_array[6] = RED;
-                        break;
-                    case 4:
-                        color_array[6] = BLUE;
-                        break;
-                    case 5:
-                        color_array[6] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][2][1]) {
-                    case 0:
-                        color_array[7] = WHITE;
-                        break;
-                    case 1:
-                        color_array[7] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[7] = GREEN;
-                        break;
-                    case 3:
-                        color_array[7] = RED;
-                        break;
-                    case 4:
-                        color_array[7] = BLUE;
-                        break;
-                    case 5:
-                        color_array[7] = YELLOW;
-                        break;
-                };
-                switch(cube.colors[0][2][2]) {
-                    case 0:
-                        color_array[8] = WHITE;
-                        break;
-                    case 1:
-                        color_array[8] = ORANGE;
-                        break;
-                    case 2:
-                        color_array[8] = GREEN;
-                        break;
-                    case 3:
-                        color_array[8] = RED;
-                        break;
-                    case 4:
-                        color_array[8] = BLUE;
-                        break;
-                    case 5:
-                        color_array[8] = YELLOW;
-                        break;
-                };
+                color_array = generate_colors();
                 // Row 1
                 grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
                 grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
