@@ -444,6 +444,7 @@ int main() {
                 running = false;
                 break;
             case 2:
+                // Singleplayer
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
                     cube.reset();
@@ -460,13 +461,16 @@ int main() {
             case 4:
                 // There's no rendering to be done, I just need it to not reset back to mode 0
                 break;
+            case 5:
+                // Multiplayer
+                break;
             default:
                 std::cout << "Invalid command";
                 mode = 0;
         };
         // Render
         std::array<Color, 9> color_array;
-        int temp_x_pos = screen_width/2-175;
+        int temp_x_pos = screen_idth/2-175;
         int temp_y_pos = screen_height/2-175;
         switch(mode) {
             case 0:
@@ -479,6 +483,7 @@ int main() {
                 EndDrawing();
                 break;
             case 2:
+                // Multiplayer
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
 
@@ -575,6 +580,10 @@ int main() {
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
+                mode = 0;
+                break;
+            case 5:
+                // Singleplayer
                 mode = 0;
                 break;
         };
