@@ -377,6 +377,21 @@ std::array<Color, 9> generate_colors() {
     return color_array;
 };  
 
+void draw_board(std::array<Color, 9> color_array) {
+    // Row 1
+    grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
+    grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
+    grid3.draw_button(color_array[2], WHITE, 0, 0, 0, "");
+    // Row 2
+    grid4.draw_button(color_array[3], WHITE, 0, 0, 0, "");
+    grid5.draw_button(color_array[4], WHITE, 0, 0, 0, "");
+    grid6.draw_button(color_array[5], WHITE, 0, 0, 0, "");
+    // Row 3
+    grid7.draw_button(color_array[6], WHITE, 0, 0, 0, "");
+    grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
+    grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
+}
+
 int main() {
     int mode = 0;
     bool running = true;
@@ -488,18 +503,7 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
 
                 color_array = generate_colors();
-                // Row 1
-                grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
-                grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
-                grid3.draw_button(color_array[2], WHITE, 0, 0, 0, "");
-                // Row 2
-                grid4.draw_button(color_array[3], WHITE, 0, 0, 0, "");
-                grid5.draw_button(color_array[4], WHITE, 0, 0, 0, "");
-                grid6.draw_button(color_array[5], WHITE, 0, 0, 0, "");
-                // Row 3
-                grid7.draw_button(color_array[6], WHITE, 0, 0, 0, "");
-                grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
-                grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
+                draw_board(color_array);
 
                 x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
                 z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
