@@ -392,6 +392,26 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     board_buttons[8].draw_button(color_array[8], WHITE, 0, 0, 0, "");
 }
 
+void draw_movement(movement_buttons) {
+    x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+
+    l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+}
+
 int main() {
     int mode = 0;
     bool running = true;
@@ -537,24 +557,7 @@ int main() {
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
-
-                x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-
-                l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-                r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+                draw_movement(movement_buttons);
 
                 // Rendering the positions on the board
                 for (int row = 0; row < 3; row++) {
