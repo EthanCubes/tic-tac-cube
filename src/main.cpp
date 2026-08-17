@@ -570,6 +570,7 @@ int main() {
                 // Multiplayer
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
+                break;
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
