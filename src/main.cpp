@@ -548,6 +548,7 @@ int main() {
                     temp_x_pos = screen_width/2-175;
                     temp_y_pos += 150;
                 };
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("X Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -569,6 +570,7 @@ int main() {
                     temp_x_pos = screen_width/2-175;
                     temp_y_pos += 150;
                 }
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("O Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
