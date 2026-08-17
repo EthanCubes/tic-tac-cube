@@ -116,8 +116,8 @@ int main_menu(int screen_width, int screen_height) {
 
 void get_user_input() {
     if (grid1.check_button_clicked() == 1) {
-        cube.user_input("p1");
     }
+    cube.user_input("p1");
     else if (grid2.check_button_clicked() == 1) {
         cube.user_input("p2");
     }
@@ -257,9 +257,9 @@ std::array<Color, 9> generate_colors() {
     switch(cube.colors[0][1][0]) {
         case 0:
             color_array[3] = WHITE;
-            break;
         case 1:
             color_array[3] = ORANGE;
+            break;
             break;
         case 2:
             color_array[3] = GREEN;
@@ -377,19 +377,19 @@ std::array<Color, 9> generate_colors() {
     return color_array;
 };  
 
-void draw_board(std::array<Color, 9> color_array) {
+void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_buttons) {
     // Row 1
-    grid1.draw_button(color_array[0], WHITE, 0, 0, 0, "");
-    grid2.draw_button(color_array[1], WHITE, 0, 0, 0, "");
-    grid3.draw_button(color_array[2], WHITE, 0, 0, 0, "");
+    board_buttons[0].draw_button(color_array[0], WHITE, 0, 0, 0, "");
+    board_buttons[1].draw_button(color_array[1], WHITE, 0, 0, 0, "");
+    board_buttons[2].draw_button(color_array[2], WHITE, 0, 0, 0, "");
     // Row 2
-    grid4.draw_button(color_array[3], WHITE, 0, 0, 0, "");
-    grid5.draw_button(color_array[4], WHITE, 0, 0, 0, "");
-    grid6.draw_button(color_array[5], WHITE, 0, 0, 0, "");
+    board_buttons[3].draw_button(color_array[3], WHITE, 0, 0, 0, "");
+    board_buttons[4].draw_button(color_array[4], WHITE, 0, 0, 0, "");
+    board_buttons[5].draw_button(color_array[5], WHITE, 0, 0, 0, "");
     // Row 3
-    grid7.draw_button(color_array[6], WHITE, 0, 0, 0, "");
-    grid8.draw_button(color_array[7], WHITE, 0, 0, 0, "");
-    grid9.draw_button(color_array[8], WHITE, 0, 0, 0, "");
+    board_buttons[6].draw_button(color_array[6], WHITE, 0, 0, 0, "");
+    board_buttons[7].draw_button(color_array[7], WHITE, 0, 0, 0, "");
+    board_buttons[8].draw_button(color_array[8], WHITE, 0, 0, 0, "");
 }
 
 int main() {
@@ -536,7 +536,7 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
 
                 color_array = generate_colors();
-                draw_board(color_array);
+                draw_board(color_array, board_buttons);
 
                 x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
                 z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
