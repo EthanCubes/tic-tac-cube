@@ -412,6 +412,22 @@ void draw_movement(movement_buttons) {
     r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
 }
 
+void draw_positions() {
+    for (int row = 0; row < 3; row++) {
+        for (int column = 0; column < 3; column++) {
+            if (cube.positions[0][row][column] == 1) {
+                DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
+            }
+            else if (cube.positions[0][row][column] == 2) {
+                DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
+            };
+            temp_x_pos += 150;
+        };
+        temp_x_pos = screen_width/2-175;
+        temp_y_pos += 150;
+    };
+}
+
 int main() {
     int mode = 0;
     bool running = true;
@@ -558,21 +574,7 @@ int main() {
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
                 draw_movement(movement_buttons);
-
-                // Rendering the positions on the board
-                for (int row = 0; row < 3; row++) {
-                    for (int column = 0; column < 3; column++) {
-                        if (cube.positions[0][row][column] == 1) {
-                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
-                        }
-                        else if (cube.positions[0][row][column] == 2) {
-                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
-                        };
-                        temp_x_pos += 150;
-                    };
-                    temp_x_pos = screen_width/2-175;
-                    temp_y_pos += 150;
-                };
+                draw_positions();
 
                 exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
 
@@ -580,19 +582,7 @@ int main() {
                 break;
             case 3:
                 BeginDrawing();
-                for (int row = 0; row < 3; row++) {
-                    for (int column = 0; column < 3; column++) {
-                        if (cube.positions[0][row][column] == 1) {
-                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
-                        }
-                        else if (cube.positions[0][row][column] == 2) {
-                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
-                        };
-                        temp_x_pos += 150;
-                    };
-                    temp_x_pos = screen_width/2-175;
-                    temp_y_pos += 150;
-                };
+                draw_positions();
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("X Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
@@ -602,19 +592,7 @@ int main() {
                 break;
             case 4:
                 BeginDrawing();
-                for (int row = 0; row < 3; row++) {
-                    for (int column = 0; column < 3; column++) {
-                        if (cube.positions[0][row][column] == 1) {
-                            DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
-                        }
-                        else if (cube.positions[0][row][column] == 2) {
-                            DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
-                        };
-                        temp_x_pos += 150;
-                    };
-                    temp_x_pos = screen_width/2-175;
-                    temp_y_pos += 150;
-                }
+                draw_positions();
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("O Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
