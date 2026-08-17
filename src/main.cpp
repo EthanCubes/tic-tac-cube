@@ -104,7 +104,10 @@ Button r_prime_button;
 
 Button exit_game_button;
 
-int main_menu(int screen_width, int screen_height) {
+int screen_width = 1280;
+int screen_height = 720;
+
+int main_menu() {
     if (play_button.check_button_clicked() == 1) {
         return 2;
     }
@@ -116,8 +119,8 @@ int main_menu(int screen_width, int screen_height) {
 
 void get_user_input() {
     if (grid1.check_button_clicked() == 1) {
+        cube.user_input("p1");
     }
-    cube.user_input("p1");
     else if (grid2.check_button_clicked() == 1) {
         cube.user_input("p2");
     }
@@ -257,9 +260,9 @@ std::array<Color, 9> generate_colors() {
     switch(cube.colors[0][1][0]) {
         case 0:
             color_array[3] = WHITE;
+            break;
         case 1:
             color_array[3] = ORANGE;
-            break;
             break;
         case 2:
             color_array[3] = GREEN;
@@ -324,8 +327,8 @@ std::array<Color, 9> generate_colors() {
         case 2:
             color_array[6] = GREEN;
             break;
-            color_array[6] = RED;
         case 3:
+            color_array[6] = RED;
             break;
         case 4:
             color_array[6] = BLUE;
@@ -392,7 +395,7 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     board_buttons[8].draw_button(color_array[8], WHITE, 0, 0, 0, "");
 }
 
-void draw_movement(movement_buttons) {
+void draw_movement(std::array<Button, 16> movement_buttons) {
     x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
     z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
     z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
@@ -413,6 +416,8 @@ void draw_movement(movement_buttons) {
 }
 
 void draw_positions() {
+    int temp_x_pos = screen_width/2-175;
+    int temp_y_pos = screen_height/2-175;
     for (int row = 0; row < 3; row++) {
         for (int column = 0; column < 3; column++) {
             if (cube.positions[0][row][column] == 1) {
@@ -433,8 +438,6 @@ int main() {
     bool running = true;
 
     // Setup of the game window
-    int screen_width = 1280;
-    int screen_height = 720;
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
     Image logo_image = LoadImage("assets/bitmap.png");
@@ -488,7 +491,7 @@ int main() {
         grid7,
         grid8,
         grid9
-    }
+    };
 
     std::array<Button, 16> movement_buttons = {
         x_move_button,
@@ -497,7 +500,7 @@ int main() {
         x_prime_button,
 
         l_prime_button,
-        m_primem_button,
+        m_prime_button,
         r_move_button,
         b_move_button,
         b_prime_button,
@@ -508,7 +511,7 @@ int main() {
         l_move_button,
         m_move_button,
         r_prime_button
-    }
+    };
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
@@ -519,7 +522,7 @@ int main() {
         // Simulate
         switch(mode) {
             case 0:
-                mode = main_menu(screen_width, screen_height);
+                mode = main_menu();
                 if (mode != 0) {
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 };
@@ -554,7 +557,7 @@ int main() {
         };
         // Render
         std::array<Color, 9> color_array;
-        int temp_x_pos = screen_idth/2-175;
+        int temp_x_pos = screen_width/2-175;
         int temp_y_pos = screen_height/2-175;
         switch(mode) {
             case 0:
@@ -570,7 +573,6 @@ int main() {
                 // Multiplayer
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
-                break;
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
