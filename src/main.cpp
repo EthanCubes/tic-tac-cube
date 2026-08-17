@@ -441,6 +441,39 @@ int main() {
 
     exit_game_button.setup_button(25, 12, 50, 25);
 
+    // Arrays of buttons
+    std::array<Button, 9> board_buttons = {
+        grid1,
+        grid2,
+        grid3, 
+        grid4,
+        grid5,
+        grid6,
+        grid7,
+        grid8,
+        grid9
+    }
+
+    std::array<Button, 16> movement_buttons = {
+        x_move_button,
+        z_prime_button,
+        z_move_button,
+        x_prime_button,
+
+        l_prime_button,
+        m_primem_button,
+        r_move_button,
+        b_move_button,
+        b_prime_button,
+        s_prime_button,
+        s_move_button,
+        f_prime_button,
+        f_move_button,
+        l_move_button,
+        m_move_button,
+        r_prime_button
+    }
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
