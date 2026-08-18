@@ -39,5 +39,6 @@ AI was used for debugging and learning. I never used it to tell me what code I s
 - [GeeksForGeeks](https://www.geeksforgeeks.org) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be longer than the entire rest of the readme.
 - This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c) helped with getting raylib to work (it's technically a C tutorial but like whatever)
 - The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer). Somehow I still managed to get one of the four quintessential moves wrong and spent like 2 hours trying to fix it.
+- The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) helped with creating the bot.
 - The GUI of this code was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib website.
 - This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). They both kinda grew on me, and now I can't use anything else without repeatedly bashing the HJKL keys.
