@@ -565,6 +565,14 @@ int main() {
                 // Singleplayer
                 if (!setup) {
                     bot_turn = rand() % 2 + 1;
+                    BeginDrawing();
+                    switch(bot_turn) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                    }
+                    EndDrawing();
                     user_turn = 3 - bot_turn;
                     setup = true;
                 }
@@ -583,6 +591,9 @@ int main() {
                     cube.user_input(get_bot_move(cube.positions));
                 }
                 mode = cube.gameloop(5);
+                break;
+            case 6:
+                setup = false;
                 break;
             default:
                 std::cout << "Invalid command";
@@ -653,6 +664,17 @@ int main() {
                 exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
                 EndDrawing();
 
+                break;
+            case 6:
+                // Draw
+                BeginDrawing();
+                draw_positions();
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+                DrawText("Board Full! (Tie)", 0, 0, 30, WHITE);
+                EndDrawing();
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                cube.reset();
+                mode = 0;
                 break;
         };
     };
