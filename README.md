@@ -32,7 +32,7 @@ I'm assuming this means running the source code instead of the precompiled binar
 Each side of a 3x3 cube, represented by a 3-dimensional array, acts like a tic-tac-toe game (only the face that is currently at the top of the cube can be interacted with though). Each turn, instead of marking the top face with their corresponding mark, the player can choose to instead turn or rotate the cube. The GUI just accesses the text ui, and displays what the text UI shows in a graphical format.
 
 ## AI Usage disclosure
-AI was used for debugging and learning. I never used it to tell me what code I should write, only asked it about like how I get a value from a tuple and things like that. 
+AI was used for debugging and learning. I never used it to tell me what code I should write. 
 
 ## Credits
 - [Mosh Hamedani's C++ Course]() helped  this is one of my first C++ projects, although a some of my previous knowledge from JavaScript carried over.
