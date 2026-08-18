@@ -4,16 +4,20 @@
 #include <tuple>
 #include <chrono>
 #include <thread>
+#include <cstdlib>
+#include <ctime>
 
 #include "board.h"
+#include "bot.h"
 
 #include "raylib.h"
 
 /*
 - [x] Make a GUI for the main menu
 - [x] Make a graphics for the game
-- [ ] Make the interactivity with the game
+- [x] Make the interactivity with the game
 - [ ] Make a Bot for the game
+- [ ] Make the GUI look better
 */
 
 // Buttons are always pretty difficult
@@ -480,6 +484,10 @@ int main() {
 
     exit_game_button.setup_button(25, 12, 50, 25);
 
+    int bot_turn;
+    int user_turn;
+    bool setup = false;
+
     // Arrays of buttons
     std::array<Button, 9> board_buttons = {
         grid1,
@@ -531,7 +539,7 @@ int main() {
                 running = false;
                 break;
             case 2:
-                // Singleplayer
+                // Multiplayer
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
                     cube.reset();
@@ -543,13 +551,33 @@ int main() {
                 mode = cube.gameloop();
                 break;
             case 3:
-                // There's no rendering to be done, I just need it to not reset back to mode 0
+                setup = false;
                 break;
             case 4:
-                // There's no rendering to be done, I just need it to not reset back to mode 0
+                setup = false;
                 break;
             case 5:
-                // Multiplayer
+                // Singleplayer
+                if (!setup) {
+                    bot_turn = rand() % 2 + 1;
+                    user_turn = 3 - bot_turn;
+                    setup = true;
+                }
+                
+                if (exit_game_button.check_button_clicked() == 1) {
+                    mode = 0;
+                    cube.reset();
+                    break;
+                };
+                
+                // Check for user input of the grid spaces (P and M)
+                if (cube.turn == user_turn) {
+                    get_user_input();
+                }
+                else {
+                    get_bot_move(cube.positions);
+                }
+                mode = cube.gameloop();
                 break;
             default:
                 std::cout << "Invalid command";
@@ -585,8 +613,8 @@ int main() {
                 break;
             case 3:
                 BeginDrawing();
-                draw_positions();
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+                draw_positions();
                 DrawText("X Wins!", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -605,7 +633,20 @@ int main() {
                 break;
             case 5:
                 // Singleplayer
-                mode = 0;
+                BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+
+                color_array = generate_colors();
+                draw_board(color_array, board_buttons);
+                
+                if (cube.turn == user_turn) {
+                    draw_movement(movement_buttons);
+                };
+                draw_positions();
+
+                exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
+                EndDrawing();
+
                 break;
         };
     };
