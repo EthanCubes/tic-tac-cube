@@ -50,7 +50,14 @@ std::string place_randomly(std::array<std::array<int, 3>, 3> board_position) {
         {9, {2, 2}}
     };
     srand(time(0));
-    int movement_mode = rand() % 2;
+    int random = rand() % 10;
+    int movement_mode;
+    if (random < 7) {
+        movement_mode = 0;
+    }
+    else {
+        movement_mode = 1;
+    }
     switch(movement_mode) {
         case 0: {
             // Very confusing code 
