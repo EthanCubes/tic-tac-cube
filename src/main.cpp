@@ -70,7 +70,8 @@ class Button {
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
-Button play_button;
+Button singleplayer_button;
+Button multiplayer_button;
 Button exit_button;
 
 Button grid1;
@@ -112,8 +113,11 @@ int screen_width = 1280;
 int screen_height = 720;
 
 int main_menu() {
-    if (play_button.check_button_clicked() == 1) {
+    if (multiplayer_button.check_button_clicked() == 1) {
         return 2;
+    }
+    else if (singleplayer_button.check_button_clicked() == 1) {
+        return 5;
     }
     else if (exit_button.check_button_clicked() == 1) {
         return 1;
@@ -450,8 +454,9 @@ int main() {
     float mouse_x;
     float mouse_y;
 
-    play_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5, screen_height/10);
-    exit_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
+    multiplayer_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
+    singleplayer_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5,screen_height/10);
+    exit_button.setup_button(screen_width/2, screen_height/10*8, screen_width/5, screen_height/10);
 
     // I'm actually so happy that this worked, I did not thing it would
     grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
@@ -593,8 +598,9 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                play_button.draw_button(RED, WHITE, 70, 20, 40, "PLAY");
-                exit_button.draw_button(RED, WHITE, 70, 20, 40, "EXIT");
+                singleplayer_button.draw_button(RED, WHITE, 3, 20, 40, "Singleplayer");
+                multiplayer_button.draw_button(RED, WHITE, 20, 20, 40, "Multiplayer");
+                exit_button.draw_button(RED, WHITE, 70, 20, 40, "Exit");
                 EndDrawing();
                 break;
             case 2:
