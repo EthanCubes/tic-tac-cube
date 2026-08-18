@@ -17,128 +17,35 @@ std::array<std::array<int, 3>, 3> convert_board_position(std::array<std::array<s
     return converted_board_position;
 };
 
-std::string scan_unbroken_two(std::array<std::array<int, 3>, 3> board_position) {
-    // for every place in the square, given that it is still inside the board
-    std::array<std::string, 8> direction_keys_array = {
-        "N",
-        "NE",
-        "E",
-        "SE",
-        "S",
-        "SW",
-        "W",
-        "NW"
+std::string achieve_win(std::array<std::array<int, 3>, 3> board_position) {};
+std::string combat_formed_fork(std::array<std::array<int, 3>, 3> board_position) {};
+std::string block_win(std::array<std::array<int, 3>, 3> board_positon) {};
+std::string create_fork(std::array<std::array<int, 3>, 3> board_position) {};
+std::string block_fork_creation(std::array<std::array<int, 3>, 3> board_position) {};
+std::string place_priority(std::array<std::array<int, 3>, 3> board_position) {
+    srand(time(NULL));
+    // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
+    // Center
+    if (board_position[1][1] == 0) {
+        return "p5";
     };
-    std::map<std::string, std::array<int, 2>> direction_modifier_index = {
-        {"N", {0, 1}},
-        {"NE", {1, 1}},
-        {"E", {1, 0}}, 
-        {"SE", {1, -1}},
-        {"S", {0, -1}},
-        {"SW", {-1, -1}},
-        {"W", {-1, 0}},
-        {"NW", {-1, 1}}
-    };
-
-    std::array<std::array<int, 2>, 3> scanned_positions;
-    for (int row = 0; row < 3; row++) {
-        for (int column = 0; column < 3; column++) {
-            for (int direction = 0; direction < 8; direction++) {
-                std::string direction_key = direction_keys_array[direction];
-                std::array<int, 2> direction_modifier = direction_modifier_index[direction_key];
-                int direction_x_modifier = direction_modifier[0];
-                int direction_y_modifier = direction_modifier[1];
-                scanned_positions[0] = {row, column};
-                scanned_positions[1] = {row + direction_x_modifier, column + direction_y_modifier};
-                scanned_positions[2] = {row + direction_x_modifier*2, column + direction_y_modifier*2};
-                if (scanned_positions[2][0] < 0 || scanned_positions[2][0] > 2 || scanned_positions[2][1] < 0 || scanned_positions[2][1] > 2) {
-                    // This might be the error? I don't know how
-                    continue;
-                }
-                else if (board_position[scanned_positions[0][0]][scanned_positions[0][1]] != 0) {
-                    continue;
-                }
-                // Actually scanning the thing
-                if (board_position[scanned_positions[1][0]][scanned_positions[1][1]] == board_position[scanned_positions[2][0]][scanned_positions[2][1]]) {
-                    // Convert the array into a single number
-                    int move_number = row * 3 + column + 1;
-                    return "p" + std::to_string(move_number);
-                }
-            }
-        }
+    // Opposite corner
+    // Empty corner
+    // Empty side
+    // Rotate board
+    rotation_type_number = rand() % 4;
+    switch(rotation_type_number) {
+        case 0:
+            return "mX";
+        case 1:
+            return "mZp";
+        case 2:
+            return "mZ";
+        case 3:
+            return "mXp";
+        default:
+            return "mD";
     }
-    return "nothing";
-}
-
-// I have the sudden urge to like make a playlist and discover new songs that I could listen to
-
-// These functions will scan for patterns
-std::string place_randomly(std::array<std::array<int, 3>, 3> board_position) {
-    // Didn't actually test by compiling, lowkey asked DeepSeek if I made any mistakes.
-    std::array<std::string, 16> move_array = {
-        "mX",
-        "mZp",
-        "mZ",
-        "mXp",
-
-        "mLp",
-        "mMp",
-        "mR",
-        "mB",
-        "mBp",
-        "mSp",
-        "mS",
-        "mFp",
-        "mF",
-        "mL",
-        "mM",
-        "mRp"
-    };
-    std::map<int, std::array<int, 2>> location_index = {
-        {1, {0, 0}},
-        {2, {0, 1}},
-        {3, {0, 2}},
-        {4, {1, 0}},
-        {5, {1, 1}},
-        {6, {1, 2}},
-        {7, {2, 0}},
-        {8, {2, 1}},
-        {9, {2, 2}}
-    };
-    srand(time(0));
-    int random = rand() % 10;
-    int movement_mode;
-    if (random < 7) {
-        movement_mode = 0;
-    }
-    else {
-        movement_mode = 1;
-    }
-    switch(movement_mode) {
-        case 0: {
-            // Very confusing code 
-            int location_int;
-            bool position_valid = false;
-            while (!position_valid) {
-                location_int = rand() % 9 + 1;
-                int row = location_index[location_int][0];
-                int column = location_index[location_int][1];
-                if (board_position[row][column] == 0) {
-                    position_valid = true;
-                }
-            }
-            return 'p' + std::to_string(location_int);
-        };
-        case 1: {
-            // Rotating a cube
-            int move = rand() % 16;
-            return move_array[move];
-        };
-        default: {
-            return "mDp";
-        };
-    };
-    return "mDp";
 };
 
 // Since the thing storing the board position is located inside an object, I cannot get the information directly from the board file.
@@ -149,10 +56,15 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Not technically needed, but the original array contains a bunch of redundant variables for this program.
     std::array<std::array<int, 3>, 3> converted_board_position = convert_board_position(board_position_input);
     
-    move = scan_unbroken_two(converted_board_position);
-    if (move != "nothing") {
-        return move;
-    }
-    move = place_randomly(converted_board_position);
-    return move;
+    // Steps to Winning at least some of the time
+    // Go for a Win
+    // Rotate to deal with fork
+    // Block any 2-in-a-row patterns
+    // Create a Fork
+    // Block Fork
+    // Play in the Center whenever possible
+    // Play in the Opposite corner
+    // Empty Corner
+    // Empty side
+    // Rotate board to new face
 };
