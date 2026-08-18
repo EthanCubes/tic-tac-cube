@@ -953,7 +953,7 @@ void Cube_board::user_input(std::string input) {
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
 };
 
-int Cube_board::gameloop() {
+int Cube_board::gameloop(int mode) {
     // Check for wins so that there's a way to exit the gameloop without exiting the game
     if (std::get<0>(scan_for_wins()) == 1) {
         return 3;
@@ -961,5 +961,12 @@ int Cube_board::gameloop() {
     else if (std::get<0>(scan_for_wins()) == 2) {
         return 4;
     };
-    return 2;
+    switch(mode) {
+        case 2:
+            return 2;
+        case 5:
+            return 5;
+        default: 
+            return 0;
+    };
 };

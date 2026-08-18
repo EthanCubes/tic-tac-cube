@@ -117,7 +117,7 @@ int main_menu() {
         return 2;
     }
     else if (singleplayer_button.check_button_clicked() == 1) {
-        return 5;
+        return 5; // Huh this doesn't work for some reason
     }
     else if (exit_button.check_button_clicked() == 1) {
         return 1;
@@ -553,7 +553,7 @@ int main() {
                 
                 // Check for user input of the grid spaces (P and M)
                 get_user_input();
-                mode = cube.gameloop();
+                mode = cube.gameloop(2);
                 break;
             case 3:
                 setup = false;
@@ -580,9 +580,9 @@ int main() {
                     get_user_input();
                 }
                 else {
-                    get_bot_move(cube.positions);
+                    cube.user_input(get_bot_move(cube.positions));
                 }
-                mode = cube.gameloop();
+                mode = cube.gameloop(5);
                 break;
             default:
                 std::cout << "Invalid command";
@@ -644,6 +644,13 @@ int main() {
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
+                
+                if (!setup) {
+                    DrawText("Not setup", 20, 20, 20, GREEN);
+                }
+                else  {
+                    DrawText("Setup complete", 20, 20, 20, GREEN);
+                };
                 
                 if (cube.turn == user_turn) {
                     draw_movement(movement_buttons);
