@@ -645,13 +645,6 @@ int main() {
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
                 
-                if (!setup) {
-                    DrawText("Not setup", 20, 20, 20, GREEN);
-                }
-                else  {
-                    DrawText("Setup complete", 20, 20, 20, GREEN);
-                };
-                
                 if (cube.turn == user_turn) {
                     draw_movement(movement_buttons);
                 };
