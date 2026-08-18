@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include <array>
 #include <map>
 #include <tuple>
@@ -16,7 +17,7 @@ std::array<std::array<int, 3>, 3> convert_board_position(std::array<std::array<s
     return converted_board_position;
 };
 
-std::string scan_unbroken_two(std::array<int, 3>, 3> board_position) {
+std::string scan_unbroken_two(std::array<std::array<int, 3>, 3> board_position) {
     // for every place in the square, given that it is still inside the board
     std::array<std::string, 8> direction_keys_array = {
         "N",
@@ -28,7 +29,7 @@ std::string scan_unbroken_two(std::array<int, 3>, 3> board_position) {
         "W",
         "NW"
     };
-    std::map<std::string, std::array<int, 2> direction_modifier_index = {
+    std::map<std::string, std::array<int, 2>> direction_modifier_index = {
         {"N", {0, 1}},
         {"NE", {1, 1}},
         {"E", {1, 0}}, 
@@ -38,30 +39,20 @@ std::string scan_unbroken_two(std::array<int, 3>, 3> board_position) {
         {"W", {-1, 0}},
         {"NW", {-1, 1}}
     };
-    std::map<int, std::array<int, 2>> location_index = {
-        {{0, 0}, "p1"},
-        {{0, 1}, "p2"},
-        {{0, 2}, "p3"},
-        {{1, 0}, "p4"},
-        {{1, 1}, "p5"},
-        {{1, 2}, "p6"},
-        {{2, 0}, "p7"},
-        {{2, 1}, "p8"},
-        {{2, 2}, "p9"}
-    };
 
     std::array<std::array<int, 2>, 3> scanned_positions;
     for (int row = 0; row < 3; row++) {
         for (int column = 0; column < 3; column++) {
             for (int direction = 0; direction < 8; direction++) {
                 std::string direction_key = direction_keys_array[direction];
-                std::array<int, 2> direction_modifer = direction_modifier_index[direction_key];
+                std::array<int, 2> direction_modifier = direction_modifier_index[direction_key];
                 int direction_x_modifier = direction_modifier[0];
                 int direction_y_modifier = direction_modifier[1];
                 scanned_positions[0] = {row, column};
-                scanned_positions[1] = {row + direction_x_modifier, column + direction_x_modifier};
+                scanned_positions[1] = {row + direction_x_modifier, column + direction_y_modifier};
                 scanned_positions[2] = {row + direction_x_modifier*2, column + direction_y_modifier*2};
                 if (scanned_positions[2][0] < 0 || scanned_positions[2][0] > 2 || scanned_positions[2][1] < 0 || scanned_positions[2][1] > 2) {
+                    // This might be the error? I don't know how
                     continue;
                 }
                 else if (board_position[scanned_positions[0][0]][scanned_positions[0][1]] != 0) {
@@ -69,13 +60,17 @@ std::string scan_unbroken_two(std::array<int, 3>, 3> board_position) {
                 }
                 // Actually scanning the thing
                 if (board_position[scanned_positions[1][0]][scanned_positions[1][1]] == board_position[scanned_positions[2][0]][scanned_positions[2][1]]) {
-                    return location_index[scanned_positions[0][0]][scanned_positions[0][1]];
+                    // Convert the array into a single number
+                    int move_number = row * 3 + column + 1;
+                    return "p" + std::to_string(move_number);
                 }
             }
         }
     }
     return "nothing";
 }
+
+// I have the sudden urge to like make a playlist and discover new songs that I could listen to
 
 // These functions will scan for patterns
 std::string place_randomly(std::array<std::array<int, 3>, 3> board_position) {
