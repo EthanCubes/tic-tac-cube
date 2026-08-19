@@ -30,23 +30,40 @@ std::string block_fork_creation(std::array<std::array<int, 3>, 3> board_position
 std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
     srand(time(NULL));
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
+
     // Center
     if (board_position[1][1] == 0) {
         return "p5";
     };
+
     // Opposite corner
+     std::array<std::array<int, 2>, 4> board_corners = {
+        {0, 0},
+        {0, 2},
+        {2, 0},
+        {2, 2}
     /*
      * Steps:
      * Scan to board for an occupied corner by the enemy
      * Place on opposite corner
      */
-    // Empty corner
-    std::array<std::array<int, 2>, 4> board_corners = {
-        {0, 0},
-        {0, 2},
-        {2, 0},
-        {2, 2}
+    std::array<std::string, 4> opposites = {
+        "p9",
+        "p7",
+        "p3",
+        "p1"
     };
+    for (int corners = 0; corners < 4; corners++) {
+        std::array<int, 2> current_side = {
+            board_sides[corners][0],
+            board_sides[corners][1]
+        };
+        if (board_position[current_side[0]][current_side[1]] == (3 - bot_turn)) {
+            return opposites[corners];
+        };
+    };
+
+    // Empty corner
     for (int corners = 0; corners < 4; corners++) {
         std::array<int, 2> current_side = {
             board_sides[corners][0],
@@ -56,6 +73,7 @@ std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int
             return convert_coords(current_side);
         };
     };
+
     // Empty side
     std::array<std::array<int, 2>, 4> board_sides = {
         {1, 0},
@@ -72,6 +90,7 @@ std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int
             return convert_coords(current_side);
         };
     };
+
     // Rotate board
     rotation_type_number = rand() % 4;
     switch(rotation_type_number) {

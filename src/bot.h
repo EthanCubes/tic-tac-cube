@@ -12,6 +12,7 @@
 #include <ctime>
 
 #include "board.h"
+
 std::array<std::array<int, 3>, 3> convert_board_position(std::array<std::array<std::array<int, 3>, 3>, 6> unconverted_board_position);
 std::string achieve_win(std::array<std::array<int, 3>, 3> board_position, int bot_turn);
 std::string combat_formed_fork(std::array<std::array<int, 3>, 3> board_position, int bot_turn);
