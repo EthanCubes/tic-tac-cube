@@ -588,7 +588,7 @@ int main() {
                     get_user_input();
                 }
                 else {
-                    cube.user_input(get_bot_move(cube.positions));
+                    cube.user_input(get_bot_move(cube.positions, bot_turn));
                 }
                 mode = cube.gameloop(5);
                 break;
