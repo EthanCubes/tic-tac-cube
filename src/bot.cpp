@@ -61,16 +61,19 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
      * Scan to board for an occupied corner by the enemy
      * Place on opposite corner
      */
-    std::array<std::string, 4> opposites = {
-        "p9",
-        "p7",
-        "p3",
-        "p1"
+    std::array<int, 4> opposites = {
+        9,
+        7,
+        3,
+        1
     };
     for (int corners = 0; corners < 4; corners++) {
         int current_corner = board_corners[corners];
         if (board_position[current_corner] == (3 - bot_turn)) {
-            return opposites[corners];
+            int opposite_corner = opposites[corners];
+            if (board_position[opposite_corner] == 0) {
+                return "p" + std::to_string(opposite_corner);
+            }
         };
     };
 
