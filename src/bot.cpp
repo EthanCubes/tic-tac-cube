@@ -129,6 +129,7 @@ std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int
 // The input comes in the form of a mulitdimensional array. Only the top face is needed to scan, because the top face is the only place you can place blocks, and lso because its' the only face you can see, 
 std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_position_input, int bot_turn) {
     std::string move = "mD";
+    std::string potential_move;
 
     // Not technically needed, but the original array contains a bunch of redundant variables for this program.
     std::array<std::array<int, 3>, 3> converted_board_position = convert_board_position(board_position_input);
@@ -144,5 +145,12 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Empty Corner
     // Empty side
     // Rotate board to new face
+    
+    // Center, corner, side, rotate
+    potential_move = place_priority(converted_board_position, bot_turn);
+    if (potential_move != "nothing") {
+        move = potential_move;
+    }
+
     return move;
 };
