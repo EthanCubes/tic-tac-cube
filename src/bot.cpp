@@ -6,58 +6,55 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
-std::array<std::array<int, 3>, 3> convert_board_position(std::array<std::array<std::array<int, 3>, 3>, 6> unconverted_board_position) {
-    std::array<std::array<int, 3>, 3> converted_board_position;
-    for (int row = 0; row < 3; row++) {
-        for (int column = 0; column < 3; column++) {
-            converted_board_position[row][column] = unconverted_board_position[0][row][column];
-        }
-    }
+std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 3>, 3>, 6> unconverted_board_position) {
+    std::map<int, int> converted_board_position;
+    // In order to get the data from the unconverted array, we need two keys, so I wrote this function to convert a number into those two keys
+    for (int position = 1; position < 10; position++) {
+        int row = std::floor((position - 1) / 3);
+        int column = position - 3 * row - 1;
+        converted_board_position[position] = unconverted_board_position[0][row][column];
+    };
     return converted_board_position;
 };
 
-int convert_coords(std::array<int, 2> coords) {
-    int converted = coords[0] * 3 + coords[1] + 1;
-    return converted;
-};
-
-std::string achieve_win(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
+std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string combat_formed_fork(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
+std::string combat_formed_fork(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string block_win(std::array<std::array<int, 3>, 3> board_positon, int bot_turn) {
+std::string block_win(std::map<int, int> board_positon, int bot_turn) {
     return "nothing";
 };
 
-std::string create_fork(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
+std::string create_fork(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string block_fork_creation(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
+std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int bot_turn) {
+std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     srand(time(NULL));
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
 
     // Center
-    if (board_position[1][1] == 0) {
+    if (board_position[5] == 0) {
         return "p5";
     };
 
     // Opposite corner
-    std::array<std::array<int, 2>, 4> board_corners = {{
-        {0, 0},
-        {0, 2},
-        {2, 0},
-        {2, 2}
-    }}; // Apparently this is broken, but I have no idea why.
+    std::array<int, 4> board_corners = {
+        1,
+        3, 
+        7, 
+        9,
+    };
     
     /*
      * Steps:
@@ -71,40 +68,31 @@ std::string place_priority(std::array<std::array<int, 3>, 3> board_position, int
         "p1"
     };
     for (int corners = 0; corners < 4; corners++) {
-        std::array<int, 2> current_side = {
-            board_corners[corners][0],
-            board_corners[corners][1]
-        };
-        if (board_position[current_side[0]][current_side[1]] == (3 - bot_turn)) {
+        int current_corner = board_corners[corners];
+        if (board_position[current_corner] == (3 - bot_turn)) {
             return opposites[corners];
         };
     };
 
     // Empty corner
     for (int corners = 0; corners < 4; corners++) {
-        std::array<int, 2> current_side = {
-            board_corners[corners][0],
-            board_corners[corners][1]
-        };
-        if (board_position[current_side[0]][current_side[1]] == 0) {
-            return "p" + std::to_string(convert_coords(current_side));
+        int current_corner = board_corners[corners];
+        if (board_position[current_corner] == 0) {
+            return "p" + std::to_string(current_corner);
         };
     };
 
     // Empty side
-    std::array<std::array<int, 2>, 4> board_sides = {{
-        {1, 0},
-        {0, 1},
-        {2, 1},
-        {1, 2}
-    }};
+    std::array<int, 4> board_sides = {
+        2, 
+        4,
+        6,
+        8
+    };
     for (int sides = 0; sides < 4; sides++) {
-        std::array<int, 2> current_side = {
-            board_sides[sides][0],
-            board_sides[sides][1]
-        };
-        if (board_position[current_side[0]][current_side[1]] == 0) {
-            return "p" + std::to_string(convert_coords(current_side));
+        int current_side = board_sides[sides];
+        if (board_position[current_side] == 0) {
+            return "p" + std::to_string(current_side);
         };
     };
 
@@ -131,8 +119,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     std::string move = "mD";
     std::string potential_move;
 
-    // Not technically needed, but the original array contains a bunch of redundant variables for this program.
-    std::array<std::array<int, 3>, 3> converted_board_position = convert_board_position(board_position_input);
+    std::map<int, int> converted_board_position = convert_board_position(board_position_input);
     
     // Steps to Winning at least some of the time
     // Go for a Win

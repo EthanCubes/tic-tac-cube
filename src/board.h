@@ -109,6 +109,7 @@ class Cube_board {
         void render_board();
         void reset();
         void user_input(std::string input);
+        bool scan_for_draw();
         int gameloop(int mode);
 };
 
