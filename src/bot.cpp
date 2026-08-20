@@ -52,7 +52,9 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
         int position_2 = std::get<0>(unbroken_two_location[pattern])[1];
         int missing = std::get<1>(unbroken_two_location[pattern]);
         if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
-            return "p" + std::to_string(missing);
+            if (board_position[missing] == 0) {
+                return "p" + std::to_string(missing);
+            };
         };
     };
 
@@ -77,7 +79,9 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
         int position_2 = std::get<0>(broken_two_location[pattern])[1];
         int missing = std::get<1>(broken_two_location[pattern]);
         if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
-            return "p" + std::to_string(missing);
+            if (board_position[missing] == 0) {
+                return "p" + std::to_string(missing);
+            };
         };
     };
 
@@ -121,7 +125,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         int position_2 = std::get<0>(unbroken_two_location[pattern])[1];
         int missing = std::get<1>(unbroken_two_location[pattern]);
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
-            return "p" + std::to_string(missing);
+            if (board_position[missing] == 0) {
+                return "p" + std::to_string(missing);
+            };
         };
     };
 
@@ -146,7 +152,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         int position_2 = std::get<0>(broken_two_location[pattern])[1];
         int missing = std::get<1>(broken_two_location[pattern]);
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
-            return "p" + std::to_string(missing);
+            if (board_position[missing] == 0) {
+                return "p" + std::to_string(missing);
+            };
         };
     };
 
