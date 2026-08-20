@@ -159,9 +159,71 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
     };
 
     return "nothing";
-};
 
+};
 std::string create_fork(std::map<int, int> board_position, int bot_turn) {
+    // Corner
+    std::array<std::array<std::array<int, 2>, 2>, 2> corner_forks_array = {{
+        {{
+            {1, 9},
+            {3, 7}
+        }},
+        {{
+            {3, 7},
+            {1, 9}
+        }}
+    }};
+    for (int position = 0; position < 2; position++) {
+        int position_1 = corner_forks_array[position][0][0];
+        int position_2 = corner_forks_array[position][0][1];
+        if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
+            // This means that a fork is possible.
+            int fork_place_1 = corner_forks_array[position][1][0];
+            int fork_place_2 = corner_forks_array[position][1][1];
+            if (board_position[fork_place_1] == 0) {
+                return "p" + std::to_string(board_position[fork_place_1]);
+            }
+            else if (board_position[fork_place_2] == 0) {
+                return "p" + std::to_string(board_position[fork_place_2]);
+            }
+        };
+    };
+
+    // Center
+    std::array<std::array<std::array<int, 2>, 2>, 4> center_forks_array = {{
+        {{
+            {5, 1},
+            {3, 7}
+        }},
+        {{
+            {5, 3},
+            {1, 9}
+        }},
+        {{
+            {5, 7},
+            {1, 9}
+        }},
+        {{
+            {5, 9},
+            {3, 7}
+        }}
+    }};
+
+    for (int position = 0; position < 4; position++) {
+        int position_1 = center_forks_array[position][0][0];
+        int position_2 = center_forks_array[position][0][1];
+        if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
+            int fork_place_1 = center_forks_array[position][1][0];
+            int fork_place_2 = center_forks_array[position][1][1];
+            if (board_position[fork_place_1] == 0) {
+                return "p" + std::to_string(fork_place_1);
+            }
+            else if (board_position[fork_place_2] == 0) {
+                return "p" + std::to_string(fork_place_2);
+            }
+        };
+    };
+
     return "nothing";
 };
 
@@ -269,14 +331,21 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     };
 
     // Create a Fork
+    move = create_fork(converted_board_position, bot_turn);
+    if (move != "nothing") {
+        return move;
+    };
 
     // Block Fork
+    move = block_fork_creation(converted_board_position, bot_turn);
 
-    // Play in the Center whenever possible
-    // Play in the Opposite corner
-    // Empty Corner
-    // Empty side
-    // Rotate board to new face
+    /*
+     * Play in the Center whenever possible
+     * Play in the Opposite corner
+     * Empty Corner
+     * Empty side
+     * Rotate board to new face
+     */
     move = place_priority(converted_board_position, bot_turn);
     if (move != "nothing") {
         return move;
