@@ -88,7 +88,68 @@ std::string combat_formed_fork(std::map<int, int> board_position, int bot_turn) 
     return "nothing";
 };
 
-std::string block_win(std::map<int, int> board_positon, int bot_turn) {
+std::string block_win(std::map<int, int> board_position, int bot_turn) {
+    // Scan for unbroken two
+    std::array<std::tuple<std::array<int, 2>, int>, 16> unbroken_two_location = {{
+        {{1, 2}, 3},
+        {{1, 5}, 9},
+        {{1, 4}, 7},
+
+        {{2, 5}, 8},
+
+        {{3, 6}, 9},
+        {{3, 5}, 7},
+        {{3, 2}, 1},
+
+        {{4, 5}, 6},
+
+        {{6, 5}, 4},
+
+        {{7, 4}, 1},
+        {{7, 5}, 3},
+        {{7, 8}, 9},
+
+        {{8, 5}, 2},
+
+        {{9, 6}, 3},
+        {{9, 5}, 1},
+        {{9, 8}, 7}
+    }};
+
+    for (int pattern = 0; pattern < 16; pattern++) {
+        int position_1 = std::get<0>(unbroken_two_location[pattern])[0];
+        int position_2 = std::get<0>(unbroken_two_location[pattern])[1];
+        int missing = std::get<1>(unbroken_two_location[pattern]);
+        if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+            return "p" + std::to_string(missing);
+        };
+    };
+
+    // Scan for broken two
+    std::array<std::tuple<std::array<int, 2>, int>, 8> broken_two_location = {{
+        {{1, 3}, 2},
+        {{1, 9}, 5},
+        {{1, 7}, 4},
+
+        {{2, 8}, 5},
+
+        {{3, 9}, 6},
+        {{3, 7}, 5},
+
+        {{4, 6}, 5},
+
+        {{7, 9}, 8},
+    }};
+
+    for (int pattern = 0; pattern < 8; pattern++) {
+        int position_1 = std::get<0>(broken_two_location[pattern])[0];
+        int position_2 = std::get<0>(broken_two_location[pattern])[1];
+        int missing = std::get<1>(broken_two_location[pattern]);
+        if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+            return "p" + std::to_string(missing);
+        };
+    };
+
     return "nothing";
 };
 
@@ -194,6 +255,10 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Rotate to deal with fork
  
     // Block any 2-in-a-row patterns
+    move = block_win(converted_board_position, bot_turn);
+    if (move != "nothing") {
+        return move;
+    };
 
     // Create a Fork
 
