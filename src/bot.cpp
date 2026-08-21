@@ -181,10 +181,10 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
             int fork_place_1 = corner_forks_array[position][1][0];
             int fork_place_2 = corner_forks_array[position][1][1];
             if (board_position[fork_place_1] == 0) {
-                return "p" + std::to_string(board_position[fork_place_1]);
+                return "p" + std::to_string(fork_place_1);
             }
             else if (board_position[fork_place_2] == 0) {
-                return "p" + std::to_string(board_position[fork_place_2]);
+                return "p" + std::to_string(fork_place_2);
             }
         };
     };
@@ -228,6 +228,155 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
 };
 
 std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
+    // Setup
+    std::array<std::array<std::array<int, 2>, 2>, 2> corner_forks_array = {{
+        {{
+            {1, 9},
+            {3, 7}
+        }},
+        {{
+            {3, 7},
+            {1, 9}
+        }}
+    }};
+    std::array<std::array<std::array<int, 2>, 2>, 4> center_forks_array = {{
+        {{
+            {5, 1},
+            {3, 7}
+        }},
+        {{
+            {5, 3},
+            {1, 9}
+        }},
+        {{
+            {5, 7},
+            {1, 9}
+        }},
+        {{
+            {5, 9},
+            {3, 7}
+        }}
+    }};
+
+    // Couting the amount of possible forks
+
+    std::vector<int> fork_locations;
+    int fork_count = 0;
+    for (int position = 0; position < 2; position++) {
+        int position_1 = corner_forks_array[position][0][0];
+    int position_2 = corner_forks_array[position][0][1];
+        if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+            int fork_place_1 = corner_forks_array[position][1][0];
+            int fork_place_2 = corner_forks_array[position][1][1];
+            if (board_position[fork_place_1] == 0) {
+                fork_locations.push_back(fork_place_1);
+                fork_count++;
+            };
+            if (board_position[fork_place_2] == 0) {
+                fork_locations.push_back(fork_place_2);
+                fork_count++;
+            };
+        };
+    }
+    for (int position = 0; position < 4; position++) {
+        int position_1 = center_forks_array[position][0][0];
+        int position_2 = center_forks_array[position][0][1];
+        if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+            int fork_place_1 = center_forks_array[position][1][0];
+            int fork_place_2 = center_forks_array[position][1][1];
+            if (board_position[fork_place_1] == 0) {
+                fork_locations.push_back(fork_place_1);
+                fork_count++;
+            };
+            if (board_position[fork_place_2] == 0) {
+                fork_locations.push_back(fork_place_2);
+                fork_count++;
+            };
+        }
+    }
+    // Do stuff according to how many forks there are
+    // It's depressing how bad my code is
+    switch (fork_count) {
+        case 0: {
+                    // There's literally no need for me to do anything then
+                    return "nothing";
+                }
+        case 1: {
+                    // Deal with the fork (code basically copied from the making fork part)
+                    // Lowkey forgot how to deal with this
+                    for (int position = 0; position < 2; position++) {
+                        int position_1 = corner_forks_array[position][0][0];
+                        int position_2 = corner_forks_array[position][0][1];
+                        if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
+                            // This means that a fork is possible.
+                            int fork_place_1 = corner_forks_array[position][1][0];
+                            int fork_place_2 = corner_forks_array[position][1][1];
+                            if (board_position[fork_place_1] == 0) {
+                                return "p" + std::to_string(fork_place_1);
+                            }
+                            else if (board_position[fork_place_2] == 0) {
+                                return "p" + std::to_string(fork_place_2);
+                            };
+                        };
+                    };
+                    for (int position = 0; position < 4; position++) {
+                        int position_1 = center_forks_array[position][0][0];
+                        int position_2 = center_forks_array[position][0][1];
+                        if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+                            int fork_place_1 = center_forks_array[position][1][0];
+                            int fork_place_2 = center_forks_array[position][1][1];
+                            if (board_position[fork_place_1] == 0) {
+                                return "p" + std::to_string(fork_place_1);
+                            }
+                            else if (board_position[fork_place_2] == 0) {
+                                return "p" + std::to_string(fork_place_2);
+                            };
+                        };
+                    };
+                    return "nothing";
+        };
+        case 2: {
+                    // Create a two in a row to combat the fork
+                    std::array<std::tuple<std::array<int, 2>, int>, 15> attack_fork = {{
+                        {{1, 2}, 3}, // 0
+                        {{1, 4}, 7}, // 1
+                        {{1, 5}, 9}, // 2
+                        {{2, 5}, 8}, // 3
+                        {{3, 2}, 1}, // 4
+                        {{3, 5}, 7}, // 5
+                        {{4, 5}, 6}, // 6
+                        {{6, 5}, 4}, // 7
+                        {{7, 4}, 1}, // 8
+                        {{7, 5}, 3}, // 9
+                        {{7, 8}, 9}, // 10
+                        {{8, 5}, 3}, // 11
+                        {{9, 5}, 1}, // 12
+                        {{9, 6}, 3}, // 13
+                        {{9, 8}, 7} // 14
+                    }};
+                    for (int position = 0; position < 15; position++) {
+                        int position_1 = std::get<0>(attack_fork[position])[0];
+                        int position_2 = std::get<0>(attack_fork[position])[1];
+                        int missing = std::get<1>(attack_fork[position]);
+                        // Finding out if the missing is in the list of scanned positions.
+                        bool position_valid = true;
+                        for (int i = 0; i < fork_count; i++) {
+                            if (fork_locations[i] == missing) {
+                                position_valid = false;
+                            };
+                        };
+
+                        if (position_1 == bot_turn && position_2 == bot_turn && position_valid) {
+                            return "p" + std::to_string(missing);
+                        };
+                    };
+                    return "nothing";
+                }
+        default: {
+                     std::cout << "What the hell did you do";
+                     return "mZ"; // Just in case this isn't a false alarm
+                 }
+    };
     return "nothing";
 };
 
