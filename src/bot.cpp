@@ -468,6 +468,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Go For a Win
     move = achieve_win(converted_board_position, bot_turn);
     if (move != "nothing") {
+        log_data("Win move detected");
         return move;
     }
 
@@ -476,12 +477,14 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Block any 2-in-a-row patterns
     move = block_win(converted_board_position, bot_turn);
     if (move != "nothing") {
+        log_data("Potential opponent victory detected, blocking");
         return move;
     };
 
     // Create a Fork
     move = create_fork(converted_board_position, bot_turn);
     if (move != "nothing") {
+        log_data("Fork potential detected");
         return move;
     };
 
@@ -497,8 +500,10 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
      */
     move = place_priority(converted_board_position, bot_turn);
     if (move != "nothing") {
+        log_data("No threats detected, falling back to default behaviour");
         return move;
     }
 
+    log_data("Error: No returned move, falling back to flaceholder move");
     return "mD";
 };
