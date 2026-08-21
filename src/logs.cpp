@@ -15,8 +15,7 @@ std::string get_time() {
 
 void log_data(std::string log_message) {
     std::string time = get_time();
-    std::ofstream file;
-    file.open("tic-tac-cube_logs.txt");
+    std::ofstream file("game_logs.txt", std::ios::app);
     file << time << log_message << "\n\n";
     file.close();
 };
