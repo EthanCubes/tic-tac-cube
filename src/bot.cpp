@@ -295,7 +295,6 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
         }
     }
     // Do stuff according to how many forks there are
-    // It's depressing how bad my code is
     switch (fork_count) {
         case 0: {
                     // There's literally no need for me to do anything then
