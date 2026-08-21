@@ -1,7 +1,6 @@
-#include <array>
 #include <string>
 #include <ctime>
-#include <chrono>
+#include <fstream>
 
 // This file will be used to create logs for debugging. Because debugging right now is actually painful
 // I love writing my own libraries.
@@ -14,6 +13,10 @@ std::string get_time() {
     return current_time;
 };
 
-void create_log_file() {};
-
-void log_data() {};
+void log_data(std::string log_message) {
+    std::string time = get_time();
+    std::ofstream file;
+    file.open("tic-tac-cube_logs.txt");
+    file << time << log_message << "\n\n";
+    file.close();
+};
