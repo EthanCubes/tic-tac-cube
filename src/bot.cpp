@@ -292,8 +292,8 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
                 fork_locations.push_back(fork_place_2);
                 fork_count++;
             };
-        }
-    }
+        };
+    };
     // Do stuff according to how many forks there are
     switch (fork_count) {
         case 0: {
