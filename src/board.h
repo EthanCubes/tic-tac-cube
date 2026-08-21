@@ -106,7 +106,6 @@ class Cube_board {
         void print_current_side();
         void move_cube(std::string move);
         std::tuple<int, std::array<std::array<int, 2>, 3>> scan_for_wins();
-        void render_board();
         void reset();
         void user_input(std::string input);
         bool scan_for_draw();

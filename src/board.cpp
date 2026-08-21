@@ -818,35 +818,6 @@ std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
     return {0, {{{0, 0}, {0, 0}, {0, 0}}}};
 };
 
-void Cube_board::render_board() {
-    std::cout << "\n";
-    std::array<std::array<std::string, 5>, 5> rendered_board_position = {{
-        {" ", "|", " ", "|", " "},
-        {"-", "+", "-", "+", "-"},
-        {" ", "|", " ", "|", " "},
-        {"-", "+", "-", "+", "-"},
-        {" ", "|", " ", "|", " "}
-    }};
-    for (int row = 0; row < 3; row++) {
-        for (int column = 0; column < 3; column++) {
-            int position_status = positions[0][row][column];
-            switch(position_status) {
-                case 1:
-                    rendered_board_position[row*2][column*2] = "X";
-                    break;
-                case 2:
-                    rendered_board_position[row*2][column*2] = "O";
-            };
-        };
-    };
-    for (int row =0; row < 5; row++) {
-        for (int column = 0; column < 5; column++) {
-            std::cout << rendered_board_position[row][column];
-        };
-        std::cout << "\n";
-    };
-};
-
 void Cube_board::reset() {
     turn = 1;
     for (int face = 0; face < 6; face++) {
