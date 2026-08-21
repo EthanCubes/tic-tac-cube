@@ -6,6 +6,8 @@
 #include <string>
 #include <tuple>
 
+#include <logs.h>
+
 class Cube_board {
     public:
         Cube_board() {}
