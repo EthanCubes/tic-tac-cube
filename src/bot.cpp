@@ -228,7 +228,7 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
 };
 
 std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
-    // Setup
+    // Setup, these arrays will provide data to the reset of the function
     std::array<std::array<std::array<int, 2>, 2>, 2> corner_forks_array = {{
         {{
             {1, 9},
@@ -258,8 +258,7 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
         }}
     }};
 
-    // Couting the amount of possible forks
-
+    // Counting the amount of possible forks
     std::vector<int> fork_locations;
     int fork_count = 0;
     for (int position = 0; position < 2; position++) {
