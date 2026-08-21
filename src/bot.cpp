@@ -8,6 +8,8 @@
 #include <ctime>
 #include <cmath>
 
+#include "logs.h"
+
 std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 3>, 3>, 6> unconverted_board_position) {
     std::map<int, int> converted_board_position;
     // In order to get the data from the unconverted array, we need two keys, so I wrote this function to convert a number into those two keys
