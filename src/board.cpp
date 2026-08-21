@@ -1,4 +1,3 @@
-#include <iostream>
 #include <array>
 #include <string>
 #include <tuple>
@@ -657,29 +656,6 @@ int Cube_board::mark_o(int x, int y) {
     }
 };
         
-void Cube_board::print_full_board() {
-    for (int face = 0; face < 6; face++) {
-        for (int row = 0; row < 3; row++) {
-            for (int column = 0; column < 3; column++) {
-                std::cout << positions[face][row][column];
-            };
-        std::cout << "\n";
-        };
-    };
-    std::cout << "\n";
-};
-
-void Cube_board::print_current_side() {
-    // 0 is going to be the default side
-    for (int row = 0; row < 3; row++) {
-        for (int column = 0; column < 3; column++) {
-            std::cout << positions[0][row][column];
-        };
-        std::cout << "\n";
-    };
-    std::cout << "\n";
-};
-
 void Cube_board::move_cube(std::string move) {
     if (move == "U") {
         u_move();
@@ -855,73 +831,84 @@ void Cube_board::user_input(std::string input) {
         if (input[1] == '1') {
             if (positions[0][0][0] == 0) {
                 positions[0][0][0] = turn;
+                log_data("Player " + std::to_string(turn) + " played p1");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '2') {
             if (positions[0][0][1] == 0) {
                 positions[0][0][1] = turn;
+                log_data("Player " + std::to_string(turn) + " played p2");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '3') {
             if (positions[0][0][2] == 0) {
                 positions[0][0][2] = turn;
+                log_data("Player " + std::to_string(turn) + " played p3");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '4') {
             if (positions[0][1][0] == 0) {
                 positions[0][1][0] = turn;
+                log_data("Player " + std::to_string(turn) + " played p4");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '5') {
             if (positions[0][1][1] == 0) {
                 positions[0][1][1] = turn;
+                log_data("Player " + std::to_string(turn) + " played p5");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '6') {
             if (positions[0][1][2] == 0) {
                 positions[0][1][2] = turn;
+                log_data("Player " + std::to_string(turn) + " played p6");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '7') {
             if (positions[0][2][0] == 0) {
                 positions[0][2][0] = turn;
+                log_data("Player " + std::to_string(turn) + " played p7");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '8') {
             if (positions[0][2][1] == 0) {
                 positions[0][2][1] = turn;
+                log_data("Player " + std::to_string(turn) + " played p8");
                 turn = 3 - turn;
             };
         }
         else if (input[1] == '9') {
             if (positions[0][2][2] == 0) {
                 positions[0][2][2] = turn;
+                log_data("Player " + std::to_string(turn) + " played p9");
                 turn = 3 - turn;
             };
         }
         else {
-            std::cout << "Invalid position";
+            log_data("Invalid position " + input);
         };
     }
     else if (input[0] == 'm') {
         switch(input.length()) {
             case 2:
+                log_data("Player " + std::to_string(turn) + " played " + input);
                 move_cube(std::string("")+input[1]);
                 break;
             case 3:
+                log_data("Player " + std::to_string(turn) + " played " + input);
                 move_cube(input[1]+std::string("'"));
                 break;
         };
     }
     else {
-        std::cout << "invalid move format: correct format is movetypeMove. MoveType can be m (move) and p (place). Move can be either the type of cube more or the spot to mark a spot with x or o";
+        log_data("Invalid move format: " + input);
     };
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
 };
