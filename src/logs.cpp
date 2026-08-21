@@ -9,7 +9,6 @@
 // I love writing my own libraries.
 // I can't be bothered to convert it to the user's timezone, so UTC it is. Will be logged in RFC 3339
 
-int unix_timestamp = 
 std::array<int, 6> get_time_array() {
     // There's definitely a way to optimize this code and make it take less lines
     // All the setup stuff
