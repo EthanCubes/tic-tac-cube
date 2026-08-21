@@ -33,7 +33,7 @@ class Button {
     public:
         void setup_button(int start_x_setup, int start_y_setup, int width_setup, int height_setup) {
             if (setup) {
-                log_data("Button already declared!")
+                log_data("Button already declared!");
                 return;
             };
             start_x = start_x_setup-width_setup/2;
@@ -45,7 +45,7 @@ class Button {
 
         void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, int font_size, const char* text) {
             if (!setup) {
-                log_data("Button not declared!")
+                log_data("Button not declared!");
                 return;
             };
             DrawRectangle(start_x, start_y, width, height, button_color);
@@ -119,7 +119,7 @@ int main_menu() {
         return 2;
     }
     else if (singleplayer_button.check_button_clicked() == 1) {
-        log_data("Initiating singleplayer game")
+        log_data("Initiating singleplayer game");
         return 5; // Huh this doesn't work for some reason
     }
     else if (exit_button.check_button_clicked() == 1) {
