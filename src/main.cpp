@@ -9,6 +9,7 @@
 
 #include "board.h"
 #include "bot.h"
+#include "logs.h"
 
 #include "raylib.h"
 
@@ -32,7 +33,7 @@ class Button {
     public:
         void setup_button(int start_x_setup, int start_y_setup, int width_setup, int height_setup) {
             if (setup) {
-                std::cout << "Button already declared!";
+                log_data("Button already declared!")
                 return;
             };
             start_x = start_x_setup-width_setup/2;
@@ -44,7 +45,7 @@ class Button {
 
         void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, int font_size, const char* text) {
             if (!setup) {
-                std::cout << "Button not declared!";
+                log_data("Button not declared!")
                 return;
             };
             DrawRectangle(start_x, start_y, width, height, button_color);
@@ -114,12 +115,15 @@ int screen_height = 720;
 
 int main_menu() {
     if (multiplayer_button.check_button_clicked() == 1) {
+        log_data("Initiating local multiplayer game");
         return 2;
     }
     else if (singleplayer_button.check_button_clicked() == 1) {
+        log_data("Initiating singleplayer game")
         return 5; // Huh this doesn't work for some reason
     }
     else if (exit_button.check_button_clicked() == 1) {
+        log_data("Exit signal recieved");
         return 1;
     };
     return 0;
@@ -454,6 +458,9 @@ int main() {
     float mouse_x;
     float mouse_y;
 
+    log_data("---- Beginning of program ----");
+    log_data("Window initialization complete");
+
     multiplayer_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
     singleplayer_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5,screen_height/10);
     exit_button.setup_button(screen_width/2, screen_height/10*8, screen_width/5, screen_height/10);
@@ -556,9 +563,11 @@ int main() {
                 mode = cube.gameloop(2);
                 break;
             case 3:
+                log_data("Game ends in X victory");
                 setup = false;
                 break;
             case 4:
+                log_data("Game ends in O victory");
                 setup = false;
                 break;
             case 5:
@@ -568,9 +577,13 @@ int main() {
                     BeginDrawing();
                     switch(bot_turn) {
                         case 1:
+                            log_data("Singleplayer game started with player as O");
                             break;
                         case 2:
+                            log_data("Singleplayer game started with player as X");
                             break;
+                        default:
+                            log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
                     }
                     EndDrawing();
                     user_turn = 3 - bot_turn;
@@ -579,6 +592,7 @@ int main() {
                 
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
+                    log_data("Game aborted by user");
                     cube.reset();
                     break;
                 };
@@ -593,6 +607,7 @@ int main() {
                 mode = cube.gameloop(5);
                 break;
             case 6:
+                log_data("Game ends in tie as board is completely full without victory");
                 setup = false;
                 break;
             default:
@@ -679,5 +694,8 @@ int main() {
         };
     };
     CloseWindow();
+    log_data("Window closed sucessfully");
+    log_data("Quitting game");
+    log_data("---- End of program ----");
     return 0;
 };
