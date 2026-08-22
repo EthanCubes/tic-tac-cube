@@ -490,6 +490,11 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
 
     // Block Fork
     move = block_fork_creation(converted_board_position, bot_turn);
+    log_data("scanning for a fork");
+    if (move != "nothing") {
+        log_data("Opponent fork potential detected, blocking");
+        return move;
+    };
 
     /*
      * Play in the Center whenever possible
