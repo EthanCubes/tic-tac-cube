@@ -104,8 +104,6 @@ class Cube_board {
         void s_prime();
         int mark_x(int x, int y);
         int mark_o(int x, int y);
-        void print_full_board();
-        void print_current_side();
         void move_cube(std::string move);
         std::tuple<int, std::array<std::array<int, 2>, 3>> scan_for_wins();
         void reset();
