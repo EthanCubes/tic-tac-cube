@@ -6,6 +6,7 @@
 #include <thread>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
 #include "board.h"
 #include "bot.h"
@@ -446,6 +447,7 @@ void draw_positions() {
 }
 
 int main() {
+    create_log_file();
     int mode = 0;
     bool running = true;
 
@@ -533,6 +535,9 @@ int main() {
         r_prime_button
     };
 
+    std::random_device dev;
+    std::mt19937 rng(dev());
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
@@ -573,8 +578,9 @@ int main() {
             case 5:
                 // Singleplayer
                 if (!setup) {
-                    bot_turn = rand() % 2 + 1;
-                    BeginDrawing();
+                    // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+                    std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
+                    bot_turn = dist_turn(rng);
                     switch(bot_turn) {
                         case 1:
                             log_data("Singleplayer game started with player as O");
@@ -585,7 +591,6 @@ int main() {
                         default:
                             log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
                     }
-                    EndDrawing();
                     user_turn = 3 - bot_turn;
                     setup = true;
                 }
@@ -648,6 +653,7 @@ int main() {
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 draw_positions();
                 DrawText("X Wins!", 0, 0, 30, WHITE);
+                log_data("game ends in X victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
@@ -658,6 +664,7 @@ int main() {
                 draw_positions();
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("O Wins!", 0, 0, 30, WHITE);
+                log_data("game ends in O victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
