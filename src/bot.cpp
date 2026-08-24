@@ -5,8 +5,6 @@
 #include <tuple>
 #include <vector>
 #include <cstdlib>
-#include <ctime>
-#include <cmath>
 #include <random>
 
 #include "logs.h"
@@ -472,7 +470,10 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     };
 
     // Rotate board
-    int rotation_type_number = rand() % 4;
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
+    int rotation_type_number = dist4(rng);
     switch(rotation_type_number) {
         case 0:
             return "mX";
