@@ -4,7 +4,6 @@
 #include <map>
 #include <tuple>
 #include <vector>
-#include <cstdlib>
 #include <random>
 
 #include "logs.h"
@@ -299,7 +298,6 @@ std::string rotate_cube_randomly() {
 };
 
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
-    srand(time(NULL));
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
 
     // Center
