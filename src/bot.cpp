@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <random>
 
 #include "logs.h"
 
@@ -19,6 +20,35 @@ std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 
         converted_board_position[position] = unconverted_board_position[0][row][column];
     };
     return converted_board_position;
+};
+
+std::string wild_card(std::map<int, int> board_position, int bot_turn) {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist10(1, 10);
+
+    int random_number = dist10(rng);
+
+    if (random_number == 10) {
+        // Do a random cube rotation
+        std::uniform_int_distribution<std::mt19937::result_type> dist4(1, 4);
+        int move = dist4(rng);
+        switch(move) {
+            case 1:
+                return "mZ";
+            case 2:
+                return "mZp";
+            case 3:
+                return "mXp";
+            case 4:
+                return "mX";
+        }
+    }
+    else {
+        // Do some stuff idk
+    };
+
+    return "nothing";
 };
 
 std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
