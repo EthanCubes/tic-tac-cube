@@ -189,8 +189,8 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
     };
 
     return "nothing";
-
 };
+
 std::string create_fork(std::map<int, int> board_position, int bot_turn) {
     // Corner
     std::array<std::array<std::array<int, 2>, 2>, 2> corner_forks_array = {{
@@ -258,6 +258,23 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
 };
 
 std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
+    // Setup
+    int fork_count = 0;
+
+    // Determine the number of potential forks
+    // Do something according to the number of potential forks detected
+    switch(fork_count) {
+        case 0:
+            return "nothing";
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            return "nothing";
+    };
     return "nothing";
 };
 
