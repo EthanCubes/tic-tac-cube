@@ -359,7 +359,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     };
 
     // Rotate board
-    return rotate_cube_randomly;
+    return rotate_cube_randomly();
 };
 
 // Since the thing storing the board position is located inside an object, I cannot get the information directly from the board file.
