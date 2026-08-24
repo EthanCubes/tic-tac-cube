@@ -503,6 +503,10 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     }
 
     // Rotate to deal with fork
+    move = combat_formed_fork(converted_board_position, bot_turn);
+    if (move != "nothing") {
+        return move;
+    }
  
     // Block any 2-in-a-row patterns
     move = block_win(converted_board_position, bot_turn);
