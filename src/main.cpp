@@ -451,7 +451,9 @@ int main() {
     int mode = 0;
     bool running = true;
 
-    // Setup of the game window
+    std::random_device dev;
+    std::mt19937 rng(dev());
+
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
     Image logo_image = LoadImage("assets/bitmap.png");
@@ -535,9 +537,6 @@ int main() {
         r_prime_button
     };
 
-    std::random_device dev;
-    std::mt19937 rng(dev());
-
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
@@ -581,6 +580,9 @@ int main() {
                     // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
                     std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
                     bot_turn = dist_turn(rng);
+                    user_turn = 3 - bot_turn;
+                    log_data("RNG bot turn number generated: " + std::to_string(bot_turn));
+                    log_data("RNG user turn number generated: " + std::to_string(user_turn));
                     switch(bot_turn) {
                         case 1:
                             log_data("Singleplayer game started with player as O");
@@ -599,6 +601,7 @@ int main() {
                     mode = 0;
                     log_data("Game aborted by user");
                     cube.reset();
+                    setup = false;
                     break;
                 };
                 
