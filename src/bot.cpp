@@ -259,19 +259,41 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
 std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
     // Setup
     int fork_count = 0;
+    std::vector<int> fork_locations;
 
-    // Determine the number of potential forks
+    std::array<std::tuple<std::array<int, 2>, int>, 4> corner_forks = {
+        {{1, 9}, 3},
+        {{1, 9}, 7},
+        {{3, 7}, 1},
+        {{3, 7}, 9}
+    };
+    std::array<std::tuple<<std::array<int, 2>, int>, 8> center_forks = {
+        // This makes it slightly easier to format
+        {{1, 5}, 3},
+        {{1, 5}, 7},
+        {{3, 5}, 1},
+        {{3, 5}, 9},
+        {{7, 5}, 1},
+        {{7, 5}, 9},
+        {{9, 5}, 3},
+        {{9, 5}, 7}
+    };
+
+    // Determine the amount of potential forks
+
     // Do something according to the number of potential forks detected
     switch(fork_count) {
         case 0:
             return "nothing";
         case 1:
+            // Block the single fork location
             break;
         case 2:
+            // Try to create a two-in-a-row
             break;
         case 3:
-            break;
-        default:
+            return rotate_cube_randomly(); // rotate the cube and pray
+          default:
             return "nothing";
     };
     return "nothing";
