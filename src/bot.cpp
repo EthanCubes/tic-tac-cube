@@ -336,6 +336,8 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
                     return "nothing";
         };
         case 2: {
+                    // The log gets logged, but nothing happens after that.
+
                     // Create a two in a row to combat the fork
                     std::array<std::tuple<std::array<int, 2>, int>, 15> attack_fork = {{
                         {{1, 2}, 3}, // 0
@@ -355,6 +357,7 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
                         {{9, 8}, 7} // 14
                     }};
                     for (int position = 0; position < 15; position++) {
+                        // For each possible unbroken two, position 1 is the first posiiton, position 2 is the second position, and missing 3 is the third position.
                         int position_1 = std::get<0>(attack_fork[position])[0];
                         int position_2 = std::get<0>(attack_fork[position])[1];
                         int missing = std::get<1>(attack_fork[position]);
@@ -362,20 +365,18 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
                         bool position_valid = true;
                         for (int i = 0; i < fork_count; i++) {
                             if (fork_locations[i] == missing) {
+                                // This essentially means that you cannot place to get a two in a row if the opponent blocking it would still lead to the fork
                                 position_valid = false;
                             };
                         };
 
-                        if (position_1 == bot_turn && position_2 == bot_turn && position_valid) {
-                            return "p" + std::to_string(missing);
+                        if ((board_position[position_1] == bot_turn) && (board_position[position_2] == 0) && position_valid) {
+                            return "p" + std::to_string(position_2);
                         };
                     };
                     return "nothing";
                 }
-        default: {
-                     std::cout << "What the hell did you do";
-                     return "mZ"; // Just in case this isn't a false alarm
-                 }
+        default: {}
     };
     return "nothing";
 };
@@ -468,7 +469,6 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Go For a Win
     move = achieve_win(converted_board_position, bot_turn);
     if (move != "nothing") {
-        log_data("Win move detected");
         return move;
     }
 
@@ -477,22 +477,18 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Block any 2-in-a-row patterns
     move = block_win(converted_board_position, bot_turn);
     if (move != "nothing") {
-        log_data("Potential opponent victory detected, blocking");
         return move;
     };
 
     // Create a Fork
     move = create_fork(converted_board_position, bot_turn);
     if (move != "nothing") {
-        log_data("Fork potential detected");
         return move;
     };
 
     // Block Fork
     move = block_fork_creation(converted_board_position, bot_turn);
-    log_data("scanning for a fork");
     if (move != "nothing") {
-        log_data("Opponent fork potential detected, blocking");
         return move;
     };
 
@@ -505,10 +501,8 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
      */
     move = place_priority(converted_board_position, bot_turn);
     if (move != "nothing") {
-        log_data("No threats detected, falling back to default behaviour");
         return move;
     }
 
-    log_data("Error: No returned move, falling back to flaceholder move");
     return "mD";
 };
