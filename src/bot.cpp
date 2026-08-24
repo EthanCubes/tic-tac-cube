@@ -278,6 +278,26 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
     return "nothing";
 };
 
+std::string rotate_cube_randomly() {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
+    int rotation_type_number = dist4(rng);
+    switch(rotation_type_number) {
+        case 0:
+            return "mX";
+        case 1:
+            return "mZp";
+        case 2:
+            return "mZ";
+        case 3:
+            return "mXp";
+        default:
+            return "mD";
+    };
+    return "mD";
+};
+
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     srand(time(NULL));
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
@@ -339,23 +359,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     };
 
     // Rotate board
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
-    int rotation_type_number = dist4(rng);
-    switch(rotation_type_number) {
-        case 0:
-            return "mX";
-        case 1:
-            return "mZp";
-        case 2:
-            return "mZ";
-        case 3:
-            return "mXp";
-        default:
-            return "mD";
-    };
-    return "nothing";
+    return rotate_cube_randomly;
 };
 
 // Since the thing storing the board position is located inside an object, I cannot get the information directly from the board file.
