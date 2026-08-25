@@ -39,6 +39,40 @@ std::string rotate_cube_randomly() {
     return "mD";
 };
 
+int get_two(std::map<int, int> board_position, int bot_turn) {
+    // The returns incorrect position
+    std::array<std::tuple<std::array<int, 2>, int>, 16> two_array = {{
+        {{1, 2}, 3},
+        {{1, 4}, 7},
+        {{1, 5}, 9},
+        {{2, 5}, 8},
+        {{3, 2}, 1},
+        {{3, 5}, 7},
+        {{3, 6}, 9},
+        {{4, 5}, 6},
+        {{6, 5}, 4},
+        {{7, 4}, 1},
+        {{7, 5}, 3},
+        {{7, 8}, 9},
+        {{8, 5}, 2},
+        {{9, 5}, 1},
+        {{9, 6}, 3},
+        {{9, 8}, 7}
+    }};
+    for (int c = 0; c < 16; c++) { // Lowkey I just needed and excuse to type C++ and break the fourth wall
+        int position_1 = std::get<0>(two_array[c])[0];
+        int position_1_status = board_position[position_1];
+        int position_2 = std::get<0>(two_array[c])[1];
+        int position_2_status = board_position[position_2];
+        int missing = std::get<1>(two_array[c]);
+        int missing_status = board_position[missing];
+        if (position_1_status == bot_turn && position_2_status == bot_turn && missing == 0) {
+            return missing;
+        };
+    };
+    return 0;
+};
+
 std::string wild_card(std::map<int, int> board_position, int bot_turn) {
     std::random_device dev;
     std::mt19937 rng(dev());
@@ -336,9 +370,13 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
         case 1:
             // Block the single fork location
             return "p" + std::to_string(fork_locations[0]);
-        case 2:
-            // Try to create a two-in-a-row
-            break;
+        case 2: {
+                    // Try to create a two-in-a-row
+                    int move = get_two(board_position, bot_turn);
+                    if (move != 0) {
+                        return "p" + std::to_string(move);
+                    };
+                }
         case 3:
             return rotate_cube_randomly(); // rotate the cube and pray
           default:
