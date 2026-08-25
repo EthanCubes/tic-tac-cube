@@ -300,6 +300,34 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
     }};
 
     // Determine the amount of potential forks
+    // Corner forks
+    for (int position = 0; position < 4; position++) {
+        int position_1 = std::get<0>(corner_forks[position])[0];
+        int position_1_status = board_position[position_1];
+        int position_2 = std::get<0>(corner_forks[position])[1];
+        int position_2_status = board_position[position_2];
+        int missing = std::get<1>(corner_forks[position]);
+        int missing_status = board_position[missing];
+
+        if (position_1_status == (3-bot_turn) && position_2_status == (3-bot_turn) && missing_status == 0) {
+            fork_locations.push_back(missing);
+            fork_count++;
+        };
+    };
+    // Center forks
+    for (int position = 0; position < 8; position++) {
+        int position_1 = std::get<0>(center_forks[position])[0];
+        int position_1_status = board_position[position_1];
+        int position_2 = std::get<0>(center_forks[position])[0];
+        int position_2_status = board_position[position_2];
+        int missing = std::get<1>(center_forks[position]);
+        int missing_status = board_position[missing];
+
+        if (position_1_status == (3-bot_turn) && position_2_status == (3-bot_turn) && missing_status == 0) {
+            fork_locations.push_back(missing);
+            fork_count++;
+        };
+    };
 
     // Do something according to the number of potential forks detected
     switch(fork_count) {
