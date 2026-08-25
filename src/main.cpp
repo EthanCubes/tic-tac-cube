@@ -547,6 +547,7 @@ int main() {
         switch(mode) {
             case 0:
                 mode = main_menu();
+                setup = false;
                 if (mode != 0) {
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 };
@@ -568,11 +569,9 @@ int main() {
                 break;
             case 3:
                 log_data("Game ends in X victory");
-                setup = false;
                 break;
             case 4:
                 log_data("Game ends in O victory");
-                setup = false;
                 break;
             case 5:
                 // Singleplayer
@@ -599,7 +598,6 @@ int main() {
                     mode = 0;
                     log_data("Game aborted by user");
                     cube.reset();
-                    setup = false;
                     break;
                 };
                 
@@ -614,7 +612,6 @@ int main() {
                 break;
             case 6:
                 log_data("Game ends in tie as board is completely full without victory");
-                setup = false;
                 break;
             default:
                 std::cout << "Invalid command";
