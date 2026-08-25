@@ -24,10 +24,7 @@ Download from GitHub [here]()
 - Local multiplayer and singleplayer modes.
 
 ## How to run locally
-Download the game files for your operating system from [Itch.io]() or [GitHub](). Run the file as you would any other file.
-
-### Build from source (Advanced)
-Requires C++ 17 or later, and Raylib.
+(WIP)
 
 ## How it works
 Each side of a 3x3, represented by a 3x3x6 (3D) array, acts like an individual tic-tac-toe game/board. Only the top face of the cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
