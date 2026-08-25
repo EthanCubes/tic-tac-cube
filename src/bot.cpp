@@ -362,7 +362,10 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
             fork_count++;
         };
     };
-
+    for (int i = 0; i < fork_locations.size(); i++) {
+        log_data("Fork found at " + std::to_string(fork_locations[i]));
+    };
+    log_data(std::to_string(fork_count) + " forks detected");
     // Do something according to the number of potential forks detected
     switch(fork_count) {
         case 0:
@@ -376,11 +379,14 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
                     if (move != 0) {
                         return "p" + std::to_string(move);
                     };
+                    break;
                 }
-        case 3:
-            return rotate_cube_randomly(); // rotate the cube and pray
-          default:
-            return "nothing";
+        case 3: 
+                // Shouldn't ever be raearched
+                log_data(std::to_string(fork_count) + " forks detected, using extreme measures");
+                return rotate_cube_randomly();
+        default: 
+                return "nothing";
     };
     return "nothing";
 };
@@ -483,6 +489,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Block Fork
     move = block_fork_creation(converted_board_position, bot_turn);
     if (move != "nothing") {
+        log_data("Potential fork handled");
         return move;
     };
 
