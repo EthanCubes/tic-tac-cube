@@ -581,8 +581,6 @@ int main() {
                     std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
                     bot_turn = dist_turn(rng);
                     user_turn = 3 - bot_turn;
-                    log_data("RNG bot turn number generated: " + std::to_string(bot_turn));
-                    log_data("RNG user turn number generated: " + std::to_string(user_turn));
                     switch(bot_turn) {
                         case 1:
                             log_data("Singleplayer game started with player as O");
