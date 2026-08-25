@@ -39,40 +39,6 @@ std::string rotate_cube_randomly() {
     return "mD";
 };
 
-int get_two(std::map<int, int> board_position, int bot_turn) {
-    // The returns incorrect position
-    std::array<std::tuple<std::array<int, 2>, int>, 16> two_array = {{
-        {{1, 2}, 3},
-        {{1, 4}, 7},
-        {{1, 5}, 9},
-        {{2, 5}, 8},
-        {{3, 2}, 1},
-        {{3, 5}, 7},
-        {{3, 6}, 9},
-        {{4, 5}, 6},
-        {{6, 5}, 4},
-        {{7, 4}, 1},
-        {{7, 5}, 3},
-        {{7, 8}, 9},
-        {{8, 5}, 2},
-        {{9, 5}, 1},
-        {{9, 6}, 3},
-        {{9, 8}, 7}
-    }};
-    for (int c = 0; c < 16; c++) { // Lowkey I just needed and excuse to type C++ and break the fourth wall
-        int position_1 = std::get<0>(two_array[c])[0];
-        int position_1_status = board_position[position_1];
-        int position_2 = std::get<0>(two_array[c])[1];
-        int position_2_status = board_position[position_2];
-        int missing = std::get<1>(two_array[c]);
-        int missing_status = board_position[missing];
-        if (position_1_status == bot_turn && position_2_status == bot_turn && missing == 0) {
-            return missing;
-        };
-    };
-    return 0;
-};
-
 std::string wild_card(std::map<int, int> board_position, int bot_turn) {
     std::random_device dev;
     std::mt19937 rng(dev());
@@ -310,87 +276,6 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string block_fork_creation(std::map<int, int> board_position, int bot_turn) {
-    // Setup
-    int fork_count = 0;
-    std::vector<int> fork_locations;
-
-    std::array<std::tuple<std::array<int, 2>, int>, 4> corner_forks = {{
-        {{1, 9}, 3},
-        {{1, 9}, 7},
-        {{3, 7}, 1},
-        {{3, 7}, 9}
-    }};
-    std::array<std::tuple<std::array<int, 2>, int>, 8> center_forks = {{
-        // This makes it slightly easier to format
-        {{1, 5}, 3},
-        {{1, 5}, 7},
-        {{3, 5}, 1},
-        {{3, 5}, 9},
-        {{7, 5}, 1},
-        {{7, 5}, 9},
-        {{9, 5}, 3},
-        {{9, 5}, 7}
-    }};
-
-    // Determine the amount of potential forks
-    // Corner forks
-    for (int position = 0; position < 4; position++) {
-        int position_1 = std::get<0>(corner_forks[position])[0];
-        int position_1_status = board_position[position_1];
-        int position_2 = std::get<0>(corner_forks[position])[1];
-        int position_2_status = board_position[position_2];
-        int missing = std::get<1>(corner_forks[position]);
-        int missing_status = board_position[missing];
-
-        if (position_1_status == (3-bot_turn) && position_2_status == (3-bot_turn) && missing_status == 0) {
-            fork_locations.push_back(missing);
-            fork_count++;
-        };
-    };
-    // Center forks
-    for (int position = 0; position < 8; position++) {
-        int position_1 = std::get<0>(center_forks[position])[0];
-        int position_1_status = board_position[position_1];
-        int position_2 = std::get<0>(center_forks[position])[0];
-        int position_2_status = board_position[position_2];
-        int missing = std::get<1>(center_forks[position]);
-        int missing_status = board_position[missing];
-
-        if (position_1_status == (3-bot_turn) && position_2_status == (3-bot_turn) && missing_status == 0) {
-            fork_locations.push_back(missing);
-            fork_count++;
-        };
-    };
-    for (int i = 0; i < fork_locations.size(); i++) {
-        log_data("Fork found at " + std::to_string(fork_locations[i]));
-    };
-    log_data(std::to_string(fork_count) + " forks detected");
-    // Do something according to the number of potential forks detected
-    switch(fork_count) {
-        case 0:
-            return "nothing";
-        case 1:
-            // Block the single fork location
-            return "p" + std::to_string(fork_locations[0]);
-        case 2: {
-                    // Try to create a two-in-a-row
-                    int move = get_two(board_position, bot_turn);
-                    if (move != 0) {
-                        return "p" + std::to_string(move);
-                    };
-                    break;
-                }
-        case 3: 
-                // Shouldn't ever be raearched
-                log_data(std::to_string(fork_count) + " forks detected, using extreme measures");
-                return rotate_cube_randomly();
-        default: 
-                return "nothing";
-    };
-    return "nothing";
-};
-
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
 
@@ -483,13 +368,6 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     // Create a Fork
     move = create_fork(converted_board_position, bot_turn);
     if (move != "nothing") {
-        return move;
-    };
-
-    // Block Fork
-    move = block_fork_creation(converted_board_position, bot_turn);
-    if (move != "nothing") {
-        log_data("Potential fork handled");
         return move;
     };
 
