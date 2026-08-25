@@ -335,7 +335,7 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
             return "nothing";
         case 1:
             // Block the single fork location
-            break;
+            return "p" + std::to_string(fork_locations[0]);
         case 2:
             // Try to create a two-in-a-row
             break;
