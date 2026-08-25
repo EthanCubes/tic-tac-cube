@@ -19,6 +19,26 @@ std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 
     return converted_board_position;
 };
 
+std::string rotate_cube_randomly() {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
+    int rotation_type_number = dist4(rng);
+    switch(rotation_type_number) {
+        case 0:
+            return "mX";
+        case 1:
+            return "mZp";
+        case 2:
+            return "mZ";
+        case 3:
+            return "mXp";
+        default:
+            return "mD";
+    };
+    return "mD";
+};
+
 std::string wild_card(std::map<int, int> board_position, int bot_turn) {
     std::random_device dev;
     std::mt19937 rng(dev());
@@ -261,13 +281,13 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
     int fork_count = 0;
     std::vector<int> fork_locations;
 
-    std::array<std::tuple<std::array<int, 2>, int>, 4> corner_forks = {
+    std::array<std::tuple<std::array<int, 2>, int>, 4> corner_forks = {{
         {{1, 9}, 3},
         {{1, 9}, 7},
         {{3, 7}, 1},
         {{3, 7}, 9}
-    };
-    std::array<std::tuple<<std::array<int, 2>, int>, 8> center_forks = {
+    }};
+    std::array<std::tuple<std::array<int, 2>, int>, 8> center_forks = {{
         // This makes it slightly easier to format
         {{1, 5}, 3},
         {{1, 5}, 7},
@@ -277,7 +297,7 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
         {{7, 5}, 9},
         {{9, 5}, 3},
         {{9, 5}, 7}
-    };
+    }};
 
     // Determine the amount of potential forks
 
@@ -297,26 +317,6 @@ std::string block_fork_creation(std::map<int, int> board_position, int bot_turn)
             return "nothing";
     };
     return "nothing";
-};
-
-std::string rotate_cube_randomly() {
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
-    int rotation_type_number = dist4(rng);
-    switch(rotation_type_number) {
-        case 0:
-            return "mX";
-        case 1:
-            return "mZp";
-        case 2:
-            return "mZ";
-        case 3:
-            return "mXp";
-        default:
-            return "mD";
-    };
-    return "mD";
 };
 
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
