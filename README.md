@@ -21,7 +21,8 @@ Download from GitHub [here]()
 - Basic tic-tac-toe game
 - Turn the cube to rearrange the x's and o's
 - Rotate the cube to start fresh on a new board - unless the "new" board already have marks on it from previous rotations or turns
-- Local multiplayer and singleplayer modes.
+- Local multiplayer mode to play with your friends (or yourself) on the same device. (No online or LAN multiplayer)
+- Singleplayer mode against a bot. 
 
 ## How to run locally
 (WIP)
@@ -37,6 +38,15 @@ The input handling and graphics of the game were made with [Raylib](https://www.
 AI was used for debugging and learning. I never used it to tell me what code I should write.
 The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
 
+## Bug Tracker
+### Major bugs (will be patched before release):
+- Visual glitch where upon cube rotation, there is a chance for a character similar to 8 to appear and for the opponent to win instantly. Probably a rendering error and the board and bot are probably fully functional. According to tests done on this situation, this usually only happens when the move by the user would already cause the opponent to win. The game appears to jump back into rendering an earlier state of the board.
+### Minor bugs/inconveniences (most of which will be improved upon before ship):
+- UI sucks
+- No animations
+- No help instructions, help or anything
+- No indication of who the user is upon game start
+
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8?si=CYgl26UYITcE1fpU) helped, since this is one of my first C++ projects.
 - [GeeksForGeeks](https://www.geeksforgeeks.org) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be longer than the entire rest of the readme.
@@ -46,4 +56,4 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
 - This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend at trying.
-- This project was originally compiled with [GCC](https://gcc.gnu.org/) on [Arch Linux](https://archlinux.org/).
+- This project was originally coded and compiled with [GCC](https://gcc.gnu.org/) entirely on [Arch Linux](https://archlinux.org/).
