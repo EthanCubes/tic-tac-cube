@@ -162,6 +162,7 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
 
 std::string block_win(std::map<int, int> board_position, int bot_turn) {
     std::vector<int> winning_positions;
+    std::vector<int> winning_directions;
     // Scan for unbroken two
     std::array<std::tuple<std::array<int, 2>, int>, 16> unbroken_two_location = {{
         {{1, 2}, 3},
@@ -196,6 +197,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
             if (board_position[missing] == 0) {
                 winning_positions.push_back(missing);
+                winning_directions.push_back(position_1);
             };
         };
     };
@@ -223,6 +225,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
             if (board_position[missing] == 0) {
                 winning_positions.push_back(missing);
+                winning_directions.push_back(position_1);
             };
         };
     };
@@ -240,6 +243,8 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                     // Deal with the fork by rotating
                     int position_1 = winning_positions[0];
                     int position_2 = winning_positions[1];
+                    int winning_direction_1 = winning_directions[0];
+                    int winning_direction_2 = winning_directions[1];
                     std::map<int, std::array<std::string, 4>> move_key = {
                         {1, {"mB", "mBp", "mL", "mLp"}},
                         {2, {"mB", "mBp", "mM", "mMp"}},
@@ -256,6 +261,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                     std::array<std::string, 4> position_one_turn_array = move_key[position_1];
                     std::array<std::string, 4> position_two_turn_array = move_key[position_2];
 
+                    std::array<std::string, 4> position_one_direction_array = move_key[winning_direction_1];
+                    std::array<std::string, 4> position_two_direction_array = move_key[winning_direction_2];
+
                     // Writing a function for a single case feels excessive
                     for (int x = 0; x < 4; x++) {
                         for (int y = 0; y < 4; y++) {
@@ -264,16 +272,39 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                             };
                         };
                     };
+
+                    // Part of the code that ensures that the bot does not play a random move that would do absolutely nothing
                     std::random_device dev;
                     std::mt19937 rng(dev());
                     std::uniform_int_distribution<std::mt19937::result_type> coin_flip(0, 1);
                     std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
                     int position_number = coin_flip(rng);
                     int position_index = dist4(rng);
-                    switch(position_number) {
+                    switch (position_number) {
+                        case 0:
+                            for (int x = 0; x < 4; x++) {
+                                for (int y = 0; y < 4; y++) {
+                                    if (position_one_turn_array[x] == position_one_direction_array[y]) {
+                                        return position_one_turn_array[x];
+                                    };
+                                };
+                            };
+                            break;
                         case 1:
+                            for (int x = 0; x < 4; x++) {
+                                for (int y = 0; y < 4; y++) {
+                                    if (position_two_turn_array[x] == position_two_direction_array[y]) {
+                                        return position_two_turn_array[x];
+                                    };
+                                };
+                            }
+                            break;
+                    };
+                    // Fallback
+                    switch(position_number) {
+                        case 0:
                             return position_one_turn_array[position_index];
-                        case 2:
+                        case 1:
                             return position_two_turn_array[position_index];
                     };
                 }
