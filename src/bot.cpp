@@ -238,9 +238,44 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         case 2: {
                     log_data("Two cases of winning position found, neutralizing");
                     // Deal with the fork by rotating
-                    // Essentialy, we find the pattern, I think using mostly m and e moves will do the trick
-                    // Break statement not necessary since the cube will get rotated, which the only good option if the rturn statement doesn't go through
-                    return wild_card(board_position, bot_turn);
+                    int position_1 = winning_positions[0];
+                    int position_2 = winning_positions[1];
+                    std::map<int, std::array<std::string, 4>> move_key = {
+                        {1, {"mB", "mBp", "mL", "mLp"}},
+                        {2, {"mB", "mBp", "mM", "mMp"}},
+                        {3, {"mB", "mBp", "mR", "mRp"}},
+
+                        {4, {"mS", "mSp", "mL", "mLp"}},
+                        {5, {"mS", "mSp", "mM", "mMp"}},
+                        {6, {"mS", "mSp", "mM", "mMp"}},
+
+                        {7, {"mF", "mFp", "mL", "mLp"}},
+                        {8, {"mF", "mFp", "mM", "mMp"}},
+                        {9, {"mF", "mFp", "mR", "mRp"}}
+                    };
+                    std::array<std::string, 4> position_one_turn_array = move_key[position_1];
+                    std::array<std::string, 4> position_two_turn_array = move_key[position_2];
+
+                    // Writing a function for a single case feels excessive
+                    for (int x = 0; x < 4; x++) {
+                        for (int y = 0; y < 4; y++) {
+                            if (position_one_turn_array[x] == position_two_turn_array[y]) {
+                                return position_one_turn_array[x];
+                            };
+                        };
+                    };
+                    std::random_device dev;
+                    std::mt19937 rng(dev());
+                    std::uniform_int_distribution<std::mt19937::result_type> coin_flip(0, 1);
+                    std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
+                    int position_number = coin_flip(rng);
+                    int position_index = dist4(rng);
+                    switch(position_number) {
+                        case 1:
+                            return position_one_turn_array[position_index];
+                        case 2:
+                            return position_two_turn_array[position_index];
+                    };
                 }
         default:
             // This means that 3 or or more forks are detected. Rotating the cube is the only choice in this situation
