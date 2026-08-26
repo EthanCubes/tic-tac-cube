@@ -1,4 +1,3 @@
-#include <iostream>
 #include <array>
 #include <string>
 #include <tuple>
@@ -655,7 +654,7 @@ int main() {
                 draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
-                DrawText("X Wins!", 0, 0, 30, WHITE);
+                DrawText("X Wins!", 0, 0, 50, PURPLE);
                 log_data("game ends in X victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -671,7 +670,7 @@ int main() {
                 draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
-                DrawText("O Wins!", 0, 0, 30, WHITE);
+                DrawText("O Wins!", 0, 0, 50, PURPLE);
                 log_data("game ends in O victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
