@@ -13,14 +13,6 @@
 
 #include "raylib.h"
 
-/*
-- [x] Make a GUI for the main menu
-- [x] Make a graphics for the game
-- [x] Make the interactivity with the game
-- [ ] Make a Bot for the game
-- [ ] Make the GUI look better
-*/
-
 // Buttons are always pretty difficult
 class Button {
     private:
