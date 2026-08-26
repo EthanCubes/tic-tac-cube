@@ -63,6 +63,29 @@ std::string wild_card(std::map<int, int> board_position, int bot_turn) {
     }
     else {
         // Do some stuff idk
+        int move = dist10(rng);
+        switch(move) {
+            case 1:
+                return "mL";
+            case 2:
+                return "mLp";
+            case 3:
+                return "mF";
+            case 4:
+                return "mFp";
+            case 5:
+                return "mR";
+            case 6:
+                return "mRp";
+            case 7:
+                return "mB";
+            case 8:
+                return "mBp";
+            case 9:
+                return "mM";
+            case 10:
+                return "mMp";
+        };
     };
 
     return "nothing";
