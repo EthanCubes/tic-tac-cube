@@ -40,12 +40,13 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
 
 ## Bug Tracker
 ### Major bugs (will be patched before release):
-- Visual glitch where upon cube rotation, there is a chance for a character similar to 8 to appear and for the opponent to win instantly. Probably a rendering error and the board and bot are probably fully functional. According to tests done on this situation, this usually only happens when the move by the user would already cause the opponent to win. The game appears to jump back into rendering an earlier state of the board.
+- [x] Visual glitch where upon cube rotation, there is a chance for a character similar to 8 to appear and for the opponent to win instantly. Probably a rendering error and the board and bot are probably fully functional. According to tests done on this situation, this usually only happens when the move by the user would already cause the opponent to win. The game appears to jump back into rendering an earlier state of the board.
 ### Minor bugs/inconveniences (most of which will be improved upon before ship):
-- UI sucks
-- No animations
-- No help instructions, help or anything
-- No indication of who the user is upon game start
+- [ ] UI sucks
+- [ ] No animations
+- [ ] No help instructions, help or anything
+- [ ] No indication of who the user is upon game start
+- [ ] Game simulation is based of a modal system that gets more messy the more modes there are.
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8?si=CYgl26UYITcE1fpU) helped, since this is one of my first C++ projects.
