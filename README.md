@@ -29,6 +29,8 @@ Download from GitHub [here]()
 ## How it works
 Each side of a 3x3, represented by a 3x3x6 (3D) array, acts like an individual tic-tac-toe game/board. Only the top face of the cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
 
+The oldest version of C++ this program can be compiled on is C++ 11, since it does not any features in C++ 14 or later.
+
 The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation than the other graphics library I was considering, SDL2.
 
 ## AI Usage disclosure

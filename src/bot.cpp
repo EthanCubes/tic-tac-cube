@@ -137,11 +137,8 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
     return "nothing";
 };
 
-std::string combat_formed_fork(std::map<int, int> board_position, int bot_turn) {
-    return "nothing";
-};
-
 std::string block_win(std::map<int, int> board_position, int bot_turn) {
+    std::vector<int> winning_positions;
     // Scan for unbroken two
     std::array<std::tuple<std::array<int, 2>, int>, 16> unbroken_two_location = {{
         {{1, 2}, 3},
@@ -175,7 +172,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         int missing = std::get<1>(unbroken_two_location[pattern]);
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
             if (board_position[missing] == 0) {
-                return "p" + std::to_string(missing);
+                winning_positions.push_back(missing);
             };
         };
     };
@@ -202,11 +199,30 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         int missing = std::get<1>(broken_two_location[pattern]);
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
             if (board_position[missing] == 0) {
-                return "p" + std::to_string(missing);
+                winning_positions.push_back(missing);
             };
         };
     };
 
+    int winning_position_count = winning_positions.size();
+
+    switch(winning_position_count) {
+        case 0:
+            return "nothing";
+        case 1:
+            log_data("Single case of winning position found, blocking");
+            return "p" + std::to_string(winning_positions[0]);
+        case 2: {
+                    log_data("Two cases of winning position found, neutralizing");
+                    // Deal with the fork by rotating
+                    // Essentialy, we find the pattern, I think using mostly m and e moves will do the trick
+                    // Break statement not necessary since the cube will get rotated, which the only good option if the rturn statement doesn't go through
+                    return wild_card(board_position, bot_turn);
+                }
+        default:
+            // This means that 3 or or more forks are detected. Rotating the cube is the only choice in this situation
+            return rotate_cube_randomly();
+    };
     return "nothing";
 };
 
@@ -353,12 +369,6 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
         return move;
     }
 
-    // Rotate to deal with fork
-    move = combat_formed_fork(converted_board_position, bot_turn);
-    if (move != "nothing") {
-        return move;
-    }
- 
     // Block any 2-in-a-row patterns
     move = block_win(converted_board_position, bot_turn);
     if (move != "nothing") {
