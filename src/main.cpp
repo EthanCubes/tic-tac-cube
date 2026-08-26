@@ -648,8 +648,13 @@ int main() {
                 break;
             case 3:
                 BeginDrawing();
-                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+
+                // Clearing the board and rendering it again.
+                color_array = generate_colors();
+                draw_board(color_array, board_buttons);
                 draw_positions();
+
+                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("X Wins!", 0, 0, 30, WHITE);
                 log_data("game ends in X victory");
                 EndDrawing();
@@ -659,7 +664,12 @@ int main() {
                 break;
             case 4:
                 BeginDrawing();
+
+                // Clearing the board and rendering it again.
+                color_array = generate_colors();
+                draw_board(color_array, board_buttons);
                 draw_positions();
+
                 DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
                 DrawText("O Wins!", 0, 0, 30, WHITE);
                 log_data("game ends in O victory");
