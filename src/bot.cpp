@@ -92,7 +92,6 @@ std::string wild_card() {
                 return "mSp";
         };
     };
-
     return "nothing";
 };
 
