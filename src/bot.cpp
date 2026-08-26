@@ -39,7 +39,7 @@ std::string rotate_cube_randomly() {
     return "mD";
 };
 
-std::string wild_card(std::map<int, int> board_position, int bot_turn) {
+std::string wild_card() {
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist10(1, 10);
@@ -63,7 +63,8 @@ std::string wild_card(std::map<int, int> board_position, int bot_turn) {
     }
     else {
         // Do some stuff idk
-        int move = dist10(rng);
+        std::uniform_int_distribution<std::mt19937::result_type> dist12(1, 12);
+        int move = dist12(rng);
         switch(move) {
             case 1:
                 return "mL";
@@ -85,6 +86,10 @@ std::string wild_card(std::map<int, int> board_position, int bot_turn) {
                 return "mM";
             case 10:
                 return "mMp";
+            case 11:
+                return "mS";
+            case 12:
+                return "mSp";
         };
     };
 
@@ -468,6 +473,14 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     move = create_fork(converted_board_position, bot_turn);
     if (move != "nothing") {
         return move;
+    };
+
+    // Randomly decide to randomly rotate the cube because why not
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist5(1, 5);
+    if (dist5(rng) == 5) {
+        return wild_card();
     };
 
     /*
