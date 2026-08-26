@@ -43,6 +43,7 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
 - This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c) helped with getting raylib to work (it's technically a C tutorial but like whatever)
 - The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer). Somehow I still managed to get one of the four quintessential moves (it was Z btw) wrong and spent like 2 hours trying to fix it.
 - The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) was used to program the bot for singleplayer.
+- The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
 - This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend at trying.
 - This project was originally compiled with [GCC](https://gcc.gnu.org/) on [Arch Linux](https://archlinux.org/).
