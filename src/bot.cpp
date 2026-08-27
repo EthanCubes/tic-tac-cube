@@ -98,7 +98,10 @@ std::string wild_card() {
             {12, "mSp"}
         }};
 
+        int count = 0;
+
         while (!rotation_safe) {
+            count++;
             bool temporary_safe = true;
             // My thought process for this program goes something like this:
             // For each of the dangerous locations, check if the current move affects the danger location
@@ -117,6 +120,9 @@ std::string wild_card() {
             };
             if (temporary_safe) {
                 rotation_safe = true;
+            };
+            if (count > 10) {
+                break;
             };
         };
 
