@@ -122,7 +122,7 @@ std::string wild_card() {
                 rotation_safe = true;
             };
             if (count > 10) {
-                break;
+                return "nothing";
             };
         };
 
