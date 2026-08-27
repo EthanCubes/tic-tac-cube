@@ -39,12 +39,13 @@ void create_log_file() {
     std::string log_name = "build/log_" + formatted_time;
     std::string log_prefix = ".txt";
     std::string filename = log_name + log_prefix;
+
     while (!name_valid) {
         if (!file_exists(filename)) {
             // Move ahead with file creation and logging
             std::ofstream log_file;
             log_file.open(filename);
-            log_file << "-------- Beginning of log --------";
+            log_file << "---- Beginning of log ----\n" << formatted_time << "\n\n";
             log_file.close();
 
             // Create a file to tell the system what the current log file name is
@@ -72,8 +73,8 @@ void log_data(std::string log_message) {
     log_file_name_file.close();
 
     // Fetch the file and write to the file
-    std::string time = get_time();
+    int unix_timestamp = time(NULL); // No reason this shouldn't work.
     std::ofstream log_file(filename, std::ios::app);
-    log_file << time << log_message << "\n\n";
+    log_file << std::to_string(unix_timestamp) << " | "<< log_message << "\n\n";
     log_file.close();
 };

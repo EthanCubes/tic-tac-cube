@@ -467,7 +467,6 @@ int main() {
     float mouse_x;
     float mouse_y;
 
-    log_data("---- Beginning of program ----");
     log_data("Window initialization complete");
 
     multiplayer_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
@@ -503,7 +502,7 @@ int main() {
     m_move_button.setup_button(screen_width/2, screen_height/2+250, 50, 50);
     r_prime_button.setup_button(screen_width/2+150, screen_height/2+250, 50, 50);
 
-    exit_game_button.setup_button(25, 12, 50, 25);
+    exit_game_button.setup_button(12, 12, 25, 25);
 
     int bot_turn;
     int user_turn;
@@ -647,7 +646,7 @@ int main() {
                 draw_movement(movement_buttons);
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, "EXIT", 20, BLACK);
+                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
 
                 EndDrawing();
                 break;
@@ -696,7 +695,7 @@ int main() {
                 };
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, "EXIT", 20, BLACK);
+                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
                 EndDrawing();
 
                 break;
