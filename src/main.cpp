@@ -413,7 +413,7 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     board_buttons[8].draw_button(color_array[8], "", 0, WHITE);
 }
 
-void draw_movement(std::array<Button, 16> movement_buttons) {
+void draw_movement() {
     x_move_button.draw_button(RAYWHITE, "", 0, WHITE);
     z_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
     z_move_button.draw_button(RAYWHITE, "", 0, WHITE);
@@ -521,6 +521,7 @@ int main() {
         grid9
     };
 
+    /*
     std::array<Button, 16> movement_buttons = {
         x_move_button,
         z_prime_button,
@@ -540,6 +541,7 @@ int main() {
         m_move_button,
         r_prime_button
     };
+    */
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
@@ -623,8 +625,6 @@ int main() {
         };
         // Render
         std::array<Color, 9> color_array;
-        int temp_x_pos = screen_width/2-175;
-        int temp_y_pos = screen_height/2-175;
         switch(mode) {
             case 0:
                 BeginDrawing();
@@ -643,7 +643,7 @@ int main() {
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
-                draw_movement(movement_buttons);
+                draw_movement();
                 draw_positions();
 
                 exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
@@ -691,7 +691,7 @@ int main() {
                 draw_board(color_array, board_buttons);
                 
                 if (cube.turn == user_turn) {
-                    draw_movement(movement_buttons);
+                    draw_movement();
                 };
                 draw_positions();
 
