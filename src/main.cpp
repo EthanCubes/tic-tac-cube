@@ -1,7 +1,7 @@
 #include <array>
 #include <string>
-#include <tuple>
 #include <chrono>
+#include <tuple>
 #include <thread>
 #include <cstdlib>
 #include <ctime>
@@ -22,6 +22,11 @@ class Button {
         int height;
 
         bool setup = false;
+
+        Vector2 get_text_dimensions(const char* text, int font_size) {
+            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 2.5f);
+            return text_dimensions;
+        };
     public:
         void setup_button(int start_x_setup, int start_y_setup, int width_setup, int height_setup) {
             if (setup) {
@@ -35,13 +40,22 @@ class Button {
             setup = true;
         };
 
-        void draw_button(Color button_color, Color text_color, int text_x_offset, int text_y_offset, int font_size, const char* text) {
+        void draw_button(Color button_color, const char* text, int font_size, Color text_color) {
             if (!setup) {
                 log_data("Button not declared!");
                 return;
             };
+
+            // So apparently Vector2 is something that I have to declare myself. Great. I love when I have to write my own libraries, unless i spent 10 hours trying to find someone else's code and find nothing
+            Vector2 text_dimensions = get_text_dimensions(text, font_size);
+            int text_width = text_dimensions.x;
+            int text_height = text_dimensions.y;
+            int relative_width = (width - text_width)/2;
+            int relative_height = (height - text_height)/2;
+            Vector2 position{(float)(start_x + relative_width), (float)(start_y + relative_height)};
+
             DrawRectangle(start_x, start_y, width, height, button_color);
-            DrawText(text, start_x+text_x_offset, start_y+text_y_offset, font_size, text_color);
+            DrawTextEx(GetFontDefault(), text, position, font_size, 2.5f, text_color); // Font, text, position, font-size, spacing, color
         };
 
         int check_button_clicked() {
@@ -386,37 +400,37 @@ std::array<Color, 9> generate_colors() {
 
 void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_buttons) {
     // Row 1
-    board_buttons[0].draw_button(color_array[0], WHITE, 0, 0, 0, "");
-    board_buttons[1].draw_button(color_array[1], WHITE, 0, 0, 0, "");
-    board_buttons[2].draw_button(color_array[2], WHITE, 0, 0, 0, "");
+    board_buttons[0].draw_button(color_array[0], "", 0, WHITE);
+    board_buttons[1].draw_button(color_array[1], "", 0, WHITE);
+    board_buttons[2].draw_button(color_array[2], "", 0, WHITE);
     // Row 2
-    board_buttons[3].draw_button(color_array[3], WHITE, 0, 0, 0, "");
-    board_buttons[4].draw_button(color_array[4], WHITE, 0, 0, 0, "");
-    board_buttons[5].draw_button(color_array[5], WHITE, 0, 0, 0, "");
+    board_buttons[3].draw_button(color_array[3], "", 0, WHITE);
+    board_buttons[4].draw_button(color_array[4], "", 0, WHITE);
+    board_buttons[5].draw_button(color_array[5], "", 0, WHITE);
     // Row 3
-    board_buttons[6].draw_button(color_array[6], WHITE, 0, 0, 0, "");
-    board_buttons[7].draw_button(color_array[7], WHITE, 0, 0, 0, "");
-    board_buttons[8].draw_button(color_array[8], WHITE, 0, 0, 0, "");
+    board_buttons[6].draw_button(color_array[6], "", 0, WHITE);
+    board_buttons[7].draw_button(color_array[7], "", 0, WHITE);
+    board_buttons[8].draw_button(color_array[8], "", 0, WHITE);
 }
 
 void draw_movement(std::array<Button, 16> movement_buttons) {
-    x_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    z_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    z_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    x_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    x_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    z_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    z_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    x_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
 
-    l_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    m_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    r_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    b_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    b_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    s_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    s_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    f_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    f_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    l_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    m_move_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
-    r_prime_button.draw_button(RAYWHITE, WHITE, 0, 0, 0, "");
+    l_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    m_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    r_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    b_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    b_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    s_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    s_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    f_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    f_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    l_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    m_move_button.draw_button(RAYWHITE, "", 0, WHITE);
+    r_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
 }
 
 void draw_positions() {
@@ -618,9 +632,9 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
-                singleplayer_button.draw_button(RED, WHITE, 3, 20, 40, "Singleplayer");
-                multiplayer_button.draw_button(RED, WHITE, 20, 20, 40, "Multiplayer");
-                exit_button.draw_button(RED, WHITE, 70, 20, 40, "Exit");
+                singleplayer_button.draw_button(RED, "Singleplayer", 40, WHITE);
+                multiplayer_button.draw_button(RED, "Multiplayer", 40, WHITE);
+                exit_button.draw_button(RED, "Exit", 40, WHITE);
                 EndDrawing();
                 break;
             case 2:
@@ -633,7 +647,7 @@ int main() {
                 draw_movement(movement_buttons);
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
+                exit_game_button.draw_button(RAYWHITE, "EXIT", 20, BLACK);
 
                 EndDrawing();
                 break;
@@ -682,7 +696,7 @@ int main() {
                 };
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, BLACK, 0, 0, 20, "EXIT");
+                exit_game_button.draw_button(RAYWHITE, "EXIT", 20, BLACK);
                 EndDrawing();
 
                 break;
