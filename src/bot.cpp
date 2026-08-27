@@ -8,6 +8,9 @@
 
 #include "logs.h"
 
+// This vectors' job is to store all the locations that wild card moves should not effect, since rotating the cube in a manner that effect one of these locations would cause the opponent to win instantly
+std::vector<int> danger_locations;
+
 std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 3>, 3>, 6> unconverted_board_position) {
     std::map<int, int> converted_board_position;
     // In order to get the data from the unconverted array, we need two keys, so I wrote this function to convert a number into those two keys
@@ -63,9 +66,61 @@ std::string wild_card() {
     }
     else {
         // Do some stuff idk
+        bool rotation_safe = false;
         std::uniform_int_distribution<std::mt19937::result_type> dist12(1, 12);
-        int move = dist12(rng);
-        switch(move) {
+        int move_int;
+        std::map<std::string, std::array<int, 3>> move_affecting_positions = {{
+            {"mL", {1, 4, 7}},
+            {"mLp", {1, 4, 7}},
+            {"mF", {7, 8, 9}},
+            {"mFp", {7, 8, 9}},
+            {"mR", {3, 6, 9}},
+            {"mRp", {3, 6, 9}},
+            {"mB", {1, 2, 3}},
+            {"mBp", {1, 2, 3}},
+            {"mM", {2, 5, 8}},
+            {"mMp", {2, 5, 8}},
+            {"mS", {4, 5, 6}},
+            {"mSp", {4, 5, 6}},
+        }};
+        std::map<int, std::string> moves_by_number = {{
+            {1, "mL"},
+            {2, "mLp"},
+            {3, "mF"},
+            {4, "mFp"},
+            {5, "mR"},
+            {6, "mRp"},
+            {7, "mB"},
+            {8, "mBp"},
+            {9, "mM"},
+            {10, "mMp"},
+            {11, "mS"},
+            {12, "mSp"}
+        }};
+
+        while (!rotation_safe) {
+            bool temporary_safe = true;
+            // My thought process for this program goes something like this:
+            // For each of the dangerous locations, check if the current move affects the danger location
+
+            move_int = dist12(rng);
+            std::string move_string = moves_by_number[move_int];
+
+            int danger_locations_vector_length = danger_locations.size();
+            for (int position = 0; position < danger_locations_vector_length; position++) {
+                for (int i = 0; i < 3; i++) {
+                    int affected_position = move_affecting_positions[move_string][i];
+                    if (affected_position == danger_locations[position]) {
+                        temporary_safe = false;
+                    };
+                };
+            };
+            if (temporary_safe) {
+                rotation_safe = true;
+            };
+        };
+
+        switch(move_int) {
             case 1:
                 return "mL";
             case 2:
@@ -199,6 +254,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
         int position_2 = std::get<0>(unbroken_two_location[pattern])[1];
         int missing = std::get<1>(unbroken_two_location[pattern]);
         if (board_position[position_1] == (3 - bot_turn) && board_position[position_2] == (3 - bot_turn)) {
+            danger_locations.push_back(missing);
             if (board_position[missing] == 0) {
                 winning_positions.push_back(missing);
                 winning_directions.push_back(position_1);
