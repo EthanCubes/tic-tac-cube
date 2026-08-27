@@ -24,7 +24,7 @@ class Button {
         bool setup = false;
 
         Vector2 get_text_dimensions(const char* text, int font_size) {
-            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 2.5f);
+            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 3.0f);
             return text_dimensions;
         };
     public:
@@ -55,7 +55,7 @@ class Button {
             Vector2 position{(float)(start_x + relative_width), (float)(start_y + relative_height)};
 
             DrawRectangle(start_x, start_y, width, height, button_color);
-            DrawTextEx(GetFontDefault(), text, position, font_size, 2.5f, text_color); // Font, text, position, font-size, spacing, color
+            DrawTextEx(GetFontDefault(), text, position, font_size, 3.0f, text_color); // Font, text, position, font-size, spacing, color
         };
 
         int check_button_clicked() {
