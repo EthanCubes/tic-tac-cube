@@ -589,9 +589,17 @@ int main() {
                 mode = cube.gameloop(2);
                 break;
             case 3:
+                log_data(std::to_string(cube.hidden));
+                if (cube.hidden) {
+                    log_data("Hidden game conclusion");
+                };
                 log_data("Game ends in X victory");
                 break;
             case 4:
+                log_data(std::to_string(cube.hidden));
+                if (cube.hidden) {
+                    log_data("Hidden game conclusion");
+                };
                 log_data("Game ends in O victory");
                 break;
             case 5:
@@ -613,7 +621,7 @@ int main() {
                     }
                     user_turn = 3 - bot_turn;
                     setup = true;
-                }
+                };
                 
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
@@ -667,6 +675,11 @@ int main() {
                 break;
             case 3:
                 BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+
+                if (cube.hidden) {
+                    popup_message("Why'd the game end?\nThe win just happened on\nanother side of the board");
+                };
 
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();
@@ -683,6 +696,11 @@ int main() {
                 break;
             case 4:
                 BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+
+                if (cube.hidden) {
+                    popup_message("Why'd the game end?\nThe win just happened on\nanother side of the board");
+                };
 
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();

@@ -760,6 +760,12 @@ void Cube_board::move_cube(std::string move) {
 
 std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
     for (int i = 0; i < 6; i++) {
+        if (i != 0) {
+            hidden = true;
+        }
+        else {
+            hidden = false;
+        };
         // Horizontal 1
         if (positions[i][0][0] == positions[i][0][1] && positions[i][0][0] == positions[i][0][2] && positions[i][0][0] != 0) {
             return {positions[i][0][0], {{{0, 0}, {0, 1}, {0, 2}}}};
@@ -935,9 +941,15 @@ bool Cube_board::scan_for_draw() {
 int Cube_board::gameloop(int mode) {
     // Check for wins so that there's a way to exit the gameloop without exiting the game
     if (std::get<0>(scan_for_wins()) == 1) {
+        if (hidden) {
+            log_data("Hidden game conclusion");
+        };
         return 3;
     }
     else if (std::get<0>(scan_for_wins()) == 2) {
+        if (hidden) {
+            log_data("Hidden game conclusion");
+        }
         return 4;
     };
     switch(mode) {
