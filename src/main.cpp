@@ -645,7 +645,11 @@ int main() {
                 };
                 log_data("Game ends in O victory");
                 break;
-            case 5:
+            case 5: {
+                    bool rng_valid = true;
+                    if (cube.move_count = 1) {
+                        rng_valid = false;
+                    };
                 // Singleplayer
                 if (!setup) {
                     cube.move_count = 0;
@@ -668,23 +672,24 @@ int main() {
                     user_turn = 3 - bot_turn;
                     setup = true;
                 };
-                
+
                 if (exit_game_button.check_button_clicked() == 1) {
                     mode = 0;
                     log_data("Game aborted by user");
                     cube.reset();
                     break;
                 };
-                
+
                 // Check for user input of the grid spaces (P and M)
                 if (cube.turn == user_turn) {
                     get_user_input();
                 }
                 else {
-                    cube.user_input(get_bot_move(cube.positions, bot_turn));
+                    cube.user_input(get_bot_move(cube.positions, bot_turn, rng_valid));
                 }
                 mode = cube.gameloop(5);
                 break;
+                    }
             case 6:
                 log_data("Game ends in tie as board is completely full without victory");
                 break;

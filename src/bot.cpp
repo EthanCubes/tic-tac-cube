@@ -224,7 +224,6 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
 
     return "nothing";
 };
-
 std::string block_win(std::map<int, int> board_position, int bot_turn) {
     std::vector<int> winning_positions;
     std::vector<int> winning_directions;
@@ -512,7 +511,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
 
 // Since the thing storing the board position is located inside an object, I cannot get the information directly from the board file.
 // The input comes in the form of a mulitdimensional array. Only the top face is needed to scan, because the top face is the only place you can place blocks, and lso because its' the only face you can see, 
-std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_position_input, int bot_turn) {
+std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_position_input, int bot_turn, bool rng_valid) {
     std::string move = "mD";
 
     std::map<int, int> converted_board_position = convert_board_position(board_position_input);
@@ -540,7 +539,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist5(1, 5);
-    if (dist5(rng) == 5) {
+    if (dist5(rng) == 5 && rng_valid) {
         return wild_card();
     };
 

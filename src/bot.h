@@ -22,6 +22,6 @@ std::string combat_formed_fork(std::map<int, int> board_position, int bot_turn);
 std::string block_win(std::map<int, int> board_position, int bot_turn);
 std::string create_fork(std::map<int, int> board_position, int bot_turn);
 std::string place_priority(std::map<int, int> board_position, int bot_turn);
-std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_position_input, int bot_turn);
+std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_position_input, int bot_turn, bool rng_valid);
 
 #endif
