@@ -600,7 +600,9 @@ int main() {
         mouse_y = mouse_pos.y;
 
         /* Popup check & calc */
+        BeginDrawing();
         handle_popups();
+        EndDrawing();
 
         // Simulate
         /* 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page */
