@@ -455,7 +455,7 @@ void draw_positions() {
 
 void popup_message(const char* text) {
     Button popup;
-    popup.setup_button(1180, 670, 100, 50);
+    popup.setup_button(1130, 40, 300, 80);
     popup.draw_button(PURPLE, text, 20, WHITE);
 };
 
