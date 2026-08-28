@@ -15,7 +15,6 @@ A C++ game like Tic-Tic-Toe, except played on a Rubik's cube, and players can ch
 
 ## Quick Start
 Play the game on Itch.io [here]()
-Download from GitHub [here]()
 
 ## Features
 - Basic tic-tac-toe game
@@ -32,23 +31,22 @@ Each side of a 3x3, represented by a 3x3x6 (3D) array, acts like an individual t
 
 The oldest version of C++ this program can be compiled on is C++ 11, since it does not any features in C++ 14 or later.
 
-The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation than the other graphics library I was considering, SDL2.
+The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2.
 
 ## AI Usage disclosure
-AI was used for debugging and learning. I never used it to tell me what code I should write.
-The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
+AI was used for debugging and learning. I never used it to tell me what code I should write, or to replace my own thinking.
+The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 
 ## Bug Tracker (Section will likely be removed on release)
 ### Major bugs (will be patched before release):
 - [x] Visual glitch where upon cube rotation, there is a chance for a character similar to 8 to appear and for the opponent to win instantly. Probably a rendering error and the board and bot are probably fully functional. According to tests done on this situation, this usually only happens when the move by the user would already cause the opponent to win. The game appears to jump back into rendering an earlier state of the board.
 ### Minor bugs/Stuff I need to improve:
 - [ ] No help instructions, help or anything
-- [ ] No indication of who the user is upon game start
+- [x] No indication of who the user is upon game start
 - [ ] Main menu is empty and buttons are unpolished
 - [ ] Game interaction buttons are literally white squares
 - [ ] Exit button is just a square and looks empty and out of place.
 - [ ] They aren't any animations or stuff like this
-- [ ] Game simulation is based of a modal system that gets more messy the more modes there are.
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8?si=CYgl26UYITcE1fpU) helped, since this is one of my first C++ projects.
@@ -58,5 +56,5 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/)
 - The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) was used to program the bot for singleplayer.
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
-- This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend at trying.
+- This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend trying.
 - This project was originally coded and compiled with [GCC](https://gcc.gnu.org/) entirely on [Arch Linux](https://archlinux.org/).
