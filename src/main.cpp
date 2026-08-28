@@ -646,49 +646,49 @@ int main() {
                 log_data("Game ends in O victory");
                 break;
             case 5: {
-                    bool rng_valid = true;
-                    if (cube.move_count = 1) {
-                        rng_valid = false;
-                    };
-                // Singleplayer
-                if (!setup) {
-                    cube.move_count = 0;
-                    // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
-                    std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
-                    bot_turn = dist_turn(rng);
-                    user_turn = 3 - bot_turn;
-                    switch(bot_turn) { // emphasis on bot turn
-                        case 1:
-                            log_data("Singleplayer game started with player as O");
-                            activate_popup("bot_goes_first");
-                            break;
-                        case 2:
-                            log_data("Singleplayer game started with player as X");
-                            activate_popup("user_goes_first");
-                            break;
-                        default:
-                            log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
-                    }
-                    user_turn = 3 - bot_turn;
-                    setup = true;
-                };
+                        bool rng_valid = true;
+                        if (cube.move_count = 1) {
+                            rng_valid = false;
+                        };
+                        // Singleplayer
+                        if (!setup) {
+                            cube.move_count = 0;
+                            // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+                            std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
+                            bot_turn = dist_turn(rng);
+                            user_turn = 3 - bot_turn;
+                            switch(bot_turn) { // emphasis on bot turn
+                                case 1:
+                                    log_data("Singleplayer game started with player as O");
+                                    activate_popup("bot_goes_first");
+                                    break;
+                                case 2:
+                                    log_data("Singleplayer game started with player as X");
+                                    activate_popup("user_goes_first");
+                                    break;
+                                default:
+                                    log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
+                            };
+                            user_turn = 3 - bot_turn;
+                            setup = true;
+                        };
 
-                if (exit_game_button.check_button_clicked() == 1) {
-                    mode = 0;
-                    log_data("Game aborted by user");
-                    cube.reset();
-                    break;
-                };
+                        if (exit_game_button.check_button_clicked() == 1) {
+                            mode = 0;
+                            log_data("Game aborted by user");
+                            cube.reset();
+                            break;
+                        };
 
-                // Check for user input of the grid spaces (P and M)
-                if (cube.turn == user_turn) {
-                    get_user_input();
-                }
-                else {
-                    cube.user_input(get_bot_move(cube.positions, bot_turn, rng_valid));
-                }
-                mode = cube.gameloop(5);
-                break;
+                        // Check for user input of the grid spaces (P and M)
+                        if (cube.turn == user_turn) {
+                            get_user_input();
+                        }
+                        else {
+                            cube.user_input(get_bot_move(cube.positions, bot_turn, rng_valid));
+                        }
+                        mode = cube.gameloop(5);
+                        break;
                     }
             case 6:
                 log_data("Game ends in tie as board is completely full without victory");
