@@ -600,9 +600,7 @@ int main() {
         mouse_y = mouse_pos.y;
 
         /* Popup check & calc */
-        BeginDrawing();
         handle_popups();
-        EndDrawing();
 
         // Simulate
         /* 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page */
@@ -612,6 +610,9 @@ int main() {
                 setup = false;
                 if (mode != 0) {
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    if (mode == 2) {
+                        activate_popup("multiplayer_game_start");
+                    };
                 };
                 break;
             case 1:
@@ -634,7 +635,7 @@ int main() {
                 if (cube.hidden) {
                     log_data("Hidden game conclusion");
                 };
-                log_data("Game ends in X victory");
+                log_data("Game ends in X victory"); //
                 break;
             case 4:
                 log_data(std::to_string(cube.hidden));
@@ -650,12 +651,14 @@ int main() {
                     std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
                     bot_turn = dist_turn(rng);
                     user_turn = 3 - bot_turn;
-                    switch(bot_turn) {
+                    switch(bot_turn) { // emphasis on bot turn
                         case 1:
                             log_data("Singleplayer game started with player as O");
+                            activate_popup("bot_goes_first");
                             break;
                         case 2:
                             log_data("Singleplayer game started with player as X");
+                            activate_popup("user_goes_first");
                             break;
                         default:
                             log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
