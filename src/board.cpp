@@ -659,98 +659,122 @@ int Cube_board::mark_o(int x, int y) {
 void Cube_board::move_cube(std::string move) {
     if (move == "U") {
         u_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "U'") {
         u_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "L") {
         l_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "L'") {
         l_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "F") {
         f_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "F'") {
         f_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "R") {
         r_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "R'") {
         r_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "B") {
         b_move();
+        move_count++;
         turn = 3 - turn;
     } 
     else if (move == "B'") {
         b_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "D") {
         d_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "D'") {
         d_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "X") {
         x_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "X'") {
         x_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "Y") {
         y_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "Y'") {
         y_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "Z") {
         z_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "Z'") {
         z_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "M") {
         m_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "M'") {
         m_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "E") {
         e_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "E'") {
         e_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "S") {
         s_move();
+        move_count++;
         turn = 3 - turn;
     }
     else if (move == "S'") {
         s_prime();
+        move_count++;
         turn = 3 - turn;
     }
     else {
@@ -804,6 +828,7 @@ std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
 
 void Cube_board::reset() {
     turn = 1;
+    move_count = 0;
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
@@ -838,6 +863,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][0][0] == 0) {
                 positions[0][0][0] = turn;
                 log_data("Player " + std::to_string(turn) + " played p1");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -845,6 +871,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][0][1] == 0) {
                 positions[0][0][1] = turn;
                 log_data("Player " + std::to_string(turn) + " played p2");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -852,6 +879,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][0][2] == 0) {
                 positions[0][0][2] = turn;
                 log_data("Player " + std::to_string(turn) + " played p3");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -859,6 +887,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][1][0] == 0) {
                 positions[0][1][0] = turn;
                 log_data("Player " + std::to_string(turn) + " played p4");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -866,6 +895,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][1][1] == 0) {
                 positions[0][1][1] = turn;
                 log_data("Player " + std::to_string(turn) + " played p5");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -873,6 +903,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][1][2] == 0) {
                 positions[0][1][2] = turn;
                 log_data("Player " + std::to_string(turn) + " played p6");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -880,6 +911,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][2][0] == 0) {
                 positions[0][2][0] = turn;
                 log_data("Player " + std::to_string(turn) + " played p7");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -887,6 +919,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][2][1] == 0) {
                 positions[0][2][1] = turn;
                 log_data("Player " + std::to_string(turn) + " played p8");
+                move_count++;
                 turn = 3 - turn;
             };
         }
@@ -894,6 +927,7 @@ void Cube_board::user_input(std::string input) {
             if (positions[0][2][2] == 0) {
                 positions[0][2][2] = turn;
                 log_data("Player " + std::to_string(turn) + " played p9");
+                move_count++;
                 turn = 3 - turn;
             };
         }

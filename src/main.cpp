@@ -611,6 +611,7 @@ int main() {
                 if (mode != 0) {
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
                     if (mode == 2) {
+                        cube.move_count = 0;
                         activate_popup("multiplayer_game_start");
                     };
                 };
@@ -647,6 +648,7 @@ int main() {
             case 5:
                 // Singleplayer
                 if (!setup) {
+                    cube.move_count = 0;
                     // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
                     std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
                     bot_turn = dist_turn(rng);

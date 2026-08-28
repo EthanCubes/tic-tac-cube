@@ -12,6 +12,7 @@ class Cube_board {
     public:
         Cube_board() {}
         bool hidden;
+        int move_count;
         std::array<std::array<std::array<int, 3>, 3>, 6> positions = {{
             {{
                 {0, 0, 0},
