@@ -451,7 +451,13 @@ void draw_positions() {
         temp_x_pos = screen_width/2-175;
         temp_y_pos += 150;
     };
-}
+};
+
+void popup_message(const char* text) {
+    Button popup;
+    popup.setup_button(1180, 670, 100, 50);
+    popup.draw_button(PURPLE, text, 20, WHITE);
+};
 
 int main() {
     create_log_file();
