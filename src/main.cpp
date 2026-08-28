@@ -13,6 +13,8 @@
 
 #include "raylib.h"
 
+// I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
+
 // Buttons are always pretty difficult
 class Button {
     private:
@@ -71,6 +73,44 @@ class Button {
                 };
             };
             return 0;
+        };
+};
+
+class Popups {
+    private:
+        Vector2 start_pos;
+        Vector2 dimensions;
+        const char* text;
+
+        Vector2 get_text_dimensions(const char* text, int font_size) {
+            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 3.0f);
+            return text_dimensions;
+        };
+
+        void draw_centered_text() {
+            // Do the setup for the drawing
+            int width = dimensions.x;
+            int height = dimensions.y;
+            Vector2 text_dimensions = get_text_dimensions(text, 20);
+            int text_width = text_dimensions.x;
+            int text_height = text_dimensions.y;
+
+            int relative_x = (width/text_height);
+            int relative_y = (height/text_height);
+
+            Vector2 position{(float)(start_pos.x+relative_x), (float)(start_pos.y+relative_y)};
+
+            DrawTextEx(GetFontDefault(), text, position, 20, 3.0f, BLACK); // text is a variable declared inside the class already
+        };
+    public:
+        void setup_button(Vector2 start_pos_input, Vector2 dimensions_input, const char* text_input) {
+            start_pos = start_pos_input;
+            dimensions = dimensions_input;
+            text = text_input;
+        };
+        void render() {
+            DrawRectangle(start_pos.x, start_pos.y, dimensions.x, dimensions.y, PURPLE);
+            draw_centered_text();
         };
 };
 
@@ -543,13 +583,20 @@ int main() {
     };
     */
 
+    // Popups
+    bool hidden_self_win;
+    bool hidden_opponent_win;
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
         mouse_x = mouse_pos.x;
         mouse_y = mouse_pos.y;
 
+        /* Popup check & calc */
+
         // Simulate
+        /* 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page */
         switch(mode) {
             case 0:
                 mode = main_menu();
