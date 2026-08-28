@@ -459,6 +459,48 @@ void popup_message(const char* text) {
     popup.draw_button(PURPLE, text, 20, WHITE);
 };
 
+// All the popups
+// I know global variables aren't the best, but I'm not a fan of plugging in like 20 parameters into a function.
+std::map<std::string, std::tuple<bool, const std::string, const int, int>> popups = {{
+    {"hidden_win", {false, "Why'd the game end?\nThe win just happened on\nanother side of the board", 2, 0}},
+    {"user_goes_first", {false, "You're X\nYou go first", 1, 0}},
+    {"bot_goes_first", {false, "You're O\nYou go second", 1, 0}},
+    {"multiplayer_game_start", {false, "Local multiplayer game\nPlay whenever", 1, 0}}
+}};
+std::vector<std::string> popup_keys = {
+    "hidden_win",
+    "user_goes_first",
+    "bot_goes_first",
+    "multiplayer_game_start"
+};
+bool hidden_win = false;
+bool user_goes_first = false;
+bool bot_goes_first = false;
+bool multiplayer_game_start = false;
+
+void handle_popups() {
+    int map_size = popup_keys.size();
+    for (int i = 0; i < map_size; i++) {
+        std::string key = popup_keys[i];
+        bool active = std::get<0>(popups[key]);
+        std::string content = std::get<1>(popups[key]);
+        int duration = std::get<2>(popups[key]);
+        int start_time = std::get<3>(popups[key]);
+        if (active) {
+        // https://stackoverflow.com/questions/347949/how-to-convert-a-stdstring-to-const-char-or-char
+            popup_message(content.c_str());
+            if ((time(NULL) - start_time) > duration) {
+                std::get<0>(popups[key]) = false;
+            };
+        };
+    };
+};
+
+void activate_popup(std::string key) {
+    std::get<0>(popups[key]) = true;
+    std::get<3>(popups[key]) = time(NULL);
+};
+
 int main() {
     create_log_file();
     int mode = 0;
@@ -558,6 +600,7 @@ int main() {
         mouse_y = mouse_pos.y;
 
         /* Popup check & calc */
+        handle_popups();
 
         // Simulate
         /* 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page */
@@ -674,7 +717,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
 
                 if (cube.hidden) {
-                    popup_message("Why'd the game end?\nThe win just happened on\nanother side of the board");
+                    activate_popup("hidden_win");
+                    handle_popups();
                 };
 
                 // Clearing the board and rendering it again.
@@ -695,7 +739,8 @@ int main() {
                 ClearBackground({25, 25, 25, 255});
 
                 if (cube.hidden) {
-                    popup_message("Why'd the game end?\nThe win just happened on\nanother side of the board");
+                    activate_popup("hidden_win");
+                    handle_popups();
                 };
 
                 // Clearing the board and rendering it again.
