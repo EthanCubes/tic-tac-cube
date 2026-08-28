@@ -76,44 +76,6 @@ class Button {
         };
 };
 
-class Popups {
-    private:
-        Vector2 start_pos;
-        Vector2 dimensions;
-        const char* text;
-
-        Vector2 get_text_dimensions(const char* text, int font_size) {
-            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 3.0f);
-            return text_dimensions;
-        };
-
-        void draw_centered_text() {
-            // Do the setup for the drawing
-            int width = dimensions.x;
-            int height = dimensions.y;
-            Vector2 text_dimensions = get_text_dimensions(text, 20);
-            int text_width = text_dimensions.x;
-            int text_height = text_dimensions.y;
-
-            int relative_x = (width/text_height);
-            int relative_y = (height/text_height);
-
-            Vector2 position{(float)(start_pos.x+relative_x), (float)(start_pos.y+relative_y)};
-
-            DrawTextEx(GetFontDefault(), text, position, 20, 3.0f, BLACK); // text is a variable declared inside the class already
-        };
-    public:
-        void setup_button(Vector2 start_pos_input, Vector2 dimensions_input, const char* text_input) {
-            start_pos = start_pos_input;
-            dimensions = dimensions_input;
-            text = text_input;
-        };
-        void render() {
-            DrawRectangle(start_pos.x, start_pos.y, dimensions.x, dimensions.y, PURPLE);
-            draw_centered_text();
-        };
-};
-
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
