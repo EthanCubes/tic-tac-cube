@@ -551,10 +551,6 @@ int main() {
     };
     */
 
-    // Popups
-    bool hidden_self_win;
-    bool hidden_opponent_win;
-
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
         mouse_pos = GetMousePosition();
