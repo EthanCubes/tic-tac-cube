@@ -599,11 +599,11 @@ int main() {
         mouse_x = mouse_pos.x;
         mouse_y = mouse_pos.y;
 
-        /* Popup check & calc */
+        // Popup check & calc
         handle_popups();
 
         // Simulate
-        /* 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page */
+        // 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page
         switch(mode) {
             case 0:
                 mode = main_menu();
@@ -697,6 +697,7 @@ int main() {
                 std::cout << "Invalid command";
                 mode = 0;
         };
+
         // Render
         std::array<Color, 9> color_array;
         switch(mode) {
