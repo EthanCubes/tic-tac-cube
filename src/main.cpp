@@ -575,28 +575,6 @@ int main() {
         grid9
     };
 
-    /*
-    std::array<Button, 16> movement_buttons = {
-        x_move_button,
-        z_prime_button,
-        z_move_button,
-        x_prime_button,
-
-        l_prime_button,
-        m_prime_button,
-        r_move_button,
-        b_move_button,
-        b_prime_button,
-        s_prime_button,
-        s_move_button,
-        f_prime_button,
-        f_move_button,
-        l_move_button,
-        m_move_button,
-        r_prime_button
-    };
-    */
-
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
 
