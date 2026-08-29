@@ -18,6 +18,13 @@
 
 // I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
 
+// Colors
+const Color BACKGROUND_COLOR = {23, 22, 20, 255};
+const Color TEXT_COLOR = {255, 255, 252, 255};
+const Color MAJOR_BUTTON_COLOR = {223, 41, 53, 255};
+const Color MINOR_BUTTON_COLOR = {39, 93, 173, 255};
+const Color HIGHLIGHT_COLOR = GRAY;
+
 // Buttons are always pretty difficult
 class Button {
     private:
@@ -465,7 +472,7 @@ void draw_positions() {
 void popup_message(const char* text) {
     Button popup;
     popup.setup_button(1130, 40, 300, 80);
-    popup.draw_button(GRAY, text, 20, WHITE);
+    popup.draw_button(HIGHLIGHT_COLOR, text, 20, WHITE);
 };
 
 // All the popups
@@ -691,7 +698,7 @@ int main() {
         switch(mode) {
             case 0:
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
+                ClearBackground(BACKGROUND_COLOR);
                 DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
                 // Drawing the buttons
                 singleplayer_button.draw_button(RED, "Singleplayer", 40, WHITE);
@@ -703,7 +710,7 @@ int main() {
             case 2:
                 // Multiplayer
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
+                ClearBackground(BACKGROUND_COLOR);
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
@@ -716,7 +723,7 @@ int main() {
                 break;
             case 3:
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
+                ClearBackground(BACKGROUND_COLOR);
 
                 if (cube.hidden) {
                     activate_popup("hidden_win");
@@ -728,7 +735,7 @@ int main() {
                 draw_board(color_array, board_buttons);
                 draw_positions();
 
-                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("X Wins!", 0, 0, 50, PURPLE);
                 log_data("game ends in X victory");
                 EndDrawing();
@@ -738,7 +745,7 @@ int main() {
                 break;
             case 4:
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
+                ClearBackground(BACKGROUND_COLOR);
 
                 if (cube.hidden) {
                     activate_popup("hidden_win");
@@ -750,7 +757,7 @@ int main() {
                 draw_board(color_array, board_buttons);
                 draw_positions();
 
-                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("O Wins!", 0, 0, 50, PURPLE);
                 log_data("game ends in O victory");
                 EndDrawing();
@@ -761,7 +768,7 @@ int main() {
             case 5:
                 // Singleplayer
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
+                ClearBackground(BACKGROUND_COLOR);
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
@@ -779,7 +786,7 @@ int main() {
                 // Draw
                 BeginDrawing();
                 draw_positions();
-                DrawRectangle(0, 0, 50, 50, {25, 25, 25, 255});
+                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("Board Full! (Tie)", 0, 0, 30, WHITE);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -802,10 +809,10 @@ int main() {
 
                 // Draw entire help menu
                 BeginDrawing();
-                ClearBackground({25, 25, 25, 255});
-                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
-                DrawText(header, 600, 0, 40, WHITE);
-                DrawText(displayed_text, 0, 40, 20, WHITE);
+                ClearBackground(BACKGROUND_COLOR);
+                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, BLACK);
+                DrawText(header, 600, 0, 40, TEXT_COLOR);
+                DrawText(displayed_text, 0, 40, 20, TEXT_COLOR);
                 EndDrawing();
                 break;
         };
