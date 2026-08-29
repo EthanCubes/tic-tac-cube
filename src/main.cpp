@@ -81,6 +81,7 @@ Cube_board cube;
 
 Button singleplayer_button;
 Button multiplayer_button;
+Button help_button;
 Button exit_button;
 
 Button grid1;
@@ -133,7 +134,12 @@ int main_menu() {
     else if (exit_button.check_button_clicked() == 1) {
         log_data("Exit signal recieved");
         return 1;
-    };
+    }
+    else if (help_button.check_button_clicked() == 1) {
+        // How the hell is this not working?
+        log_data("Displaying help page");
+        return 7;
+    }
     return 0;
 };
 
@@ -522,6 +528,7 @@ int main() {
     multiplayer_button.setup_button(screen_width/2, screen_height/20*12, screen_width/5, screen_height/10);
     singleplayer_button.setup_button(screen_width/2, screen_height/20*9, screen_width/5,screen_height/10);
     exit_button.setup_button(screen_width/2, screen_height/20*18, screen_width/5, screen_height/10);
+    help_button.setup_button(screen_width/2, screen_height/20*15, screen_width/5, screen_height/10);
 
     // I'm actually so happy that this worked, I did not thing it would
     grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
@@ -698,6 +705,7 @@ int main() {
                     mode = 0;
                     log_data("Returning back to main menu");
                 };
+                break;
             default:
                 std::cout << "Invalid command";
                 mode = 0;
@@ -714,6 +722,7 @@ int main() {
                 singleplayer_button.draw_button(RED, "Singleplayer", 40, WHITE);
                 multiplayer_button.draw_button(RED, "Multiplayer", 40, WHITE);
                 exit_button.draw_button(RED, "Exit", 40, WHITE);
+                help_button.draw_button(RED, "Help", 40, WHITE);
                 EndDrawing();
                 break;
             case 2:
@@ -805,15 +814,23 @@ int main() {
             case 7:
                 log_data("Drawing help menu");
                 // Setup the text because it cannot be the best practice to type all the text into the functions manually.
+                // Concepts the user might be confused about:
                 const char* header = "Help";
-                const char* paragraph1 = "\n\n";
+                const char* displayed_text = "General: Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe. Click one of the rectangles\n"
+                    "next to the cube to rotate the cube.\n\n"
+                    "Singleplayer game: A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
+                    "X goes first, O goes next\n\n"
+                    "Local multiplayer game: In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
+                    "Quick little warning: Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't\n"
+                    "visable on-screen. If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing\n"
+                    "position, the game will end.";
 
                 // Draw entire help menu
                 BeginDrawing();
                 ClearBackground({25, 25, 25, 255});
                 exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
-                DrawText(header, 0, 300, 40, WHITE);
-                DrawText(paragraph1, 0, 0, 20, WHITE);
+                DrawText(header, 600, 0, 40, WHITE);
+                DrawText(displayed_text, 0, 40, 20, WHITE);
                 EndDrawing();
                 break;
         };
