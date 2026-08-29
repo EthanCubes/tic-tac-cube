@@ -30,7 +30,9 @@ void create_log_file() {
     bool name_valid = false;
     std::string formatted_time = get_time(); // Some of the characters that the file returns are invalid
 
-    for (int i = 0; i < formatted_time.length(); i++) {
+    int formatted_time_length = formatted_time.length();
+
+    for (int i = 0; i < formatted_time_length; i++) {
         if (formatted_time[i] == ' ' || formatted_time[i] == ':' || formatted_time[i] == '\n') {
             formatted_time[i] = '_';
         };

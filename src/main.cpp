@@ -519,9 +519,6 @@ int main() {
     SetTargetFPS(30);
     Image logo_image = LoadImage("assets/bitmap.png");
     SetWindowIcon(logo_image);
-    Vector2 mouse_pos;
-    float mouse_x;
-    float mouse_y;
 
     log_data("Window initialization complete");
 
@@ -602,9 +599,6 @@ int main() {
 
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
-        mouse_pos = GetMousePosition();
-        mouse_x = mouse_pos.x;
-        mouse_y = mouse_pos.y;
 
         // Popup check & calc
         handle_popups();
@@ -654,7 +648,7 @@ int main() {
                 break;
             case 5: {
                         bool rng_valid = true;
-                        if (cube.move_count = 1) {
+                        if (cube.move_count == 1) {
                             rng_valid = false;
                         };
                         // Singleplayer
@@ -822,7 +816,8 @@ int main() {
                     "Local multiplayer game: In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
                     "Quick little warning: Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't\n"
                     "visable on-screen. If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing\n"
-                    "position, creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible side.\n\n";
+                    "position, creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible\n"
+                    "side.\n\n";
 
                 // Draw entire help menu
                 BeginDrawing();

@@ -372,6 +372,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                         case 1:
                             return position_two_turn_array[position_index];
                     };
+                    return rotate_cube_randomly(); // Probably still best practice to now allow the statement to fall through.
                 }
         default:
             // This means that 3 or or more forks are detected. Rotating the cube is the only choice in this situation
