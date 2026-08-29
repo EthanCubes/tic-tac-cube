@@ -18,12 +18,12 @@
 
 // I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
 
-// Colors
-const Color BACKGROUND_COLOR = {23, 22, 20, 255};
-const Color TEXT_COLOR = {255, 255, 252, 255};
-const Color MAJOR_BUTTON_COLOR = {223, 41, 53, 255};
-const Color MINOR_BUTTON_COLOR = {39, 93, 173, 255};
-const Color HIGHLIGHT_COLOR = GRAY;
+// Colors, so I change change the theme any time I want
+const Color BACKGROUND_COLOR = {25, 25, 50, 255};
+const Color MAIN_MENU_BUTTON_COLOR = {0, 0, 255, 255};
+const Color MINOR_BUTTON_COLOR = {125, 125, 125, 255};
+const Color TEXT_COLOR_1 = {255, 255, 255, 255};
+const Color TEXT_COLOR_2 = {0, 0, 0, 255};
 
 // Buttons are always pretty difficult
 class Button {
@@ -432,23 +432,23 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
 }
 
 void draw_movement() {
-    x_move_button.draw_button(RAYWHITE, "X", 20, BLACK);
-    z_prime_button.draw_button(RAYWHITE, "Z'", 20, BLACK);
-    z_move_button.draw_button(RAYWHITE, "Z", 20, BLACK);
-    x_prime_button.draw_button(RAYWHITE, "X'", 20, BLACK);
+    x_move_button.draw_button(RAYWHITE, "X", 20, TEXT_COLOR_2);
+    z_prime_button.draw_button(RAYWHITE, "Z'", 20, TEXT_COLOR_2);
+    z_move_button.draw_button(RAYWHITE, "Z", 20, TEXT_COLOR_2);
+    x_prime_button.draw_button(RAYWHITE, "X'", 20, TEXT_COLOR_2);
 
-    l_prime_button.draw_button(RAYWHITE, "L'", 20, BLACK);
-    m_prime_button.draw_button(RAYWHITE, "M'", 20, BLACK);
-    r_move_button.draw_button(RAYWHITE, "R", 20, BLACK);
-    b_move_button.draw_button(RAYWHITE, "B", 20, BLACK);
-    b_prime_button.draw_button(RAYWHITE, "B'", 20, BLACK);
-    s_prime_button.draw_button(RAYWHITE, "S'", 20, BLACK);
-    s_move_button.draw_button(RAYWHITE, "S", 20, BLACK);
-    f_prime_button.draw_button(RAYWHITE, "F'", 20, BLACK);
-    f_move_button.draw_button(RAYWHITE, "F", 20, BLACK);
-    l_move_button.draw_button(RAYWHITE, "L", 20, BLACK);
-    m_move_button.draw_button(RAYWHITE, "M", 20, BLACK);
-    r_prime_button.draw_button(RAYWHITE, "R'", 20, BLACK);
+    l_prime_button.draw_button(RAYWHITE, "L'", 20, TEXT_COLOR_2);
+    m_prime_button.draw_button(RAYWHITE, "M'", 20, TEXT_COLOR_2);
+    r_move_button.draw_button(RAYWHITE, "R", 20, TEXT_COLOR_2);
+    b_move_button.draw_button(RAYWHITE, "B", 20, TEXT_COLOR_2);
+    b_prime_button.draw_button(RAYWHITE, "B'", 20, TEXT_COLOR_2);
+    s_prime_button.draw_button(RAYWHITE, "S'", 20, TEXT_COLOR_2);
+    s_move_button.draw_button(RAYWHITE, "S", 20, TEXT_COLOR_2);
+    f_prime_button.draw_button(RAYWHITE, "F'", 20, TEXT_COLOR_2);
+    f_move_button.draw_button(RAYWHITE, "F", 20, TEXT_COLOR_2);
+    l_move_button.draw_button(RAYWHITE, "L", 20, TEXT_COLOR_2);
+    m_move_button.draw_button(RAYWHITE, "M", 20, TEXT_COLOR_2);
+    r_prime_button.draw_button(RAYWHITE, "R'", 20, TEXT_COLOR_2);
 };
 
 void draw_positions() {
@@ -468,11 +468,10 @@ void draw_positions() {
         temp_y_pos += 150;
     };
 };
-
 void popup_message(const char* text) {
     Button popup;
     popup.setup_button(1130, 40, 300, 80);
-    popup.draw_button(HIGHLIGHT_COLOR, text, 20, WHITE);
+    popup.draw_button(GRAY, text, 20, WHITE);
 };
 
 // All the popups
@@ -699,12 +698,12 @@ int main() {
             case 0:
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
-                DrawText("Tic-Tac-Cube", screen_width/10*4, screen_height/10*2, 35, WHITE);
+                DrawText("Tic-Tac-Cube", screen_width/20*7, screen_height/10*2, 50, TEXT_COLOR_1);
                 // Drawing the buttons
-                singleplayer_button.draw_button(RED, "Singleplayer", 40, WHITE);
-                multiplayer_button.draw_button(RED, "Multiplayer", 40, WHITE);
-                exit_button.draw_button(RED, "Exit", 40, WHITE);
-                help_button.draw_button(RED, "Help", 40, WHITE);
+                singleplayer_button.draw_button(MINOR_BUTTON_COLOR, "Singleplayer", 40, TEXT_COLOR_1);
+                multiplayer_button.draw_button(MINOR_BUTTON_COLOR, "Multiplayer", 40, TEXT_COLOR_1);
+                exit_button.draw_button(MINOR_BUTTON_COLOR, "Exit", 40, TEXT_COLOR_1);
+                help_button.draw_button(MINOR_BUTTON_COLOR, "Help", 40, TEXT_COLOR_1);
                 EndDrawing();
                 break;
             case 2:
@@ -717,7 +716,7 @@ int main() {
                 draw_movement();
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
+                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
 
                 EndDrawing();
                 break;
@@ -736,7 +735,7 @@ int main() {
                 draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("X Wins!", 0, 0, 50, PURPLE);
+                DrawText("X Wins!", 0, 0, 50, TEXT_COLOR_1);
                 log_data("game ends in X victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -758,7 +757,7 @@ int main() {
                 draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("O Wins!", 0, 0, 50, PURPLE);
+                DrawText("O Wins!", 0, 0, 50, TEXT_COLOR_1);
                 log_data("game ends in O victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -778,7 +777,7 @@ int main() {
                 };
                 draw_positions();
 
-                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
+                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
                 EndDrawing();
 
                 break;
@@ -787,7 +786,7 @@ int main() {
                 BeginDrawing();
                 draw_positions();
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("Board Full! (Tie)", 0, 0, 30, WHITE);
+                DrawText("Board Full! (Tie)", 0, 0, 30, TEXT_COLOR_1);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
@@ -796,8 +795,8 @@ int main() {
             case 7:
                 log_data("Drawing help menu");
                 // Setup the text because it cannot be the best practice to type all the text into the functions manually.
-                const char* header = "Help";
-                const char* displayed_text = "General: Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe. Click one of the rectangles\n"
+                const char* HEADER = "Help";
+                const char* DISPLAYED_TEXT = "General: Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe. Click one of the rectangles\n"
                     "next to the cube to rotate the cube.\n\n"
                     "Singleplayer game: A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
                     "X goes first, O goes next\n\n"
@@ -811,8 +810,8 @@ int main() {
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
                 exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, BLACK);
-                DrawText(header, 600, 0, 40, TEXT_COLOR);
-                DrawText(displayed_text, 0, 40, 20, TEXT_COLOR);
+                DrawText(HEADER, 600, 0, 40, TEXT_COLOR_1);
+                DrawText(DISPLAYED_TEXT, 0, 40, 20, TEXT_COLOR_1);
                 EndDrawing();
                 break;
         };
