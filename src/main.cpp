@@ -814,7 +814,6 @@ int main() {
             case 7:
                 log_data("Drawing help menu");
                 // Setup the text because it cannot be the best practice to type all the text into the functions manually.
-                // Concepts the user might be confused about:
                 const char* header = "Help";
                 const char* displayed_text = "General: Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe. Click one of the rectangles\n"
                     "next to the cube to rotate the cube.\n\n"
@@ -823,7 +822,7 @@ int main() {
                     "Local multiplayer game: In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
                     "Quick little warning: Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't\n"
                     "visable on-screen. If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing\n"
-                    "position, the game will end.";
+                    "position, creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible side.\n\n";
 
                 // Draw entire help menu
                 BeginDrawing();
