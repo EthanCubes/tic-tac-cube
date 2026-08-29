@@ -519,9 +519,9 @@ int main() {
 
     log_data("Window initialization complete");
 
-    multiplayer_button.setup_button(screen_width/2, screen_height/10*6, screen_width/5, screen_height/10);
-    singleplayer_button.setup_button(screen_width/2, screen_height/10*4, screen_width/5,screen_height/10);
-    exit_button.setup_button(screen_width/2, screen_height/10*8, screen_width/5, screen_height/10);
+    multiplayer_button.setup_button(screen_width/2, screen_height/20*12, screen_width/5, screen_height/10);
+    singleplayer_button.setup_button(screen_width/2, screen_height/20*9, screen_width/5,screen_height/10);
+    exit_button.setup_button(screen_width/2, screen_height/20*18, screen_width/5, screen_height/10);
 
     // I'm actually so happy that this worked, I did not thing it would
     grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
