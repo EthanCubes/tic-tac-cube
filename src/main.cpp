@@ -13,6 +13,9 @@
 
 #include "raylib.h"
 
+// Problems: Movement buttons have no indication of what they are used for. 
+// Menu seems bland and empty.
+
 // I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
 
 // Buttons are always pretty difficult
@@ -422,24 +425,24 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
 }
 
 void draw_movement() {
-    x_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    z_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    z_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    x_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
+    x_move_button.draw_button(RAYWHITE, "X", 20, BLACK);
+    z_prime_button.draw_button(RAYWHITE, "Z'", 20, BLACK);
+    z_move_button.draw_button(RAYWHITE, "Z", 20, BLACK);
+    x_prime_button.draw_button(RAYWHITE, "X'", 20, BLACK);
 
-    l_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    m_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    r_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    b_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    b_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    s_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    s_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    f_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-    f_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    l_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    m_move_button.draw_button(RAYWHITE, "", 0, WHITE);
-    r_prime_button.draw_button(RAYWHITE, "", 0, WHITE);
-}
+    l_prime_button.draw_button(RAYWHITE, "L'", 20, BLACK);
+    m_prime_button.draw_button(RAYWHITE, "M'", 20, BLACK);
+    r_move_button.draw_button(RAYWHITE, "R", 20, BLACK);
+    b_move_button.draw_button(RAYWHITE, "B", 20, BLACK);
+    b_prime_button.draw_button(RAYWHITE, "B'", 20, BLACK);
+    s_prime_button.draw_button(RAYWHITE, "S'", 20, BLACK);
+    s_move_button.draw_button(RAYWHITE, "S", 20, BLACK);
+    f_prime_button.draw_button(RAYWHITE, "F'", 20, BLACK);
+    f_move_button.draw_button(RAYWHITE, "F", 20, BLACK);
+    l_move_button.draw_button(RAYWHITE, "L", 20, BLACK);
+    m_move_button.draw_button(RAYWHITE, "M", 20, BLACK);
+    r_prime_button.draw_button(RAYWHITE, "R'", 20, BLACK);
+};
 
 void draw_positions() {
     int temp_x_pos = screen_width/2-175;
@@ -605,7 +608,7 @@ int main() {
                     cube.reset();
                     break;
                 };
-                
+
                 // Check for user input of the grid spaces (P and M)
                 get_user_input();
                 mode = cube.gameloop(2);
