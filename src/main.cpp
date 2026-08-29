@@ -693,6 +693,11 @@ int main() {
             case 6:
                 log_data("Game ends in tie as board is completely full without victory");
                 break;
+            case 7:
+                if (exit_game_button.check_button_clicked() == 1) {
+                    mode = 0;
+                    log_data("Returning back to main menu");
+                };
             default:
                 std::cout << "Invalid command";
                 mode = 0;
@@ -796,6 +801,20 @@ int main() {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cube.reset();
                 mode = 0;
+                break;
+            case 7:
+                log_data("Drawing help menu");
+                // Setup the text because it cannot be the best practice to type all the text into the functions manually.
+                const char* header = "Help";
+                const char* paragraph1 = "\n\n";
+
+                // Draw entire help menu
+                BeginDrawing();
+                ClearBackground({25, 25, 25, 255});
+                exit_game_button.draw_button(RAYWHITE, "<", 20, BLACK);
+                DrawText(header, 0, 300, 40, WHITE);
+                DrawText(paragraph1, 0, 0, 20, WHITE);
+                EndDrawing();
                 break;
         };
     };
