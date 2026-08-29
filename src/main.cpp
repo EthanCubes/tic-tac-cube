@@ -20,7 +20,7 @@
 
 // Colors, so I change change the theme any time I want
 const Color BACKGROUND_COLOR = {25, 25, 50, 255};
-const Color MAIN_MENU_BUTTON_COLOR = {0, 0, 255, 255};
+const Color MAIN_MENU_BUTTON_COLOR = {125, 125, 125, 255};
 const Color MINOR_BUTTON_COLOR = {125, 125, 125, 255};
 const Color TEXT_COLOR_1 = {255, 255, 255, 255};
 const Color TEXT_COLOR_2 = {0, 0, 0, 255};
@@ -471,7 +471,7 @@ void draw_positions() {
 void popup_message(const char* text) {
     Button popup;
     popup.setup_button(1130, 40, 300, 80);
-    popup.draw_button(GRAY, text, 20, WHITE);
+    popup.draw_button(MINOR_BUTTON_COLOR, text, 20, TEXT_COLOR_1);
 };
 
 // All the popups
@@ -700,10 +700,10 @@ int main() {
                 ClearBackground(BACKGROUND_COLOR);
                 DrawText("Tic-Tac-Cube", screen_width/20*7, screen_height/10*2, 50, TEXT_COLOR_1);
                 // Drawing the buttons
-                singleplayer_button.draw_button(MINOR_BUTTON_COLOR, "Singleplayer", 40, TEXT_COLOR_1);
-                multiplayer_button.draw_button(MINOR_BUTTON_COLOR, "Multiplayer", 40, TEXT_COLOR_1);
-                exit_button.draw_button(MINOR_BUTTON_COLOR, "Exit", 40, TEXT_COLOR_1);
-                help_button.draw_button(MINOR_BUTTON_COLOR, "Help", 40, TEXT_COLOR_1);
+                singleplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Singleplayer", 40, TEXT_COLOR_1);
+                multiplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Multiplayer", 40, TEXT_COLOR_1);
+                exit_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Exit", 40, TEXT_COLOR_1);
+                help_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Help", 40, TEXT_COLOR_1);
                 EndDrawing();
                 break;
             case 2:
