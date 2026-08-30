@@ -716,6 +716,17 @@ int main() {
                 draw_movement();
                 draw_positions();
 
+                switch(cube.turn) {
+                    case 1:
+                        DrawText("X's turn", 0, 700, 20, TEXT_COLOR_1);
+                        break;
+                    case 2:
+                        DrawText("O's turn", 0, 700, 20, TEXT_COLOR_1);
+                        break;
+                    default:
+                        log_data("What the hell did you do?");
+                };
+
                 exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
 
                 EndDrawing();
