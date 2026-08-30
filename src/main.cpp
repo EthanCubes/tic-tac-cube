@@ -788,6 +788,28 @@ int main() {
                 };
                 draw_positions();
 
+                switch(cube.turn) {
+                    case 1:
+                        DrawText("X's turn", 0, 680, 20, TEXT_COLOR_1);
+                        break;
+                    case 2:
+                        DrawText("O's turn", 0, 680, 20, TEXT_COLOR_1);
+                        break;
+                    default:
+                        log_data("What the hell did you do?");
+                };
+
+                switch(user_turn) {
+                    case 1:
+                        DrawText("You are X", 0, 700, 20, TEXT_COLOR_1);
+                        break;
+                    case 2:
+                        DrawText("You are O", 0, 700, 20, TEXT_COLOR_1);
+                        break;
+                    default:
+                        log_data("What the hell did you do?");
+                };
+
                 exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
                 EndDrawing();
 
