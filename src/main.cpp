@@ -57,7 +57,7 @@ class Button {
             Vector2 text_dimensions = get_text_dimensions(text, font_size);
             int text_width = text_dimensions.x;
             int text_height = text_dimensions.y;
-            int relative_width = (width - text_width)/2;
+            int relative_width = (width - text_width)/2; // Places at the center, shift it back 50%.
             int relative_height = (height - text_height)/2;
             Vector2 position{(float)(start_x + relative_width), (float)(start_y + relative_height)};
 
@@ -414,18 +414,34 @@ std::array<Color, 9> generate_colors() {
 };  
 
 void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_buttons) {
+    std::array<const char*, 9> board_position_array;
+    int position = 0;
+    for (int row = 0; row < 3; row++) {
+        for (int column = 0; column < 3; column++) {
+            if (cube.positions[0][row][column] == 1) {
+                board_position_array[position] = "X";
+            }
+            else if (cube.positions[0][row][column] == 2) {
+                board_position_array[position] = "O";
+            }
+            else {
+                board_position_array[position] = "";
+            };
+            position++;
+        };
+    };
     // Row 1
-    board_buttons[0].draw_button(color_array[0], "", 0, WHITE);
-    board_buttons[1].draw_button(color_array[1], "", 0, WHITE);
-    board_buttons[2].draw_button(color_array[2], "", 0, WHITE);
+    board_buttons[0].draw_button(color_array[0], board_position_array[0], 40, BLACK);
+    board_buttons[1].draw_button(color_array[1], board_position_array[1], 40, BLACK);
+    board_buttons[2].draw_button(color_array[2], board_position_array[2], 40, BLACK);
     // Row 2
-    board_buttons[3].draw_button(color_array[3], "", 0, WHITE);
-    board_buttons[4].draw_button(color_array[4], "", 0, WHITE);
-    board_buttons[5].draw_button(color_array[5], "", 0, WHITE);
+    board_buttons[3].draw_button(color_array[3], board_position_array[3], 40, BLACK);
+    board_buttons[4].draw_button(color_array[4], board_position_array[4], 40, BLACK);
+    board_buttons[5].draw_button(color_array[5], board_position_array[5], 40, BLACK);
     // Row 3
-    board_buttons[6].draw_button(color_array[6], "", 0, WHITE);
-    board_buttons[7].draw_button(color_array[7], "", 0, WHITE);
-    board_buttons[8].draw_button(color_array[8], "", 0, WHITE);
+    board_buttons[6].draw_button(color_array[6], board_position_array[6], 40, BLACK);
+    board_buttons[7].draw_button(color_array[7], board_position_array[7], 40, BLACK);
+    board_buttons[8].draw_button(color_array[8], board_position_array[8], 40, BLACK);
 };
 
 void draw_movement() {
@@ -448,23 +464,6 @@ void draw_movement() {
     r_prime_button.draw_button(MINOR_BUTTON_COLOR, "R'", 20, TEXT_COLOR_1);
 };
 
-void draw_positions() {
-    int temp_x_pos = screen_width/2-175;
-    int temp_y_pos = screen_height/2-175;
-    for (int row = 0; row < 3; row++) {
-        for (int column = 0; column < 3; column++) {
-            if (cube.positions[0][row][column] == 1) {
-                DrawText("X", temp_x_pos, temp_y_pos, 50, BLACK);
-            }
-            else if (cube.positions[0][row][column] == 2) {
-                DrawText("O", temp_x_pos, temp_y_pos, 50, BLACK);
-            };
-            temp_x_pos += 150;
-        };
-        temp_x_pos = screen_width/2-175;
-        temp_y_pos += 150;
-    };
-};
 void popup_message(const char* text) {
     Button popup;
     popup.setup_button(1130, 40, 300, 80);
@@ -711,7 +710,6 @@ int main() {
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
                 draw_movement();
-                draw_positions();
 
                 switch(cube.turn) {
                     case 1:
@@ -740,7 +738,6 @@ int main() {
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
-                draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("X Wins!", 0, 0, 50, TEXT_COLOR_1);
@@ -762,7 +759,6 @@ int main() {
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
-                draw_positions();
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("O Wins!", 0, 0, 50, TEXT_COLOR_1);
@@ -783,7 +779,6 @@ int main() {
                 if (cube.turn == user_turn) {
                     draw_movement();
                 };
-                draw_positions();
 
                 switch(cube.turn) {
                     case 1:
@@ -814,7 +809,6 @@ int main() {
             case 6:
                 // Draw
                 BeginDrawing();
-                draw_positions();
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("Board Full! (Tie)", 0, 0, 30, TEXT_COLOR_1);
                 EndDrawing();
