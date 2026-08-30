@@ -19,11 +19,11 @@
 // I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
 
 // Colors, so I change change the theme any time I want
-const Color BACKGROUND_COLOR = {25, 25, 50, 255};
-const Color MAIN_MENU_BUTTON_COLOR = {125, 125, 125, 255};
-const Color MINOR_BUTTON_COLOR = {125, 125, 125, 255};
-const Color TEXT_COLOR_1 = {255, 255, 255, 255};
-const Color TEXT_COLOR_2 = {0, 0, 0, 255};
+const Color BACKGROUND_COLOR = {000, 000, 025, 255};
+const Color MAIN_MENU_BUTTON_COLOR = {100, 100, 100, 100};
+const Color MINOR_BUTTON_COLOR = {100, 100, 100, 100};
+const Color TEXT_COLOR_1 = {255, 7, 58, 255};
+const Color TEXT_COLOR_2 = {000, 000, 000, 255};
 
 // Buttons are always pretty difficult
 class Button {
@@ -429,26 +429,26 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     board_buttons[6].draw_button(color_array[6], "", 0, WHITE);
     board_buttons[7].draw_button(color_array[7], "", 0, WHITE);
     board_buttons[8].draw_button(color_array[8], "", 0, WHITE);
-}
+};
 
 void draw_movement() {
-    x_move_button.draw_button(RAYWHITE, "X", 20, TEXT_COLOR_2);
-    z_prime_button.draw_button(RAYWHITE, "Z'", 20, TEXT_COLOR_2);
-    z_move_button.draw_button(RAYWHITE, "Z", 20, TEXT_COLOR_2);
-    x_prime_button.draw_button(RAYWHITE, "X'", 20, TEXT_COLOR_2);
+    x_move_button.draw_button(MINOR_BUTTON_COLOR, "X", 20, TEXT_COLOR_1);
+    z_prime_button.draw_button(MINOR_BUTTON_COLOR, "Z'", 20, TEXT_COLOR_1);
+    z_move_button.draw_button(MINOR_BUTTON_COLOR, "Z", 20, TEXT_COLOR_1);
+    x_prime_button.draw_button(MINOR_BUTTON_COLOR, "X'", 20, TEXT_COLOR_1);
 
-    l_prime_button.draw_button(RAYWHITE, "L'", 20, TEXT_COLOR_2);
-    m_prime_button.draw_button(RAYWHITE, "M'", 20, TEXT_COLOR_2);
-    r_move_button.draw_button(RAYWHITE, "R", 20, TEXT_COLOR_2);
-    b_move_button.draw_button(RAYWHITE, "B", 20, TEXT_COLOR_2);
-    b_prime_button.draw_button(RAYWHITE, "B'", 20, TEXT_COLOR_2);
-    s_prime_button.draw_button(RAYWHITE, "S'", 20, TEXT_COLOR_2);
-    s_move_button.draw_button(RAYWHITE, "S", 20, TEXT_COLOR_2);
-    f_prime_button.draw_button(RAYWHITE, "F'", 20, TEXT_COLOR_2);
-    f_move_button.draw_button(RAYWHITE, "F", 20, TEXT_COLOR_2);
-    l_move_button.draw_button(RAYWHITE, "L", 20, TEXT_COLOR_2);
-    m_move_button.draw_button(RAYWHITE, "M", 20, TEXT_COLOR_2);
-    r_prime_button.draw_button(RAYWHITE, "R'", 20, TEXT_COLOR_2);
+    l_prime_button.draw_button(MINOR_BUTTON_COLOR, "L'", 20, TEXT_COLOR_1);
+    m_prime_button.draw_button(MINOR_BUTTON_COLOR, "M'", 20, TEXT_COLOR_1);
+    r_move_button.draw_button(MINOR_BUTTON_COLOR, "R", 20, TEXT_COLOR_1);
+    b_move_button.draw_button(MINOR_BUTTON_COLOR, "B", 20, TEXT_COLOR_1);
+    b_prime_button.draw_button(MINOR_BUTTON_COLOR, "B'", 20, TEXT_COLOR_1);
+    s_prime_button.draw_button(MINOR_BUTTON_COLOR, "S'", 20, TEXT_COLOR_1);
+    s_move_button.draw_button(MINOR_BUTTON_COLOR, "S", 20, TEXT_COLOR_1);
+    f_prime_button.draw_button(MINOR_BUTTON_COLOR, "F'", 20, TEXT_COLOR_1);
+    f_move_button.draw_button(MINOR_BUTTON_COLOR, "F", 20, TEXT_COLOR_1);
+    l_move_button.draw_button(MINOR_BUTTON_COLOR, "L", 20, TEXT_COLOR_1);
+    m_move_button.draw_button(MINOR_BUTTON_COLOR, "M", 20, TEXT_COLOR_1);
+    r_prime_button.draw_button(MINOR_BUTTON_COLOR, "R'", 20, TEXT_COLOR_1);
 };
 
 void draw_positions() {
@@ -771,7 +771,7 @@ int main() {
 
                 color_array = generate_colors();
                 draw_board(color_array, board_buttons);
-                
+
                 if (cube.turn == user_turn) {
                     draw_movement();
                 };
@@ -793,25 +793,34 @@ int main() {
                 mode = 0;
                 break;
             case 7:
-                log_data("Drawing help menu");
+                log_data("Drawing help page");
                 // Setup the text because it cannot be the best practice to type all the text into the functions manually.
+                // dfffdfdffdfdfdfdffdfdfdfdfdf
                 const char* HEADER = "Help";
-                const char* DISPLAYED_TEXT = "General: Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe. Click one of the rectangles\n"
-                    "next to the cube to rotate the cube.\n\n"
-                    "Singleplayer game: A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
+                const char* DISPLAYED_TEXT = "General\n"
+                    " - Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe.\n"
+                    " - Click one of the rectangles next to the cube to rotate the cube. This takes your turn.\n"
+                    " - X always goes first, O goes next.\n\n"
+                    // empty space for organization
+                    "Singleplayer game\n"
+                    " - A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
                     "X goes first, O goes next\n\n"
-                    "Local multiplayer game: In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
-                    "Quick little warning: Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't\n"
-                    "visable on-screen. If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing\n"
-                    "position, creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible\n"
-                    "side.\n\n";
+                    // empty space for organization
+                    "Local multiplayer game\n"
+                    " - In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
+                    // empty space for organization
+                    "Quick little warning:\n"
+                    " - Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't visable on-screen.\n"
+                    " - If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing position,\n"
+                    "creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible side.\n"
+                    "- Just be careful";
 
                 // Draw entire help menu
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
-                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, BLACK);
+                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
                 DrawText(HEADER, 600, 0, 40, TEXT_COLOR_1);
-                DrawText(DISPLAYED_TEXT, 0, 40, 20, TEXT_COLOR_1);
+                DrawText(DISPLAYED_TEXT, 20, 60, 20, TEXT_COLOR_1);
                 EndDrawing();
                 break;
         };
