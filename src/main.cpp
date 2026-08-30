@@ -13,11 +13,6 @@
 
 #include "raylib.h"
 
-// Problems: Movement buttons have no indication of what they are used for. 
-// Menu seems bland and empty.
-
-// I opened this file in CLion once, it showed like 200 warnings. Either I don't write good enough code (very likely) or CLion is kinda nuts (somewhat unlikely)
-
 // Colors, so I change change the theme any time I want
 const Color BACKGROUND_COLOR = {000, 000, 025, 255};
 const Color MAIN_MENU_BUTTON_COLOR = {100, 100, 100, 100};
