@@ -565,7 +565,7 @@ int main() {
     m_move_button.setup_button(screen_width/2, screen_height/2+250, 50, 50);
     r_prime_button.setup_button(screen_width/2+150, screen_height/2+250, 50, 50);
 
-    exit_game_button.setup_button(12, 12, 25, 25);
+    exit_game_button.setup_button(20, 20, 40, 40);
 
     int bot_turn;
     int user_turn;
