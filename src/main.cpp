@@ -61,7 +61,9 @@ class Button {
             int relative_height = (height - text_height)/2;
             Vector2 position{(float)(start_x + relative_width), (float)(start_y + relative_height)};
 
-            DrawRectangle(start_x, start_y, width, height, button_color);
+            // DrawRectangle(start_x, start_y, width, height, button_color);
+            Rectangle rectangle_information = {static_cast<float>(start_x), static_cast<float>(start_y), static_cast<float>(width), static_cast<float>(height)};
+            DrawRectangleRounded(rectangle_information, 0.25f, 5, button_color);
             DrawTextEx(GetFontDefault(), text, position, font_size, 3.0f, text_color); // Font, text, position, font-size, spacing, color
         };
 
