@@ -713,10 +713,10 @@ int main() {
 
                 switch(cube.turn) {
                     case 1:
-                        DrawText("X's turn", 0, 700, 20, TEXT_COLOR_1);
+                        DrawText("X's turn", 10, 690, 20, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("O's turn", 0, 700, 20, TEXT_COLOR_1);
+                        DrawText("O's turn", 10, 690, 20, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");
@@ -782,10 +782,10 @@ int main() {
 
                 switch(cube.turn) {
                     case 1:
-                        DrawText("X's turn", 0, 680, 20, TEXT_COLOR_1);
+                        DrawText("X's turn", 10, 670, 20, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("O's turn", 0, 680, 20, TEXT_COLOR_1);
+                        DrawText("O's turn", 10, 670, 20, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");
@@ -793,10 +793,10 @@ int main() {
 
                 switch(user_turn) {
                     case 1:
-                        DrawText("You are X", 0, 700, 20, TEXT_COLOR_1);
+                        DrawText("You are X", 10, 690, 20, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("You are O", 0, 700, 20, TEXT_COLOR_1);
+                        DrawText("You are O", 10, 690, 20, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");
