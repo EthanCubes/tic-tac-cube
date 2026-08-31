@@ -29,7 +29,7 @@ Download the game files from Itch.io or GitHub. Unzip to folder and run the exec
 ## How it works
 Each side of a 3x3, represented by a 3x3x6 (3D) array, acts like an individual tic-tac-toe game/board. Only the top face of the cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
 
-The oldest version of C++ this program can be compiled on is C++ 11, since it does not have any features introduced in C++ 14 or later.
+The oldest version of C++ this program can be compiled on is C++ 11, since it does not have any features introduced in C++ 14 or later. This was not an intentional design choice and the program was originally intended to run on C++17.
 
 The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2.
 
@@ -39,7 +39,7 @@ Bot "AI" (stands for Awfully Implemented) is entirely written by me using a rela
 
 This project does not use any external libraries except for Raylib.
 
-Also, btw, this is my first serious experience with C++.
+Also, btw, this is my first serious experience with C++. Please don't judge me too harshly.
 
 ## AI Usage disclosure
 AI was used for debugging and learning. I never used it to tell me what code I should write, or to replace my own thinking.
