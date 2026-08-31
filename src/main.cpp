@@ -466,7 +466,7 @@ void draw_movement() {
 
 void popup_message(const char* text) {
     Button popup;
-    popup.setup_button(1130, 40, 300, 80);
+    popup.setup_button(1110, 60, 300, 80);
     popup.draw_button(MINOR_BUTTON_COLOR, text, 20, TEXT_COLOR_1);
 };
 
