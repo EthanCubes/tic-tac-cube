@@ -33,15 +33,17 @@ The oldest version of C++ this program can be compiled on is C++ 11, since it do
 
 The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2.
 
+All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project.
+
+Bot "AI" (stands for Awfully Implemented) is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
+
+This project does not use any external libraries except for Raylib.
+
+Also, btw, this is my first serious experience with C++.
+
 ## AI Usage disclosure
 AI was used for debugging and learning. I never used it to tell me what code I should write, or to replace my own thinking.
 The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
-
-## Bug Tracker
-- Main menu is empty and buttons are unpolished
-- Game interaction buttons are literally white squares
-- They aren't any animations or stuff like that
-- Popups look ugly
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8?si=CYgl26UYITcE1fpU) helped, since this is one of my first C++ projects.
