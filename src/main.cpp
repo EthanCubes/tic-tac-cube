@@ -86,6 +86,8 @@ class Button {
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
+Button title_button;
+
 Button singleplayer_button;
 Button multiplayer_button;
 Button help_button;
@@ -527,6 +529,8 @@ int main() {
 
     log_data("Window initialization complete");
 
+    title_button.setup_button(screen_width/2, screen_height/5, 0, 0);
+
     multiplayer_button.setup_button(screen_width/2, screen_height/20*12, screen_width/5, screen_height/10);
     singleplayer_button.setup_button(screen_width/2, screen_height/20*9, screen_width/5,screen_height/10);
     exit_button.setup_button(screen_width/2, screen_height/20*18, screen_width/5, screen_height/10);
@@ -694,7 +698,7 @@ int main() {
             case 0:
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
-                DrawText("Tic-Tac-Cube", screen_width/20*7, screen_height/10*2, 50, TEXT_COLOR_1);
+                title_button.draw_button(BACKGROUND_COLOR, "Tic-Tac-Cube", 50, TEXT_COLOR_1);
                 // Drawing the buttons
                 singleplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Singleplayer", 40, TEXT_COLOR_1);
                 multiplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Multiplayer", 40, TEXT_COLOR_1);
