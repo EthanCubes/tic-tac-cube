@@ -840,7 +840,8 @@ int main() {
                     " - Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't visable on-screen.\n"
                     " - If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing position,\n"
                     "creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible side.\n"
-                    "- Just be careful";
+                    " - Also, when you rotate the side, you can create a 2-in-a-row accidentally, causing the opponent to win instantly\n"
+                    " - Anyway, just be careful";
 
                 // Draw entire help menu
                 BeginDrawing();
