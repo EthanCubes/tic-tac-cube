@@ -823,7 +823,6 @@ int main() {
             case 7:
                 log_data("Drawing help page");
                 // Setup the text because it cannot be the best practice to type all the text into the functions manually.
-                // dfffdfdffdfdfdfdffdfdfdfdfdf
                 const char* HEADER = "Help";
                 const char* DISPLAYED_TEXT = "General\n"
                     " - Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe.\n"
