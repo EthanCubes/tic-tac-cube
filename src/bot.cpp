@@ -299,11 +299,14 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
 
     switch(winning_position_count) {
         case 0:
+            // This does not need to work
             return "nothing";
         case 1:
+            // This works fine
             log_data("Single case of winning position found, blocking");
             return "p" + std::to_string(winning_positions[0]);
         case 2: {
+                    // This is slightly broken
                     log_data("Two cases of winning position found, neutralizing");
                     // Deal with the fork by rotating
                     int position_1 = winning_positions[0];
@@ -343,8 +346,12 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                     std::mt19937 rng(dev());
                     std::uniform_int_distribution<std::mt19937::result_type> coin_flip(0, 1);
                     std::uniform_int_distribution<std::mt19937::result_type> dist4(0, 3);
+
+                    // Picks one of the danger locations to focus on
                     int position_number = coin_flip(rng);
+                    // Picks on of the moves that handles the danger location
                     int position_index = dist4(rng);
+                    // Something about this is slightly flawed
                     switch (position_number) {
                         case 0:
                             for (int x = 0; x < 4; x++) {
