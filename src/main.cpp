@@ -10,6 +10,7 @@
 #include "board.h"
 #include "bot.h"
 #include "logs.h"
+#include "global.h"
 
 #include "raylib.h"
 
@@ -127,9 +128,6 @@ Button m_move_button;
 Button r_prime_button;
 
 Button exit_game_button;
-
-int screen_width = 1280;
-int screen_height = 720;
 
 int main_menu() {
     if (multiplayer_button.check_button_clicked() == 1) {
