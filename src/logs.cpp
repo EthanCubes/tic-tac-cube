@@ -2,6 +2,8 @@
 #include <ctime>
 #include <fstream>
 
+#include "globals.h"
+
 // This file will be used to create logs for debugging. Because debugging right now is actually painful
 // I love writing my own libraries.
 // I can't be bothered to convert it to the user's timezone, so UTC it is. Will be logged in RFC 3339

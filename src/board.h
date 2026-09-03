@@ -7,6 +7,7 @@
 #include <tuple>
 
 #include "logs.h"
+#include "global.h"
 
 class Cube_board {
     public:

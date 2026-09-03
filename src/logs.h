@@ -5,6 +5,7 @@
 #include <ctime>
 #include <fstream>
 
+#include "global.h"
 
 bool file_exists(std::string filename);
 std::string get_time();

@@ -6,6 +6,7 @@
 
 #include "board.h"
 #include "logs.h"
+#include "global.h"
 
 // These are named after the actual moves in Rubik's cube notation. X, Y, and Z are all rotations
 // These are the basic moves that I will use to render the rest of the moves

@@ -7,6 +7,7 @@
 #include <random>
 
 #include "logs.h"
+#include "global.h"
 
 // This vectors' job is to store all the locations that wild card moves should not effect, since rotating the cube in a manner that effect one of these locations would cause the opponent to win instantly
 std::vector<int> danger_locations;
@@ -306,7 +307,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
             log_data("Single case of winning position found, blocking");
             return "p" + std::to_string(winning_positions[0]);
         case 2: {
-                    // This is slightly broken
+                    // This might be slightly broken
                     log_data("Two cases of winning position found, neutralizing");
                     // Deal with the fork by rotating
                     int position_1 = winning_positions[0];
