@@ -14,13 +14,6 @@
 
 #include "raylib.h"
 
-// Colors, so I change change the theme any time I want
-const Color BACKGROUND_COLOR = {000, 000, 025, 255};
-const Color MAIN_MENU_BUTTON_COLOR = {100, 100, 100, 100};
-const Color MINOR_BUTTON_COLOR = {100, 100, 100, 100};
-const Color TEXT_COLOR_1 = {255, 7, 58, 255};
-const Color TEXT_COLOR_2 = {000, 000, 000, 255};
-
 // Buttons are always pretty difficult
 class Button {
     private:
