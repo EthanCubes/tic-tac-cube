@@ -1,15 +1,13 @@
-#include <array>
-#include <string>
-#include <nlohmann/json.hpp>
+#include <nlohmann/json>
+#include "raylib.h"
+#include "global.h"
 
 using json = nlohmann::json;
 
-#include "global.h"
+// This file is not yet ready for usage! Don't link it in the install shell script
 
-// To clear up any confusion, coordinates provided will be the center of the button.
+void Button::setup_button(json button_info_input) {};
+void Button::setup_button_hover(json button_info_input) {};
+void Button::change_button(std::string key, std::string change_to) {};
 
-// This file (and the related header file) are not ready for usage/compiling! Do not compile this file
-
-void Button::setup_button(json button_info) {
-    std::array<std::string>
-};
+void Button::draw_button() {};
