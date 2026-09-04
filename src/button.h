@@ -9,6 +9,18 @@ using json = nlohmann::json;
 
 // This file is not yet ready for usage! Don't link it in any other files
 
+/*
+ * x pos
+ * y pos
+ * width
+ * height
+ * color
+ * roundness
+ * text
+ * font size
+ * font color
+ */
+
 const int UNDEFINED = 0; // This is for the JSON
 
 class Button {

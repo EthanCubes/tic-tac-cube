@@ -6,6 +6,18 @@ using json = nlohmann::json;
 
 // This file is not yet ready for usage! Don't link it in the install shell script
 
+/*
+ * x pos
+ * y pos
+ * width
+ * height
+ * color
+ * roundness
+ * text
+ * font size
+ * font color
+ */
+
 void Button::setup_button(json button_info_input) {};
 void Button::setup_button_hover(json button_info_input) {};
 void Button::change_button(std::string key, std::string change_to) {};
