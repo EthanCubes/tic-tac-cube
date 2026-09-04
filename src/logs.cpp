@@ -2,7 +2,7 @@
 #include <ctime>
 #include <fstream>
 
-#include "globals.h"
+#include "global.h"
 
 // This file will be used to create logs for debugging. Because debugging right now is actually painful
 // I love writing my own libraries.
