@@ -33,11 +33,11 @@ The oldest version of C++ this program can be compiled on is C++ 11, since it do
 
 The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2.
 
-All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project.
+All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project. The button class depends heavily on the Nlohmann-Json library for data storage, since maps, arrays, and vectors just aren't enough, and I'm not about to write a tuple declaration longer than the entire rest of the file.
 
 Bot "AI" (stands for Awfully Implemented) is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
 
-This project does not use any external libraries except for Raylib.
+This project does not use any external libraries except for Raylib and Nlohmann/Json.
 
 Also, btw, this is my first serious experience with C++. Please don't judge me too harshly.
 
@@ -53,5 +53,6 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 - The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) was used to program the bot for singleplayer.
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
+- This project used the [Nlohmann Json Library](https://json.nlohmann.me/).
 - This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend trying.
 - This project was originally coded and compiled with [GCC](https://gcc.gnu.org/) entirely on [Arch Linux](https://archlinux.org/).
