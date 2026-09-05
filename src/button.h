@@ -28,9 +28,9 @@ class Button {
         json button_info;
         json button_hover_info;
     public:
-        void setup_button(json button_info_input) {};
-        void setup_button_hover(json button_info_input) {};
-        void change_button(std::string key, std::string change_to) {}
+        void setup_button(json button_info_input);
+        void setup_button_hover(json button_info_input);
+        void change_button(std::string key, std::string change_to);
 
         void draw_button();
 };
