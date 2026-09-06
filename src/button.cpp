@@ -13,6 +13,7 @@ using json = nlohmann::json;
  * height
  * color
  * roundness
+ * steps
  * text
  * font size
  * font color
