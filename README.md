@@ -1,7 +1,7 @@
 # Tic-Tac-Cube
 A C++ game like Tic-Tic-Toe, except played on a Rubik's cube, and players can choose to turn a side or rotate the cube instead of making a turn.
 
-![Game of tic-tac-toe- with a twist](screenshots/10-Screenshot_20260815_201453.png)
+![Game of tic-tac-toe- with a twist](screenshots/18-Screenshot_20260831_181513.png)
 
 ## Download the game [here]()
 
@@ -56,3 +56,4 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 - This project used the [Nlohmann Json Library](https://json.nlohmann.me/).
 - This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend trying.
 - This project was originally coded and compiled with [GCC](https://gcc.gnu.org/) entirely on [Arch Linux](https://archlinux.org/).
+- Originally made for [Hack Club Stardance](), thanks for giving me an excuse to learn so much coding skills.
