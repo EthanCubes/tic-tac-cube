@@ -34,7 +34,14 @@ using json = nlohmann::json;
 void Button::setup_button(json button_info_input) {
 };
 void Button::setup_button_hover(json button_info_input) {};
-void Button::change_button(std::string key, std::string change_to) {};
+void Button::change_button(std::string key, std::string change_to, bool hover) {
+    if (!hover) {
+        button_info[key] = change_to;
+    }
+    else {
+        button_hover_info[key] = change_to;
+    };
+};
 
 void Button::draw_button() {
     // I supposed I could do converting numbers to the correct format on a separate file, but like whatever
