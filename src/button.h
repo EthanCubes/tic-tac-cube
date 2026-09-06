@@ -169,7 +169,7 @@ class Button {
     public:
         void setup_button(json button_info_input);
         void setup_button_hover(json button_info_input);
-        void change_button(std::string key, std::string change_to);
+        void change_button(std::string key, std::string change_to, bool hover);
 
         void draw_button();
 };
