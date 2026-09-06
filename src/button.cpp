@@ -63,5 +63,5 @@ void Button::draw_button() {
 
     Rectangle rectangle_information = {static_cast<float>(x_pos), static_cast<float>(y_pos), static_cast<float>(width), static_cast<float>(height)};
     DrawRectangleRounded(rectangle_information, roundness, steps, color);
-    DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(font_size), 3.0f);
+    DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(font_size), 3.0f, font_color);
 };
