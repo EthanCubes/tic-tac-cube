@@ -3,7 +3,7 @@ A C++ game like Tic-Tic-Toe, except played on a Rubik's cube, and players can ch
 
 ![Game of tic-tac-toe- with a twist](screenshots/18-Screenshot_20260831_181513.png)
 
-## Download the game [here]()
+## Play the game [here]()
 
 ## Table of Contents
 - [Quick Start](#quick-start)
