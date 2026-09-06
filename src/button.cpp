@@ -31,9 +31,18 @@ using json = nlohmann::json;
     {"font_color", TEXT_COLOR_1}
 */
 
+// tryitands.ee
 void Button::setup_button(json button_info_input) {
+    // Ensures that no irrelavent or corrupted makes it into the JSON file
+    for (int i = 0) {
+        button_info[key_array[i]] = button_info_input[key_array[i]];
+    };
 };
-void Button::setup_button_hover(json button_info_input) {};
+void Button::setup_button_hover(json button_info_input) {
+    for (int i = 0) {
+        button_hover_info[key_array[i]] = button_info_input[key_array[i]];
+    };
+};
 void Button::change_button(std::string key, std::string change_to, bool hover) {
     if (!hover) {
         button_info[key] = change_to;

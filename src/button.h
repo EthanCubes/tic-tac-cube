@@ -166,6 +166,19 @@ class Button {
     private:
         json button_info;
         json button_hover_info;
+
+        const std::array<std::string, 10> key_array = {
+            "x_pos",
+            "y_pos",
+            "width",
+            "height",
+            "color",
+            "roundness",
+            "steps",
+            "text",
+            "font_size",
+            "font_color"
+        };
     public:
         void setup_button(json button_info_input);
         void setup_button_hover(json button_info_input);
