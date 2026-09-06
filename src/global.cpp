@@ -1,5 +1,8 @@
 #include "raylib.h"
 
+// It's always good practice to use const
+
+// These don't use SCREAMING_SNAKE_CASE even though they're constants because I'm too lazy to change them, plus they're only constants because that's good practice
 extern const int screen_width = 1280;
 extern const int screen_height = 720;
 
