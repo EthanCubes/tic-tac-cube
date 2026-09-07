@@ -27,7 +27,7 @@ Play the game on Itch.io [here]()
 Download the game files from Itch.io or GitHub. Unzip to folder and run the executable.
 
 ## How it works
-Each side of a 3x3, represented by a 3x3x6 (3D) array, acts like an individual tic-tac-toe game/board. Only the top face of the cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
+Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
 
 The oldest version of C++ this program can be compiled on is C++ 11, since it does not have any features introduced in C++ 14 or later. This was not an intentional design choice and the program was originally intended to run on C++17. I just ended up writing more low-level code and never implemented any more new features.
 
