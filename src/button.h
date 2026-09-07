@@ -69,7 +69,7 @@ const json HELP_BUTTON = {
     {"height", screen_height/10},
     {"color", MAIN_MENU_BUTTON_COLOR},
     {"roundness", 0.25f},
-    {"steps", 5}
+    {"steps", 5},
     {"text", "Help"},
     {"font_size", 40},
     {"font_color", TEXT_COLOR_1}
@@ -81,7 +81,7 @@ const json EXIT_BUTTON = {
     {"height", screen_height/10},
     {"color", MAIN_MENU_BUTTON_COLOR},
     {"roundness", 0.25f},
-    {"steps", 5}
+    {"steps", 5},
     {"text", "Exit"},
     {"font_size", 40},
     {"font_color", TEXT_COLOR_1}
