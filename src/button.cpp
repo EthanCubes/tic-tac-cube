@@ -47,7 +47,7 @@ void Button::change_button(std::string key, std::string change_to, bool hover) {
     };
 };
 
-bool check_hover() {
+bool Button::check_hover() {
     Vector2 mouse_pos = GetMousePosition();
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
@@ -57,7 +57,7 @@ bool check_hover() {
     return false;
 };
 
-bool check_button_clicked() {
+bool Button::check_button_clicked() {
     Vector2 mouse_pos = GetMousePosition();
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
