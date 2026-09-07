@@ -31,15 +31,14 @@ using json = nlohmann::json;
     {"font_color", TEXT_COLOR_1}
 */
 
-// tryitands.ee
 void Button::setup_button(json button_info_input) {
     // Ensures that no irrelavent or corrupted makes it into the JSON file
-    for (int i = 0) {
+    for (int i = 0; i < 10; i++) {
         button_info[key_array[i]] = button_info_input[key_array[i]];
     };
 };
 void Button::setup_button_hover(json button_info_input) {
-    for (int i = 0) {
+    for (int i = 0; i < 10; i++) {
         button_hover_info[key_array[i]] = button_info_input[key_array[i]];
     };
 };
