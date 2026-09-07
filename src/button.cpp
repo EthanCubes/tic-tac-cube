@@ -71,23 +71,47 @@ bool Button::check_button_clicked() {
 
 void Button::draw_button() {
     // I supposed I could do converting numbers to the correct format on a separate file, but like whatever
-    if (button_info["x_pos"] == 0 || button_info["y_pos"] == 0) {
-        return;
+    if (check_hover()) {
+        if (button_hover_info["x_pos"] == 0 || button_hover_info["y_pos"] == 0) {
+            return;
+        };
+
+        // Convert coodinates from the center back to the corner for actual drawing. This can actually be 0
+        int calibrated_x = button_hover_info["x_pos"] - button_hover_info["width"]/2;
+        int calibrated_y = button_hover_info["y_pos"] - button_hover_info["height"]/2;
+
+        // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"], static_cast<float>(button_hover_info["font_size"]"), 3.0f);
+        int text_width = text_dimensions.x;
+        int text_height = text_dimensions.y;
+        int text_x = x_pos + (button_hover_info["width"] - text_width)/2;
+        int text_y = y_pos + (button_hover_info["height"] - text_height)/2;
+        Vector2 text_position = {text_x, text_y};
+
+        Rectangle rectangle_information = {static_cast<float>(button_hover_info["x_pos"]), static_cast<float>(button_hover_info["y_pos"]), static_cast<float>(button_hover_info["width"]), static_cast<float>(button_hover_info["height"])};
+        DrawRectangleRounded(rectangle_information, button_hover_info["roundness"], button_hover_info["steps"], button_hover_info["color"]");
+        DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(button_hover_info["font_size"]), 3.0f, button_hover_info["font_color"]);
+    }
+    else {
+        // Not on hover
+        if (button_info["x_pos"] == 0 || button_info["y_pos"] == 0) {
+            return;
+        };
+
+        // Convert coodinates from the center back to the corner for actual drawing. This can actually be 0
+        int calibrated_x = button_info["x_pos"] - button_info["width"]/2;
+        int calibrated_y = button_info["y_pos"] - button_info["height"]/2;
+
+        // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"], static_cast<float>(button_info["font_size"]"), 3.0f);
+        int text_width = text_dimensions.x;
+        int text_height = text_dimensions.y;
+        int text_x = x_pos + (button_info["width"] - text_width)/2;
+        int text_y = y_pos + (button_info["height"] - text_height)/2;
+        Vector2 text_position = {text_x, text_y};
+
+        Rectangle rectangle_information = {static_cast<float>(button_info["x_pos"]), static_cast<float>(button_info["y_pos"]), static_cast<float>(button_info["width"]), static_cast<float>(button_info["height"])};
+        DrawRectangleRounded(rectangle_information, button_info["roundness"], button_info["steps"], button_info["color"]");
+        DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(button_info["font_size"]), 3.0f, button_info["font_color"]);
     };
-
-    // Convert coodinates from the center back to the corner for actual drawing. This can actually be 0
-    int calibrated_x = button_info["x_pos"] - button_info["width"]/2;
-    int calibrated_y = button_info["y_pos"] - button_info["height"]/2;
-
-    // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-    Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"], static_cast<float>(button_info["font_size"]"), 3.0f);
-    int text_width = text_dimensions.x;
-    int text_height = text_dimensions.y;
-    int text_x = x_pos + (button_info["width"] - text_width)/2;
-    int text_y = y_pos + (button_info["height"] - text_height)/2;
-    Vector2 text_position = {text_x, text_y};
-
-    Rectangle rectangle_information = {static_cast<float>(button_info["x_pos"]), static_cast<float>(button_info["y_pos"]), static_cast<float>(button_info["width"]), static_cast<float>(button_info["height"])};
-    DrawRectangleRounded(rectangle_information, button_info["roundness"], button_info["steps"], button_info["color"]");
-    DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(button_info["font_size"]), 3.0f, button_info["font_color"]);
 };
