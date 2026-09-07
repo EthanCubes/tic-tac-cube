@@ -65,7 +65,7 @@ bool check_button_clicked() {
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
     if (IsMouseButtonDown(0)) {
-        if (mouse_x > start_x && mouse_x < start_x+width && mouse_y > start_y && mouse_y < start_y+height) {
+        if (check_hover()) {
             return true;
         };
     };
