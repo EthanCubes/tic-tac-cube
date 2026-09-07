@@ -81,7 +81,7 @@ void Button::draw_button() {
         int calibrated_y = button_hover_info["y_pos"] - button_hover_info["height"]/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"], static_cast<float>(button_hover_info["font_size"]"), 3.0f);
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"], static_cast<float>(button_hover_info["font_size"]), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = x_pos + (button_hover_info["width"] - text_width)/2;
@@ -89,7 +89,7 @@ void Button::draw_button() {
         Vector2 text_position = {text_x, text_y};
 
         Rectangle rectangle_information = {static_cast<float>(button_hover_info["x_pos"]), static_cast<float>(button_hover_info["y_pos"]), static_cast<float>(button_hover_info["width"]), static_cast<float>(button_hover_info["height"])};
-        DrawRectangleRounded(rectangle_information, button_hover_info["roundness"], button_hover_info["steps"], button_hover_info["color"]");
+        DrawRectangleRounded(rectangle_information, button_hover_info["roundness"], button_hover_info["steps"], button_hover_info["color"]);
         DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(button_hover_info["font_size"]), 3.0f, button_hover_info["font_color"]);
     }
     else {
@@ -103,7 +103,7 @@ void Button::draw_button() {
         int calibrated_y = button_info["y_pos"] - button_info["height"]/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"], static_cast<float>(button_info["font_size"]"), 3.0f);
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"], static_cast<float>(button_info["font_size"]), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = x_pos + (button_info["width"] - text_width)/2;
@@ -111,7 +111,7 @@ void Button::draw_button() {
         Vector2 text_position = {text_x, text_y};
 
         Rectangle rectangle_information = {static_cast<float>(button_info["x_pos"]), static_cast<float>(button_info["y_pos"]), static_cast<float>(button_info["width"]), static_cast<float>(button_info["height"])};
-        DrawRectangleRounded(rectangle_information, button_info["roundness"], button_info["steps"], button_info["color"]");
+        DrawRectangleRounded(rectangle_information, button_info["roundness"], button_info["steps"], button_info["color"]);
         DrawTextEx(GetFontDefault(), text.c_str(), text_position, static_cast<float>(button_info["font_size"]), 3.0f, button_info["font_color"]);
     };
 };
