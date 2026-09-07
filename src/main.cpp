@@ -14,69 +14,6 @@
 
 #include "raylib.h"
 
-// Buttons are always pretty difficult
-class Button {
-    private:
-        int start_x;
-        int start_y;
-        int width;
-        int height;
-
-        bool setup = false;
-
-        Vector2 get_text_dimensions(const char* text, int font_size) {
-            Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), text, font_size, 3.0f);
-            return text_dimensions;
-        };
-    public:
-        void setup_button(int start_x_setup, int start_y_setup, int width_setup, int height_setup) {
-            if (setup) {
-                log_data("Button already declared!");
-                return;
-            };
-            start_x = start_x_setup-width_setup/2;
-            start_y = start_y_setup-height_setup/2;
-            width = width_setup;
-            height = height_setup;
-            setup = true;
-        };
-
-        void draw_button(Color button_color, const char* text, int font_size, Color text_color) {
-            if (!setup) {
-                log_data("Button not declared!");
-                return;
-            };
-
-            // So apparently Vector2 is something that I have to declare myself. Great. I love when I have to write my own libraries, unless i spent 10 hours trying to find someone else's code and find nothing
-            Vector2 text_dimensions = get_text_dimensions(text, font_size);
-            int text_width = text_dimensions.x;
-            int text_height = text_dimensions.y;
-            int relative_width = (width - text_width)/2; // Places at the center, shift it back 50%.
-            int relative_height = (height - text_height)/2;
-            Vector2 position{(float)(start_x + relative_width), (float)(start_y + relative_height)};
-
-            // DrawRectangle(start_x, start_y, width, height, button_color);
-            Rectangle rectangle_information = {static_cast<float>(start_x), static_cast<float>(start_y), static_cast<float>(width), static_cast<float>(height)};
-            DrawRectangleRounded(rectangle_information, 0.25f, 5, button_color);
-            DrawTextEx(GetFontDefault(), text, position, font_size, 3.0f, text_color); // Font, text, position, font-size, spacing, color
-        };
-
-        int check_button_clicked() {
-            if (!setup) {
-                return 0;
-            };
-            Vector2 mouse_pos = GetMousePosition();
-            int mouse_x = mouse_pos.x;
-            int mouse_y = mouse_pos.y;
-            if (IsMouseButtonDown(0)) {
-                if (mouse_x > start_x && mouse_x < start_x+width && mouse_y > start_y && mouse_y < start_y+height) {
-                    return 1;
-                };
-            };
-            return 0;
-        };
-};
-
 // Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
