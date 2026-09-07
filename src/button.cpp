@@ -47,6 +47,21 @@ void Button::change_button(std::string key, std::string change_to, bool hover) {
     };
 };
 
+bool check_button_clicked() {
+    if (!setup) {
+        return false;
+    };
+    Vector2 mouse_pos = GetMousePosition();
+    int mouse_x = mouse_pos.x;
+    int mouse_y = mouse_pos.y;
+    if (IsMouseButtonDown(0)) {
+        if (mouse_x > start_x && mouse_x < start_x+width && mouse_y > start_y && mouse_y < start_y+height) {
+            return true;
+        };
+    };
+    return false;
+};
+
 void Button::draw_button() {
     // I supposed I could do converting numbers to the correct format on a separate file, but like whatever
     if (x_pos == 0 || y_pos == 0) {
