@@ -58,9 +58,6 @@ bool check_hover() {
 };
 
 bool check_button_clicked() {
-    if (!setup) {
-        return false;
-    };
     Vector2 mouse_pos = GetMousePosition();
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
