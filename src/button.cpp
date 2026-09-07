@@ -84,8 +84,8 @@ void Button::draw_button() {
         Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"], static_cast<float>(button_hover_info["font_size"]), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
-        int text_x = button_info["x_pos"] + (button_hover_info["width"] - text_width)/2;
-        int text_y = button_info["y_pos"] + (button_hover_info["height"] - text_height)/2;
+        int text_x = calibrated_x + (button_hover_info["width"] - text_width)/2;
+        int text_y = calibrated_y + (button_hover_info["height"] - text_height)/2;
         Vector2 text_position = {text_x, text_y};
 
         Rectangle rectangle_information = {static_cast<float>(button_hover_info["x_pos"]), static_cast<float>(button_hover_info["y_pos"]), static_cast<float>(button_hover_info["width"]), static_cast<float>(button_hover_info["height"])};
@@ -106,11 +106,11 @@ void Button::draw_button() {
         Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"], static_cast<float>(button_info["font_size"]), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
-        int text_x = button_info["x_pos"] + (button_info["width"] - text_width)/2;
-        int text_y = button_info["y_pos"] + (button_info["height"] - text_height)/2;
+        int text_x = calibrated_x + (button_info["width"] - text_width)/2;
+        int text_y = calibrated_y + (button_info["height"] - text_height)/2;
         Vector2 text_position = {text_x, text_y};
 
-        Rectangle rectangle_information = {static_cast<float>(button_info["x_pos"]), static_cast<float>(button_info["y_pos"]), static_cast<float>(button_info["width"]), static_cast<float>(button_info["height"])};
+        Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_info["width"]), static_cast<float>(button_info["height"])};
         DrawRectangleRounded(rectangle_information, button_info["roundness"], button_info["steps"], button_info["color"]);
         DrawTextEx(GetFontDefault(), button_info["text"].c_str(), text_position, static_cast<float>(button_info["font_size"]), 3.0f, button_info["font_color"]);
     };

@@ -24,6 +24,8 @@ using json = nlohmann::json;
 
 const int UNDEFINED = 0; // This is for the JSON. Also, button coors can never be 0, so this does not conflict
 
+// The coordinates are started from the center, which can get a little weird but it's fine i guess
+
 // Preset buttons and stuff
 const json TITLE_BUTTON = {
     {"x_pos", screen_width/2},
