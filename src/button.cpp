@@ -33,7 +33,7 @@ using json = nlohmann::json;
 
 void Button::setup_button(json button_info_input) {
     // Honestly corrupted data doesn't matter, no one's actually contributing to this besides me and if anyone is then they can fix this is a matter of like seconds
-    button_info = button_info_input
+    button_info = button_info_input;
 };
 void Button::setup_button_hover(json button_info_input) {
     button_hover_info = button_info_input;
