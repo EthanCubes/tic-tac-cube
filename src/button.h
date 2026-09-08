@@ -184,7 +184,7 @@ class Button {
     public:
         void setup_button(json button_info_input);
         void setup_button_hover(json button_info_input);
-        void change_button(std::string key, std::string change_to, bool hover);
+        void change_button(std::string key, json change_to, bool hover);
 
         bool check_hover();
         bool check_button_clicked();

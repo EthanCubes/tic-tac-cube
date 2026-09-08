@@ -38,12 +38,13 @@ void Button::setup_button(json button_info_input) {
 void Button::setup_button_hover(json button_info_input) {
     button_hover_info = button_info_input;
 };
-void Button::change_button(std::string key, std::string change_to, bool hover) {
+// JSON to ensure that the value can be in the correct variable format
+void Button::change_button(std::string key, json change_to, bool hover) {
     if (!hover) {
-        button_info[key] = change_to;
+        button_info[key] = change_to["value"];
     }
     else {
-        button_hover_info[key] = change_to;
+        button_hover_info[key] = change_to["value"];
     };
 };
 
