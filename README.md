@@ -20,14 +20,15 @@ A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can ch
 Play the game on Itch.io [here]()
 
 ## Features
-- Basic tic-tac-toe game
+- All the features of regular tic-tac-toe
 - Turn the cube to rearrange the X's and O's
 - Rotate the cube to start fresh on a new board - unless the "new" board already have marks on it from previous rotations or turns
-- Local multiplayer mode to play with your friends (or yourself) on the same device. (No online or LAN multiplayer)
-- Singleplayer mode against a bot. 
+- Local multiplayer mode to play with your friends (or yourself) on the same device
+- Singleplayer mode against a bot
 
 ## How to run locally
-Download the game files from Itch.io or GitHub. Unzip to folder and run the executable.
+The game is currently a work in progress and the only way to play it is to build from source.
+Just clone the Git repo, navigate to the root of the repo, and compile it. For me, it's ```g++ src/main.cpp src/board.cpp src/bot.cpp src/global.cpp src/logs.cpp src/button.cpp```
 
 ## How it works
 Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
