@@ -58,6 +58,8 @@ Button l_move_button;
 Button m_move_button;
 Button r_prime_button;
 
+Button popup;
+
 Button exit_game_button;
 
 int main_menu() {
@@ -396,8 +398,7 @@ void draw_movement() {
 };
 
 void popup_message(const char* text) {
-    Button popup;
-    popup.setup_button(POPUP_BUTTON);
+    popup.change_button("text", {{"value", text}});
     popup.draw_button();
 };
 
@@ -493,6 +494,8 @@ int main() {
     l_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
     m_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
     r_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+
+    popup.setup_button(POPUP_BUTTON);
 
     exit_game_button.setup_button(EXIT_GAME_BUTTON);
 
