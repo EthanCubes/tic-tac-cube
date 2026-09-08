@@ -11,6 +11,7 @@
 #include "bot.h"
 #include "logs.h"
 #include "global.h"
+#include "button.h"
 
 #include "raylib.h"
 
@@ -396,8 +397,8 @@ void draw_movement() {
 
 void popup_message(const char* text) {
     Button popup;
-    popup.setup_button(1110, 60, 300, 80);
-    popup.draw_button(MINOR_BUTTON_COLOR, text, 20, TEXT_COLOR_1);
+    popup.setup_button(POPUP_BUTTON);
+    popup.draw_button();
 };
 
 // All the popups
@@ -452,48 +453,48 @@ int main() {
 
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
-    Image logo_image = LoadImage("assets/bitmap.png");
     SetWindowIcon(logo_image);
 
+    Image logo_image = LoadImage("assets/bitmap.png");
     log_data("Window initialization complete");
 
-    title_button.setup_button(screen_width/2, screen_height/5, 0, 0);
+    title_button.setup_button(TITLE_BUTTON);
 
-    multiplayer_button.setup_button(screen_width/2, screen_height/20*12, screen_width/5, screen_height/10);
-    singleplayer_button.setup_button(screen_width/2, screen_height/20*9, screen_width/5,screen_height/10);
-    exit_button.setup_button(screen_width/2, screen_height/20*18, screen_width/5, screen_height/10);
-    help_button.setup_button(screen_width/2, screen_height/20*15, screen_width/5, screen_height/10);
+    singleplayer_button.setup_button(SINGLEPLAYER_BUTTON);
+    multiplayer_button.setup_button(MULTIPLAYER_BUTTON);
+    help_button.setup_button(HELP_BUTTON);
+    exit_button.setup_button(EXIT_BUTTON);
 
-    // I'm actually so happy that this worked, I did not thing it would
-    grid1.setup_button(screen_width/2-150, screen_height/2-150, 100, 100);
-    grid2.setup_button(screen_width/2, screen_height/2-150, 100, 100);
-    grid3.setup_button(screen_width/2+150, screen_height/2-150, 100, 100);
-    grid4.setup_button(screen_width/2-150, screen_height/2, 100, 100);
-    grid5.setup_button(screen_width/2, screen_height/2, 100, 100);
-    grid6.setup_button(screen_width/2+150, screen_height/2, 100, 100);
-    grid7.setup_button(screen_width/2-150, screen_height/2+150, 100, 100);
-    grid8.setup_button(screen_width/2, screen_height/2+150, 100, 100);
-    grid9.setup_button(screen_width/2+150, screen_height/2+150, 100, 100);
+    // I'm actually so happy that this worked, I did not thing it would (regarding making the board being)
+    grid1.setup_button(BOARD_BUTTON);
+    grid2.setup_button(BOARD_BUTTON);
+    grid3.setup_button(BOARD_BUTTON);
+    grid4.setup_button(BOARD_BUTTON);
+    grid5.setup_button(BOARD_BUTTON);
+    grid6.setup_button(BOARD_BUTTON);
+    grid7.setup_button(BOARD_BUTTON);
+    grid8.setup_button(BOARD_BUTTON);
+    grid9.setup_button(BOARD_BUTTON);
 
-    x_move_button.setup_button(screen_width/2, screen_height/2-320, 100, 50);
-    z_prime_button.setup_button(screen_width/2-320, screen_height/2, 50, 100);
-    z_move_button.setup_button(screen_width/2+320, screen_height/2, 50, 100);
-    x_prime_button.setup_button(screen_width/2, screen_height/2+320, 100, 50);
+    x_move_button.setup_button(RECTANGLE_MOVEMENT_BUTTON_HORIZONTAL);
+    z_prime_button.setup_button(RECTANGLE_MOVEMENT_BUTTON_VERTICAL);
+    z_move_button.setup_button(RECTANGLE_MOVEMENT_BUTTON_VERTICAL);
+    x_prime_button.setup_button(RECTANGLE_MOVEMENT_BUTTON_HORIZONTAL);
 
-    l_prime_button.setup_button(screen_width/2-150, screen_height/2-250, 50, 50);
-    m_prime_button.setup_button(screen_width/2, screen_height/2-250, 50, 50);
-    r_move_button.setup_button(screen_width/2+150, screen_height/2-250, 50, 50);
-    b_move_button.setup_button(screen_width/2-250, screen_height/2-150, 50, 50);
-    b_prime_button.setup_button(screen_width/2+250, screen_height/2-150, 50, 50);
-    s_prime_button.setup_button(screen_width/2-250, screen_height/2, 50, 50);
-    s_move_button.setup_button(screen_width/2+250, screen_height/2, 50, 50);
-    f_prime_button.setup_button(screen_width/2-250, screen_height/2+150, 50, 50);
-    f_move_button.setup_button(screen_width/2+250, screen_height/2+150, 50, 50);
-    l_move_button.setup_button(screen_width/2-150, screen_height/2+250, 50, 50);
-    m_move_button.setup_button(screen_width/2, screen_height/2+250, 50, 50);
-    r_prime_button.setup_button(screen_width/2+150, screen_height/2+250, 50, 50);
+    l_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    m_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    r_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    b_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    b_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    s_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    s_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    f_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    f_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    l_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    m_move_button.setup_button(SQUARE_MOVEMENT_BUTTON);
+    r_prime_button.setup_button(SQUARE_MOVEMENT_BUTTON);
 
-    exit_game_button.setup_button(20, 20, 40, 40);
+    exit_game_button.setup_button(EXIT_GAME_BUTTON);
 
     int bot_turn;
     int user_turn;
@@ -626,12 +627,12 @@ int main() {
             case 0:
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
-                title_button.draw_button(BACKGROUND_COLOR, "Tic-Tac-Cube", 50, TEXT_COLOR_1);
+                title_button.draw_button();
                 // Drawing the buttons
-                singleplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Singleplayer", 40, TEXT_COLOR_1);
-                multiplayer_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Multiplayer", 40, TEXT_COLOR_1);
-                exit_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Exit", 40, TEXT_COLOR_1);
-                help_button.draw_button(MAIN_MENU_BUTTON_COLOR, "Help", 40, TEXT_COLOR_1);
+                singleplayer_button.draw_button();
+                multiplayer_button.draw_button();
+                exit_button.draw_button();
+                help_button.draw_button();
                 EndDrawing();
                 break;
             case 2:
@@ -654,7 +655,7 @@ int main() {
                         log_data("What the hell did you do?");
                 };
 
-                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
+                exit_game_button.draw_button();
 
                 EndDrawing();
                 break;
@@ -734,7 +735,7 @@ int main() {
                         log_data("What the hell did you do?");
                 };
 
-                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
+                exit_game_button.draw_button();
                 EndDrawing();
 
                 break;
@@ -774,7 +775,7 @@ int main() {
                 // Draw entire help menu
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
-                exit_game_button.draw_button(MINOR_BUTTON_COLOR, "<", 20, TEXT_COLOR_1);
+                exit_game_button.draw_button();
                 DrawText(HEADER, 600, 0, 40, TEXT_COLOR_1);
                 DrawText(DISPLAYED_TEXT, 20, 60, 20, TEXT_COLOR_1);
                 EndDrawing();
