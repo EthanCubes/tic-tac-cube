@@ -57,6 +57,4 @@ The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
 - This project used the [Nlohmann Json](https://json.nlohmann.me/) to store data easier
-- This project was coded with [Vim](https://www.vim.org) and [NeoVim](https://neovim.io/). Highly recommend trying.
-- This project was originally coded and compiled with [GCC](https://gcc.gnu.org/) entirely on [Arch Linux](https://archlinux.org/).
 - Originally made for [Hack Club Stardance](), thanks for giving me an excuse to learn so much coding skills.
