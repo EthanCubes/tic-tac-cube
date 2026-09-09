@@ -459,6 +459,7 @@ int main() {
     Image logo_image = LoadImage("assets/bitmap.png");
     log_data("Window initialization complete");
 
+    // Setting up the buttons. Some of them might need some more tweaking
     title_button.setup_button(TITLE_BUTTON);
 
     singleplayer_button.setup_button(SINGLEPLAYER_BUTTON);
@@ -498,6 +499,62 @@ int main() {
     popup.setup_button(POPUP_BUTTON);
 
     exit_game_button.setup_button(EXIT_GAME_BUTTON);
+
+    // Changing some values so that they can actually be rendered without error
+    grid1.change_button("x_pos", {{"value", screen_width/2}} - 150);
+    grid1.change_button("y_pos", {{"value", screen_height/2}} - 150);
+    grid2.change_button("x_pos", {{"value", screen_width/2}} + 0);
+    grid2.change_button("y_pos", {{"value", screen_height/2}} - 150);
+    grid3.change_button("x_pos", {{"value", screen_width/2}} + 150);
+    grid3.change_button("y_pos", {{"value", screen_height/2}} - 150);
+    // Separation
+    grid4.change_button("x_pos", {{"value", screen_width/2}} - 150);
+    grid4.change_button("y_pos", {{"value", screen_height/2}} + 0);
+    grid5.change_button("x_pos", {{"value", screen_width/2}} + 0);
+    grid5.change_button("y_pos", {{"value", screen_height/2}} + 0);
+    grid6.change_button("x_pos", {{"value", screen_width/2}} + 150);
+    grid6.change_button("y_pos", {{"value", screen_height/2}} + 0);
+    // Separation
+    grid7.change_button("x_pos", {{"value", screen_width/2}} - 150);
+    grid7.change_button("y_pos", {{"value", screen_height/2}} +150);
+    grid8.change_button("x_pos", {{"value", screen_width/2}} + 0);
+    grid8.change_button("y_pos", {{"value", screen_height/2}} + 150);
+    grid9.change_button("x_pos", {{"value", screen_width/2}} + 150);
+    grid9.change_button("y_pos", {{"value", screen_height/2}} + 150);
+    // Separation
+    x_move_button.change_button("x_pos", {{"value", screen_width/2}});
+    x_move_button.change_button("y_pos", {{"value", screen_height/2 - 320}});
+    z_prime_button.change_button("x_pos", {{"value", screen_width/2 - 320}});
+    z_prime_button.change_button("y_pos", {{"value", screen_height/2}});
+    z_move_button.change_button("x_pos", {{"value", screen_width/2 + 320}});
+    z_move_button.change_button("y_pos", {{"value", screen_height/2}});
+    x_prime_button.change_button("x_pos", {{"value", screen_width/2}});
+    x_prime_button.change_button("y_pos", {{"value", screen_height/2 + 320}});
+    // Separation
+    l_prime_button.change_button("x_pos", {{"value", screen_width/2 - 150}});
+    l_prime_button.change_button("y_pos", {{"value", screen_height/2 - 250}});
+    m_prime_button.change_button("x_pos", {{"value", screen_width/2}});
+    m_prime_button.change_button("y_pos", {{"value", screen_height/2 - 250}});
+    r_move_button.change_button("x_pos", {{"value", screen_width/2+150}});
+    r_move_button.change_button("y_pos", {{"value", screen_height/2-250}});
+    b_move_button.change_button("x_pos", {{"value", screen_width/2-250}});
+    b_move_button.change_button("y_pos", {{"value", screen_height/2-150}});
+    b_prime_button.change_button("x_pos", {{"value", screen_width/2+250}});
+    b_prime_button.change_button("y_pos", {{"value", screen_height/2-150}});
+    s_prime_button.change_button("x_pos", {{"value", screen_width/2-250}});
+    s_prime_button.change_button("y_pos", {{"value", screen_height/2}});
+    s_move_button.change_button("x_pos", {{"value", screen_width/2+250}});
+    s_move_button.change_button("y_pos", {{"value", screen_height/2}});
+    f_prime_button.change_button("x_pos", {{"value", screen_width/2-250}});
+    f_prime_button.change_button("y_pos", {{"value", screen_height/2+150}});
+    f_move_button.change_button("x_pos", {{"value", screen_width/2+250}});
+    f_move_button.change_button("y_pos", {{"value", screen_height/2+150}});
+    l_move_button.change_button("x_pos", {{"value", screen_width/2-150}});
+    l_move_button.change_button("y_pos", {{"value", screen_height/2+250}});
+    m_move_button.change_button("x_pos", {{"value", screen_width/2}});
+    m_move_button.change_button("y_pos", {{"value", screen_height/2+250}});
+    r_prime_button.change_button("x_pos", {{"value", screen_width/2+150}});
+    r_prime_button.change_button("y_pos", {{"value", screen_height/2+250}});
 
     int bot_turn;
     int user_turn;
