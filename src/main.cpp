@@ -398,7 +398,7 @@ void draw_movement() {
 };
 
 void popup_message(const char* text) {
-    popup.change_button("text", {{"value", text}});
+    popup.change_button("text", {{"value", text}}, false);
     popup.draw_button();
 };
 
