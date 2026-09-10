@@ -42,7 +42,7 @@ json color_to_json(const Color& c) {
         {"b", c.b},
         {"a", c.a}
     };
-};
+}
 
 Color json_to_color(const json& j) {
     if (j.is_string()) {
@@ -83,10 +83,10 @@ Color json_to_color(const json& j) {
 void Button::setup_button(json button_info_input) {
     // Honestly corrupted data doesn't matter, no one's actually contributing to this besides me and if anyone is then they can fix this is a matter of like seconds
     button_info = button_info_input;
-};
+}
 void Button::setup_button_hover(json button_info_input) {
     button_hover_info = button_info_input;
-};
+}
 // JSON to ensure that the value can be in the correct variable format
 void Button::change_button(std::string key, json change_to, bool hover) {
     if (!hover) {
@@ -95,7 +95,7 @@ void Button::change_button(std::string key, json change_to, bool hover) {
     else {
         button_hover_info[key] = change_to["value"];
     };
-};
+}
 
 bool Button::check_hover() {
     Vector2 mouse_pos = GetMousePosition();
@@ -105,7 +105,7 @@ bool Button::check_hover() {
         return true;
     };
     return false;
-};
+}
 
 bool Button::check_button_clicked() {
     Vector2 mouse_pos = GetMousePosition();
@@ -117,7 +117,7 @@ bool Button::check_button_clicked() {
         };
     };
     return false;
-};
+}
 
 void Button::draw_button() {
     // I supposed I could do converting numbers to the correct format on a separate file, but like whatever
@@ -164,4 +164,4 @@ void Button::draw_button() {
         DrawRectangleRounded(rectangle_information, button_info["roundness"].get<float>(), button_info["steps"].get<float>(), json_to_color(button_info["color"]));
         DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 3.0f, json_to_color(button_info["font_color"]));
     };
-};
+}
