@@ -21,7 +21,7 @@ std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 
         converted_board_position[position] = unconverted_board_position[0][row][column];
     };
     return converted_board_position;
-};
+}
 
 std::string rotate_cube_randomly() {
     std::random_device dev;
@@ -41,7 +41,7 @@ std::string rotate_cube_randomly() {
             return "mD";
     };
     return "mD";
-};
+}
 
 std::string wild_card() {
     std::random_device dev;
@@ -155,7 +155,7 @@ std::string wild_card() {
         };
     };
     return "nothing";
-};
+}
 
 std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
     // Scan for unbroken two
@@ -224,7 +224,7 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
     };
 
     return "nothing";
-};
+}
 std::string block_win(std::map<int, int> board_position, int bot_turn) {
     std::vector<int> winning_positions;
     std::vector<int> winning_directions;
@@ -387,7 +387,7 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
             return rotate_cube_randomly();
     };
     return "nothing";
-};
+}
 
 std::string create_fork(std::map<int, int> board_position, int bot_turn) {
     // Corner
@@ -453,7 +453,7 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
     };
 
     return "nothing";
-};
+}
 
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
@@ -516,7 +516,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
 
     // Rotate board
     return rotate_cube_randomly();
-};
+}
 
 // Since the thing storing the board position is located inside an object, I cannot get the information directly from the board file.
 // The input comes in the form of a mulitdimensional array. Only the top face is needed to scan, because the top face is the only place you can place blocks, and lso because its' the only face you can see, 
@@ -565,4 +565,4 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     }
 
     return "mD";
-};
+}
