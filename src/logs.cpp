@@ -13,7 +13,7 @@ std::string get_time() {
     time(&timestamp);
     std::string current_time = ctime(&timestamp);
     return current_time;
-};
+}
 
 bool file_exists(std::string filename) {
     std::ifstream file;
@@ -26,7 +26,7 @@ bool file_exists(std::string filename) {
         file.close();
         return true;
     };
-};
+}
 
 void create_log_file() {
     bool name_valid = false;
@@ -66,7 +66,7 @@ void create_log_file() {
             filename = log_name + log_prefix;
         }
     };
-};
+}
 
 void log_data(std::string log_message) {
     // Get the log file name from file
@@ -81,4 +81,4 @@ void log_data(std::string log_message) {
     std::ofstream log_file(filename, std::ios::app);
     log_file << std::to_string(unix_timestamp) << " | "<< log_message << "\n\n";
     log_file.close();
-};
+}
