@@ -108,7 +108,6 @@ bool Button::check_hover() {
 }
 
 bool Button::check_button_clicked() {
-    Vector2 mouse_pos = GetMousePosition();
     if (IsMouseButtonDown(0)) {
         if (check_hover()) {
             return true;
