@@ -63,19 +63,19 @@ Button popup;
 Button exit_game_button;
 
 int main_menu() {
-    if (multiplayer_button.check_button_clicked() == 1) {
+    if (multiplayer_button.check_button_clicked()) {
         log_data("Initiating local multiplayer game");
         return 2;
     }
-    else if (singleplayer_button.check_button_clicked() == 1) {
+    else if (singleplayer_button.check_button_clicked()) {
         log_data("Initiating singleplayer game");
         return 5; // Huh this doesn't work for some reason
     }
-    else if (exit_button.check_button_clicked() == 1) {
+    else if (exit_button.check_button_clicked()) {
         log_data("Exit signal recieved");
         return 1;
     }
-    else if (help_button.check_button_clicked() == 1) {
+    else if (help_button.check_button_clicked()) {
         // How the hell is this not working?
         log_data("Displaying help page");
         return 7;
@@ -84,79 +84,79 @@ int main_menu() {
 }
 
 void get_user_input() {
-    if (grid1.check_button_clicked() == 1) {
+    if (grid1.check_button_clicked()) {
         cube.user_input("p1");
     }
-    else if (grid2.check_button_clicked() == 1) {
+    else if (grid2.check_button_clicked()) {
         cube.user_input("p2");
     }
-    else if (grid3.check_button_clicked() == 1) {
+    else if (grid3.check_button_clicked()) {
         cube.user_input("p3");
     }
-    else if (grid4.check_button_clicked() == 1) {
+    else if (grid4.check_button_clicked()) {
         cube.user_input("p4");
     }
-    else if (grid5.check_button_clicked() == 1) {
+    else if (grid5.check_button_clicked()) {
         cube.user_input("p5");
     }
-    else if (grid6.check_button_clicked() == 1) {
+    else if (grid6.check_button_clicked()) {
         cube.user_input("p6");
     }
-    else if (grid7.check_button_clicked() == 1) {
+    else if (grid7.check_button_clicked()) {
         cube.user_input("p7");
     }
-    else if (grid8.check_button_clicked() == 1) {
+    else if (grid8.check_button_clicked()) {
         cube.user_input("p8");
     }
-    else if (grid9.check_button_clicked() == 1) {
+    else if (grid9.check_button_clicked()) {
         cube.user_input("p9");
     }
-    else if (x_move_button.check_button_clicked() == 1) {
+    else if (x_move_button.check_button_clicked()) {
         cube.user_input("mX");
     }
-    else if (z_prime_button.check_button_clicked() == 1) {
+    else if (z_prime_button.check_button_clicked()) {
         cube.user_input("mZp");
     }
-    else if (z_move_button.check_button_clicked() == 1) {
+    else if (z_move_button.check_button_clicked()) {
         cube.user_input("mZ");
     }
-    else if (x_prime_button.check_button_clicked() == 1) {
+    else if (x_prime_button.check_button_clicked()) {
         cube.user_input("mXp");
     }
-    else if (l_prime_button.check_button_clicked() == 1) {
+    else if (l_prime_button.check_button_clicked()) {
         cube.user_input("mLp");
     }
-    else if (m_prime_button.check_button_clicked() == 1) {
+    else if (m_prime_button.check_button_clicked()) {
         cube.user_input("mMp");
     }
-    else if (r_move_button.check_button_clicked() == 1) {
+    else if (r_move_button.check_button_clicked()) {
         cube.user_input("mR");
     }
-    else if (b_move_button.check_button_clicked() == 1) {
+    else if (b_move_button.check_button_clicked()) {
         cube.user_input("mB");
     }
-    else if (b_prime_button.check_button_clicked() == 1) {
+    else if (b_prime_button.check_button_clicked()) {
         cube.user_input("mBp");
     }
-    else if (s_prime_button.check_button_clicked() == 1) {
+    else if (s_prime_button.check_button_clicked()) {
         cube.user_input("mSp");
     }
-    else if (s_move_button.check_button_clicked() == 1) {
+    else if (s_move_button.check_button_clicked()) {
         cube.user_input("mS");
     }
-    else if (f_prime_button.check_button_clicked() == 1) {
+    else if (f_prime_button.check_button_clicked()) {
         cube.user_input("mFp");
     }
-    else if (f_move_button.check_button_clicked() == 1) {
+    else if (f_move_button.check_button_clicked()) {
         cube.user_input("mF");
     }
-    else if (l_move_button.check_button_clicked() == 1) {
+    else if (l_move_button.check_button_clicked()) {
         cube.user_input("mL");
     }
-    else if (m_move_button.check_button_clicked() == 1) {
+    else if (m_move_button.check_button_clicked()) {
         cube.user_input("mM");
     }
-    else if (r_prime_button.check_button_clicked() == 1) {
+    else if (r_prime_button.check_button_clicked()) {
         cube.user_input("mRp");
     };
 }
@@ -642,7 +642,7 @@ int main() {
                 break;
             case 2:
                 // Multiplayer
-                if (exit_game_button.check_button_clicked() == 1) {
+                if (exit_game_button.check_button_clicked()) {
                     mode = 0;
                     cube.reset();
                     break;
@@ -694,7 +694,7 @@ int main() {
                             setup = true;
                         };
 
-                        if (exit_game_button.check_button_clicked() == 1) {
+                        if (exit_game_button.check_button_clicked()) {
                             mode = 0;
                             log_data("Game aborted by user");
                             cube.reset();
@@ -715,7 +715,7 @@ int main() {
                 log_data("Game ends in tie as board is completely full without victory");
                 break;
             case 7:
-                if (exit_game_button.check_button_clicked() == 1) {
+                if (exit_game_button.check_button_clicked()) {
                     mode = 0;
                     log_data("Returning back to main menu");
                 };
