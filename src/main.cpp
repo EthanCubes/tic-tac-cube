@@ -81,7 +81,7 @@ int main_menu() {
         return 7;
     }
     return 0;
-};
+}
 
 void get_user_input() {
     if (grid1.check_button_clicked() == 1) {
@@ -344,7 +344,7 @@ std::array<Color, 9> generate_colors() {
             break;
         };
     return color_array;
-};  
+}  
 
 void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_buttons) {
     std::array<const char*, 9> board_position_array;
@@ -398,7 +398,7 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     board_buttons[6].draw_button();
     board_buttons[7].draw_button();
     board_buttons[8].draw_button();
-};
+}
 
 void draw_movement() {
     // Change the buttons
@@ -438,12 +438,12 @@ void draw_movement() {
     l_move_button.draw_button();
     m_move_button.draw_button();
     r_prime_button.draw_button();
-};
+}
 
 void popup_message(const char* text) {
     popup.change_button("text", {{"value", text}}, false);
     popup.draw_button();
-};
+}
 
 // All the popups
 // I know global variables aren't the best, but I'm not a fan of plugging in like 20 parameters into a function.
@@ -480,12 +480,12 @@ void handle_popups() {
             };
         };
     };
-};
+}
 
 void activate_popup(std::string key) {
     std::get<0>(popups[key]) = true;
     std::get<3>(popups[key]) = time(NULL);
-};
+}
 
 int main() {
     create_log_file();
@@ -891,4 +891,4 @@ int main() {
     log_data("Quitting game");
     log_data("---- End of program ----");
     return 0;
-};
+}
