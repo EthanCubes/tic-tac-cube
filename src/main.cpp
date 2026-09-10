@@ -452,11 +452,12 @@ int main() {
     std::random_device dev;
     std::mt19937 rng(dev());
 
+    Image logo_image = LoadImage("assets/bitmap.png");
+
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
     SetWindowIcon(logo_image);
 
-    Image logo_image = LoadImage("assets/bitmap.png");
     log_data("Window initialization complete");
 
     // Setting up the buttons. Some of them might need some more tweaking
@@ -501,26 +502,26 @@ int main() {
     exit_game_button.setup_button(EXIT_GAME_BUTTON);
 
     // Changing some values so that they can actually be rendered without error
-    grid1.change_button("x_pos", json({{"value", screen_width/2}} - 150), false);
-    grid1.change_button("y_pos", json({{"value", screen_height/2}} - 150), false);
-    grid2.change_button("x_pos", json({{"value", screen_width/2}} + 0), false);
-    grid2.change_button("y_pos", json({{"value", screen_height/2}} - 150), false);
-    grid3.change_button("x_pos", json({{"value", screen_width/2}} + 150), false);
-    grid3.change_button("y_pos", json({{"value", screen_height/2}} - 150), false);
+    grid1.change_button("x_pos", json({{"value", screen_width/2 - 150}}), false);
+    grid1.change_button("y_pos", json({{"value", screen_height/2 - 150}}), false);
+    grid2.change_button("x_pos", json({{"value", screen_width/2 + 0}}), false);
+    grid2.change_button("y_pos", json({{"value", screen_height/2 - 150}}), false);
+    grid3.change_button("x_pos", json({{"value", screen_width/2 + 150}}), false);
+    grid3.change_button("y_pos", json({{"value", screen_height/2 - 150}}), false);
     // Separation
-    grid4.change_button("x_pos", json({{"value", screen_width/2}} - 150), false);
-    grid4.change_button("y_pos", json({{"value", screen_height/2}} + 0), false);
-    grid5.change_button("x_pos", json({{"value", screen_width/2}} + 0), false);
-    grid5.change_button("y_pos", json({{"value", screen_height/2}} + 0), false);
-    grid6.change_button("x_pos", json({{"value", screen_width/2}} + 150), false);
-    grid6.change_button("y_pos", json({{"value", screen_height/2}} + 0), false);
+    grid4.change_button("x_pos", json({{"value", screen_width/2 - 150}}), false);
+    grid4.change_button("y_pos", json({{"value", screen_height/2 + 0}}), false);
+    grid5.change_button("x_pos", json({{"value", screen_width/2 + 0}}), false);
+    grid5.change_button("y_pos", json({{"value", screen_height/2 + 0}}), false);
+    grid6.change_button("x_pos", json({{"value", screen_width/2 + 150}}), false);
+    grid6.change_button("y_pos", json({{"value", screen_height/2 + 0}}), false);
     // Separation
-    grid7.change_button("x_pos", json({{"value", screen_width/2}} - 150), false);
-    grid7.change_button("y_pos", json({{"value", screen_height/2}} +150), false);
-    grid8.change_button("x_pos", json({{"value", screen_width/2}} + 0), false);
-    grid8.change_button("y_pos", json({{"value", screen_height/2}} + 150), false);
-    grid9.change_button("x_pos", json({{"value", screen_width/2}} + 150), false);
-    grid9.change_button("y_pos", json({{"value", screen_height/2}} + 150), false);
+    grid7.change_button("x_pos", json({{"value", screen_width/2 - 150}}), false);
+    grid7.change_button("y_pos", json({{"value", screen_height/2 + 150}}), false);
+    grid8.change_button("x_pos", json({{"value", screen_width/2 + 0}}), false);
+    grid8.change_button("y_pos", json({{"value", screen_height/2 + 150}}), false);
+    grid9.change_button("x_pos", json({{"value", screen_width/2 + 150}}), false);
+    grid9.change_button("y_pos", json({{"value", screen_height/2 + 150}}), false);
     // Separation
     x_move_button.change_button("x_pos", json({{"value", screen_width/2}}), false);
     x_move_button.change_button("y_pos", json({{"value", screen_height/2 - 320}}), false);
