@@ -378,23 +378,43 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
 };
 
 void draw_movement() {
-    x_move_button.draw_button(MINOR_BUTTON_COLOR, "X", 20, TEXT_COLOR_1);
-    z_prime_button.draw_button(MINOR_BUTTON_COLOR, "Z'", 20, TEXT_COLOR_1);
-    z_move_button.draw_button(MINOR_BUTTON_COLOR, "Z", 20, TEXT_COLOR_1);
-    x_prime_button.draw_button(MINOR_BUTTON_COLOR, "X'", 20, TEXT_COLOR_1);
+    // Change the buttons
+    x_move_button.change_button("text", {{"value", "X"}}, false);
+    z_prime_button.change_button("text", {{"value", "Z'"}}, false);
+    z_move_button.change_button("text", {{"value", "Z"}}, false);
+    x_prime_button.change_button("text", {{"value", "X'"}}, false);
 
-    l_prime_button.draw_button(MINOR_BUTTON_COLOR, "L'", 20, TEXT_COLOR_1);
-    m_prime_button.draw_button(MINOR_BUTTON_COLOR, "M'", 20, TEXT_COLOR_1);
-    r_move_button.draw_button(MINOR_BUTTON_COLOR, "R", 20, TEXT_COLOR_1);
-    b_move_button.draw_button(MINOR_BUTTON_COLOR, "B", 20, TEXT_COLOR_1);
-    b_prime_button.draw_button(MINOR_BUTTON_COLOR, "B'", 20, TEXT_COLOR_1);
-    s_prime_button.draw_button(MINOR_BUTTON_COLOR, "S'", 20, TEXT_COLOR_1);
-    s_move_button.draw_button(MINOR_BUTTON_COLOR, "S", 20, TEXT_COLOR_1);
-    f_prime_button.draw_button(MINOR_BUTTON_COLOR, "F'", 20, TEXT_COLOR_1);
-    f_move_button.draw_button(MINOR_BUTTON_COLOR, "F", 20, TEXT_COLOR_1);
-    l_move_button.draw_button(MINOR_BUTTON_COLOR, "L", 20, TEXT_COLOR_1);
-    m_move_button.draw_button(MINOR_BUTTON_COLOR, "M", 20, TEXT_COLOR_1);
-    r_prime_button.draw_button(MINOR_BUTTON_COLOR, "R'", 20, TEXT_COLOR_1);
+    l_prime_button.change_button("text", {{"value", "L'"}}, false);
+    m_prime_button.change_button("text", {{"value", "M'"}}, false);
+    r_move_button.change_button("text", {{"value", "R"}}, false);
+    b_move_button.change_button("text", {{"value", "B"}}, false);
+    b_prime_button.change_button("text", {{"value", "B'"}}, false);
+    s_prime_button.change_button("text", {{"value", "S'"}}, false);
+    s_move_button.change_button("text", {{"value", "S"}}, false);
+    f_prime_button.change_button("text", {{"value", "F'"}}, false);
+    f_move_button.change_button("text", {{"value", "F"}}, false);
+    l_move_button.change_button("text", {{"value", "L"}}, false);
+    m_move_button.change_button("text", {{"value", "M"}}, false);
+    r_prime_button.change_button("text", {{"value", "R'"}}, false);
+
+    // Draw the buttons
+    x_move_button.draw_button();
+    z_prime_button.draw_button();
+    z_move_button.draw_button();
+    x_prime_button.draw_button();
+
+    l_prime_button.draw_button();
+    m_prime_button.draw_button();
+    r_move_button.draw_button();
+    b_move_button.draw_button();
+    b_prime_button.draw_button();
+    s_prime_button.draw_button();
+    s_move_button.draw_button();
+    f_prime_button.draw_button();
+    f_move_button.draw_button();
+    l_move_button.draw_button();
+    m_move_button.draw_button();
+    r_prime_button.draw_button();
 };
 
 void popup_message(const char* text) {
