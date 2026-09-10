@@ -1,3 +1,4 @@
+#include <array>
 #include <nlohmann/json.hpp>
 #include "raylib.h"
 #include "global.h"
@@ -5,8 +6,6 @@
 #include "button.h"
 
 using json = nlohmann::json;
-
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Color, r, g, b, a);
 
 // This file is not yet ready for usage! Don't link it in the install shell script
 
@@ -34,6 +33,52 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Color, r, g, b, a);
     {"font_size", 20},
     {"font_color", TEXT_COLOR_1}
 */
+
+// raylib json doesn't work with json by default
+json color_to_json(const Color& c) {
+    return {
+        {"r", c.r},
+        {"g", c.g},
+        {"b", c.b},
+        {"a", c.a}
+    };
+};
+
+Color json_to_color(const json& j) {
+    if (j.is_string()) {
+        std::string name = j.get<std::string>();
+        if (name == "RED") {
+            return RED;
+        }
+        else if (name == "GREEN") {
+            return GREEN;
+        }
+        else if (name == "BLUE") {
+            return BLUE;
+        }
+        else if (name == "ORANGE") {
+            return ORANGE;
+        }
+        else if (name == "WHITE") {
+            return WHITE;
+        }
+        else if (name == "RAYWHITE") {
+            return RAYWHITE;
+        }
+        else if (name == "YELLOW") {
+            return YELLOW;
+        }
+        else if (name == "BLACK") {
+            return BLACK;
+        }
+    }
+    return Color{
+        static_cast<unsigned char>(j["r"].get<int>()),
+        static_cast<unsigned char>(j["g"].get<int>()),
+        static_cast<unsigned char>(j["b"].get<int>()),
+        static_cast<unsigned char>(j["a"].get<int>()),
+    };
+}
 
 void Button::setup_button(json button_info_input) {
     // Honestly corrupted data doesn't matter, no one's actually contributing to this besides me and if anyone is then they can fix this is a matter of like seconds
@@ -86,16 +131,16 @@ void Button::draw_button() {
         int calibrated_y = button_hover_info["y_pos"].get<float>() - button_hover_info["height"].get<float>()/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"].get<std::string>(), static_cast<float>(button_hover_info["font_size"].get<float>()), 3.0f);
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = calibrated_x + (button_hover_info["width"].get<float>() - text_width)/2;
         int text_y = calibrated_y + (button_hover_info["height"].get<float>() - text_height)/2;
-        Vector2 text_position = {text_x, text_y};
+        Vector2 text_position = {static_cast<float>(text_x), static_cast<float>(text_y)};
 
         Rectangle rectangle_information = {static_cast<float>(button_hover_info["x_pos"].get<float>()), static_cast<float>(button_hover_info["y_pos"].get<float>()), static_cast<float>(button_hover_info["width"].get<float>()), static_cast<float>(button_hover_info["height"].get<float>())};
-        DrawRectangleRounded(rectangle_information, button_hover_info["roundness"].get<float>(), button_hover_info["steps"].get<float>(), button_hover_info["color"].get<Color>());
-        DrawTextEx(GetFontDefault(), button_info["text"].get<float>.c_str(), text_position, static_cast<float>(button_hover_info["font_size"].get<float>()), 3.0f, button_hover_info["font_color"].get<Color>());
+        DrawRectangleRounded(rectangle_information, button_hover_info["roundness"].get<float>(), button_hover_info["steps"].get<float>(), json_to_color(button_hover_info["color"]));
+        DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_hover_info["font_size"].get<float>()), 3.0f, json_to_color(button_hover_info["font_color"]));
     }
     else {
         // Not on hover
@@ -108,7 +153,7 @@ void Button::draw_button() {
         int calibrated_y = button_info["y_pos"].get<float>() - button_info["height"].get<float>()/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"].get<std::string>(), static_cast<float>(button_info["font_size"].get<float>()), 3.0f);
+        Vector2 text_dimensions = MeasureTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), static_cast<float>(button_info["font_size"].get<float>()), 3.0f);
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = calibrated_x + (button_info["width"].get<float>() - text_width)/2;
@@ -116,7 +161,7 @@ void Button::draw_button() {
         Vector2 text_position = {static_cast<float>(text_x), static_cast<float>(text_y)};
 
         Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_info["width"].get<float>()), static_cast<float>(button_info["height"].get<float>())};
-        DrawRectangleRounded(rectangle_information, button_info["roundness"].get<float>(), button_info["steps"].get<float>(), button_info["color"].get<Color>());
-        DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 3.0f, button_info["font_color"].get<Color>());
+        DrawRectangleRounded(rectangle_information, button_info["roundness"].get<float>(), button_info["steps"].get<float>(), json_to_color(button_info["color"]));
+        DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 3.0f, json_to_color(button_info["font_color"]));
     };
 };
