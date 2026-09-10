@@ -134,7 +134,7 @@ void Cube_board::x_move() {
     colors[5][2][0] = temporary_color_array[4][0][2];
     colors[5][2][1] = temporary_color_array[4][0][1];
     colors[5][2][2] = temporary_color_array[4][0][0];
-};
+}
 
 void Cube_board::y_move() {
     temporary_array = positions;
@@ -260,7 +260,7 @@ void Cube_board::y_move() {
     colors[5][2][0] = temporary_color_array[5][0][0];
     colors[5][2][1] = temporary_color_array[5][1][0];
     colors[5][2][2] = temporary_color_array[5][2][0];
-};
+}
 
 void Cube_board::z_move() {
     temporary_array = positions;
@@ -386,7 +386,7 @@ void Cube_board::z_move() {
     colors[5][2][0] = temporary_color_array[3][2][2];
     colors[5][2][1] = temporary_color_array[3][1][2];
     colors[5][2][2] = temporary_color_array[3][0][2];
-};
+}
 
 void Cube_board::u_move() {
     temporary_array = positions;
@@ -512,80 +512,80 @@ void Cube_board::u_move() {
     colors[5][2][0] = temporary_color_array[5][2][0];
     colors[5][2][1] = temporary_color_array[5][2][1];
     colors[5][2][2] = temporary_color_array[5][2][2];
-};
+}
 
 // These are are the moved made out of the basic moves
 void Cube_board::x_prime() {
     x_move();
     x_move();
     x_move();
-};
+}
 
 void Cube_board::y_prime() {
     y_move();
     y_move();
     y_move();
-};
+}
 
 void Cube_board::z_prime() {
     z_move();
     z_move();
     z_move();
-};
+}
 
 void Cube_board::u_prime() {
     u_move();
     u_move();
     u_move();
-};
-        
+}
+
 void Cube_board::l_move() {
     z_move();
     u_move();
     z_prime();
-};
+}
 
 void Cube_board::l_prime() {
     l_move();
     l_move();
     l_move();
-};
+}
 
 void Cube_board::f_move() {
     x_move();
     u_move();
     x_prime();
-};
+}
 
 void Cube_board::f_prime() {
     f_move();
     f_move();
     f_move();
-};
+}
 
 void Cube_board::r_move() {
     z_prime();
     u_move();
     z_move();
-};
+}
 
 void Cube_board::r_prime() {
     r_move();
     r_move();
     r_move();
-};
+}
 
 void Cube_board::b_move() {
     x_prime();
     u_move();
     x_move();
-};
+}
 
 void Cube_board::b_prime() {
     b_move();
     b_move();
     b_move();
-};
+}
 
 void Cube_board::d_move() {
     x_move();
@@ -593,49 +593,49 @@ void Cube_board::d_move() {
     u_move();
     x_move();
     x_move();
-};
+}
 
 void Cube_board::d_prime() {
     d_move();
     d_move();
     d_move();
-};
+}
 
 void Cube_board::m_move() {
     x_prime();
     l_prime();
     r_move();
-};
+}
 
 void Cube_board::m_prime() {
     m_move();
     m_move();
     m_move();
-};
+}
 
 void Cube_board::e_move() {
     y_prime();
     u_move();
     d_prime();
-};
+}
         
 void Cube_board::e_prime() {
     e_move();
     e_move();
     e_move();
-};
+}
 
 void Cube_board::s_move() {
     z_move();
     f_prime();
     b_move();
-};
+}
 
 void Cube_board::s_prime() {
     s_move();
     s_move();
     s_move();
-};
+}
 
 int Cube_board::mark_x(int x, int y) {
     if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2) && (positions[0][y][x] == 0)) {
@@ -645,7 +645,7 @@ int Cube_board::mark_x(int x, int y) {
     else {
         return 1;
     }
-};
+}
 
 int Cube_board::mark_o(int x, int y) {
     if ((x >= 0) && (x <= 2) && (y >= 0) && (y <= 2) && (positions[0][y][x] == 0)) {
@@ -655,7 +655,7 @@ int Cube_board::mark_o(int x, int y) {
     else {
         return 1;
     }
-};
+}
         
 void Cube_board::move_cube(std::string move) {
     if (move == "U") {
@@ -781,7 +781,7 @@ void Cube_board::move_cube(std::string move) {
     else {
         std::cout << "Invalid notation\n";
     }
-};
+}
 
 std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
     for (int i = 0; i < 6; i++) {
@@ -825,7 +825,7 @@ std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
         };
     };
     return {0, {{{0, 0}, {0, 0}, {0, 0}}}};
-};
+}
 
 void Cube_board::reset() {
     turn = 1;
@@ -846,7 +846,7 @@ void Cube_board::reset() {
         };
         color += 1;
     };
-};
+}
 
 void Cube_board::user_input(std::string input) {
     /*
@@ -952,7 +952,7 @@ void Cube_board::user_input(std::string input) {
         log_data("Invalid move format: " + input);
     };
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
-};
+}
 
 bool Cube_board::scan_for_draw() {
     int empty_count = 0;
@@ -971,7 +971,7 @@ bool Cube_board::scan_for_draw() {
     else {
         return false;
     }
-};
+}
 
 int Cube_board::gameloop(int mode) {
     // Check for wins so that there's a way to exit the gameloop without exiting the game
@@ -995,4 +995,4 @@ int Cube_board::gameloop(int mode) {
         default: 
             return 0;
     };
-};
+}
