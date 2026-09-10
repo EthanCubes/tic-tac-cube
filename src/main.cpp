@@ -364,17 +364,40 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
         };
     };
     // Row 1
-    board_buttons[0].draw_button(color_array[0], board_position_array[0], 40, BLACK);
-    board_buttons[1].draw_button(color_array[1], board_position_array[1], 40, BLACK);
-    board_buttons[2].draw_button(color_array[2], board_position_array[2], 40, BLACK);
+    board_buttons[0].change_button("color", json({{"value", color_to_json(color_array[0])}}), false);
+    board_buttons[0].change_button("text", json({{"value", board_position_array[0]}}), false);
+    board_buttons[1].change_button("color", json({{"value", color_to_json(color_array[1])}}), false);
+    board_buttons[1].change_button("text", json({{"value", board_position_array[1]}}), false);
+    board_buttons[2].change_button("color", json({{"value", color_to_json(color_array[2])}}), false);
+    board_buttons[2].change_button("text", json({{"value", board_position_array[2]}}), false);
     // Row 2
-    board_buttons[3].draw_button(color_array[3], board_position_array[3], 40, BLACK);
-    board_buttons[4].draw_button(color_array[4], board_position_array[4], 40, BLACK);
-    board_buttons[5].draw_button(color_array[5], board_position_array[5], 40, BLACK);
+    board_buttons[3].change_button("color", json({{"value", color_to_json(color_array[3])}}), false);
+    board_buttons[3].change_button("text", json({{"value", board_position_array[3]}}), false);
+    board_buttons[4].change_button("color", json({{"value", color_to_json(color_array[4])}}), false);
+    board_buttons[4].change_button("text", json({{"value", board_position_array[4]}}), false);
+    board_buttons[5].change_button("color", json({{"value", color_to_json(color_array[5])}}), false);
+    board_buttons[5].change_button("text", json({{"value", board_position_array[5]}}), false);
     // Row 3
-    board_buttons[6].draw_button(color_array[6], board_position_array[6], 40, BLACK);
-    board_buttons[7].draw_button(color_array[7], board_position_array[7], 40, BLACK);
-    board_buttons[8].draw_button(color_array[8], board_position_array[8], 40, BLACK);
+    board_buttons[6].change_button("color", json({{"value", color_to_json(color_array[6])}}), false);
+    board_buttons[6].change_button("text", json({{"value", board_position_array[6]}}), false);
+    board_buttons[7].change_button("color", json({{"value", color_to_json(color_array[7])}}), false);
+    board_buttons[7].change_button("text", json({{"value", board_position_array[7]}}), false);
+    board_buttons[8].change_button("color", json({{"value", color_to_json(color_array[8])}}), false);
+    board_buttons[8].change_button("text", json({{"value", board_position_array[8]}}), false);
+
+    // Actually drawing the buttons
+    // Row 1
+    board_buttons[0].draw_button();
+    board_buttons[1].draw_button();
+    board_buttons[2].draw_button();
+    // Row 2
+    board_buttons[3].draw_button();
+    board_buttons[4].draw_button();
+    board_buttons[5].draw_button();
+    // Row 3
+    board_buttons[6].draw_button();
+    board_buttons[7].draw_button();
+    board_buttons[8].draw_button();
 };
 
 void draw_movement() {
