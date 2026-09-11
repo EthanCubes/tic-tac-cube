@@ -141,7 +141,7 @@ void Button::draw_button() {
         int text_y = calibrated_y + (button_hover_info["height"].get<float>() - text_height)/2;
         Vector2 text_position = {static_cast<float>(text_x), static_cast<float>(text_y)};
 
-        Rectangle rectangle_information = {static_cast<float>(button_hover_info["x_pos"].get<float>()), static_cast<float>(button_hover_info["y_pos"].get<float>()), static_cast<float>(button_hover_info["width"].get<float>()), static_cast<float>(button_hover_info["height"].get<float>())};
+        Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_hover_info["width"].get<float>()), static_cast<float>(button_hover_info["height"].get<float>())};
         DrawRectangleRounded(rectangle_information, button_hover_info["roundness"].get<float>(), button_hover_info["steps"].get<float>(), json_to_color(button_hover_info["color"]));
         DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_hover_info["font_size"].get<float>()), 3.0f, json_to_color(button_hover_info["font_color"]));
     }
