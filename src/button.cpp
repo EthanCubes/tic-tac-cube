@@ -101,10 +101,13 @@ bool Button::check_hover() {
     if (button_hover_info.empty()) {
         button_hover_info = button_info;
     }
+    int calibrated_x = button_hover_info["x_pos"].get<float>() - button_hover_info["width"].get<float>()/2;
+    int calibrated_y = button_hover_info["y_pos"].get<float>() - button_hover_info["height"].get<float>()/2;
+
     Vector2 mouse_pos = GetMousePosition();
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
-    if (mouse_x > button_info["x_pos"].get<float>() && mouse_x < button_info["x_pos"].get<float>()+button_info["width"].get<float>() && mouse_y > button_info["y_pos"].get<float>() && mouse_y < button_info["y_pos"].get<float>()+button_info["height"].get<float>()) {
+    if (mouse_x > calibrated_x && mouse_x < calibrated_x+button_info["width"].get<float>() && mouse_y > calibrated_y && mouse_y < calibrated_y+button_info["height"].get<float>()) {
         return true;
     };
     return false;
