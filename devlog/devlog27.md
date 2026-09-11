@@ -1,4 +1,4 @@
-Devlog #27 (a1b005f):
+#Devlog #27 (a1b005f):
 
 I highkey have trouble keeping track of what I did between devlogs sometimes, so I’m adding the SHA of the Git commit to devlogs.
 
