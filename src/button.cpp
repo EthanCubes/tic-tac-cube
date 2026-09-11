@@ -98,6 +98,9 @@ void Button::change_button(std::string key, json change_to, bool hover) {
 }
 
 bool Button::check_hover() {
+    if (button_hover_info.empty()) {
+        button_hover_info = button_info;
+    }
     Vector2 mouse_pos = GetMousePosition();
     int mouse_x = mouse_pos.x;
     int mouse_y = mouse_pos.y;
