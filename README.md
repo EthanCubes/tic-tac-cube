@@ -50,12 +50,12 @@ AI was used for debugging and research. I never used it to tell me what code I s
 The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 
 ## Credits
-- [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8?si=CYgl26UYITcE1fpU) helped, since this is one of my first C++ projects.
-- [GeeksForGeeks](https://www.geeksforgeeks.org) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be probably be longer than the entire rest of the readme.
-- This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c) helped with getting raylib to work (it's technically a C tutorial but like whatever)
-- The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer). Somehow I still managed to get one of the four quintessential moves (it was Z btw) wrong and spent like 2 hours trying to fix it.
-- The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) was used to program the bot for singleplayer.
+- [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8/) helped, since this is one of my first C++ projects.
+- [GeeksForGeeks](https://www.geeksforgeeks.org/) and [w3schools](https://www.w3school.org/) helped a lot with general C++ knowledge. If I were to included every single link on there, it would be probably be longer than the entire rest of the readme.
+- This [website](https://chirag4862.hashnode.dev/getting-started-with-raylib-for-game-development-in-c/) helped with getting raylib to work (it's technically a C tutorial but like whatever)
+- The cube rotation algorithms were partially copied from my previous project [CubeTrainer](https://github.com/EthanCubes/CubeTrainer/). Somehow I still managed to get one of the four quintessential moves (it was Z btw) wrong and spent like 2 hours trying to fix it.
+- The [Wikiepdia Article on Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe/) was used to program the bot for singleplayer.
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
 - This project used the [Nlohmann Json](https://json.nlohmann.me/) to store data easier
-- Originally made for [Hack Club Stardance](), thanks for giving me an excuse to learn several new language and gain a lot of coding experience.
+- Originally made for [Hack Club Stardance](https://stardance.hackclub.com/), thanks for giving me an excuse to learn several new language and gain a lot of coding experience.
