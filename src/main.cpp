@@ -501,6 +501,10 @@ int main() {
     SetTargetFPS(30);
     SetWindowIcon(logo_image);
 
+    Image image = LoadImage("assets/corner1.png");
+    Texture2D corner = LoadTextureFromImage(image);
+    UnloadImage(image);
+
     log_data("Window initialization complete");
 
     // Setting up the buttons. Some of them might need some more tweaking
@@ -737,6 +741,8 @@ int main() {
                 multiplayer_button.draw_button();
                 exit_button.draw_button();
                 help_button.draw_button();
+                // 325, 344, adjusted for better fit
+                DrawTexture(corner, 967, 388, WHITE);
                 EndDrawing();
                 break;
             case 2:
