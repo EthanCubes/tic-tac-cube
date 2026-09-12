@@ -41,7 +41,7 @@ All the buttons in the game, including the ones that make up the "board," are pa
 
 Bot "AI" (stands for Awfully Implemented) is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
 
-This project does not use any external libraries except for Raylib and Nlohmann/Json.
+This project does not use any external libraries except for Raylib and Nlohmann/Json. Most of the classes like buttons, logs, and the bot are hard enough, writing code for a graphic game renderer or a new file format would be a next level of pain and difficulty.
 
 Also, btw, this is my first serious experience with C++. Please don't judge me too harshly.
 
