@@ -352,10 +352,10 @@ void draw_board(std::array<Color, 9> color_array, std::array<Button, 9> board_bu
     for (int row = 0; row < 3; row++) {
         for (int column = 0; column < 3; column++) {
             if (cube.positions[0][row][column] == 1) {
-                board_position_array[position] = "X";
+                board_position_array[position] = "x";
             }
             else if (cube.positions[0][row][column] == 2) {
-                board_position_array[position] = "O";
+                board_position_array[position] = "o";
             }
             else {
                 board_position_array[position] = "";
