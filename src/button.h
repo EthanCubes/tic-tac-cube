@@ -145,7 +145,7 @@ const json RECTANGLE_MOVEMENT_BUTTON_VERTICAL = json({
 });
 
 const json POPUP_BUTTON = json({
-    {"x_pos", screen_width - 150},
+    {"x_pos", screen_width - 180},
     {"y_pos", 60},
     {"width", 300},
     {"height", 80},
