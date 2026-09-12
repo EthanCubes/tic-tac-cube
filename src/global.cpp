@@ -10,4 +10,4 @@ extern const Color BACKGROUND_COLOR = {0, 0, 0, 255};
 extern const Color MAIN_MENU_BUTTON_COLOR = {3, 32, 0, 255};
 extern const Color MINOR_BUTTON_COLOR = {3, 32, 0, 255};
 extern const Color TEXT_COLOR_1 = {21, 255, 0, 255};
-extern const Color TEXT_COLOR_2 = {0, 55, 0, 255};
+extern const Color TEXT_COLOR_2 = {0, 0, 0, 255};
