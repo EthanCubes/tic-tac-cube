@@ -104,7 +104,7 @@ const json BOARD_BUTTON = json({
     {"roundness", 0.25f},
     {"steps", 5},
     {"text", UNDEFINED},
-    {"font_size", UNDEFINED},
+    {"font_size", 40},
     {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json SQUARE_MOVEMENT_BUTTON = json({

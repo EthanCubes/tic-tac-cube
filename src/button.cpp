@@ -4,6 +4,7 @@
 #include "global.h"
 
 #include "button.h"
+#include "logs.h"
 
 using json = nlohmann::json;
 
