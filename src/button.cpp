@@ -98,10 +98,21 @@ void Button::change_button(std::string key, json change_to, bool hover) {
     };
 }
 
+// x, y, width, height, color roundness, steps, text, font-size, font-color
 bool Button::check_hover() {
     if (button_hover_info.empty()) {
         button_hover_info = button_info;
     }
+    else {
+        // If a specific element is undefined, set it
+        for (int i = 0; i < 10; i++) {
+            std::string current_key = key_array[i];
+            if (button_hover_info[current_key] == 0) {
+                button_hover_info[current_key] = button_info[current_key];
+            }
+        }
+    }
+
     int calibrated_x = button_hover_info["x_pos"].get<float>() - button_hover_info["width"].get<float>()/2;
     int calibrated_y = button_hover_info["y_pos"].get<float>() - button_hover_info["height"].get<float>()/2;
 
