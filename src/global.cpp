@@ -11,3 +11,5 @@ extern const Color MAIN_MENU_BUTTON_COLOR = {90, 101, 234, 255};
 extern const Color MINOR_BUTTON_COLOR = {90, 101, 234, 255};
 extern const Color TEXT_COLOR_1 = {220, 222, 227, 255};
 extern const Color TEXT_COLOR_2 = {0, 0, 0, 255};
+
+extern const Color BUTTON_HOVER_COLOR = {68, 82, 187, 255};

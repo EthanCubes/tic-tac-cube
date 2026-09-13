@@ -12,4 +12,6 @@ extern const Color MINOR_BUTTON_COLOR;
 extern const Color TEXT_COLOR_1;
 extern const Color TEXT_COLOR_2;
 
+extern const Color BUTTON_HOVER_COLOR;
+
 #endif
