@@ -495,15 +495,21 @@ int main() {
     std::random_device dev;
     std::mt19937 rng(dev());
 
-    Image logo_image = LoadImage("assets/bitmap.png");
-
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
-    SetWindowIcon(logo_image);
 
-    Image image = LoadImage("assets/corner1.png");
-    Texture2D corner = LoadTextureFromImage(image);
-    UnloadImage(image);
+    Image logo_image = LoadImage("assets/bitmap.png");
+    Image corner_image = LoadImage("assets/corner1.png");
+    Image mark_image = LoadImage("assets/marks1.png"); // This does not work for some reason,
+
+    // This doen't appear to work
+    SetWindowIcon(logo_image);
+    Texture2D corner = LoadTextureFromImage(corner_image);
+    Texture2D mark = LoadTextureFromImage(mark_image);
+
+    UnloadImage(logo_image);
+    UnloadImage(corner_image);
+    UnloadImage(mark_image);
 
     log_data("Window initialization complete");
 
@@ -743,6 +749,7 @@ int main() {
                 help_button.draw_button();
                 // 325, 344, adjusted for better fit
                 DrawTexture(corner, 967, 388, WHITE);
+                DrawTexture(mark, 20, 20, WHITE);
                 EndDrawing();
                 break;
             case 2:
