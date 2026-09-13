@@ -36,8 +36,8 @@ Color json_to_color(const json& j);
 const json TITLE_BUTTON = json({
     {"x_pos", screen_width/2},
     {"y_pos", screen_height/5},
-    {"width", 0},
-    {"height", 0},
+    {"width", 2},
+    {"height", 2},
     {"color", color_to_json(BACKGROUND_COLOR)},
     {"roundness", 0.0f},
     {"steps", 5},
