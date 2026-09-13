@@ -4,7 +4,7 @@
 # Tic-Tac-Cube
 A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can choose to turn a side or rotate the cube instead of making a turn.
 
-![Game of tic-tac-toe- with a twist](screenshots/18-Screenshot_20260831_181513.png)
+![Game of tic-tac-toe- with a twist](screenshots/19-Screenshot_20260913_145930.png)
 
 ## Play the game [here]()
 
