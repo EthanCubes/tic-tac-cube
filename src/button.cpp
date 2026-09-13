@@ -107,7 +107,10 @@ bool Button::check_hover() {
         // If a specific element is undefined, set it
         for (int i = 0; i < 10; i++) {
             std::string current_key = key_array[i];
-            if (button_hover_info[current_key] == 0) {
+            if (button_hover_info[current_key].is_null()) {
+                button_hover_info[current_key] = button_info[current_key];
+            }
+            else if (button_hover_info[current_key] == 0) {
                 button_hover_info[current_key] = button_info[current_key];
             }
         }
