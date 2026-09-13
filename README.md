@@ -48,6 +48,7 @@ Also, btw, this is my first serious experience with C++. Please don't judge me t
 ## AI Usage disclosure
 AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
 The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
+I also used it to convert Hex codes into RGB but I think that's fine, although there probably are alternatives that aren't AI and work just fine.
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8/) helped, since this is one of my first C++ projects.
