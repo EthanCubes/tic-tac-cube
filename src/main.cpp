@@ -554,6 +554,13 @@ int main() {
 
     exit_game_button.setup_button(EXIT_GAME_BUTTON);
 
+    singleplayer_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    multiplayer_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    help_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    exit_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    popup.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    exit_game_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+
     // Changing some values so that they can actually be rendered without error
     grid1.change_button("x_pos", json({{"value", screen_width/2 - 150}}), false);
     grid1.change_button("y_pos", json({{"value", screen_height/2 - 150}}), false);
