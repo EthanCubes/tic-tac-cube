@@ -487,6 +487,282 @@ void activate_popup(std::string key) {
     std::get<3>(popups[key]) = time(NULL);
 }
 
+void update_draw_frame() {
+    if (WindowShouldClose()) {
+        running = false;
+    }
+    // Uh getting data about the players ig
+
+    // Popup check & calc
+    handle_popups();
+
+    // Simulate
+    // 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page
+    switch(mode) {
+        case 0:
+            mode = main_menu();
+            setup = false;
+            if (mode != 0) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                if (mode == 2) {
+                    cube.move_count = 0;
+                    activate_popup("multiplayer_game_start");
+                };
+            };
+            break;
+        case 1:
+            running = false;
+            break;
+        case 2:
+            // Multiplayer
+            if (exit_game_button.check_button_clicked()) {
+                mode = 0;
+                cube.reset();
+                break;
+            };
+
+            // Check for user input of the grid spaces (P and M)
+            get_user_input();
+            mode = cube.gameloop(2);
+            break;
+        case 3:
+            log_data(std::to_string(cube.hidden));
+            if (cube.hidden) {
+                log_data("Hidden game conclusion");
+            };
+            log_data("Game ends in X victory"); //
+            break;
+        case 4:
+            log_data(std::to_string(cube.hidden));
+            if (cube.hidden) {
+                log_data("Hidden game conclusion");
+            };
+            log_data("Game ends in O victory");
+            break;
+        case 5: {
+                    bool rng_valid = true;
+                    if (cube.move_count == 1) {
+                        rng_valid = false;
+                    };
+                    // Singleplayer
+                    if (!setup) {
+                        cube.move_count = 0;
+                        // https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+                        std::uniform_int_distribution<std::mt19937::result_type> dist_turn(1, 2);
+                        bot_turn = dist_turn(rng);
+                        user_turn = 3 - bot_turn;
+                        switch(bot_turn) { // emphasis on bot turn
+                            case 1:
+                                log_data("Singleplayer game started with player as O");
+                                activate_popup("bot_goes_first");
+                                break;
+                            case 2:
+                                log_data("Singleplayer game started with player as X");
+                                activate_popup("user_goes_first");
+                                break;
+                            default:
+                                log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
+                        };
+                        user_turn = 3 - bot_turn;
+                        setup = true;
+                    };
+
+                    if (exit_game_button.check_button_clicked()) {
+                        mode = 0;
+                        log_data("Game aborted by user");
+                        cube.reset();
+                        break;
+                    };
+
+                    // Check for user input of the grid spaces (P and M)
+                    if (cube.turn == user_turn) {
+                        get_user_input();
+                    }
+                    else {
+                        cube.user_input(get_bot_move(cube.positions, bot_turn, rng_valid));
+                    }
+                    mode = cube.gameloop(5);
+                    break;
+                }
+        case 6:
+            log_data("Game ends in tie as board is completely full without victory");
+            break;
+        case 7:
+            if (exit_game_button.check_button_clicked()) {
+                mode = 0;
+                log_data("Returning back to main menu");
+            };
+            break;
+        default:
+            std::cout << "Invalid command";
+            mode = 0;
+    };
+
+    // Render
+    std::array<Color, 9> color_array;
+    switch(mode) {
+        case 0:
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+            title_button.draw_button();
+            // Drawing the buttons
+            singleplayer_button.draw_button();
+            multiplayer_button.draw_button();
+            exit_button.draw_button();
+            help_button.draw_button();
+            // 325, 344, adjusted for better fit
+            DrawTexture(corner, 967, 388, WHITE);
+            DrawTexture(mark, 20, 20, WHITE);
+            EndDrawing();
+            break;
+        case 2:
+            // Multiplayer
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+
+            color_array = generate_colors();
+            draw_board(color_array, board_buttons);
+            draw_movement();
+
+            switch(cube.turn) {
+                case 1:
+                    DrawText("X's turn", 10, 690, 20, TEXT_COLOR_1);
+                    break;
+                case 2:
+                    DrawText("O's turn", 10, 690, 20, TEXT_COLOR_1);
+                    break;
+                default:
+                    log_data("What the hell did you do?");
+            };
+
+            exit_game_button.draw_button();
+
+            EndDrawing();
+            break;
+        case 3:
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+
+            if (cube.hidden) {
+                activate_popup("hidden_win");
+                handle_popups();
+            };
+
+            // Clearing the board and rendering it again.
+            color_array = generate_colors();
+            draw_board(color_array, board_buttons);
+
+            DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+            DrawText("X Wins!", 0, 0, 50, TEXT_COLOR_1);
+            log_data("game ends in X victory");
+            EndDrawing();
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            cube.reset();
+            mode = 0;
+            break;
+        case 4:
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+
+            if (cube.hidden) {
+                activate_popup("hidden_win");
+                handle_popups();
+            };
+
+            // Clearing the board and rendering it again.
+            color_array = generate_colors();
+            draw_board(color_array, board_buttons);
+
+            DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+            DrawText("O Wins!", 0, 0, 50, TEXT_COLOR_1);
+            log_data("game ends in O victory");
+            EndDrawing();
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            cube.reset();
+            mode = 0;
+            break;
+        case 5:
+            // Singleplayer
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+
+            color_array = generate_colors();
+            draw_board(color_array, board_buttons);
+
+            if (cube.turn == user_turn) {
+                draw_movement();
+            };
+
+            switch(cube.turn) {
+                case 1:
+                    DrawText("X's turn", 10, 670, 20, TEXT_COLOR_1);
+                    break;
+                case 2:
+                    DrawText("O's turn", 10, 670, 20, TEXT_COLOR_1);
+                    break;
+                default:
+                    log_data("What the hell did you do?");
+            };
+
+            switch(user_turn) {
+                case 1:
+                    DrawText("You are X", 10, 690, 20, TEXT_COLOR_1);
+                    break;
+                case 2:
+                    DrawText("You are O", 10, 690, 20, TEXT_COLOR_1);
+                    break;
+                default:
+                    log_data("What the hell did you do?");
+            };
+
+            exit_game_button.draw_button();
+            EndDrawing();
+
+            break;
+        case 6:
+            // Draw
+            BeginDrawing();
+            DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+            DrawText("Board Full! (Tie)", 0, 0, 30, TEXT_COLOR_1);
+            EndDrawing();
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            cube.reset();
+            mode = 0;
+            break;
+        case 7:
+            log_data("Drawing help page");
+            // Setup the text because it cannot be the best practice to type all the text into the functions manually.
+            const char* HEADER = "Help";
+            const char* DISPLAYED_TEXT = "General\n"
+                " - Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe.\n"
+                " - Click one of the rectangles next to the cube to rotate the cube. This takes your turn.\n"
+                " - X always goes first, O goes next.\n\n"
+                // empty space for organization
+                "Singleplayer game\n"
+                " - A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
+                "X goes first, O goes next\n\n"
+                // empty space for organization
+                "Local multiplayer game\n"
+                " - In these games, you play as both X and O. Otherwise it is just the same as singleplayer\n\n"
+                // empty space for organization
+                "Quick little warning:\n"
+                " - Due to the nature of a Rubik's cube, it is possible to win (or lose) the game while a 3-in-a-row isn't visable on-screen.\n"
+                " - If one of the non-visible sides has a two-in-a-row, and you (or the bot) rotate a third onto the missing position,\n"
+                "creating a three-in-a-row on a hidden side, the game will end, just like if a three-in-a-row happened on a visible side.\n"
+                " - Also, when you rotate the side, you can create a 2-in-a-row accidentally, causing the opponent to win instantly\n"
+                " - Anyway, just be careful";
+
+            // Draw entire help menu
+            BeginDrawing();
+            ClearBackground(BACKGROUND_COLOR);
+            exit_game_button.draw_button();
+            DrawText(HEADER, 600, 0, 40, TEXT_COLOR_1);
+            DrawText(DISPLAYED_TEXT, 20, 60, 20, TEXT_COLOR_1);
+            EndDrawing();
+            break;
+    };
+}
+
 int main() {
     create_log_file();
     int mode = 0;
