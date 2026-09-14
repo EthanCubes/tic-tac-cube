@@ -62,6 +62,26 @@ Button popup;
 
 Button exit_game_button;
 
+// Declaring variables
+int mode;
+bool running = true;
+
+std::random_device dev;
+std::mt19937 rng(dev());
+
+Image logo_image;
+Image corner_image;
+Image mark_image;
+
+Texture2D corner;
+Texture2D mark;
+
+int bot_turn;
+int user_turn;
+bool setup;
+
+std::array<Button, 9> board_buttons;
+
 int main_menu() {
     if (multiplayer_button.check_button_clicked()) {
         log_data("Initiating local multiplayer game");
@@ -765,23 +785,20 @@ void update_draw_frame() {
 
 int main() {
     create_log_file();
-    int mode = 0;
-    bool running = true;
-
-    std::random_device dev;
-    std::mt19937 rng(dev());
+    mode = 0;
+    running = true;
 
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
 
-    Image logo_image = LoadImage("assets/bitmap.png");
-    Image corner_image = LoadImage("assets/corner1.png");
-    Image mark_image = LoadImage("assets/marks1.png");
+    logo_image = LoadImage("assets/bitmap.png");
+    corner_image = LoadImage("assets/corner1.png");
+    mark_image = LoadImage("assets/marks1.png");
 
     // This doen't appear to work
     SetWindowIcon(logo_image);
-    Texture2D corner = LoadTextureFromImage(corner_image);
-    Texture2D mark = LoadTextureFromImage(mark_image);
+    corner = LoadTextureFromImage(corner_image);
+    mark = LoadTextureFromImage(mark_image);
 
     UnloadImage(logo_image);
     UnloadImage(corner_image);
@@ -893,11 +910,8 @@ int main() {
     r_prime_button.change_button("x_pos", json({{"value", screen_width/2+150}}), false);
     r_prime_button.change_button("y_pos", json({{"value", screen_height/2+250}}), false); 
 
-    int bot_turn;
-    int user_turn;
-    bool setup = false;
+    setup = false;
 
-    // Arrays of buttons
     std::array<Button, 9> board_buttons = {
         grid1,
         grid2,
@@ -910,6 +924,7 @@ int main() {
         grid9
     };
 
+    // Arrays of buttons
     while (running) {
         if (WindowShouldClose()) {
             running = false;
