@@ -634,7 +634,10 @@ int main() {
         grid9
     };
 
-    while (running && !WindowShouldClose()) {
+    while (running) {
+        if (WindowShouldClose()) {
+            running = false;
+        }
         // Uh getting data about the players ig
 
         // Popup check & calc
