@@ -19,7 +19,7 @@ std::map<int, int> convert_board_position(std::array<std::array<std::array<int, 
         int row = std::floor((position - 1) / 3);
         int column = position - 3 * row - 1;
         converted_board_position[position] = unconverted_board_position[0][row][column];
-    };
+    }
     return converted_board_position;
 }
 
@@ -39,7 +39,7 @@ std::string rotate_cube_randomly() {
             return "mXp";
         default:
             return "mD";
-    };
+    }
     return "mD";
 }
 
@@ -116,16 +116,16 @@ std::string wild_card() {
                     int affected_position = move_affecting_positions[move_string][i];
                     if (affected_position == danger_locations[position]) {
                         temporary_safe = false;
-                    };
-                };
-            };
+                    }
+                }
+            }
             if (temporary_safe) {
                 rotation_safe = true;
-            };
+            }
             if (count > 10) {
                 return "nothing";
-            };
-        };
+            }
+        }
 
         switch(move_int) {
             case 1:
@@ -152,8 +152,8 @@ std::string wild_card() {
                 return "mS";
             case 12:
                 return "mSp";
-        };
-    };
+        }
+    }
     return "nothing";
 }
 
@@ -192,9 +192,9 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
         if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
             if (board_position[missing] == 0) {
                 return "p" + std::to_string(missing);
-            };
-        };
-    };
+            }
+        }
+    }
 
     // Scan for broken two
     std::array<std::tuple<std::array<int, 2>, int>, 8> broken_two_location = {{
@@ -219,9 +219,9 @@ std::string achieve_win(std::map<int, int> board_position, int bot_turn) {
         if (board_position[position_1] == bot_turn && board_position[position_2] == bot_turn) {
             if (board_position[missing] == 0) {
                 return "p" + std::to_string(missing);
-            };
-        };
-    };
+            }
+        }
+    }
 
     return "nothing";
 }
@@ -264,9 +264,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
             if (board_position[missing] == 0) {
                 winning_positions.push_back(missing);
                 winning_directions.push_back(position_1);
-            };
-        };
-    };
+            }
+        }
+    }
 
     // Scan for broken two
     std::array<std::tuple<std::array<int, 2>, int>, 8> broken_two_location = {{
@@ -292,9 +292,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
             if (board_position[missing] == 0) {
                 winning_positions.push_back(missing);
                 winning_directions.push_back(position_1);
-            };
-        };
-    };
+            }
+        }
+    }
 
     int winning_position_count = winning_positions.size();
 
@@ -338,9 +338,9 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                         for (int y = 0; y < 4; y++) {
                             if (position_one_turn_array[x] == position_two_turn_array[y]) {
                                 return position_one_turn_array[x];
-                            };
-                        };
-                    };
+                            }
+                        }
+                    }
 
                     // Part of the code that ensures that the bot does not play a random move that would do absolutely nothing
                     std::random_device dev;
@@ -359,27 +359,27 @@ std::string block_win(std::map<int, int> board_position, int bot_turn) {
                                 for (int y = 0; y < 4; y++) {
                                     if (position_one_turn_array[x] == position_one_direction_array[y]) {
                                         return position_one_turn_array[x];
-                                    };
-                                };
-                            };
+                                    }
+                                }
+                            }
                             break;
                         case 1:
                             for (int x = 0; x < 4; x++) {
                                 for (int y = 0; y < 4; y++) {
                                     if (position_two_turn_array[x] == position_two_direction_array[y]) {
                                         return position_two_turn_array[x];
-                                    };
-                                };
+                                    }
+                                }
                             }
                             break;
-                    };
+                    }
                     // Fallback
                     switch(position_number) {
                         case 0:
                             return position_one_turn_array[position_index];
                         case 1:
                             return position_two_turn_array[position_index];
-                    };
+                    }
                     return rotate_cube_randomly(); // Probably still best practice to now allow the statement to fall through.
                 }
         default:
@@ -414,8 +414,8 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
             else if (board_position[fork_place_2] == 0) {
                 return "p" + std::to_string(fork_place_2);
             }
-        };
-    };
+        }
+    }
 
     // Center
     std::array<std::array<std::array<int, 2>, 2>, 4> center_forks_array = {{
@@ -449,8 +449,8 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
             else if (board_position[fork_place_2] == 0) {
                 return "p" + std::to_string(fork_place_2);
             }
-        };
-    };
+        }
+    }
 
     return "nothing";
 }
@@ -461,7 +461,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     // Center
     if (board_position[5] == 0) {
         return "p5";
-    };
+    }
 
     // Opposite corner
     std::array<int, 4> board_corners = {
@@ -489,16 +489,16 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
             if (board_position[opposite_corner] == 0) {
                 return "p" + std::to_string(opposite_corner);
             }
-        };
-    };
+        }
+    }
 
     // Empty corner
     for (int corners = 0; corners < 4; corners++) {
         int current_corner = board_corners[corners];
         if (board_position[current_corner] == 0) {
             return "p" + std::to_string(current_corner);
-        };
-    };
+        }
+    }
 
     // Empty side
     std::array<int, 4> board_sides = {
@@ -511,8 +511,8 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
         int current_side = board_sides[sides];
         if (board_position[current_side] == 0) {
             return "p" + std::to_string(current_side);
-        };
-    };
+        }
+    }
 
     // Rotate board
     return rotate_cube_randomly();
@@ -536,13 +536,13 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     move = block_win(converted_board_position, bot_turn);
     if (move != "nothing") {
         return move;
-    };
+    }
 
     // Create a Fork
     move = create_fork(converted_board_position, bot_turn);
     if (move != "nothing") {
         return move;
-    };
+    }
 
     // Randomly decide to randomly rotate the cube because why not
     std::random_device dev;
@@ -550,7 +550,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     std::uniform_int_distribution<std::mt19937::result_type> dist5(1, 5);
     if (dist5(rng) == 5 && rng_valid) {
         return wild_card();
-    };
+    }
 
     /*
      * Play in the Center whenever possible
