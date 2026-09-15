@@ -790,40 +790,40 @@ std::tuple<int, std::array<std::array<int, 2>, 3>> Cube_board::scan_for_wins() {
         }
         else {
             hidden = false;
-        };
+        }
         // Horizontal 1
         if (positions[i][0][0] == positions[i][0][1] && positions[i][0][0] == positions[i][0][2] && positions[i][0][0] != 0) {
             return {positions[i][0][0], {{{0, 0}, {0, 1}, {0, 2}}}};
-        };
+        }
         // Horizontal 2
         if (positions[i][1][0] == positions[i][1][1] && positions[i][1][0] == positions[i][1][2] && positions[i][1][0] != 0) {
             return {positions[i][1][0], {{{1, 0}, {1, 1}, {1, 2}}}};
-        };
+        }
         // Horizontal 3
         if (positions[i][2][0] == positions[i][2][1] && positions[i][2][0] == positions[i][2][2] && positions[i][2][0] != 0) {
             return {positions[i][2][0], {{{2, 0}, {2, 1}, {2, 2}}}};
-        };
+        }
         // Vertical 1
         if (positions[i][0][0] == positions[i][1][0] && positions[i][0][0] == positions[i][2][0] && positions[i][0][0] != 0) {
             return {positions[i][0][0], {{{0, 0}, {1, 0}, {2, 0}}}};
-        };
+        }
         // Vertical 2
         if (positions[i][0][1] == positions[i][1][1] && positions[i][0][1] == positions[i][2][1] && positions[i][0][1] != 0) {
             return {positions[i][0][1], {{{0, 1}, {1, 1}, {2, 1}}}};
-        };
+        }
         // Vertical 3
         if (positions[i][0][2] == positions[i][1][2] && positions[i][0][2] == positions[i][2][2] && positions[i][0][2] != 0) {
             return {positions[i][0][2], {{{0, 2}, {1, 2}, {2, 2}}}};
-        };
+        }
         // Diagonal 1
         if (positions[i][0][0] == positions[i][1][1] && positions[i][0][0] == positions[i][2][2] && positions[i][0][0] != 0) {
             return {positions[i][0][0], {{{0, 0}, {1, 1}, {2, 2}}}};
-        };
+        }
         // Diagonal 2
         if (positions[i][0][2] == positions[i][1][1] && positions[i][0][2] == positions[i][2][0] && positions[i][0][2] != 0) {
             return {positions[i][0][2], {{{0, 2}, {1, 1}, {2, 0}}}};
-        };
-    };
+        }
+    }
     return {0, {{{0, 0}, {0, 0}, {0, 0}}}};
 }
 
@@ -834,18 +834,18 @@ void Cube_board::reset() {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
                 positions[face][row][column] = 0;
-            };
-        };
-    };
+            }
+        }
+    }
     int color = 0;
     for (int face = 0; face < 6; face++) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
                 colors[face][row][column] = color;
-            };
-        };
+            }
+        }
         color += 1;
-    };
+    }
 }
 
 void Cube_board::user_input(std::string input) {
@@ -866,7 +866,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p1");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '2') {
             if (positions[0][0][1] == 0) {
@@ -874,7 +874,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p2");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '3') {
             if (positions[0][0][2] == 0) {
@@ -882,7 +882,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p3");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '4') {
             if (positions[0][1][0] == 0) {
@@ -890,7 +890,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p4");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '5') {
             if (positions[0][1][1] == 0) {
@@ -898,7 +898,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p5");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '6') {
             if (positions[0][1][2] == 0) {
@@ -906,7 +906,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p6");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '7') {
             if (positions[0][2][0] == 0) {
@@ -914,7 +914,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p7");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '8') {
             if (positions[0][2][1] == 0) {
@@ -922,7 +922,7 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p8");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else if (input[1] == '9') {
             if (positions[0][2][2] == 0) {
@@ -930,11 +930,11 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played p9");
                 move_count++;
                 turn = 3 - turn;
-            };
+            }
         }
         else {
             log_data("Invalid position " + input);
-        };
+        }
     }
     else if (input[0] == 'm') {
         switch(input.length()) {
@@ -946,11 +946,11 @@ void Cube_board::user_input(std::string input) {
                 log_data("Player " + std::to_string(turn) + " played " + input);
                 move_cube(input[1]+std::string("'"));
                 break;
-        };
+        }
     }
     else {
         log_data("Invalid move format: " + input);
-    };
+    }
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
 }
 
@@ -986,7 +986,7 @@ int Cube_board::gameloop(int mode) {
             log_data("Hidden game conclusion");
         }
         return 4;
-    };
+    }
     switch(mode) {
         case 2:
             return 2;
@@ -994,5 +994,5 @@ int Cube_board::gameloop(int mode) {
             return 5;
         default: 
             return 0;
-    };
+    }
 }
