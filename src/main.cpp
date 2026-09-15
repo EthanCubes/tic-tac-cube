@@ -651,8 +651,8 @@ int main() {
                     if (mode == 2) {
                         cube.move_count = 0;
                         activate_popup("multiplayer_game_start");
-                    };
-                };
+                    }
+                }
                 break;
             case 1:
                 running = false;
@@ -663,7 +663,7 @@ int main() {
                     mode = 0;
                     cube.reset();
                     break;
-                };
+                }
 
                 // Check for user input of the grid spaces (P and M)
                 get_user_input();
@@ -673,21 +673,21 @@ int main() {
                 log_data(std::to_string(cube.hidden));
                 if (cube.hidden) {
                     log_data("Hidden game conclusion");
-                };
+                }
                 log_data("Game ends in X victory"); //
                 break;
             case 4:
                 log_data(std::to_string(cube.hidden));
                 if (cube.hidden) {
                     log_data("Hidden game conclusion");
-                };
+                }
                 log_data("Game ends in O victory");
                 break;
             case 5: {
                         bool rng_valid = true;
                         if (cube.move_count == 1) {
                             rng_valid = false;
-                        };
+                        }
                         // Singleplayer
                         if (!setup) {
                             cube.move_count = 0;
@@ -706,17 +706,17 @@ int main() {
                                     break;
                                 default:
                                     log_data("Anomaly in game setup, bot turn is specified as " + std::to_string(bot_turn));
-                            };
+                            }
                             user_turn = 3 - bot_turn;
                             setup = true;
-                        };
+                        }
 
                         if (exit_game_button.check_button_clicked()) {
                             mode = 0;
                             log_data("Game aborted by user");
                             cube.reset();
                             break;
-                        };
+                        }
 
                         // Check for user input of the grid spaces (P and M)
                         if (cube.turn == user_turn) {
@@ -740,7 +740,7 @@ int main() {
             default:
                 std::cout << "Invalid command";
                 mode = 0;
-        };
+        }
 
         // Render
         std::array<Color, 9> color_array;
@@ -777,7 +777,7 @@ int main() {
                         break;
                     default:
                         log_data("What the hell did you do?");
-                };
+                }
 
                 exit_game_button.draw_button();
 
@@ -790,7 +790,7 @@ int main() {
                 if (cube.hidden) {
                     activate_popup("hidden_win");
                     handle_popups();
-                };
+                }
 
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();
@@ -811,7 +811,7 @@ int main() {
                 if (cube.hidden) {
                     activate_popup("hidden_win");
                     handle_popups();
-                };
+                }
 
                 // Clearing the board and rendering it again.
                 color_array = generate_colors();
@@ -835,7 +835,7 @@ int main() {
 
                 if (cube.turn == user_turn) {
                     draw_movement();
-                };
+                }
 
                 switch(cube.turn) {
                     case 1:
@@ -846,7 +846,7 @@ int main() {
                         break;
                     default:
                         log_data("What the hell did you do?");
-                };
+                }
 
                 switch(user_turn) {
                     case 1:
@@ -857,7 +857,7 @@ int main() {
                         break;
                     default:
                         log_data("What the hell did you do?");
-                };
+                }
 
                 exit_game_button.draw_button();
                 EndDrawing();
@@ -904,8 +904,8 @@ int main() {
                 DrawText(DISPLAYED_TEXT, 20, 60, 20, TEXT_COLOR_1);
                 EndDrawing();
                 break;
-        };
-    };
+        }
+    }
     CloseWindow();
     log_data("Window closed sucessfully");
     log_data("Quitting game");
