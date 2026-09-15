@@ -25,7 +25,7 @@ bool file_exists(std::string filename) {
     else {
         file.close();
         return true;
-    };
+    }
 }
 
 void create_log_file() {
@@ -37,8 +37,8 @@ void create_log_file() {
     for (int i = 0; i < formatted_time_length; i++) {
         if (formatted_time[i] == ' ' || formatted_time[i] == ':' || formatted_time[i] == '\n') {
             formatted_time[i] = '_';
-        };
-    };
+        }
+    }
 
     std::string log_name = "build/log_" + formatted_time;
     std::string log_prefix = ".txt";
@@ -65,7 +65,7 @@ void create_log_file() {
             log_name += std::string("-");
             filename = log_name + log_prefix;
         }
-    };
+    }
 }
 
 void log_data(std::string log_message) {
