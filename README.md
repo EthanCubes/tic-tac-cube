@@ -29,10 +29,10 @@ Watch a demo of the game [here]()
 
 ## How to run locally
 The game is currently a work in progress and the only way to play it is to build from source.
-Just clone the Git repo, navigate to the root of the repo, and compile it. For me, it's ```g++ src/main.cpp src/board.cpp src/bot.cpp src/global.cpp src/logs.cpp src/button.cpp```
+Just clone the Git repo, navigate to the root of the repo, and compile it.
 
 ## How it works
-Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move.
+Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move. 3x3x6 is used to store every single "sticker" on the cube, a 3x3x3 array would not be sufficient.
 
 The oldest version of C++ this program can be compiled on is C++ 11, since it does not have any features introduced in C++ 14 or later. This was not an intentional design choice and the program was originally intended to run on C++17. I just ended up writing more low-level code and never implemented any more new features.
 
@@ -40,11 +40,11 @@ The input handling and graphics of the game were made with [Raylib](https://www.
 
 All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project. The button class depends heavily on the [Nlohmann-Json](https://json.nlohmann.me/) library for data storage, since maps, arrays, and vectors just aren't enough, and I'm not about to write a tuple declaration longer than the entire rest of the file.
 
-Bot "AI" (stands for Awfully Implemented) is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
+Bot "AI" is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
 
 This project does not use any external libraries except for Raylib and Nlohmann/Json. Most of the classes like buttons, logs, and the bot are hard enough, writing code for a graphic game renderer or a new file format would be a next level of pain and difficulty.
 
-Also, btw, this is my first serious experience with C++. Please don't judge me too harshly.
+Also, btw, this is my first serious experience with C++, so Please don't judge me too harshly.
 
 ## AI Usage disclosure
 AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
