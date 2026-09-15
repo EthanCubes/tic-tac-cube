@@ -95,7 +95,7 @@ void Button::change_button(std::string key, json change_to, bool hover) {
     }
     else {
         button_hover_info[key] = change_to["value"];
-    };
+    }
 }
 
 // x, y, width, height, color roundness, steps, text, font-size, font-color
@@ -124,7 +124,7 @@ bool Button::check_hover() {
     int mouse_y = mouse_pos.y;
     if (mouse_x > calibrated_x && mouse_x < calibrated_x+button_info["width"].get<float>() && mouse_y > calibrated_y && mouse_y < calibrated_y+button_info["height"].get<float>()) {
         return true;
-    };
+    }
     return false;
 }
 
@@ -132,8 +132,8 @@ bool Button::check_button_clicked() {
     if (IsMouseButtonDown(0)) {
         if (check_hover()) {
             return true;
-        };
-    };
+        }
+    }
     return false;
 }
 
@@ -181,5 +181,5 @@ void Button::draw_button() {
         Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_info["width"].get<float>()), static_cast<float>(button_info["height"].get<float>())};
         DrawRectangleRounded(rectangle_information, button_info["roundness"].get<float>(), button_info["steps"].get<float>(), json_to_color(button_info["color"]));
         DrawTextEx(GetFontDefault(), button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 3.0f, json_to_color(button_info["font_color"]));
-    };
+    }
 }
