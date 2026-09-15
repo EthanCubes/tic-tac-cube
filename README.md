@@ -6,7 +6,7 @@ A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can ch
 
 ![Game of tic-tac-toe- with a twist](screenshots/19-Screenshot_20260913_145930.png)
 
-## Play the game [here]()
+## Download the game [here]()
 
 ## Table of Contents
 - [Quick Start](#quick-start)
@@ -17,7 +17,8 @@ A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can ch
 - [Credits](#credits)
 
 ## Quick Start
-Play the game on Itch.io [here]()
+Download the game on Itch.io [here]()
+Watch a demo of the game [here]()
 
 ## Features
 - All the features of regular tic-tac-toe
@@ -47,7 +48,7 @@ Also, btw, this is my first serious experience with C++. Please don't judge me t
 
 ## AI Usage disclosure
 AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
-The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
+The AI model that was primarily used was [DeepSeek](https://deepseek.com/). Random fun fact, I actually ended up getting suspending from DeepSeek for some reason, I still don't know what I did.
 I also used it to convert Hex codes into RGB but I think that's fine, although there probably are alternatives that aren't AI and work just fine.
 
 ## Credits
