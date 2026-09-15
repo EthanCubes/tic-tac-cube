@@ -647,7 +647,7 @@ int main() {
                 mode = main_menu();
                 setup = false;
                 if (mode != 0) {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(150));
                     if (mode == 2) {
                         cube.move_count = 0;
                         activate_popup("multiplayer_game_start");
@@ -800,7 +800,7 @@ int main() {
                 DrawText("X Wins!", 0, 0, 50, TEXT_COLOR_1);
                 log_data("game ends in X victory");
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(300));
                 cube.reset();
                 mode = 0;
                 break;
@@ -821,7 +821,7 @@ int main() {
                 DrawText("O Wins!", 0, 0, 50, TEXT_COLOR_1);
                 log_data("game ends in O victory");
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(300));
                 cube.reset();
                 mode = 0;
                 break;
@@ -869,7 +869,7 @@ int main() {
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
                 DrawText("Board Full! (Tie)", 0, 0, 30, TEXT_COLOR_1);
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(300));
                 cube.reset();
                 mode = 0;
                 break;
