@@ -15,7 +15,6 @@
 
 #include "raylib.h"
 
-// Class is created inside of the main function, which makes the board consistent.
 Cube_board cube;
 
 Button title_button;
