@@ -6,7 +6,7 @@ A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can ch
 
 ![Game of tic-tac-toe- with a twist](screenshots/19-Screenshot_20260913_145930.png)
 
-## Download the game [here]()
+## Download the game [here](https://ethancubes.itch.io/tic-tac-cube)
 
 ## Table of Contents
 - [Quick Start](#quick-start)
@@ -17,7 +17,7 @@ A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can ch
 - [Credits](#credits)
 
 ## Quick Start
-Download the game on Itch.io [here]()
+Download the game on Itch.io [here](https://ethancubes.itch.io/tic-tac-cube)
 Watch a demo of the game [here]()
 
 ## Features
