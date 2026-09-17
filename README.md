@@ -31,6 +31,23 @@ Watch a demo of the game [here]()
 The game is currently a work in progress and the only way to play it is to build from source.
 Just clone the Git repo, navigate to the root of the repo, and compile it.
 
+## How to play
+- Click the back button at the top left of the board anytime to return to the main menu.
+### Singleplayer
+- Click on the singleplayer button in the main menu.
+- A popup will show up on the top right telling you who you are: x or o
+- When it's your turn, make a move by clicking on the 3x3 board in the center, just like regular Tic-Tac-Toe, except....
+- You can click on one of the buttons on the side to rotate the board!
+- If you or the bot get a three-in-a-row on one single face of the board, the game ends. A popup will show up informing you about the victor, and you'll return to the main menu.
+- When it's not your turn, the bot will play. It can turn the board and make moves just like you can.
+- The bot is decently intelligent and will play to win and try to thwart your plans, but you should be able to beat it.
+
+### Multiplayer
+- Click on the multiplayer button in the main menu.
+- You can move however you want, and play however you want, by clicking on the 3x3 board or on one of the rotation buttons surrounding the board.
+- You can even play with a friend, hence "multiplayer"
+- If you get a three-in-a-row on one single face, the game ends, and you'll return to the main menu
+
 ## How it works
 Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move. 3x3x6 is used to store every single "sticker" on the cube, a 3x3x3 array would not be sufficient.
 
@@ -50,6 +67,8 @@ Also, btw, this is my first serious experience with C++, so Please don't judge m
 AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
 The AI model that was primarily used was [DeepSeek](https://deepseek.com/). Random fun fact, I actually ended up getting suspending from DeepSeek for some reason, I still don't know what I did.
 I also used it to convert Hex codes into RGB but I think that's fine, although there probably are alternatives that aren't AI and work just fine.
+
+## Some other notes
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8/) helped, since this is one of my first C++ projects.
