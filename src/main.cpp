@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
+#include <cstddef>
 
 #include "board.h"
 #include "bot.h"
@@ -14,6 +15,8 @@
 #include "button.h"
 
 #include "raylib.h"
+
+Font FONT;
 
 Cube_board cube;
 
@@ -497,6 +500,8 @@ int main() {
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
 
+    FONT = LoadFontEx("assets/Noto_Sans/static/NotoSans-Medium.ttf", 40, NULL, 0);
+
     Image logo_image = LoadImage("assets/bitmap.png");
     Image corner_image = LoadImage("assets/corner1.png");
     Image mark_image = LoadImage("assets/marks1.png");
@@ -769,10 +774,10 @@ int main() {
 
                 switch(cube.turn) {
                     case 1:
-                        DrawText("X's turn", 10, 690, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "X's turn", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("O's turn", 10, 690, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "O's turn", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");
@@ -796,7 +801,7 @@ int main() {
                 draw_board(color_array, board_buttons);
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("X Wins!", 0, 0, 50, TEXT_COLOR_1);
+                DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
                 log_data("game ends in X victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::milliseconds(300));
@@ -817,7 +822,7 @@ int main() {
                 draw_board(color_array, board_buttons);
 
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("O Wins!", 0, 0, 50, TEXT_COLOR_1);
+                DrawTextEx(FONT, "O Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
                 log_data("game ends in O victory");
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::milliseconds(300));
@@ -838,10 +843,10 @@ int main() {
 
                 switch(cube.turn) {
                     case 1:
-                        DrawText("X's turn", 10, 670, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "X's turn", Vector2{10, 670}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("O's turn", 10, 670, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "O's turn", Vector2{10, 670}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");
@@ -849,10 +854,10 @@ int main() {
 
                 switch(user_turn) {
                     case 1:
-                        DrawText("You are X", 10, 690, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "You are X", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     case 2:
-                        DrawText("You are O", 10, 690, 20, TEXT_COLOR_1);
+                        DrawTextEx(FONT, "You are O", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
                         log_data("What the hell did you do?");

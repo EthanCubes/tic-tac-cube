@@ -13,3 +13,7 @@ extern const Color TEXT_COLOR_1 = {220, 222, 227, 255};
 extern const Color TEXT_COLOR_2 = {0, 0, 0, 255};
 
 extern const Color BUTTON_HOVER_COLOR = {68, 82, 187, 255};
+
+extern Font FONT;
+
+bool font_setup = false;
