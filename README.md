@@ -55,7 +55,7 @@ The oldest version of C++ this program can be compiled on is C++ 11, since it do
 
 The input handling and graphics of the game were made with [Raylib](https://www.raylib.com/), because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2.
 
-All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project. The button class depends heavily on the [Nlohmann-Json](https://json.nlohmann.me/) library for data storage, since maps, arrays, and vectors just aren't enough, and I'm not about to write a tuple declaration longer than the entire rest of the file.
+All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project. The button class depends heavily on the [Nlohmann-Json](https://json.nlohmann.me/) library for data storage, since maps, arrays, and vectors just aren't enough, and I'm not about to write a tuple declaration longer than the entire rest of the file. The class uses a JSON object as input, and can display a separate button state when a mouse is hovering over it.
 
 Bot "AI" is entirely written by me using a relatively simple rule-based system. This is done instead of using Min-Maxing because I don't know how to use Min-Maxing. I also though this project wouldn't take this long.
 
@@ -65,10 +65,8 @@ Also, btw, this is my first serious experience with C++, so Please don't judge m
 
 ## AI Usage disclosure
 AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
-The AI model that was primarily used was [DeepSeek](https://deepseek.com/). Random fun fact, I actually ended up getting suspending from DeepSeek for some reason, I still don't know what I did.
+The AI model that was primarily used was [DeepSeek](https://deepseek.com/).
 I also used it to convert Hex codes into RGB but I think that's fine, although there probably are alternatives that aren't AI and work just fine.
-
-## Some other notes
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8/) helped, since this is one of my first C++ projects.
