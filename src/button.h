@@ -42,7 +42,7 @@ const json TITLE_BUTTON = json({
     {"roundness", 0.0f},
     {"steps", 5},
     {"text", "Tic-Tac-Cube"},
-    {"font_size", 50},
+    {"font_size", 80},
     {"font_color", color_to_json(TEXT_COLOR_1)}
 });
 
