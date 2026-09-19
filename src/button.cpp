@@ -149,7 +149,16 @@ void Button::draw_button() {
         int calibrated_y = button_hover_info["y_pos"].get<float>() - button_hover_info["height"].get<float>()/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(FONT, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        Vector2 text_dimensions;
+        if (button_info["font_size"].get<float>() < 30) {
+            text_dimensions = MeasureTextEx(FONT_SMALL, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
+        else if (button_info["font_size"].get<float>() < 60) {
+            text_dimensions = MeasureTextEx(FONT, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
+        else {
+            text_dimensions = MeasureTextEx(FONT_BIG, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = calibrated_x + (button_hover_info["width"].get<float>() - text_width)/2;
@@ -158,7 +167,15 @@ void Button::draw_button() {
 
         Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_hover_info["width"].get<float>()), static_cast<float>(button_hover_info["height"].get<float>())};
         DrawRectangleRounded(rectangle_information, button_hover_info["roundness"].get<float>(), button_hover_info["steps"].get<float>(), json_to_color(button_hover_info["color"]));
-        DrawTextEx(FONT, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f, json_to_color(button_hover_info["font_color"]));
+        if (button_info["font_size"].get<float>() < 30) {
+            DrawTextEx(FONT_SMALL, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
+        else if (button_info["font_size"].get<float>() < 60) {
+            DrawTextEx(FONT, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
+        else {
+            DrawTextEx(FONT_BIG, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
     }
     else {
         // Not on hover
@@ -171,7 +188,16 @@ void Button::draw_button() {
         int calibrated_y = button_info["y_pos"].get<float>() - button_info["height"].get<float>()/2;
 
         // This part is really hard, we have to center the text by getting the width and then doing some super complex math thing
-        Vector2 text_dimensions = MeasureTextEx(FONT, button_info["text"].get<std::string>().c_str(), static_cast<float>(button_info["font_size"].get<float>()), 1.0f);
+        Vector2 text_dimensions;
+        if (button_info["font_size"].get<float>() < 30) {
+            text_dimensions = MeasureTextEx(FONT_SMALL, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
+        else if (button_info["font_size"].get<float>() < 60) {
+            text_dimensions = MeasureTextEx(FONT, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
+        else {
+            text_dimensions = MeasureTextEx(FONT_BIG, button_hover_info["text"].get<std::string>().c_str(), static_cast<float>(button_hover_info["font_size"].get<float>()), 1.0f);
+        }
         int text_width = text_dimensions.x;
         int text_height = text_dimensions.y;
         int text_x = calibrated_x + (button_info["width"].get<float>() - text_width)/2;
@@ -180,6 +206,16 @@ void Button::draw_button() {
 
         Rectangle rectangle_information = {static_cast<float>(calibrated_x), static_cast<float>(calibrated_y), static_cast<float>(button_info["width"].get<float>()), static_cast<float>(button_info["height"].get<float>())};
         DrawRectangleRounded(rectangle_information, button_info["roundness"].get<float>(), button_info["steps"].get<float>(), json_to_color(button_info["color"]));
-        DrawTextEx(FONT, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        // Switch the font according to the font size, in order to enture that the font looks crisp and good. 
+        // 20, 40, 80
+        if (button_info["font_size"].get<float>() < 30) {
+            DrawTextEx(FONT_SMALL, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
+        else if (button_info["font_size"].get<float>() < 60) {
+            DrawTextEx(FONT, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
+        else {
+            DrawTextEx(FONT_BIG, button_info["text"].get<std::string>().c_str(), text_position, static_cast<float>(button_info["font_size"].get<float>()), 1.0f, json_to_color(button_info["font_color"]));
+        }
     }
 }
