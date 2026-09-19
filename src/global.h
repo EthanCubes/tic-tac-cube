@@ -14,7 +14,9 @@ extern const Color TEXT_COLOR_2;
 
 extern const Color BUTTON_HOVER_COLOR;
 
+extern Font FONT_SMALL;
 extern Font FONT;
+extern Font FONT_BIG;
 
 extern bool font_setup;
 
