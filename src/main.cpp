@@ -502,9 +502,9 @@ int main() {
     InitWindow(screen_width, screen_height, "Tic-Tac-Cube");
     SetTargetFPS(30);
 
-    FONT_SMALL = LoadFontEx("assets/Noto_Sans/static/NotoSans-Medium.ttf", 20, NULL, 0);
-    FONT = LoadFontEx("assets/Noto_Sans/static/NotoSans-Medium.ttf", 40, NULL, 0);
-    FONT_BIG = LoadFontEx("assets/Noto_Sans/static/NotoSans-Medium.ttf", 80, NULL, 0);
+    FONT_SMALL = LoadFontEx("assets/Roboto_Mono/static/RobotoMono-Regular.ttf", 20, NULL, 0);
+    FONT = LoadFontEx("assets/Roboto_Mono/static/RobotoMono-Regular.ttf", 40, NULL, 0);
+    FONT_BIG = LoadFontEx("assets/Roboto_Mono/static/RobotoMono-Regular.ttf", 80, NULL, 0);
 
     Image logo_image = LoadImage("assets/bitmap.png");
     Image corner_image = LoadImage("assets/corner1.png");
