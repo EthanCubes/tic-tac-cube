@@ -787,7 +787,7 @@ int main() {
                         DrawTextEx(FONT, "O's turn", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
-                        log_data("What the hell did you do?");
+                        log_data("What the hell did you do?" + std::to_string(cube.turn));
                 }
 
                 exit_game_button.draw_button();
@@ -856,7 +856,9 @@ int main() {
                         DrawTextEx(FONT, "O's turn", Vector2{10, 670}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
-                        log_data("What the hell did you do?");
+                        if (setup) {
+                            log_data("What the hell did you do?" + std::to_string(cube.turn));
+                        }
                 }
 
                 switch(user_turn) {
@@ -867,7 +869,9 @@ int main() {
                         DrawTextEx(FONT, "You are O", Vector2{10, 690}, 20, 1.0f, TEXT_COLOR_1);
                         break;
                     default:
-                        log_data("What the hell did you do?");
+                        if (setup) {
+                            log_data("What the hell did you do?" + std::to_string(user_turn));
+                        }
                 }
 
                 exit_game_button.draw_button();
