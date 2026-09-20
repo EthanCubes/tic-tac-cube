@@ -485,8 +485,8 @@ void handle_popups() {
             if (popup.check_hover()) {
                 std::get<3>(popups[key]) = time(NULL);
             }
-        };
-    };
+        }
+    }
 }
 
 void activate_popup(std::string key) {
