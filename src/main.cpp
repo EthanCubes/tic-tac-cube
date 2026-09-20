@@ -482,6 +482,9 @@ void handle_popups() {
             if ((time(NULL) - start_time) > duration) {
                 std::get<0>(popups[key]) = false;
             };
+            if (popup.check_hover()) {
+                std::get<3>(popups[key]) = time(NULL);
+            }
         };
     };
 }
