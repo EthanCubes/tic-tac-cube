@@ -77,5 +77,5 @@ I also used it to convert Hex codes into RGB but I think that's fine, although t
 - The page on notation on [JPerm.net](https://www.jperm.net/3x3/moves/) helped with distinguishing between E and S moves. I've been cubing for 5 years and still can't tell them apart.
 - The graphics of this project was made in [Raylib](https://www.raylib.com/). A lot of the information about Raylib came from the Raylib Cheatsheet and Raylib Examples, which can be found on the Raylib [website](https://www.raylib.com/).
 - This project used the [Nlohmann Json](https://json.nlohmann.me/) to store data easier, since it's really annoying to use tuples and arrays and vectors are just not enough
-- This project uses the [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) font.
+- This project uses the [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono) font.
 - Originally made for [Hack Club Stardance](https://stardance.hackclub.com/), thanks for giving me an excuse to learn several new languages and gain a lot of coding experience.
