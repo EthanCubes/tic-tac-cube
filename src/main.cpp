@@ -915,8 +915,8 @@ int main() {
                 BeginDrawing();
                 ClearBackground(BACKGROUND_COLOR);
                 exit_game_button.draw_button();
-                DrawText(HEADER, 600, 0, 40, TEXT_COLOR_1);
-                DrawText(DISPLAYED_TEXT, 20, 60, 20, TEXT_COLOR_1);
+                DrawTextEx(FONT_SMALL, HEADER, Vector2{600, 0}, 40, 1.0f, TEXT_COLOR_1);
+                DrawTextEx(FONT_SMALL, DISPLAYED_TEXT, Vector2{20, 60}, 20, 1.0f, TEXT_COLOR_1);
                 EndDrawing();
                 break;
         }
