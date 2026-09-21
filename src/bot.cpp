@@ -5,6 +5,7 @@
 #include <tuple>
 #include <vector>
 #include <random>
+#include <cmath>
 
 #include "logs.h"
 #include "global.h"
@@ -457,6 +458,9 @@ std::string create_fork(std::map<int, int> board_position, int bot_turn) {
 
 std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<> random(0, 1);
 
     // Center
     if (board_position[5] == 0) {
@@ -493,11 +497,15 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     }
 
     // Empty corner
+    std::vector<int> valid_corners;
     for (int corners = 0; corners < 4; corners++) {
         int current_corner = board_corners[corners];
         if (board_position[current_corner] == 0) {
-            return "p" + std::to_string(current_corner);
+            valid_corners.push_back(current_corner);
         }
+    }
+    if (size(valid_corners) > 0) {
+        return "p" + std::to_string(valid_corners[floor(random(rng)*(size(valid_corners))-1)]);
     }
 
     // Empty side

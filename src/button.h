@@ -56,7 +56,7 @@ const json SINGLEPLAYER_BUTTON = json({
     {"steps", 5},
     {"text", "Singleplayer"},
     {"font_size", 40},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json MULTIPLAYER_BUTTON = json({
     {"x_pos", screen_width/2},
@@ -68,7 +68,7 @@ const json MULTIPLAYER_BUTTON = json({
     {"steps", 5},
     {"text", "Multiplayer"},
     {"font_size", 40},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json HELP_BUTTON = json({
     {"x_pos", screen_width/2},
@@ -80,7 +80,7 @@ const json HELP_BUTTON = json({
     {"steps", 5},
     {"text", "Help"},
     {"font_size", 40},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json EXIT_BUTTON = json({
     {"x_pos", screen_width/2},
@@ -92,7 +92,7 @@ const json EXIT_BUTTON = json({
     {"steps", 5},
     {"text", "Exit"},
     {"font_size", 40},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 
 const json BOARD_BUTTON = json({
@@ -117,7 +117,7 @@ const json SQUARE_MOVEMENT_BUTTON = json({
     {"steps", 5},
     {"text", UNDEFINED},
     {"font_size", 20},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json RECTANGLE_MOVEMENT_BUTTON_HORIZONTAL = json({
     {"x_pos", UNDEFINED},
@@ -129,7 +129,7 @@ const json RECTANGLE_MOVEMENT_BUTTON_HORIZONTAL = json({
     {"steps", 5},
     {"text", UNDEFINED},
     {"font_size", 20},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 const json RECTANGLE_MOVEMENT_BUTTON_VERTICAL = json({
     {"x_pos", UNDEFINED},
@@ -141,7 +141,7 @@ const json RECTANGLE_MOVEMENT_BUTTON_VERTICAL = json({
     {"steps", 5},
     {"text", UNDEFINED},
     {"font_size", 20},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 
 const json POPUP_BUTTON = json({
@@ -154,7 +154,7 @@ const json POPUP_BUTTON = json({
     {"steps", 5},
     {"text", UNDEFINED},
     {"font_size", 20},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 
 const json EXIT_GAME_BUTTON = json({
@@ -167,7 +167,7 @@ const json EXIT_GAME_BUTTON = json({
     {"steps", 5},
     {"text", "<"},
     {"font_size", 20},
-    {"font_color", color_to_json(TEXT_COLOR_1)}
+    {"font_color", color_to_json(TEXT_COLOR_2)}
 });
 
 class Button {
