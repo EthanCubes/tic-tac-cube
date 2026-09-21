@@ -882,7 +882,7 @@ int main() {
                 // Draw
                 BeginDrawing();
                 DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawText("Board Full! (Tie)", 0, 0, 30, TEXT_COLOR_1);
+                DrawTextEx(FONT_SMALL, "Board Full! (Tie)", Vector2{0, 0}, 30, 1.0f, TEXT_COLOR_1);
                 EndDrawing();
                 std::this_thread::sleep_for(std::chrono::milliseconds(300));
                 cube.reset();
