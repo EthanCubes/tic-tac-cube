@@ -460,7 +460,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
     // This function will be split into several parts: center, opposite corner, empty corner, empty side, and rotate board for new face
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_real_distribution<float> random(0.0f, 1.0f);
+    std::uniform_real_distribution<float> random(0.0f, 0.9999f);
 
     // Center
     if (board_position[5] == 0) {
