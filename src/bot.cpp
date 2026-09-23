@@ -505,7 +505,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
         }
     }
     if (size(valid_corners) > 0) {
-        return "p" + std::to_string(valid_corners[floor(random(rng)*(size(valid_corners))-1)]);
+        return "p" + std::to_string(valid_corners[floor(random(rng)*size(valid_corners))]);
     }
 
     // Empty side
@@ -515,11 +515,17 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
         6,
         8
     };
+    std::vector<int> valid_edges;
     for (int sides = 0; sides < 4; sides++) {
         int current_side = board_sides[sides];
         if (board_position[current_side] == 0) {
-            return "p" + std::to_string(current_side);
+            valid_edges.push_back(current_side);
         }
+    }
+    if (size(valid_edges) > 0) {
+        int key = floor(random(rng)) * (size(valid_edges));
+        int location = valid_edges[key];
+        return "p" + std::to_string(location);
     }
 
     // Rotate board
@@ -532,7 +538,7 @@ std::string get_bot_move(std::array<std::array<std::array<int, 3>, 3>, 6> board_
     std::string move = "mD";
 
     std::map<int, int> converted_board_position = convert_board_position(board_position_input);
-    
+
     // Steps to Winning at least some of the time
     // Go For a Win
     move = achieve_win(converted_board_position, bot_turn);
