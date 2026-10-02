@@ -2,7 +2,7 @@
 #define BUTTON_H
 
 #include <array>
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 #include "raylib.h"
 #include "global.h"
 

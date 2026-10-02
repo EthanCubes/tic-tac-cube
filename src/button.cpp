@@ -1,5 +1,5 @@
 #include <array>
-#include <nlohmann/json.hpp>
+#include <json.hpp>
 #include "raylib.h"
 #include "global.h"
 

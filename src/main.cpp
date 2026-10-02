@@ -16,6 +16,9 @@
 
 #include "raylib.h"
 
+// Rework this to give the browser every single frame
+// Will have to do a lot of stuff
+
 Font FONT_SMALL;
 Font FONT;
 Font FONT_BIG;
