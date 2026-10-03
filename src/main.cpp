@@ -819,7 +819,7 @@ int main() {
                     draw_board(color_array, board_buttons);
 
                     DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                    DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
+                    DrawTextEx(FONT_BIG, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
                     if (current_time - pause_start > 1000) {
                         log_data("game ends in X victory");
                         cube.reset();
@@ -850,7 +850,7 @@ int main() {
                     draw_board(color_array, board_buttons);
 
                     DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                    DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
+                    DrawTextEx(FONT_BIG, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
                     if (current_time - pause_start > 1000) {
                         pause_setup = false;
                         log_data("game ends in X victory");
