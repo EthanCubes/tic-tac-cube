@@ -5,7 +5,7 @@ em++ src/*.cpp \
 -I/home/ethancubes/Projects/Programming/libraries/raylib-web/src \
 -I./src \
 -DPLATFORM_WEB \
--o build /index.html \
+-o build/index.html \
 -s USE_GLFW=3 \
 -s ASYNCIFY \
 -s ASYNCIFY_STACK_SIZE=65536 \
