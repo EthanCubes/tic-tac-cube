@@ -16,8 +16,8 @@
 
 #include "raylib.h"
 
-// Rework this to give the browser every single frame
-// Will have to do a lot of stuff
+bool pause_setup = false;
+int pause_start = 0;
 
 Font FONT_SMALL;
 Font FONT;
@@ -648,11 +648,15 @@ int main() {
         grid9
     };
 
+    int current_time;
+
     while (running && !WindowShouldClose()) {
         // Uh getting data about the players ig
 
         // Popup check & calc
         handle_popups();
+
+        current_time = (int)(GetTime() * 1000);
 
         // Simulate
         // 0: main menu, 1: quit, 2: multiplayer, 3: X victory, 4: y victory, 5: singleplayer, 6: draw, 7: help page
@@ -798,46 +802,67 @@ int main() {
                 EndDrawing();
                 break;
             case 3:
+                // Problems
+                // Pause setup vs pause start
                 BeginDrawing();
-                ClearBackground(BACKGROUND_COLOR);
+                current_time = (int)(GetTime() * 1000);
+                if (pause_setup) {
+                    ClearBackground(BACKGROUND_COLOR);
 
-                if (cube.hidden) {
-                    activate_popup("hidden_win");
-                    handle_popups();
+                    if (cube.hidden) {
+                        activate_popup("hidden_win");
+                        handle_popups();
+                    }
+
+                    // Clearing the board and rendering it again.
+                    color_array = generate_colors();
+                    draw_board(color_array, board_buttons);
+
+                    DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+                    DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
+                    if (current_time - pause_start > 1000) {
+                        log_data("game ends in X victory");
+                        cube.reset();
+                        mode = 0;
+                        pause_setup = false;
+                    }
                 }
-
-                // Clearing the board and rendering it again.
-                color_array = generate_colors();
-                draw_board(color_array, board_buttons);
-
-                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
-                log_data("game ends in X victory");
+                else {
+                    pause_start = current_time;
+                    pause_setup = true;
+                }
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
-                cube.reset();
-                mode = 0;
                 break;
             case 4:
+                // Problems
+                // Pause setup vs pause start
                 BeginDrawing();
-                ClearBackground(BACKGROUND_COLOR);
+                if (pause_setup) {
+                    ClearBackground(BACKGROUND_COLOR);
 
-                if (cube.hidden) {
-                    activate_popup("hidden_win");
-                    handle_popups();
+                    if (cube.hidden) {
+                        activate_popup("hidden_win");
+                        handle_popups();
+                    }
+
+                    // Clearing the board and rendering it again.
+                    color_array = generate_colors();
+                    draw_board(color_array, board_buttons);
+
+                    DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+                    DrawTextEx(FONT, "X Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
+                    if (current_time - pause_start > 1000) {
+                        pause_setup = false;
+                        log_data("game ends in X victory");
+                        cube.reset();
+                        mode = 0;
+                    }
                 }
-
-                // Clearing the board and rendering it again.
-                color_array = generate_colors();
-                draw_board(color_array, board_buttons);
-
-                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawTextEx(FONT, "O Wins!", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
-                log_data("game ends in O victory");
+                else {
+                    pause_start = current_time;
+                    pause_setup = true;
+                }
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
-                cube.reset();
-                mode = 0;
                 break;
             case 5:
                 // Singleplayer
