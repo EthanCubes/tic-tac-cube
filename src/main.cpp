@@ -925,7 +925,8 @@ int main() {
                 const char* DISPLAYED_TEXT = "General\n"
                     " - Click one of the squares in the 3x3 grid to mark a spot, like in regular tic-tac-toe.\n"
                     " - Click one of the rectangles next to the cube to rotate the cube. This takes your turn.\n"
-                    " - X always goes first, O goes next.\n\n"
+                    " - X always goes first, O goes next.\n"
+                    " - To exit the game in fullscreen, press escape.\n\n"
                     // empty space for organization
                     "Singleplayer game\n"
                     " - A message should appear in the top right telling you who you are, X or O. In case it wasn't obvious,\n"
