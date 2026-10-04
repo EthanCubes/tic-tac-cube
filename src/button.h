@@ -87,7 +87,7 @@ const json EXIT_BUTTON = json({
     {"y_pos", screen_height/20*18},
     {"width", screen_width/5},
     {"height", screen_height/10},
-    {"color", color_to_json(MAIN_MENU_BUTTON_COLOR)},
+    {"color", color_to_json(GRAY)},
     {"roundness", 0.25f},
     {"steps", 5},
     {"text", "Exit"},

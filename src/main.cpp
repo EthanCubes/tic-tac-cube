@@ -78,10 +78,12 @@ int main_menu() {
         log_data("Initiating singleplayer game");
         return 5; // Huh this doesn't work for some reason
     }
+    /*
     else if (exit_button.check_button_clicked()) {
         log_data("Exit signal recieved");
         return 1;
     }
+    */
     else if (help_button.check_button_clicked()) {
         // How the hell is this not working?
         log_data("Displaying help page");
@@ -571,7 +573,7 @@ int main() {
     singleplayer_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
     multiplayer_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
     help_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
-    exit_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
+    exit_button.change_button("color", json({{"value", color_to_json(GRAY)}}), true);
     popup.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
     exit_game_button.change_button("color", json({{"value", color_to_json(BUTTON_HOVER_COLOR)}}), true);
 
