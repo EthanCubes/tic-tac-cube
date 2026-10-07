@@ -1,3 +1,5 @@
 build/
 cpp_tests/
 .vscode/
+compile.sh
+run.sh
