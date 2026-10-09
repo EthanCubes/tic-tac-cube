@@ -909,14 +909,28 @@ int main() {
 
                 break;
             case 6:
-                // Draw
                 BeginDrawing();
-                DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
-                DrawTextEx(FONT_SMALL, "Board Full! (Tie)", Vector2{0, 0}, 30, 1.0f, TEXT_COLOR_1);
+                if (pause_setup) {
+                    ClearBackground(BACKGROUND_COLOR);
+
+                    // Clearing the board and rendering it again.
+                    color_array = generate_colors();
+                    draw_board(color_array, board_buttons);
+
+                    DrawRectangle(0, 0, 50, 50, BACKGROUND_COLOR);
+                    DrawTextEx(FONT_BIG, "Board Full! (Tie)", Vector2{0, 0}, 50, 1.0f, TEXT_COLOR_1);
+                    if (current_time - pause_start > 1000) {
+                        pause_setup = false;
+                        log_data("Game ends in draw!");
+                        cube.reset();
+                        mode = 0;
+                    }
+                }
+                else {
+                    pause_start = current_time;
+                    pause_setup = true;
+                }
                 EndDrawing();
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
-                cube.reset();
-                mode = 0;
                 break;
             case 7:
                 log_data("Drawing help page");
