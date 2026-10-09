@@ -46,7 +46,7 @@ Clone the repo and compile the program. You will need to install raylib for this
 - You can move however you want, and play however you want, by clicking on the 3x3 board or on one of the rotation buttons surrounding the board.
 - You can even play with a friend, hence "multiplayer"
 - If you get a three-in-a-row on one single face, the game ends, and you'll return to the main menu
-## Special Cases
+### Special Cases
 - Due to the nature of a cube that allows it to turn, there is a chance that you may win or lose the game when the three-in-a-row isn't visible on your screen.
 
 ## How it works
