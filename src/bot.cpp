@@ -504,7 +504,7 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
             valid_corners.push_back(current_corner);
         }
     }
-    if (size(valid_corners) > 0) {
+    if (std::size(valid_corners) > 0) {
         return "p" + std::to_string(valid_corners[floor(random(rng)*size(valid_corners))]);
     }
 
@@ -522,8 +522,8 @@ std::string place_priority(std::map<int, int> board_position, int bot_turn) {
             valid_edges.push_back(current_side);
         }
     }
-    if (size(valid_edges) > 0) {
-        int key = floor(random(rng)) * (size(valid_edges));
+    if (std::size(valid_edges) > 0) {
+        int key = floor(random(rng)) * (std::size(valid_edges));
         int location = valid_edges[key];
         return "p" + std::to_string(location);
     }
