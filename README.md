@@ -1,7 +1,7 @@
 [![Time spent on project badge](https://hackatime.hackclub.com/api/v1/badge/U0AD1584RBJ/EthanCubes/tic-tac-cube)](https://hackatime.hackclub.com/@EthanCubes/project/tic-tac-cube)
 [![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-green)](LICENSE)
 [![Made for: Hack Club Stardance](https://img.shields.io/badge/Made_For-Hack_Club_Stardance-yellow)](https://stardance.hackclub.com/)
-[Lines of Code: 3223](https://img.shields.io/badge/Lines_of_Code-_3223-red)
+![Lines of Code: 3223](https://img.shields.io/badge/Lines_of_Code-_3223-red)
 # Tic-Tac-Cube
 A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can choose to turn a side or rotate the cube instead of making a turn.
 
