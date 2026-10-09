@@ -59,8 +59,8 @@ Clone the repo and compile the program. You will need to install raylib for this
 - Also, btw, this is my first experience with C++, so please don't judge me too harshly.
 
 ## AI Usage disclosure
-- AI was used for debugging and research. I never used it to tell me what code I should write, or to replace my own thinking.
-- I also used it to convert Hex codes into RGB.
+- AI was used for debugging and research. I never used it to tell me what code I should write, only to point out places that I messed up and analyze what error messages mean.
+- This means that this code doesn't contain any output of generative AI.
 
 ## Credits
 - [Mosh Hamedani's 1 hour C++ Course for beginners](https://youtu.be/ZzaPdXTrSb8/) helped, since this is one of my first C++ projects.
