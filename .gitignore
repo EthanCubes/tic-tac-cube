@@ -3,3 +3,4 @@ cpp_tests/
 .vscode/
 compile.sh
 run.sh
+compile-web.sh
