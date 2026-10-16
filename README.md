@@ -3,9 +3,9 @@
 [![Made for: Hack Club Stardance](https://img.shields.io/badge/Made_For-Hack_Club_Stardance-yellow)](https://stardance.hackclub.com/)
 ![Lines of Code: 3223](https://img.shields.io/badge/Lines_of_Code-_3223-red)
 # Tic-Tac-Cube
-A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can choose to turn a side or rotate the cube instead of making a turn.
+A C++ game like Tic-Tac-Toe, except played on a Rubik's cube, and players can choose to turn a side or rotate the cube instead of making a turn. Made without a game engine.
 
-![Game of tic-tac-toe- with a twist](screenshots/23.png)
+![Game of tic-tac-toe on a 2d rubik's cube](screenshots/23.png)
 
 ## Play the game [here](https://ethancubes.itch.io/tic-tac-cube)
 
@@ -50,10 +50,11 @@ Clone the repo and compile the program. You will need to install raylib for this
 - Due to the nature of a cube that allows it to turn, there is a chance that you may win or lose the game when the three-in-a-row isn't visible on your screen.
 
 ## How it works
+- This project was coded with C++ 17. 
 - Each side of a 3-D 3x3x6 (row x column x face) array, acts like an individual tic-tac-toe game/board. Only the top face of the 3x3 cube can be interacted with by the user. Each turn, the player can choose to turn the cube instead of making a normal tic-tac-toe move. 3x3x6 is used to store every single "sticker" on the cube, a 3x3x3 array would not be sufficient for storing the state of each individual sticker, which the game relies on for winning logic and placement.
-- The oldest version of C++ this program can be compiled on is C++ 17. There's one single function that doesn't work on C++ 14 or earlier, and while everything else works on C++ 11, I don't see a reason to rework my code since 90% of devs probably use C++ 17 anyway.
 - The input handling and graphics of the game were made with Raylib, because it is simpler and has more and better documentation (my personal opinion, I might just suck at researching) than the other graphics library I was considering, SDL2. The project was compiled for WASM because it is incrediblely difficult to make an easy to demo a downloadable game with Raylib.
 - All the buttons in the game, including the ones that make up the "board," are part of a class that I wrote (myself) specifically for this project. The button class depends heavily on the Nlohmann-Json library for data storage, since maps, arrays, and vectors just aren't enough, and I'm not about to write a tuple declaration longer than the entire rest of the file. The class uses a JSON object as input, and can display a separate button state when a mouse is hovering over it.
+- I didn't use a game engine because I wanted an excuse to learn C++ by building a "simple" game. This doesn't seem to be that simple anymore.
 - Bot "AI" is entirely written by me using a relatively simple rule-based system. This is done because my computer is extremely low-end and any more complex algorithms willl probably melt it. I remember one instance where I did something wrong and my computer ended up crashing due to lag.
 - This project does not use any external libraries except for Raylib and Nlohmann/Json. This is mainly because I was too lazy to find any other libraries.
 - Also, btw, this is my first experience with C++, so please don't judge me too harshly.
